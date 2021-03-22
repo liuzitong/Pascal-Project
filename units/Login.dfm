@@ -1,0 +1,39 @@
+object FLogin: TFLogin
+  Left = 617
+  Top = 511
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Login'
+  ClientHeight = 90
+  ClientWidth = 263
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = #23435#20307
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 16
+  object EtPassword: TEdit
+    Left = 10
+    Top = 20
+    Width = 121
+    Height = 24
+    PasswordChar = '*'
+    TabOrder = 0
+    Text = 'EtPassword'
+  end
+  object BtOk: TButton
+    Left = 145
+    Top = 20
+    Width = 104
+    Height = 45
+    Caption = 'Ok'
+    Default = True
+    TabOrder = 1
+    OnClick = BtOkClick
+  end
+end

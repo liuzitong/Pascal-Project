@@ -1,0 +1,207 @@
+object FMoveXY: TFMoveXY
+  Left = 389
+  Top = 269
+  BorderStyle = bsDialog
+  Caption = 'Move Param Settings'
+  ClientHeight = 101
+  ClientWidth = 454
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnShow = FormShow
+  DesignSize = (
+    454
+    101)
+  PixelsPerInch = 96
+  TextHeight = 20
+  object cxLabel4: TcxLabel
+    Left = 5
+    Top = 10
+    Caption = 'X0'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    Transparent = True
+  end
+  object EtX0: TcxTextEdit
+    Left = 35
+    Top = 10
+    AutoSize = False
+    ParentFont = False
+    Style.BorderStyle = ebsUltraFlat
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.LookAndFeel.Kind = lfFlat
+    Style.LookAndFeel.NativeStyle = True
+    Style.IsFontAssigned = True
+    StyleDisabled.LookAndFeel.Kind = lfFlat
+    StyleDisabled.LookAndFeel.NativeStyle = True
+    StyleFocused.LookAndFeel.Kind = lfFlat
+    StyleFocused.LookAndFeel.NativeStyle = True
+    StyleHot.LookAndFeel.Kind = lfFlat
+    StyleHot.LookAndFeel.NativeStyle = True
+    TabOrder = 1
+    Height = 36
+    Width = 106
+  end
+  object cxLabel1: TcxLabel
+    Left = 160
+    Top = 10
+    Caption = 'Y0'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    Transparent = True
+  end
+  object EtY0: TcxTextEdit
+    Left = 190
+    Top = 10
+    AutoSize = False
+    ParentFont = False
+    Style.BorderStyle = ebsUltraFlat
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.LookAndFeel.Kind = lfFlat
+    Style.LookAndFeel.NativeStyle = True
+    Style.IsFontAssigned = True
+    StyleDisabled.LookAndFeel.Kind = lfFlat
+    StyleDisabled.LookAndFeel.NativeStyle = True
+    StyleFocused.LookAndFeel.Kind = lfFlat
+    StyleFocused.LookAndFeel.NativeStyle = True
+    StyleHot.LookAndFeel.Kind = lfFlat
+    StyleHot.LookAndFeel.NativeStyle = True
+    TabOrder = 3
+    Height = 36
+    Width = 106
+  end
+  object cxLabel2: TcxLabel
+    Left = 5
+    Top = 55
+    Caption = 'X1'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    Transparent = True
+  end
+  object EtX1: TcxTextEdit
+    Left = 35
+    Top = 55
+    AutoSize = False
+    ParentFont = False
+    Style.BorderStyle = ebsUltraFlat
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.LookAndFeel.Kind = lfFlat
+    Style.LookAndFeel.NativeStyle = True
+    Style.IsFontAssigned = True
+    StyleDisabled.LookAndFeel.Kind = lfFlat
+    StyleDisabled.LookAndFeel.NativeStyle = True
+    StyleFocused.LookAndFeel.Kind = lfFlat
+    StyleFocused.LookAndFeel.NativeStyle = True
+    StyleHot.LookAndFeel.Kind = lfFlat
+    StyleHot.LookAndFeel.NativeStyle = True
+    TabOrder = 5
+    Height = 36
+    Width = 106
+  end
+  object cxLabel3: TcxLabel
+    Left = 160
+    Top = 55
+    Caption = 'Y1'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    Transparent = True
+  end
+  object EtY1: TcxTextEdit
+    Left = 190
+    Top = 55
+    AutoSize = False
+    ParentFont = False
+    Style.BorderStyle = ebsUltraFlat
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.LookAndFeel.Kind = lfFlat
+    Style.LookAndFeel.NativeStyle = True
+    Style.IsFontAssigned = True
+    StyleDisabled.LookAndFeel.Kind = lfFlat
+    StyleDisabled.LookAndFeel.NativeStyle = True
+    StyleFocused.LookAndFeel.Kind = lfFlat
+    StyleFocused.LookAndFeel.NativeStyle = True
+    StyleHot.LookAndFeel.Kind = lfFlat
+    StyleHot.LookAndFeel.NativeStyle = True
+    TabOrder = 7
+    Height = 36
+    Width = 106
+  end
+  object BtOk: TcxButton
+    Left = 320
+    Top = 10
+    Width = 124
+    Height = 40
+    Anchors = [akTop, akRight]
+    Caption = 'OK'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ModalResult = 1
+    ParentFont = False
+    TabOrder = 8
+    OnClick = BtOkClick
+    LookAndFeel.Kind = lfUltraFlat
+    LookAndFeel.NativeStyle = True
+  end
+  object BtCancel: TcxButton
+    Left = 320
+    Top = 55
+    Width = 124
+    Height = 40
+    Anchors = [akTop, akRight]
+    Caption = 'Cancel'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 9
+    LookAndFeel.Kind = lfUltraFlat
+    LookAndFeel.NativeStyle = True
+  end
+end

@@ -1,0 +1,127 @@
+object FCircle: TFCircle
+  Left = 536
+  Top = 370
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Create Program Accord Circle'
+  ClientHeight = 110
+  ClientWidth = 421
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object cxLabel1: TcxLabel
+    Left = 15
+    Top = 17
+    Caption = 'Outter'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object cxLabel2: TcxLabel
+    Left = 151
+    Top = 17
+    Caption = 'Inner'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object cxLabel3: TcxLabel
+    Left = 281
+    Top = 17
+    Caption = 'Step'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object EtStep: TcxSpinEdit
+    Left = 328
+    Top = 17
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    TabOrder = 7
+    Value = 6
+    Width = 56
+  end
+  object BtOk: TcxButton
+    Left = 92
+    Top = 60
+    Width = 120
+    Height = 40
+    Caption = 'Ok'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = #24494#36719#38597#40657
+    Font.Style = []
+    ModalResult = 1
+    ParentFont = False
+    TabOrder = 3
+    OnClick = BtOkClick
+  end
+  object BtCancel: TcxButton
+    Left = 229
+    Top = 60
+    Width = 120
+    Height = 40
+    Caption = 'Cancel'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = #24494#36719#38597#40657
+    Font.Style = []
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 4
+  end
+  object EtOutter: TcxSpinEdit
+    Left = 74
+    Top = 17
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    TabOrder = 5
+    Value = 30
+    Width = 56
+  end
+  object EtInner: TcxSpinEdit
+    Left = 202
+    Top = 17
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -16
+    Style.Font.Name = #24494#36719#38597#40657
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    TabOrder = 6
+    Width = 56
+  end
+end
