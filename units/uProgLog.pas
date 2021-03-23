@@ -3,7 +3,7 @@ unit uProgLog;
 interface
 
 uses
-Windows, SysUtils, SyncObjs;
+Windows, SysUtils, SyncObjs,Forms,StdCtrls;
 
 const
 C_LOG_LEVEL_TRACE   = $00000001;
@@ -38,7 +38,7 @@ private
 protected
     function WriteLogFile(const szFormat: string; const Args: array of const): Boolean;
 public
-
+    Memo:TMemo;
     ////////////////////////////////////////////////////////////////////////////
     //Procedure/Function Name: Trace()
     //Describe: 记录日志到日志文件。如果日志文件路径不存在，会自动创建。如果日志文件不存在，
@@ -89,15 +89,19 @@ public
     property Level: DWORD read GetLogLevel write SetLogLevel;
     property LogPath: string read GetLogPath write SetLogPath;
     property LogAppName: string read GetLogAppName write SetLogAppName;
+
 end;
 
 function BooleanDesc(Value : Boolean): string;
 
+
+
 implementation
 
-uses Forms, SqlTimSt;
+uses SqlTimSt;
 
 var GlobalSingle: TLogFile;
+
 
 function BooleanDesc(Value : Boolean): string;
 begin
@@ -348,7 +352,6 @@ try
         buffer := Format(buffer, Args);
 
         writeln(FLogFile, buffer);
-        //writeln(buffer);
         Flush(FLogFile); // 是否考虑性能而注释之？
       end;
     except
@@ -358,6 +361,7 @@ finally
     FCsWriteLogFile.Leave; //离开临界区
 end;
 result := true;
+Memo.Lines.Append(buffer);;
 end;
 
 end.

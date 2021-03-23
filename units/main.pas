@@ -225,7 +225,6 @@ type
 
 var
   FMain: TFMain;
-
 implementation
 
 uses Myutils, xwxh, language, About, usbr, vfw, edit;
@@ -242,7 +241,6 @@ var
 begin
   Self.Timer.Enabled:=False;
   FRunpic1.Timer.Enabled:=False;
-  FRunpic1.LogInfo:=LogInfo;
   FHome1.Timer.Enabled:=False;
   FProgram1.Timer.Enabled:=False;
 
@@ -263,6 +261,8 @@ begin
   Statusbar.Panels[0].Text:=' '+Tr('Welcome');
   StatusBar.Panels[1].Text:=' '+Tr('HardwareStatus');
   Statusbar.Panels[2].Text:=Tr('Logo')+' ';
+  TlogFile.GetInstance.Memo:=LogInfo;
+  TlogFile.GetInstance.Trace(WarningLevel,'**********************session begins***********************','');
 {
  //还不知到是啥类型
   s:=ExeFilePath+'harddata.dat';
@@ -663,7 +663,7 @@ begin
     if not CurrentDevice.WriteFile(Buf, ToWrite, Written) then
     begin
       Err := GetLastError;
-      TLogFile.GetInstance.Trace(ErrorLevel,'Usb write','WRITE ERROR: %s (%x)', [SysErrorMessage(Err), Err]);
+      TLogFile.GetInstance.Trace(ErrorLevel,'','WRITE ERROR: %s (%x)', [SysErrorMessage(Err), Err]);
       //AddToHistory(Format('WRITE ERROR: %s (%x)', [SysErrorMessage(Err), Err]));
     end
     else
@@ -671,8 +671,7 @@ begin
       Str := Format('W %.2x  ', [Buf[0]]);
       for I := 1 to Written-1 do
         Str := Str + Format('%.2x ', [Buf[I]]);
-      TLogFile.GetInstance.Trace(LogLevel,'Usb write',Str);
-      LogInfo.Lines.Append(Format(' %s %s',['Usb write',Str]));
+      TLogFile.GetInstance.Trace(LogLevel,'',Str);
       //AddToHistory(Str);
     end;
   end;
@@ -1698,7 +1697,7 @@ var
   f:integer;
   s:string;
 begin
-  Memo1.Lines.Add(Str);
+  {Memo1.Lines.Add(Str);
   if CheckBoxDebug.Checked then
   begin
     s:=ExeFilePath+'DEBUG.txt';
@@ -1712,7 +1711,7 @@ begin
     s:=Str+#13#10;
     FileWrite(f, s[1], Length(s));
     FileClose(f);
-  end;
+  end; }
 end;
 
 function TFMain.DeviceName(HidDev: TJvHidDevice): string;
@@ -1740,7 +1739,7 @@ begin
     Str := Str + Format('%.2x ', [Cardinal(PChar(Data)[i])]);
   end;
   AddToHistory(Str);
-
+  TLogFile.GetInstance.Trace(LogLevel,'',Str);
   if (lbuf[60]=0) and (lbuf[61]=0) then
   begin
     prihardok := true;
@@ -1806,6 +1805,7 @@ begin
     end
     else if (Lower2Server.answer=$ff) then
     begin
+       TLogFile.GetInstance.Trace(LogLevel,'','应答器按下');
 ////      memo2.Lines.Add('应答器按下');
       if not pubkey then
       begin
@@ -1823,6 +1823,7 @@ begin
     else
     begin
       pubkey1 := false;
+      TLogFile.GetInstance.Trace(LogLevel,'','应答器按下');
 ////      memo2.Lines.Add('应答器松开');
     end;
 
@@ -1931,6 +1932,7 @@ begin
   if ((HidDev.Attributes.VendorID=$0483) and (HidDev.Attributes.ProductID=$5750)) then
   //确定是需要的设备
   begin
+    TlogFile.GetInstance.Trace(logLevel,'Device arrived',DeviceName(HidDev));
     CurrentDevice := HidDev;
     AddToHistory('Arrival of ' + DeviceName(HidDev));
     priConnect := true;
@@ -2185,7 +2187,7 @@ begin
   begin
     if CurrentDevice.HasReadWriteAccess then
     begin
-      CurrentDevice.OnData := ShowRead;
+      CurrentDevice.OnData := ShowRead;//here bind call back func to process reading data
 
       StatusBar.Panels[2].Text:=Tr('Device Connected  ');
       StatusBar.Panels[2].PanelStyle.Font.Color:=clBlack;

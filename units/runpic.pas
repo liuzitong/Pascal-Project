@@ -248,7 +248,6 @@ type
 
   public
     { Public declarations }
-    LogInfo:TMemo;
     isEyeMove:boolean;
     procedure InitCamere;
     procedure DoneCamere;
@@ -1770,7 +1769,6 @@ begin
   Server2Lower.ending[1]:=$0e;
   Server2Lower.ending[2]:=$0f;
   TLogFile.GetInstance.Trace(LogLevel,'BtRightMouseDown','');
-  Loginfo.Lines.Append('BtRightMouseDown');
   FMain.Write2Device;
 
   ChinDown:=True;
@@ -3411,7 +3409,6 @@ begin
   cxButtonMaualPupil.Visible := false;
   EtAutoPupilClick(nil);
 end;
-
 
 end.
 

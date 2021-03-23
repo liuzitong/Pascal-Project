@@ -42,7 +42,6 @@ uses
 var
   Mutex:THandle;
   year,month,day,dow:Word;
-  log:TLogFile;
   
 begin
 //  ShellExecute(0, 'OPEN', PChar('regasm.exe'), Pchar(ExeFilePath+'pupilposition.dll'), nil, SW_HIDE);
@@ -54,8 +53,6 @@ begin
   FWelcome:=TFWelcome.Create(Application);
   FWelcome.ShowModal;
   FWelcome.Update;
-  log:=TLogFile.GetInstance;
-  log.Trace(WarningLevel,'it begins','ss');
 
   if isPrevInst(ExeFileName) or (not pubpassword) then
   begin
@@ -76,5 +73,4 @@ begin
   DecodeDateFully(now, year, month, day, dow);
   ShellExecute(0, 'OPEN', 'xcopy', Pchar('/XYI DBFS D'+Format('%2.2d', [day])), nil, SW_HIDE);
   if ReStart then ShellExecute(0, 'OPEN', PChar(ExeFilePath+'perimeter.exe'), '1', nil, SW_SHOW);
-
 end.

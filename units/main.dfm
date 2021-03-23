@@ -1,6 +1,6 @@
 object FMain: TFMain
-  Left = 195
-  Top = 10
+  Left = 556
+  Top = 79
   Width = 1358
   Height = 844
   Caption = 'Visual View V1.0'
@@ -393,7 +393,7 @@ object FMain: TFMain
               TitleFont.Name = 'MS Sans Serif'
             end
             inherited Panel6: TPanel
-              Top = -25
+              Top = -84
               inherited PcReport: TcxPageControl
                 ClientRectTop = 28
               end
@@ -447,10 +447,10 @@ object FMain: TFMain
             end
             inherited Panel8: TPanel
               Width = 648
-              Height = 209
+              Height = 150
               inherited ImagePt: TImage
                 Width = 646
-                Height = 207
+                Height = 148
               end
             end
           end
@@ -25171,6 +25171,7 @@ object FMain: TFMain
     ParentBackground = True
     ParentFont = False
     TabOrder = 1
+    Visible = False
     DesignSize = (
       1350
       80)
@@ -26048,6 +26049,7 @@ object FMain: TFMain
       Anchors = [akLeft, akTop, akRight]
       ItemHeight = 24
       TabOrder = 7
+      Visible = False
     end
     object ButtonReadDev: TButton
       Left = 400
@@ -26663,7 +26665,6 @@ object FMain: TFMain
     ReadOnly = True
     ScrollBars = ssVertical
     TabOrder = 9
-    Visible = False
   end
   object Log: TButton
     Left = 1279
