@@ -737,6 +737,7 @@ begin
   //清零
   Fillchar(Server2Lower.fixlamp, sizeof(Server2Lower.fixlamp), 0);
 
+  TlogFile.GetInstance.Trace(LogLevel,'TFMain.LightOther SaveDataHead.DEVTYPE',IntToStr(SaveDataHead.DEVTYPE));
   if SaveDataHead.DEVTYPE = $8800 then
   begin
     // 赋值
@@ -815,7 +816,7 @@ begin
     end;
 //    EYEGRAYH: word; //黄背景光阈值
 //    HJG_DAH: word;  //黄背景光环境光报警值
-
+    TlogFile.GetInstance.Trace(LogLevel,'TFMain.LightOther DemoCheckData.pm.EB_Light_sv',IntToStr(DemoCheckData.pm.EB_Light_sv));
     //红外灯
     Server2Lower.Infraredlamp[2]:=SaveDataTs.HW_DA[1];
     Server2Lower.Infraredlamp[3]:=SaveDataTs.HW_DA[2]; //小红外
@@ -1805,7 +1806,6 @@ begin
     end
     else if (Lower2Server.answer=$ff) then
     begin
-       TLogFile.GetInstance.Trace(LogLevel,'','应答器按下');
 ////      memo2.Lines.Add('应答器按下');
       if not pubkey then
       begin
@@ -1823,7 +1823,6 @@ begin
     else
     begin
       pubkey1 := false;
-      TLogFile.GetInstance.Trace(LogLevel,'','应答器按下');
 ////      memo2.Lines.Add('应答器松开');
     end;
 
@@ -1873,8 +1872,10 @@ begin
       end;
     end;
 }
+
     pubgets := false;
     pubhjgda := Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2];
+    TlogFile.GetInstance.Trace(LogLevel,'ShowRead pubhjgda',IntToStr(pubhjgda));
 //    if Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2]>DemoCheckData.pm.EB_Light_sv then
     if pubhjgda>DemoCheckData.pm.EB_Light_sv then
       DemoCheckData.ambient_light := 1
@@ -2699,7 +2700,5 @@ begin
   if LogInfo.Visible=true then LogInfo.Visible:=false
   else if LogInfo.Visible=false then LogInfo.Visible:=true;
 end;
-
-
 
 end.

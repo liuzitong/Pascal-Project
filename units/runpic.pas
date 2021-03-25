@@ -960,6 +960,8 @@ begin
         DemoCheckData.negcount := 0;
         DemoCheckData.neglength := 0;
 
+        TlogFile.GetInstance.Trace(LogLevel,'BtStartClick pubhjgda',IntToStr(pubhjgda));
+        TlogFile.GetInstance.Trace(LogLevel,'BtStartClick DemoCheckData.pm.EB_Light_sv',IntToStr(DemoCheckData.pm.EB_Light_sv));
         if pubhjgda>DemoCheckData.pm.EB_Light_sv then
 ///        if DemoCheckData.ambient_light>=1 then
         begin
