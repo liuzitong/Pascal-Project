@@ -1,6 +1,6 @@
 object FMain: TFMain
-  Left = 0
-  Top = 9
+  Left = 321
+  Top = 235
   Width = 1176
   Height = 712
   Caption = 'Visual View V1.0'
@@ -28,7 +28,7 @@ object FMain: TFMain
     Top = 156
     Width = 1168
     Height = 137
-    ActivePage = cxTabSheet1
+    ActivePage = cxTabSheet4
     Align = alClient
     Style = 8
     TabOrder = 0
@@ -89,10 +89,10 @@ object FMain: TFMain
           inherited PanelDocList: TPanel
             Top = 185
             Width = 1166
-            Height = 34
+            Height = 128
             inherited GroupBox2: TGroupBox
               Width = 1164
-              Height = 12
+              Height = 106
               inherited Panel7: TPanel
                 Width = 1160
                 OnMouseDown = FHome1Panel7MouseDown
@@ -156,9 +156,6 @@ object FMain: TFMain
                 end
               end
               inherited TabSheet5: TTabSheet
-                DesignSize = (
-                  431
-                  579)
                 inherited ImageEyeMove: TImage
                   Left = 1268
                 end
@@ -263,15 +260,15 @@ object FMain: TFMain
               Color = clBtnHighlight
             end
             inherited PaChin: TPanel
-              Height = 11
+              Height = 105
               inherited EtAutoPupil: TcxCheckBox
                 Style.IsFontAssigned = True
               end
               inherited Panel9: TPanel
-                Top = -135
+                Top = -41
               end
               inherited Panel12: TPanel
-                Top = -138
+                Top = -44
               end
             end
             inherited Panel2: TPanel
@@ -454,7 +451,7 @@ object FMain: TFMain
               ParentFont = False
             end
             inherited GridXY: TwwDBGrid
-              Height = 121
+              Height = 215
             end
           end
           inherited Panel7: TPanel

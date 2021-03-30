@@ -28,7 +28,7 @@ uses Myutils;
 
 procedure TFDm.CreateLw;
 begin
-  if Session.IsAlias('lw') then exit;
+  Session.DeleteAlias('lw');
   Session.AddStandardAlias('lw', ExeFilePath+'DBFS', '');
 end;
 

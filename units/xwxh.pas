@@ -3775,12 +3775,15 @@ var
   s:string;
 begin
   FXwxh.Query.Active:=False;
-  FXwxh.Query.SQL.Text:='SELECT Number From "Check" where Number>="'+DateToGzr(Date)+'" Order by Number DESC';
+  FXwxh.Query.SQL.Text:='SELECT Number From "Check" where Number>="'+DateToGzr(Date)
+                        +'"and Number<"'+IncStringCount(DateToGzr(Date))+'" Order by Number DESC';
   FXwxh.Query.Active:=true;
   s:=FXwxh.Query.FieldByName('Number').AsString;
   FXwxh.Query.Active:=False;
   if s='' then s:=DateToGzr(Date)+'000';
   Result:=IncStringCount(s);
+
+
 end;
 
 function IdOfLastChecked:integer;

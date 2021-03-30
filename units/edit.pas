@@ -7,7 +7,7 @@ uses
   Dialogs, cxGraphics, cxMaskEdit, cxDropDownEdit, cxDBEdit, cxMemo,
   cxTextEdit, cxControls, cxContainer, cxEdit, cxLabel, Menus,
   cxLookAndFeelPainters, StdCtrls, cxButtons, DB, Wwdatsrc, DBTables,
-  Wwtable, Wwquery, ExtCtrls, cxCalendar, pubpas, dxGDIPlusClasses;
+  Wwtable, Wwquery, ExtCtrls, cxCalendar, pubpas, dxGDIPlusClasses,uProgLog;
 
 type
   TFEdit = class(TForm)
@@ -104,6 +104,7 @@ begin
   EtName1.Visible:=XwData.Name2;
   EtName2.Enabled:=XwData.Name2;
   pubentertest := false;
+  TLogFile.GetInstance.Trace(LogLevel,'number',EtNumber.Text);
 end;
 
 function TFEdit.IsValidData:Boolean;
@@ -164,6 +165,7 @@ end;
 
 procedure TFEdit.TbCheckAfterInsert(DataSet: TDataSet);
 begin
+  TLogFile.GetInstance.Trace(LogLevel,'before TbCheckAfterInsert',EtNumber.Text);
   DataSet.FieldByName('Id').AsInteger:=MaxIDofCheck+1;
   DataSet.FieldByName('Number').AsString:=NumberOfCheck;
   DataSet.FieldByName('State').AsString:='0';
@@ -174,6 +176,7 @@ begin
   DataSet.FieldByName('Stimulus_Size').AsString:='2';
   DataSet.FieldByName('Stimulus').AsString:=Tr('StimulusSize2')+','+Tr('StimulusColor0');
   EtBirthday.Date:=EnCodeDate(1971, 1, 1);
+  TLogFile.GetInstance.Trace(LogLevel,'after TbCheckAfterInsert number',EtNumber.Text);
 end;
 
 procedure TFEdit.TbCheckAfterPost(DataSet: TDataSet);
