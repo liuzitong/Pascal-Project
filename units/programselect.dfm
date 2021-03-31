@@ -1,6 +1,6 @@
 object FProgramSelect: TFProgramSelect
-  Left = 714
-  Top = 211
+  Left = 484
+  Top = 149
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Select Program'
@@ -110,9 +110,9 @@ object FProgramSelect: TFProgramSelect
         'Special'
         'Custom')
       OnChange = TabTypeChange
-      ClientRectBottom = 30
+      ClientRectBottom = 32
       ClientRectRight = 502
-      ClientRectTop = 30
+      ClientRectTop = 32
     end
     object EtPtName: TcxGrid
       Left = 1
@@ -364,8 +364,8 @@ object FProgramSelect: TFProgramSelect
       object Label1: TLabel
         Left = 40
         Top = 1
-        Width = 336
-        Height = 48
+        Width = 350
+        Height = 62
         Caption = 'Select Program'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindow

@@ -3,7 +3,7 @@ unit usbr;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, Hid, HidUsage, SetupAPI,
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, Hid, HidUsage, SetupAPI, 
   StdCtrls, ExtCtrls, ScktComp;
 
 const
@@ -169,7 +169,7 @@ type
             是0xff     是0xff      是0xff         是0xff         是0xff
             否0x11    否0x11     否0x11        否0x11        否0x11
 
-字节位数：    32  --------至---------    62            63              64
+字节位数：    32  --------至---------    62            63              64                      
 数    据：   0x00 --------------------------     0x00           0xe4           0xf4
 说    明：   （ 31至62字节为备用数据全为0x00  ）   （  63至64是结束帧码    ）
 
@@ -432,8 +432,7 @@ end;
 
 function TFUsbr.OpenUsbFile:boolean;
 begin
-  hid:=CreateFile(detail.DevicePath, GENERIC_READ + GENERIC_WRITE,
-  FILE_SHARE_READ + FILE_SHARE_WRITE, nil, OPEN_EXISTING, FILE_FLAG_OVERLAPPED, 0);
+  hid:=CreateFile(detail.DevicePath, GENERIC_READ + GENERIC_WRITE, FILE_SHARE_READ + FILE_SHARE_WRITE, nil, OPEN_EXISTING, FILE_FLAG_OVERLAPPED, 0);
   Result:=hid<>INVALID_HANDLE_VALUE;
 end;
 

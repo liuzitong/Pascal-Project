@@ -8,7 +8,7 @@ uses
   dxStatusBar, ExtCtrls, Menus, cxLookAndFeelPainters, StdCtrls, cxButtons,cxContainer, cxEdit,
   cxGroupBox, cxLabel, DB, runpic, new, DBTables, programset,
   Buttons, home, Wwtable, DSPack, DSUtil, DirectShow9, fcStatusBar, pubpas,
-  JvHidControllerClass,math, dxGDIPlusClasses,uProgLog;
+  JvHidControllerClass,math, dxGDIPlusClasses;
 
 type
   TFMain = class(TForm)
@@ -99,8 +99,6 @@ type
     BtPrint: TcxButton;
     LabelXtmc: TLabel;
     CheckBoxDebug: TCheckBox;
-    LogInfo: TMemo;
-    Log: TButton;
     procedure BtQueryClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -127,7 +125,7 @@ type
       Y: Integer);
     procedure BtMoveClick(Sender: TObject);
     procedure BtMOve2Click(Sender: TObject);
-    procedure HidCtlArrival(HidDev: TJvHidDevice);//插上USB时，确定是否采用此设备
+    procedure HidCtlArrival(HidDev: TJvHidDevice);
     procedure HidCtlDeviceDataError(HidDev: TJvHidDevice; Error: Cardinal);
     function HidCtlEnumerate(HidDev: TJvHidDevice;
       const Idx: Integer): Boolean;
@@ -148,7 +146,8 @@ type
     procedure cxButtonProgramClick(Sender: TObject);
     procedure BitBtnArchivesClick(Sender: TObject);
     procedure BitBtnWaitRoomClick(Sender: TObject);
-    procedure BtNewClick(Sender: TObject);
+    procedure BtNewClick(Sender: TObject
+    );
     procedure BtEditClick(Sender: TObject);
     procedure BtDeleteClick(Sender: TObject);
     procedure BtStartClick(Sender: TObject);
@@ -163,7 +162,6 @@ type
     procedure BtPauseClick(Sender: TObject);
     procedure BtUnlockClick(Sender: TObject);
     procedure BitBtnReturn4Click(Sender: TObject);
-    procedure LogClick(Sender: TObject);
   private
     { Private declarations }
     Button: TMouseButton;
@@ -225,6 +223,7 @@ type
 
 var
   FMain: TFMain;
+
 implementation
 
 uses Myutils, xwxh, language, About, usbr, vfw, edit;
@@ -243,7 +242,6 @@ begin
   FRunpic1.Timer.Enabled:=False;
   FHome1.Timer.Enabled:=False;
   FProgram1.Timer.Enabled:=False;
-
 ////  Screen.HintFont.Size:=12;
 ////  Screen.HintFont.Style:=[];
 
@@ -252,17 +250,16 @@ begin
   ///
   PcMain.ActivePageIndex:=4;
  // PcMain.ActivePageIndex:=0;
-  PcMain.HideTabs:=True;
+  //PcMain.HideTabs:=True;
   Self.Timer.Enabled:=True;
   FRunpic1.Timer.Enabled:=True;
   FHome1.Timer.Enabled:=True;
   FProgram1.Timer.Enabled:=True;
 
   Statusbar.Panels[0].Text:=' '+Tr('Welcome');
+
   StatusBar.Panels[1].Text:=' '+Tr('HardwareStatus');
   Statusbar.Panels[2].Text:=Tr('Logo')+' ';
-  TlogFile.GetInstance.Memo:=LogInfo;
-  TlogFile.GetInstance.Trace(WarningLevel,'**********************session begins***********************','');
 {
  //还不知到是啥类型
   s:=ExeFilePath+'harddata.dat';
@@ -638,7 +635,6 @@ var
   ToWrite: Cardinal;
   Str: string;
   Err: DWORD;
-  //log:TLogFile;
 begin
 {
   repeat
@@ -650,8 +646,7 @@ begin
 }
   priRead := false;
   priReturnId := 0;
-  //Str:='sss';
-  //LogInfo.Lines.Append(Format(' %s %s',['Usb write',Str]));
+
   if Assigned(CurrentDevice) then
   begin
     Buf[0] := StrToIntDef('$00', 0);
@@ -663,16 +658,14 @@ begin
     if not CurrentDevice.WriteFile(Buf, ToWrite, Written) then
     begin
       Err := GetLastError;
-      TLogFile.GetInstance.Trace(ErrorLevel,'','WRITE ERROR: %s (%x)', [SysErrorMessage(Err), Err]);
-      //AddToHistory(Format('WRITE ERROR: %s (%x)', [SysErrorMessage(Err), Err]));
+      AddToHistory(Format('WRITE ERROR: %s (%x)', [SysErrorMessage(Err), Err]));
     end
     else
     begin
       Str := Format('W %.2x  ', [Buf[0]]);
       for I := 1 to Written-1 do
         Str := Str + Format('%.2x ', [Buf[I]]);
-      TLogFile.GetInstance.Trace(LogLevel,'',Str);
-      //AddToHistory(Str);
+      AddToHistory(Str);
     end;
   end;
   pubMoveTestSend := false;
@@ -737,7 +730,6 @@ begin
   //清零
   Fillchar(Server2Lower.fixlamp, sizeof(Server2Lower.fixlamp), 0);
 
-  TlogFile.GetInstance.Trace(LogLevel,'TFMain.LightOther SaveDataHead.DEVTYPE',IntToStr(SaveDataHead.DEVTYPE));
   if SaveDataHead.DEVTYPE = $8800 then
   begin
     // 赋值
@@ -816,7 +808,7 @@ begin
     end;
 //    EYEGRAYH: word; //黄背景光阈值
 //    HJG_DAH: word;  //黄背景光环境光报警值
-    TlogFile.GetInstance.Trace(LogLevel,'TFMain.LightOther DemoCheckData.pm.EB_Light_sv',IntToStr(DemoCheckData.pm.EB_Light_sv));
+
     //红外灯
     Server2Lower.Infraredlamp[2]:=SaveDataTs.HW_DA[1];
     Server2Lower.Infraredlamp[3]:=SaveDataTs.HW_DA[2]; //小红外
@@ -1698,7 +1690,7 @@ var
   f:integer;
   s:string;
 begin
-  {Memo1.Lines.Add(Str);
+  Memo1.Lines.Add(Str);
   if CheckBoxDebug.Checked then
   begin
     s:=ExeFilePath+'DEBUG.txt';
@@ -1712,7 +1704,7 @@ begin
     s:=Str+#13#10;
     FileWrite(f, s[1], Length(s));
     FileClose(f);
-  end; }
+  end;
 end;
 
 function TFMain.DeviceName(HidDev: TJvHidDevice): string;
@@ -1740,7 +1732,7 @@ begin
     Str := Str + Format('%.2x ', [Cardinal(PChar(Data)[i])]);
   end;
   AddToHistory(Str);
-  TLogFile.GetInstance.Trace(LogLevel,'',Str);
+
   if (lbuf[60]=0) and (lbuf[61]=0) then
   begin
     prihardok := true;
@@ -1872,10 +1864,8 @@ begin
       end;
     end;
 }
-
     pubgets := false;
     pubhjgda := Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2];
-    TlogFile.GetInstance.Trace(LogLevel,'ShowRead pubhjgda',IntToStr(pubhjgda));
 //    if Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2]>DemoCheckData.pm.EB_Light_sv then
     if pubhjgda>DemoCheckData.pm.EB_Light_sv then
       DemoCheckData.ambient_light := 1
@@ -1931,9 +1921,7 @@ end;
 procedure TFMain.HidCtlArrival(HidDev: TJvHidDevice);
 begin
   if ((HidDev.Attributes.VendorID=$0483) and (HidDev.Attributes.ProductID=$5750)) then
-  //确定是需要的设备
   begin
-    TlogFile.GetInstance.Trace(logLevel,'Device arrived',DeviceName(HidDev));
     CurrentDevice := HidDev;
     AddToHistory('Arrival of ' + DeviceName(HidDev));
     priConnect := true;
@@ -2188,7 +2176,7 @@ begin
   begin
     if CurrentDevice.HasReadWriteAccess then
     begin
-      CurrentDevice.OnData := ShowRead;//here bind call back func to process reading data
+      CurrentDevice.OnData := ShowRead;
 
       StatusBar.Panels[2].Text:=Tr('Device Connected  ');
       StatusBar.Panels[2].PanelStyle.Font.Color:=clBlack;
@@ -2412,7 +2400,6 @@ end;
 
 procedure TFMain.TimerInitTimer(Sender: TObject);
 begin
-  TLogFile.GetInstance.Trace(LogLevel,'check device','');
   if prijc1 then
   begin
     //primainform:=mymessagebox('','正在初始化硬件,请稍侯...');
@@ -2422,7 +2409,6 @@ begin
   GetHardStatus;
   if priHardOk then
   begin
-    TLogFile.GetInstance.Trace(LogLevel,'priHardOk','');
     TimerInit.Enabled := false;
     ButtonInitClick(nil);
     FMain.Enabled := true;
@@ -2495,14 +2481,21 @@ end;
 
 procedure TFMain.ImageHomeClick(Sender: TObject);
 begin
-    PcMain.ActivePageIndex:=4;
-    LabelPatient.Visible:=false;
-    LabelXtmc.Visible:=true;
-    PanelBottomMain.Visible:=true;
-    PanelBottomWaitRoom.Visible:=false;
-    PanelBottomQuery.Visible:=false;
-    PanelBottomProgram.Visible:=false;
-    PanelBottomRunpic.Visible:=false;
+   if PcMain.ActivePageIndex=4 then
+   begin
+      BtExitClick(Sender);
+   end
+   else
+   begin
+      PcMain.ActivePageIndex:=4;
+      LabelPatient.Visible:=false;
+      LabelXtmc.Visible:=true;
+      PanelBottomMain.Visible:=true;
+      PanelBottomWaitRoom.Visible:=false;
+      PanelBottomQuery.Visible:=false;
+      PanelBottomProgram.Visible:=false;
+      PanelBottomRunpic.Visible:=false;
+   end;
 end;
 
 procedure TFMain.cxButtonArchivesClick(Sender: TObject);
@@ -2691,14 +2684,6 @@ begin
        BitBtnArchivesClick(nil);
      end;
    end;
-end;
-
-
-
-procedure TFMain.LogClick(Sender: TObject);
-begin
-  if LogInfo.Visible=true then LogInfo.Visible:=false
-  else if LogInfo.Visible=false then LogInfo.Visible:=true;
 end;
 
 end.

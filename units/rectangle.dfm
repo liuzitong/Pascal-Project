@@ -1,6 +1,6 @@
 object FRect: TFRect
-  Left = 626
-  Top = 378
+  Left = 536
+  Top = 370
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Create Program Accord Rectangle'

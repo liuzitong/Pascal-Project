@@ -1,6 +1,6 @@
 object FWelcome: TFWelcome
-  Left = 435
-  Top = 127
+  Left = 465
+  Top = 104
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'FWelcome'

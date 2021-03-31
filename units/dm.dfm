@@ -1,7 +1,7 @@
 object FDm: TFDm
   OldCreateOrder = False
-  Left = 184
-  Top = 119
+  Left = 194
+  Top = 115
   Height = 284
   Width = 215
   object Session: TSession

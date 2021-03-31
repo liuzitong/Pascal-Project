@@ -10,7 +10,7 @@ uses
   cxContainer, cxEdit, cxLabel, DateUtils, dxBar,
   dxBarExtItems, cxClasses, cxProgressBar, DB, DBTables, Wwtable, Wwdatsrc,
   cxDBLabel, Buttons, DSPack, cxMCListBox, DSUtil, DirectShow9, Math, ComObj, ShellApi,
-  cxCheckBox, pubpas, JvHidControllerClass,xwxh, MPlayer, Spin,uProgLog;
+  cxCheckBox, pubpas, JvHidControllerClass,xwxh, MPlayer, Spin;
 
 type
 
@@ -248,6 +248,7 @@ type
 
   public
     { Public declarations }
+
     isEyeMove:boolean;
     procedure InitCamere;
     procedure DoneCamere;
@@ -960,8 +961,6 @@ begin
         DemoCheckData.negcount := 0;
         DemoCheckData.neglength := 0;
 
-        TlogFile.GetInstance.Trace(LogLevel,'BtStartClick pubhjgda',IntToStr(pubhjgda));
-        TlogFile.GetInstance.Trace(LogLevel,'BtStartClick DemoCheckData.pm.EB_Light_sv',IntToStr(DemoCheckData.pm.EB_Light_sv));
         if pubhjgda>DemoCheckData.pm.EB_Light_sv then
 ///        if DemoCheckData.ambient_light>=1 then
         begin
@@ -1628,7 +1627,6 @@ begin
 
     Server2Lower.ending[1]:=$0e;
     Server2Lower.ending[2]:=$0f;
-    TLogFile.GetInstance.Trace(LogLevel,'BtUpMouseDown','');
     FMain.Write2Device;
 
     ChinDown:=True;
@@ -1656,7 +1654,7 @@ begin
 
     Server2Lower.ending[1]:=$0e;
     Server2Lower.ending[2]:=$0f;
-    TLogFile.GetInstance.Trace(LogLevel,'BtUpMouseUp','');
+
     FMain.Write2Device;
 
     ChinUp:=True;
@@ -1678,7 +1676,7 @@ begin
 
   Server2Lower.ending[1]:=$0e;
   Server2Lower.ending[2]:=$0f;
-  TLogFile.GetInstance.Trace(LogLevel,'BtDnMouseDown','');
+
   FMain.Write2Device;
 
   ChinDown:=True;
@@ -1702,7 +1700,7 @@ begin
 
     Server2Lower.ending[1]:=$0e;
     Server2Lower.ending[2]:=$0f;
-    TLogFile.GetInstance.Trace(LogLevel,'BtLeftMouseDown','');
+
     FMain.Write2Device;
 
     ChinUp:=True;
@@ -1724,7 +1722,7 @@ begin
 
   Server2Lower.ending[1]:=$0e;
   Server2Lower.ending[2]:=$0f;
-  TLogFile.GetInstance.Trace(LogLevel,'BtLeftMouseDown','');
+
   FMain.Write2Device;
 
   ChinDown:=True;
@@ -1748,7 +1746,7 @@ begin
 
     Server2Lower.ending[1]:=$0e;
     Server2Lower.ending[2]:=$0f;
-    TLogFile.GetInstance.Trace(LogLevel,'BtLeftMouseUp','');
+
     FMain.Write2Device;
 
     ChinUp:=True;
@@ -1770,7 +1768,7 @@ begin
 
   Server2Lower.ending[1]:=$0e;
   Server2Lower.ending[2]:=$0f;
-  TLogFile.GetInstance.Trace(LogLevel,'BtRightMouseDown','');
+
   FMain.Write2Device;
 
   ChinDown:=True;
@@ -1800,7 +1798,7 @@ begin
 
     Server2Lower.ending[1]:=$0e;
     Server2Lower.ending[2]:=$0f;
-    TLogFile.GetInstance.Trace(LogLevel,'BtRightMouseUp','');
+
     FMain.Write2Device;
 
     ChinUp:=True;
@@ -3413,4 +3411,3 @@ begin
 end;
 
 end.
-

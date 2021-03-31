@@ -1,11 +1,11 @@
 object Flanguage: TFlanguage
-  Left = 657
-  Top = 236
+  Left = 234
+  Top = 105
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'System Maintain'
-  ClientHeight = 404
-  ClientWidth = 570
+  ClientHeight = 522
+  ClientWidth = 736
   Color = cl3DLight
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,62 +17,62 @@ object Flanguage: TFlanguage
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 24
+  TextHeight = 31
   object LabelBbh: TLabel
-    Left = 367
-    Top = 229
+    Left = 474
+    Top = 296
     Width = 96
-    Height = 24
+    Height = 31
     Caption = #29256#26412#21495#65306
     Visible = False
   end
   object LabelSbbhV: TLabel
-    Left = 367
-    Top = 198
+    Left = 474
+    Top = 256
     Width = 96
-    Height = 24
+    Height = 31
     Caption = #35774#22791#21495#65306
     Visible = False
   end
   object LabelCsch: TLabel
-    Left = 367
-    Top = 266
+    Left = 474
+    Top = 344
     Width = 96
-    Height = 24
+    Height = 31
     Caption = #26657#39564#21495#65306
     Visible = False
   end
   object Label1: TLabel
-    Left = 76
-    Top = 92
-    Width = 160
-    Height = 24
+    Left = 98
+    Top = 119
+    Width = 207
+    Height = 31
     AutoSize = False
     Caption = 'Language Select'
   end
   object Label2: TLabel
-    Left = 76
-    Top = 135
-    Width = 154
-    Height = 24
+    Left = 98
+    Top = 175
+    Width = 199
+    Height = 31
     AutoSize = False
     Caption = 'Hospital Name'
   end
   object EtYkFilter: TcxCheckBox
-    Left = 76
-    Top = 260
+    Left = 98
+    Top = 336
     AutoSize = False
     Caption = 'YkFilter'
     TabOrder = 0
     Visible = False
-    Height = 30
-    Width = 185
+    Height = 39
+    Width = 239
   end
   object GridYK3x3: TStringGrid
-    Left = 379
-    Top = 59
-    Width = 160
-    Height = 63
+    Left = 490
+    Top = 76
+    Width = 206
+    Height = 81
     ColCount = 3
     FixedCols = 0
     RowCount = 3
@@ -82,10 +82,10 @@ object Flanguage: TFlanguage
     Visible = False
   end
   object BitBtn1: TBitBtn
-    Left = 81
-    Top = 307
-    Width = 99
-    Height = 41
+    Left = 104
+    Top = 396
+    Width = 129
+    Height = 53
     Caption = #21319#32423#22266#20214
     Default = True
     TabOrder = 2
@@ -93,10 +93,10 @@ object Flanguage: TFlanguage
     OnClick = BitBtn1Click
   end
   object EtCountry: TwwDBComboBox
-    Left = 249
-    Top = 91
-    Width = 216
-    Height = 30
+    Left = 322
+    Top = 118
+    Width = 279
+    Height = 37
     ShowButton = True
     Style = csDropDown
     MapList = False
@@ -115,34 +115,34 @@ object Flanguage: TFlanguage
     OnCloseUp = EtCountryCloseUp
   end
   object EtHospital: TcxTextEdit
-    Left = 249
-    Top = 135
+    Left = 322
+    Top = 174
     TabOrder = 4
     Text = 'EtHospital'
-    Width = 216
+    Width = 279
   end
   object EtName2: TcxCheckBox
-    Left = 76
-    Top = 176
+    Left = 98
+    Top = 227
     AutoSize = False
     Caption = 'Name2'
     TabOrder = 5
-    Height = 30
-    Width = 185
+    Height = 39
+    Width = 239
   end
   object EtEyeMove: TcxCheckBox
-    Left = 75
-    Top = 218
+    Left = 97
+    Top = 281
     AutoSize = False
     Caption = 'EyeMove'
     TabOrder = 6
-    Height = 30
-    Width = 186
+    Height = 39
+    Width = 240
   end
   object StatusBarBottom: TStatusBar
     Left = 0
-    Top = 389
-    Width = 570
+    Top = 507
+    Width = 736
     Height = 15
     Panels = <>
     Visible = False
@@ -150,72 +150,72 @@ object Flanguage: TFlanguage
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 570
-    Height = 50
+    Width = 736
+    Height = 65
     Align = alTop
     Color = 2368548
     TabOrder = 8
     object Label3: TLabel
       Left = 1
       Top = 1
-      Width = 568
-      Height = 48
+      Width = 734
+      Height = 63
       Align = alClient
       Alignment = taCenter
       Caption = 'Setup'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindow
-      Font.Height = -37
+      Font.Height = -48
       Font.Name = #24494#36719#38597#40657
       Font.Style = []
       ParentFont = False
     end
   end
   object Panel4: TPanel
-    Left = 67
-    Top = 379
-    Width = 391
-    Height = 146
+    Left = 87
+    Top = 489
+    Width = 505
+    Height = 189
     ParentColor = True
     TabOrder = 9
     Visible = False
     object Panel5: TPanel
-      Left = 231
+      Left = 298
       Top = 1
-      Width = 159
-      Height = 144
+      Width = 206
+      Height = 187
       Align = alRight
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
+      Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentColor = True
       ParentFont = False
       TabOrder = 0
       DesignSize = (
-        159
-        144)
+        206
+        187)
       object Label4: TLabel
-        Left = 6
-        Top = 25
-        Width = 36
-        Height = 13
+        Left = 8
+        Top = 32
+        Width = 48
+        Height = 20
         Caption = #22995#21517#65306
       end
       object Label7: TLabel
-        Left = 6
-        Top = 71
-        Width = 36
-        Height = 13
+        Left = 8
+        Top = 92
+        Width = 48
+        Height = 20
         Caption = #23494#30721#65306
       end
       object SpeedButton2: TSpeedButton
-        Left = 43
-        Top = 2
-        Width = 18
-        Height = 20
+        Left = 55
+        Top = 3
+        Width = 24
+        Height = 25
         Anchors = [akTop, akRight]
         Glyph.Data = {
           E6000000424DE60000000000000076000000280000000E0000000E0000000100
@@ -229,28 +229,28 @@ object Flanguage: TFlanguage
         OnClick = SpeedButton2Click
       end
       object DBNavigator2: TDBNavigator
-        Left = 70
-        Top = 2
-        Width = 100
-        Height = 20
+        Left = 90
+        Top = 3
+        Width = 115
+        Height = 25
         DataSource = userlogoS
         VisibleButtons = [nbPrior, nbNext, nbInsert, nbPost, nbCancel]
         ConfirmDelete = False
         TabOrder = 0
       end
       object DBEdit6: TDBEdit
-        Left = 28
-        Top = 47
-        Width = 113
+        Left = 36
+        Top = 61
+        Width = 146
         Height = 28
         DataField = 'USERNAME'
         DataSource = userlogoS
         TabOrder = 1
       end
       object DBEdit7: TDBEdit
-        Left = 28
-        Top = 87
-        Width = 113
+        Left = 36
+        Top = 113
+        Width = 146
         Height = 28
         DataField = 'PASSW'
         DataSource = userlogoS
@@ -258,10 +258,10 @@ object Flanguage: TFlanguage
         TabOrder = 2
       end
       object DBCheckBox1: TDBCheckBox
-        Left = 29
-        Top = 117
-        Width = 83
-        Height = 13
+        Left = 37
+        Top = 151
+        Width = 108
+        Height = 17
         Caption = #36229#32423#29992#25143
         DataField = 'ADMINUSER'
         DataSource = userlogoS
@@ -273,23 +273,23 @@ object Flanguage: TFlanguage
     object Panel6: TPanel
       Left = 1
       Top = 1
-      Width = 230
-      Height = 144
+      Width = 297
+      Height = 187
       Align = alClient
       ParentColor = True
       TabOrder = 1
       object Panel7: TPanel
         Left = 1
         Top = 1
-        Width = 228
-        Height = 32
+        Width = 295
+        Height = 41
         Align = alTop
         BevelOuter = bvNone
         Caption = #21307#29983#21015#34920
         Color = clBlack
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindow
-        Font.Height = -19
+        Font.Height = -24
         Font.Name = #24494#36719#38597#40657
         Font.Style = []
         ParentFont = False
@@ -297,14 +297,14 @@ object Flanguage: TFlanguage
       end
       object DBGrid1: TDBGrid
         Left = 1
-        Top = 33
-        Width = 228
-        Height = 110
+        Top = 42
+        Width = 295
+        Height = 144
         Align = alClient
         DataSource = userlogoS
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -12
+        Font.Height = -16
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
@@ -335,19 +335,19 @@ object Flanguage: TFlanguage
     end
   end
   object BtSave: TcxButton
-    Left = 296
-    Top = 313
-    Width = 107
-    Height = 54
+    Left = 382
+    Top = 404
+    Width = 139
+    Height = 70
     Caption = 'Save'
     TabOrder = 10
     OnClick = BtOkClick
   end
   object cxButton2: TcxButton
-    Left = 424
-    Top = 313
-    Width = 108
-    Height = 54
+    Left = 548
+    Top = 404
+    Width = 139
+    Height = 70
     Cancel = True
     Caption = 'Cancel'
     TabOrder = 11

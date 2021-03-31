@@ -3782,8 +3782,6 @@ begin
   FXwxh.Query.Active:=False;
   if s='' then s:=DateToGzr(Date)+'000';
   Result:=IncStringCount(s);
-
-
 end;
 
 function IdOfLastChecked:integer;

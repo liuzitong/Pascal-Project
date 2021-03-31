@@ -1,9 +1,10 @@
 object FEdit: TFEdit
-  Left = 286
-  Top = 244
-  Width = 1025
-  Height = 555
+  Left = 199
+  Top = 214
+  BorderStyle = bsNone
   Caption = 'Patient Infomation'
+  ClientHeight = 521
+  ClientWidth = 1017
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,8 +19,8 @@ object FEdit: TFEdit
   PixelsPerInch = 96
   TextHeight = 21
   object Image1: TImage
-    Left = 501
-    Top = 64
+    Left = 493
+    Top = 48
     Width = 78
     Height = 25
     Picture.Data = {

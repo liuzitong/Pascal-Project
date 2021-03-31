@@ -1,8 +1,8 @@
 object FProgram: TFProgram
   Left = 0
   Top = 0
-  Width = 1168
-  Height = 676
+  Width = 1348
+  Height = 688
   Color = 2368548
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clBlack
@@ -14,8 +14,8 @@ object FProgram: TFProgram
   TabOrder = 0
   object Panel2: TPanel
     Left = 0
-    Top = 628
-    Width = 1168
+    Top = 640
+    Width = 1348
     Height = 48
     Align = alBottom
     TabOrder = 0
@@ -24,8 +24,8 @@ object FProgram: TFProgram
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 1168
-    Height = 628
+    Width = 1348
+    Height = 640
     Align = alClient
     BevelOuter = bvNone
     Caption = 'Panel3'
@@ -35,7 +35,7 @@ object FProgram: TFProgram
       Left = 0
       Top = 0
       Width = 290
-      Height = 628
+      Height = 640
       Align = alLeft
       Caption = 'Panel4'
       ParentColor = True
@@ -44,7 +44,7 @@ object FProgram: TFProgram
         Left = 1
         Top = 103
         Width = 288
-        Height = 244
+        Height = 256
         Selected.Strings = (
           'Name'#9'40'#9'Program')
         IniAttributes.Delimiter = ';;'
@@ -78,7 +78,7 @@ object FProgram: TFProgram
       end
       object Panel6: TPanel
         Left = 1
-        Top = 347
+        Top = 359
         Width = 288
         Height = 280
         Align = alBottom
@@ -343,10 +343,10 @@ object FProgram: TFProgram
       end
     end
     object Panel5: TPanel
-      Left = 943
+      Left = 1123
       Top = 0
       Width = 225
-      Height = 628
+      Height = 640
       Align = alRight
       Caption = 'Panel5'
       ParentColor = True
@@ -354,7 +354,7 @@ object FProgram: TFProgram
       Visible = False
       object PaPt: TPanel
         Left = 1
-        Top = 572
+        Top = 584
         Width = 223
         Height = 55
         Align = alBottom
@@ -402,7 +402,7 @@ object FProgram: TFProgram
         Left = 1
         Top = 26
         Width = 223
-        Height = 546
+        Height = 558
         Selected.Strings = (
           'Id'#9'3'#9' '
           'X'#9'8'#9'X'
@@ -437,8 +437,8 @@ object FProgram: TFProgram
     object Panel7: TPanel
       Left = 290
       Top = 0
-      Width = 468
-      Height = 628
+      Width = 648
+      Height = 640
       Align = alClient
       Caption = 'Panel7'
       Color = clWindowFrame
@@ -447,7 +447,7 @@ object FProgram: TFProgram
       object EtXYP: TPanel
         Left = 1
         Top = 1
-        Width = 466
+        Width = 646
         Height = 45
         Align = alTop
         Caption = '(0,0)'
@@ -517,16 +517,16 @@ object FProgram: TFProgram
       object Panel8: TPanel
         Left = 1
         Top = 46
-        Width = 466
-        Height = 581
+        Width = 646
+        Height = 593
         Align = alClient
         Color = 5329233
         TabOrder = 1
         object ImagePt: TImage
           Left = 1
           Top = 1
-          Width = 464
-          Height = 579
+          Width = 644
+          Height = 591
           Align = alClient
           ParentShowHint = False
           ShowHint = True
@@ -547,10 +547,10 @@ object FProgram: TFProgram
       end
     end
     object Panel1: TPanel
-      Left = 758
+      Left = 938
       Top = 0
       Width = 185
-      Height = 628
+      Height = 640
       Align = alRight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
