@@ -138,6 +138,7 @@ type
     moveanswerjj:array[1..3] of byte;  //35-37 焦距方向及步数
     backup:array[1..24] of Byte;  //38-61 31至62字节为备用数据全为0x00
     ending:array[1..2] of Byte;  //62,63  0xe4  0xf4  63至64是结束帧码
+
   end;
 
 ////////修改

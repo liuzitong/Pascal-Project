@@ -7,7 +7,7 @@ uses
   Dialogs, ExtCtrls, cxControls, cxContainer, cxEdit, cxGroupBox,
   cxGraphics, cxMaskEdit, cxDropDownEdit, cxTextEdit, cxLabel, Menus,
   cxLookAndFeelPainters, StdCtrls, cxButtons, cxPC, ComCtrls, Xwxh,
-  cxCheckBox, cxDBEdit, DB, DBTables, Wwtable, Spin;
+  cxCheckBox, cxDBEdit, DB, DBTables, Wwtable, Spin, uProglog,Myutils;
 
 type
   TFParam = class(TForm)
@@ -95,7 +95,6 @@ var
 
 implementation
 
-uses Myutils;
 
 {$R *.dfm}
 
@@ -113,7 +112,7 @@ begin
   begin
     CheckData.pm.Fixation_Mode:=EtFixation_Mode.ItemIndex;
   end;
-  
+
   CheckData.pm.Alarm_Mode:=EtAlarm_Mode.ItemIndex+1;
   CheckData.pm.SF:=EtSF.ItemIndex;
   CheckData.pm.Delay_Mode:=EtDelay_Mode.ItemIndex;
@@ -143,6 +142,8 @@ begin
   CheckData.pm.Rx3:=StrtoInt(EtRx3.Text);
   CheckData.pm.B_Light_sv:=StrtoInt(EtB_Light_sv.Text);
   CheckData.pm.EB_Light_sv:=StrtoInt(EtEB_Light_sv.Text);
+
+  TLogFile.GetInstance.Trace(WarningLevel,'Checkdata.pm:',dataToStr(@CheckData.pm,SizeOf(CheckData.pm)));
 end;
 
 procedure TFParam.FormShow(Sender: TObject);

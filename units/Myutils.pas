@@ -177,6 +177,7 @@ function StrToAge(s:string; var age, birthday:string):boolean;
 procedure MyMove(src:PByte; obj:PByte; count:integer);
 procedure JwdtoXy(jd,wd:double; var x,y:double);
 procedure XytoJwd(x,y:double; var jd,wd:double);
+function dataToStr(const data:Pointer;Size:Integer):string;
 
 implementation
 
@@ -1568,6 +1569,19 @@ begin
     if (x>0) and (y<0) then jd:=360-jd;
   end;
   wd:=sqrt(x*x+y*y);
+end;
+
+function dataToStr(const data:Pointer;size:Integer) :string ;
+var
+  str:string ;
+  i:Integer ;
+begin
+  str:='';
+  for i := 0 to size - 1 do
+  begin
+    str := str + Format('%.2x ', [Cardinal(PChar(data)[i])]);
+  end;
+  Result:=str;
 end;
 
 var

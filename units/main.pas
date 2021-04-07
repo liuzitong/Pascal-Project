@@ -493,12 +493,12 @@ end;
 
 procedure TFMain.BtPrintClick(Sender: TObject);
 begin
-  if PcMain.ActivePageIndex>1 then exit;
+  if PcMain.ActivePageIndex>1 then exit;     //非FHOME 0和RUNPIC 1
   if PcMain.ActivePageIndex=1 then begin
     if FRunpic1.TbCheck.FieldByName('State').AsInteger<=1 then exit;
     FRunpic1.BtReportClick(Self);
   end;
-  if FHome1.TbCheck2.FieldByName('State').AsInteger<=1 then exit;
+  if FHome1.TbCheck2.FieldByName('State').AsInteger<=1 then exit;   //估计是没完成检查的情况
   FHome1.BtPrintClick(Sender);
 end;
 

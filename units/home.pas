@@ -508,7 +508,7 @@ end;
 const
   MoveDb1:array[0..11] of string=('A', 'A''', 'B', 'B''', 'C', 'C''', 'D', 'D''', 'E', 'E''', 'X', 'XX');
 
-procedure TFHome.PrepareReport(filter:string);
+procedure TFHome.PrepareReport(filter:string); //打印报告
 var
   s:string;
   i,j,xy:integer;
@@ -974,7 +974,7 @@ var
   i:integer;
   s,s2:string;
 begin
-  LBID.Items.Clear;
+  LBID.Items.Clear;                                                            //已经被隐藏的界面，在Threshold strategy的一个方框
   for i:=0 to GridTbCheck2DBTableView1.Controller.SelectedRowCount-1 do begin
     s:=GridTbCheck2DBTableView1.Controller.SelectedRecords[i].Values[0];
     s2:=GridTbCheck2DBTableView1.Controller.SelectedRecords[i].Values[1];

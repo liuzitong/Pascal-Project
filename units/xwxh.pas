@@ -144,9 +144,9 @@ type
     Stimulus_Color:integer;                              //刺激颜色
     Stimulus_Size:integer;                               //光标尺寸
     Fixation_Monitor:integer;                            //固视检测
-    Fovea:integer;                                       //中心检测
+    Fovea:integer;                                       //中心检测  center point detection?
     Peripheral:integer;                                  //外围检测
-    SF:integer;                                          //短期波动检测
+    SF:integer;                                          //短期波动检测 short wate dectect
     SF_Number:integer;                                   //短期波动检测次数
     Dynamic_Value:integer;                               //动态刺激初值
     Alarm_Mode:integer;                                  //报警方式
@@ -195,7 +195,7 @@ type
     stimuluscount:integer;                               //总刺激计数
     thresholdcount:integer;                              //完成计数
     devicetype:integer;                                  //设备类型
- 	  isblind2:integer;
+ 	  isblind2:integer;                                    //
 	  testms:integer;                                      //测试时间
     ambient_light:integer;                               //环境光报警
     E_Light_pv:integer;                                  //环境光
@@ -1367,7 +1367,7 @@ begin
   if (checkdata.pm.Stimulus_Color=0) and (checkdata.pm.Stimulus_Size=2) then
   begin
     r2:=x*x+y*y;
-    if r2<=30*30 then
+    if r2<=30*30 then                              //半径小于30
       Result:=GetNORMAL_VALUE30d(x, y, age)
     else if r2<=60*60 then
       Result:=GetNORMAL_VALUE60d(x, y, age);
@@ -1440,14 +1440,13 @@ begin
     x:=checkdata.pt[i].x;
     y:=checkdata.pt[i].y;
     if checkdata.pm.Eye<>0 then x:=-x;
-    sv:=GetNORMAL_VALUE(x, y, checkdata.pm.Age, 0, checkdata);
+    sv:=GetNORMAL_VALUE(x, y, checkdata.pm.Age, 0, checkdata);  //正常值
     v:=99;
     pe:=99;
     if sv>0 then
     begin
       v:=GetCheckV(checkdata.v[i])-sv;
       pe:=GetPE_VALUE(x, y, -v, checkdata);
-
       r2:=x*x+y*y;
       r := round(sqrt(r2)/6+0.4);
       if r=0 then
