@@ -511,7 +511,7 @@ const
 procedure TFHome.PrepareReport(filter:string); //打印报告
 var
   s:string;
-  i,j,xy:integer;
+  i,j,xy,vi:integer;
   rect:TRect;
   strategy:integer;
   xby:string;
@@ -520,6 +520,22 @@ var
   x0,y0,jd0,wd0:double;
   x1,y1,jd1,wd1:double;
   movea:string;
+const
+ arrV : array[1..76] of Shortint                       //测试数据
+               =(              28,27,26,28,
+                            30,29,29,29,29,30,
+                         32,30,29,31,31,31,30,29,
+                      32,31,32,33,32,30,31,29,30,29,
+                      30,32,32,33,32,33,32,32,30,29,
+                      31,31, 0,31,33,33,31,32,31,28,
+                      32,31,34,30,32,32,32,32,31,30,
+                         33,32,32,31,31,29,31,31,
+                            29,31,29,30,30,30,
+                               30,30,30,30
+                );
+
+
+
 begin
   RvProject.ProjectFile:=ExeFilePath+'rp.rav';
 
@@ -536,6 +552,14 @@ begin
     if TbCheck3.Eof then exit;
     s:=TbCheck3.FieldByName('checkdata').AsString;
     MoveCheckData(s, checkdata);
+    
+    for vi:=1 to checkdata.pm.Dot_Number do begin       //测试数据覆盖
+      checkdata.v[vi]:=arrV[vi];
+    end;
+    checkdata.pm.Eye:=1;
+    checkdata.pm.Age:=40;
+
+
     if XwData.YkFilter then checkdata:=YkFilter(checkdata);
     if i=1 then strategy:=checkdata.pm.Strategy
     else begin

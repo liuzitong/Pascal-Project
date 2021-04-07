@@ -4,9 +4,9 @@ uses
   ShareMem,
   Forms,
   Windows,
+  SysUtils,
   ShellApi,
   DateUtils,
-  SysUtils,
   main in 'units\main.pas' {FMain},
   new in 'units\new.pas' {FNew: TFrame},
   Myutils in 'units\Myutils.pas',
@@ -33,27 +33,27 @@ uses
   xwxh in 'units\xwxh.pas' {FXwxh},
   usbr in 'units\usbr.pas' {FUsbr},
   xwzp in 'units\xwzp.pas' {FXwzp},
-  uProgLog in 'units\uProgLog.pas' {TLogFile},
-  rx in 'units\rx.pas' {FRx};
-
+  rx in 'units\rx.pas' {FRx},
+  pubpas in 'units\pubpas.pas',
+  puwait in 'units\puwait.pas',
+  uProgLog in 'units\uProgLog.pas',
+  cfrmXtdl in 'units\cfrmXtdl.pas';
 
 {$R *.res}
 
 var
   Mutex:THandle;
   year,month,day,dow:Word;
-  
 begin
 //  ShellExecute(0, 'OPEN', PChar('regasm.exe'), Pchar(ExeFilePath+'pupilposition.dll'), nil, SW_HIDE);
   ShellExecute(0, 'OPEN', PChar('powercfg'), '-h off', nil, SW_HIDE);
 
   Application.CreateForm(TFDm, FDm);
   FDm.CreateLw;
-  
+
   FWelcome:=TFWelcome.Create(Application);
   FWelcome.ShowModal;
   FWelcome.Update;
-
   if isPrevInst(ExeFileName) or (not pubpassword) then
   begin
     PostMessage(HWND_BROADCAST, RegisterWindowMessage(Pchar(ParamStr(0))), 0, 0);
@@ -62,6 +62,7 @@ begin
   Mutex:=CreateMutex(nil, true, Pchar(UpperCase(ExeFileName)));
   Application.Initialize;
   if ParamCount>=1 then Sleep(2000);
+
   Application.CreateForm(TFMain, FMain);
   Application.CreateForm(TFXwxh, FXwxh);
   Application.CreateForm(TFUsbr, FUsbr);
@@ -73,4 +74,5 @@ begin
   DecodeDateFully(now, year, month, day, dow);
   ShellExecute(0, 'OPEN', 'xcopy', Pchar('/XYI DBFS D'+Format('%2.2d', [day])), nil, SW_HIDE);
   if ReStart then ShellExecute(0, 'OPEN', PChar(ExeFilePath+'perimeter.exe'), '1', nil, SW_SHOW);
+
 end.

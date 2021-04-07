@@ -617,7 +617,7 @@ XY_NORMAL_VALUE:XY_NORMAL_VALUETAB=
             (-21,-15),(-15,-15),(-9,-15),(-3,-15),(3,-15),(9,-15),(15,-15),(21,-15),
                       (-15,-21),(-9,-21),(-3,-21),(3,-21),(9,-21),(15,-21),
                                 (-9,-27),(-3,-27),(3,-27),(9,-27)
-);
+); 
 
 XY_NORMAL_VALUE_60d:XY_NORMAL_VALUETAB=
 (
@@ -748,16 +748,16 @@ PE_VALUE05_Blue_Yellow_B5:NORMAL_VALUETAB=
 
 NORMAL_VALUE15_35:NORMAL_VALUETAB=
 (
-	               260, 270, 270, 270,
-	          290, 290, 290, 290, 290, 300,
-	     300, 300, 310, 310, 310, 310, 300, 300,
-	310, 310, 310, 320, 340, 340, 330, 320, 310, 290,
-	310, 310,-330, 340, 350, 350, 340, 330, 310, 290,
-	310, 320,-330, 340, 350, 350, 340, 330, 310, 290,
-	310, 320, 320, 330, 340, 340, 330, 320, 310, 300,
-	     310, 320, 320, 320, 330, 320, 320, 300,
-	          310, 310, 310, 310, 300, 300,
-	               310, 300, 290, 290
+	               260, 270, 270, 270,                            //4
+	          290, 290, 290, 290, 290, 300,                       //5~10
+	     300, 300, 310, 310, 310, 310, 300, 300,                  //11~18
+	310, 310, 310, 320, 340, 340, 330, 320, 310, 290,             //19~28
+	310, 310,-330, 340, 350, 350, 340, 330, 310, 290,             //29~38
+	310, 320,-330, 340, 350, 350, 340, 330, 310, 290,             //39~48
+	310, 320, 320, 330, 340, 340, 330, 320, 310, 300,             //49~58
+	     310, 320, 320, 320, 330, 320, 320, 300,                  //59~66
+	          310, 310, 310, 310, 300, 300,                       //67~72
+	               310, 300, 290, 290                             //73~76
 );
 
 NORMAL_VALUE36_45:NORMAL_VALUETAB=
@@ -1427,6 +1427,7 @@ var
   r2: single;
   r: integer;
   vfih,vfi,temp: single;
+
 begin
   vfiqz[1] := 3.29;
   vfiqz[2] := 1.28;
@@ -1436,13 +1437,10 @@ begin
   fillchar(vfisc,5,0);
   fillchar(vfibz,5,0);
   Result:=true;
+
   for i:=1 to checkdata.pm.Dot_Number do begin
     x:=checkdata.pt[i].x;
     y:=checkdata.pt[i].y;
-    if( checkdata.pm.Eye=0) and (x=-15) then  //左眼盲区
-    if(y=3) or (y=-3) then Continue;
-    if( checkdata.pm.Eye=1) and (x=15) then   //右眼盲区
-    if(y=3) or (y=-3) then Continue;
     if checkdata.pm.Eye<>0 then x:=-x;
     sv:=GetNORMAL_VALUE(x, y, checkdata.pm.Age, 0, checkdata);  //正常值
     v:=99;
@@ -1451,6 +1449,7 @@ begin
     begin
       v:=GetCheckV(checkdata.v[i])-sv;
       pe:=GetPE_VALUE(x, y, -v, checkdata);
+
       r2:=x*x+y*y;
       r := round(sqrt(r2)/6+0.4);
       if r=0 then
@@ -1466,7 +1465,7 @@ begin
   vfih := 0;
   for i:=1 to 5 do
   begin
-    temp := (vfisc[i]/(vfibz[i]+0.0001));
+    temp := (vfisc[i]/(vfibz[i]+0.0001));//原数据 0.0001。
     if temp>1 then
       temp := 1;
     vfih := vfih+vfiqz[i]*temp;

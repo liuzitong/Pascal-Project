@@ -1,7 +1,7 @@
 object FHome: TFHome
   Left = 0
   Top = 0
-  Width = 1103
+  Width = 443
   Height = 896
   Align = alTop
   Font.Charset = DEFAULT_CHARSET
@@ -16,7 +16,7 @@ object FHome: TFHome
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1103
+    Width = 443
     Height = 865
     Align = alClient
     Caption = 'Panel1'
@@ -31,7 +31,7 @@ object FHome: TFHome
     object PanelNewList: TPanel
       Left = 1
       Top = 1
-      Width = 1101
+      Width = 441
       Height = 300
       Align = alTop
       Caption = 'PanelNewList'
@@ -39,7 +39,7 @@ object FHome: TFHome
       object GroupBox1: TGroupBox
         Left = 1
         Top = 21
-        Width = 1099
+        Width = 439
         Height = 278
         Align = alClient
         Caption = 'Wait to See The Doctor'
@@ -55,7 +55,7 @@ object FHome: TFHome
         object Panel5A: TPanel
           Left = 2
           Top = 23
-          Width = 1095
+          Width = 435
           Height = 87
           Align = alTop
           BevelOuter = bvNone
@@ -501,7 +501,7 @@ object FHome: TFHome
         object GridTbCheck: TcxGrid
           Left = 2
           Top = 135
-          Width = 1095
+          Width = 435
           Height = 141
           Align = alClient
           TabOrder = 1
@@ -675,7 +675,7 @@ object FHome: TFHome
       object Panel12: TPanel
         Left = 1
         Top = 1
-        Width = 1099
+        Width = 439
         Height = 20
         Align = alTop
         BevelOuter = bvNone
@@ -686,7 +686,7 @@ object FHome: TFHome
     object PanelDocList: TPanel
       Left = 1
       Top = 551
-      Width = 1101
+      Width = 441
       Height = 313
       Align = alClient
       Caption = 'PanelDocList'
@@ -694,7 +694,7 @@ object FHome: TFHome
       object GroupBox2: TGroupBox
         Left = 1
         Top = 21
-        Width = 1099
+        Width = 439
         Height = 291
         Align = alClient
         Caption = 'Patient Checked'
@@ -704,13 +704,13 @@ object FHome: TFHome
         object Panel7: TPanel
           Left = 2
           Top = 88
-          Width = 1095
+          Width = 435
           Height = 50
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
           DesignSize = (
-            1095
+            435
             50)
           object EtQuery: TEdit
             Left = 5
@@ -734,7 +734,7 @@ object FHome: TFHome
             LookAndFeel.NativeStyle = False
           end
           object BtLast10: TcxButton
-            Left = 6321
+            Left = 6355
             Top = 2
             Width = 148
             Height = 48
@@ -748,7 +748,7 @@ object FHome: TFHome
             LookAndFeel.Kind = lfUltraFlat
           end
           object BtAll: TcxButton
-            Left = 6181
+            Left = 6215
             Top = 2
             Width = 148
             Height = 48
@@ -761,7 +761,7 @@ object FHome: TFHome
             LookAndFeel.Kind = lfUltraFlat
           end
           object BtGpa: TcxButton
-            Left = 6436
+            Left = 6470
             Top = 2
             Width = 148
             Height = 48
@@ -771,7 +771,7 @@ object FHome: TFHome
             OnClick = BtGpaClick
           end
           object Bttridimension: TcxButton
-            Left = 6593
+            Left = 6627
             Top = 2
             Width = 148
             Height = 48
@@ -784,7 +784,7 @@ object FHome: TFHome
         object GridTbCheck2: TcxGrid
           Left = 2
           Top = 138
-          Width = 1095
+          Width = 435
           Height = 151
           Align = alClient
           TabOrder = 1
@@ -1037,7 +1037,7 @@ object FHome: TFHome
         object Panel10: TPanel
           Left = 2
           Top = 15
-          Width = 1095
+          Width = 435
           Height = 48
           Align = alTop
           BevelOuter = bvNone
@@ -1379,7 +1379,7 @@ object FHome: TFHome
       object Panel11: TPanel
         Left = 1
         Top = 1
-        Width = 1099
+        Width = 439
         Height = 20
         Align = alTop
         BevelOuter = bvNone
@@ -1389,7 +1389,7 @@ object FHome: TFHome
     object Panel2: TPanel
       Left = 1
       Top = 301
-      Width = 1101
+      Width = 441
       Height = 250
       Align = alTop
       Caption = 'Panel2'
@@ -1399,7 +1399,7 @@ object FHome: TFHome
       object Pages: TPageControl
         Left = 1
         Top = 1
-        Width = 1099
+        Width = 439
         Height = 607
         ActivePage = TabSheet1
         Align = alTop
@@ -10789,7 +10789,7 @@ object FHome: TFHome
           Caption = '2'
           ImageIndex = 5
           DesignSize = (
-            1091
+            431
             579)
           object ImageGray2: TImage
             Left = 25
@@ -10828,7 +10828,7 @@ object FHome: TFHome
             Height = 163
           end
           object ImageEyeMove: TImage
-            Left = 5495
+            Left = 5529
             Top = 0
             Width = 761
             Height = 40
@@ -10875,12 +10875,12 @@ object FHome: TFHome
       object Panel6: TPanel
         Left = 1
         Top = 203
-        Width = 1099
+        Width = 439
         Height = 46
         Align = alBottom
         TabOrder = 1
         DesignSize = (
-          1099
+          439
           46)
         object BtSingle: TcxButton
           Left = 285
@@ -10983,7 +10983,7 @@ object FHome: TFHome
           OnClick = BtGpaSingleClick
         end
         object BtDiagnosis: TcxButton
-          Left = 6132
+          Left = 6166
           Top = 7
           Width = 108
           Height = 36
@@ -11196,7 +11196,7 @@ object FHome: TFHome
   object Panel8: TPanel
     Left = 0
     Top = 865
-    Width = 1103
+    Width = 443
     Height = 31
     Align = alBottom
     TabOrder = 1
