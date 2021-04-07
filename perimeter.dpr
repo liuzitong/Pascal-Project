@@ -33,7 +33,10 @@ uses
   xwxh in 'units\xwxh.pas' {FXwxh},
   usbr in 'units\usbr.pas' {FUsbr},
   xwzp in 'units\xwzp.pas' {FXwzp},
-  rx in 'units\rx.pas' {FRx};
+  rx in 'units\rx.pas' {FRx},
+  pubpas in 'units\pubpas.pas',
+  puwait in 'units\puwait.pas',
+  cfrmXtdl in 'units\cfrmXtdl.pas';
 
 {$R *.res}
 
