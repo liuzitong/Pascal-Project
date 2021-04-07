@@ -1439,6 +1439,10 @@ begin
   for i:=1 to checkdata.pm.Dot_Number do begin
     x:=checkdata.pt[i].x;
     y:=checkdata.pt[i].y;
+    if( checkdata.pm.Eye=0) and (x=-15) then  //左眼盲区
+    if(y=3) or (y=-3) then Continue;
+    if( checkdata.pm.Eye=1) and (x=15) then   //右眼盲区
+    if(y=3) or (y=-3) then Continue;
     if checkdata.pm.Eye<>0 then x:=-x;
     sv:=GetNORMAL_VALUE(x, y, checkdata.pm.Age, 0, checkdata);  //正常值
     v:=99;
