@@ -36,7 +36,9 @@ uses
   rx in 'units\rx.pas' {FRx},
   pubpas in 'units\pubpas.pas',
   puwait in 'units\puwait.pas',
-  cfrmXtdl in 'units\cfrmXtdl.pas';
+  cfrmXtdl in 'units\cfrmXtdl.pas',
+  myIniFiles in 'units\myIniFiles.pas';
+
 
 {$R *.res}
 
