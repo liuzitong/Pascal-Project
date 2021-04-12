@@ -1434,8 +1434,8 @@ begin
   vfiqz[3] := 0.79;
   vfiqz[4] := 0.57;
   vfiqz[5] := 0.43;
-  fillchar(vfisc,5,0);
-  fillchar(vfibz,5,0);
+  fillchar(vfisc,5*sizeof(single),0);
+  fillchar(vfibz,5*sizeof(single),0);
   Result:=true;
 
   for i:=1 to checkdata.pm.Dot_Number do begin
@@ -1465,7 +1465,7 @@ begin
   vfih := 0;
   for i:=1 to 5 do
   begin
-    temp := (vfisc[i]/(vfibz[i]+0.0001));//Ô­Êý¾Ý 0.0001¡£
+    temp := (vfisc[i]/(vfibz[i]+0.0001));
     if temp>1 then
       temp := 1;
     vfih := vfih+vfiqz[i]*temp;
@@ -1561,12 +1561,12 @@ begin
   end;
   bestdev:=0;
   md:=Round(checkresult.MD+checkresult.PSD)-bestdev;
-  if checkresult.MD>=-1 then begin
+  //if checkresult.MD>=-1 then begin
     if md>4 then md:=2 else if md>=2 then md:=1;
-  end
-  else begin
-    if md>0 then md:=-md;
-  end;
+  //end
+  //else begin
+  //  if md>0 then md:=-md;
+  //end;
   for i:=1 to checkdata.pm.Dot_Number do begin
     x:=checkdata.pt[i].x;
     y:=checkdata.pt[i].y;
