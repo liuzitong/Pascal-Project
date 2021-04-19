@@ -12,7 +12,7 @@ uses
   wwDBNavigator, wwclearpanel, RpRave, RpBase, RpSystem, RpDefine, RpCon,
   RpConDS, RpConBDE, xwxh, cxListBox, cxTextEdit, cxMemo, cxDBLabel,
   cxDBEdit, jpeg, RpRender, RpRenderCanvas, RpRenderPreview, RpFiler,pubpas,
-  cxButtonEdit;
+  cxButtonEdit,Myutils,myIniFiles;
 
 type
   TFHome = class(TFrame)
@@ -211,7 +211,7 @@ type
 
 implementation
 
-uses Myutils, edit, main, tridimension, diagnosis, Gpa;
+uses edit, main, tridimension, diagnosis, Gpa;
 
 {$R *.dfm}
 
@@ -511,7 +511,7 @@ const
 procedure TFHome.PrepareReport(filter:string);
 var
   s:string;
-  i,j,xy:integer;
+  i,j,xy,vi:integer;
   rect:TRect;
   strategy:integer;
   xby:string;
@@ -520,7 +520,9 @@ var
   x0,y0,jd0,wd0:double;
   x1,y1,jd1,wd1:double;
   movea:string;
+  dotValueMagnification:double;
 begin
+
   RvProject.ProjectFile:=ExeFilePath+'rp.rav';
 
   TbCheck3.Filter:=filter;
@@ -532,10 +534,18 @@ begin
 
   TbCheck3.First;
   strategy:=0;
+  dotValueMagnification:=TMyIniFiles.GetIniFile.ReadFloat('report','dotValue magnification',1);
+  //data magnification
+
   for i:=1 to 20 do begin
     if TbCheck3.Eof then exit;
     s:=TbCheck3.FieldByName('checkdata').AsString;
     MoveCheckData(s, checkdata);
+
+    for vi:=1 to checkdata.pm.Dot_Number do begin
+      checkdata.v[vi]:= Trunc(checkdata.v[vi]* dotValueMagnification);
+    end;
+
     if XwData.YkFilter then checkdata:=YkFilter(checkdata);
     if i=1 then strategy:=checkdata.pm.Strategy
     else begin
@@ -1085,3 +1095,6 @@ begin
 end;
 
 end.
+
+
+
