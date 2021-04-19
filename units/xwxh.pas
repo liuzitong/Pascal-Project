@@ -18,7 +18,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, ScktComp, ExtCtrls,
-  StdCtrls, DB, DBTables, Wwquery, Wwtable, ImgList, cxGraphics, Math, pubpas;
+  StdCtrls, DB, DBTables, Wwquery, Wwtable, ImgList, cxGraphics, Math, pubpas,myIniFiles;
 
 const
   MAXCHECK=400;
@@ -1427,8 +1427,9 @@ var
   r2: single;
   r: integer;
   vfih,vfi,temp: single;
-
+  vfiMagnification:Double;
 begin
+  vfiMagnification:=TMyIniFiles.GetIniFile.ReadFloat('report','vfi magnification',1.02);
   vfiqz[1] := 3.29;
   vfiqz[2] := 1.28;
   vfiqz[3] := 0.79;
@@ -1470,7 +1471,7 @@ begin
       temp := 1;
     vfih := vfih+vfiqz[i]*temp;
   end;
-  vfi := vfih/6.36;
+  vfi := vfih/6.36*vfiMagnification;
   if vfi>1 then
     vfi := 1;
   checkresult.VFI := round(vfi*100)/100;
@@ -1562,7 +1563,7 @@ begin
   bestdev:=0;
   md:=Round(checkresult.MD+checkresult.PSD)-bestdev;
   //if checkresult.MD>=-1 then begin
-    if md>4 then md:=2 else if md>=2 then md:=1;
+//    if md>4 then md:=2 else if md>=2 then md:=1;
   //end
   //else begin
   //  if md>0 then md:=-md;

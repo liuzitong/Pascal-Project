@@ -1,6 +1,6 @@
 object FMain: TFMain
-  Left = 345
-  Top = 93
+  Left = 86
+  Top = 119
   Width = 1406
   Height = 836
   Caption = 'Visual View V1.0'
@@ -26692,16 +26692,6 @@ object FMain: TFMain
     ReadOnly = True
     ScrollBars = ssVertical
     TabOrder = 9
-  end
-  object Log: TButton
-    Left = 1279
-    Top = 0
-    Width = 75
-    Height = 25
-    Caption = 'Log'
-    TabOrder = 10
-    Visible = False
-    OnClick = LogClick
   end
   object Timer: TTimer
     Enabled = False

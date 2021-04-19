@@ -37,7 +37,8 @@ uses
   pubpas in 'units\pubpas.pas',
   puwait in 'units\puwait.pas',
   uProgLog in 'units\uProgLog.pas',
-  cfrmXtdl in 'units\cfrmXtdl.pas';
+  cfrmXtdl in 'units\cfrmXtdl.pas',
+  myIniFiles in 'units\myIniFiles.pas';
 
 {$R *.res}
 

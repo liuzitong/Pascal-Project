@@ -100,7 +100,7 @@ type
     LabelXtmc: TLabel;
     CheckBoxDebug: TCheckBox;
     LogInfo: TMemo;
-    Log: TButton;
+
     procedure BtQueryClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -163,7 +163,6 @@ type
     procedure BtPauseClick(Sender: TObject);
     procedure BtUnlockClick(Sender: TObject);
     procedure BitBtnReturn4Click(Sender: TObject);
-    procedure LogClick(Sender: TObject);
   private
     { Private declarations }
     Button: TMouseButton;
@@ -2691,14 +2690,6 @@ begin
        BitBtnArchivesClick(nil);
      end;
    end;
-end;
-
-
-
-procedure TFMain.LogClick(Sender: TObject);
-begin
-  if LogInfo.Visible=true then LogInfo.Visible:=false
-  else if LogInfo.Visible=false then LogInfo.Visible:=true;
 end;
 
 end.

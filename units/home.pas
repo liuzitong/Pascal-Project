@@ -12,7 +12,7 @@ uses
   wwDBNavigator, wwclearpanel, RpRave, RpBase, RpSystem, RpDefine, RpCon,
   RpConDS, RpConBDE, xwxh, cxListBox, cxTextEdit, cxMemo, cxDBLabel,
   cxDBEdit, jpeg, RpRender, RpRenderCanvas, RpRenderPreview, RpFiler,pubpas,
-  cxButtonEdit;
+  cxButtonEdit,Myutils,myIniFiles;
 
 type
   TFHome = class(TFrame)
@@ -211,7 +211,7 @@ type
 
 implementation
 
-uses Myutils, edit, main, tridimension, diagnosis, Gpa;
+uses edit, main, tridimension, diagnosis, Gpa;
 
 {$R *.dfm}
 
@@ -520,23 +520,27 @@ var
   x0,y0,jd0,wd0:double;
   x1,y1,jd1,wd1:double;
   movea:string;
-//const
-// arrV : array[1..76] of Shortint                       //测试数据
-//               =(              28,27,26,28,
-//                            30,29,29,29,29,30,
-//                         32,30,29,31,31,31,30,29,
-//                      32,31,32,33,32,30,31,29,30,29,
-//                      30,32,32,33,32,33,32,32,30,29,
-//                      31,31, 0,31,33,33,31,32,31,28,
-//                      32,31,34,30,32,32,32,32,31,30,
-//                         33,32,32,31,31,29,31,31,
-//                            29,31,29,30,30,30,
-//                               30,30,30,30
-//                );
-//
+  dotValueMagnification:double;
+//  arrV:array[1..76] of Shortint ;
+
+  //测试数据
+//  const arrByte: Array[1..76] of Shortint =
+//  (
+//            26, 26, 23, 27,
+//        29, 31, 30, 29, 28, 27,
+//    27, 28, 28, 30, 30, 28, 27, 30,
+//30, 29, 28, 28, 29, 29, 29, 26, 31, 30,
+//25, 28, 29, 19, 17, 30, 0,  23, 30, 31,
+//27, 29, 31, 33, 33, 33, 30, 0,  30, 30,
+//25, 34, 32, 33, 32, 32, 28, 29, 31, 28,
+//    31, 32, 32, 31, 32, 32, 31, 29,
+//        28, 34, 30, 30, 31, 32,
+//            31, 29, 30, 31
+//  );
 
 
 begin
+
   RvProject.ProjectFile:=ExeFilePath+'rp.rav';
 
   TbCheck3.Filter:=filter;
@@ -548,17 +552,28 @@ begin
 
   TbCheck3.First;
   strategy:=0;
+  dotValueMagnification:=TMyIniFiles.GetIniFile.ReadFloat('report','dotValue magnification',1);
   for i:=1 to 20 do begin
     if TbCheck3.Eof then exit;
     s:=TbCheck3.FieldByName('checkdata').AsString;
     MoveCheckData(s, checkdata);
 
-//    for vi:=1 to checkdata.pm.Dot_Number do begin       //测试数据覆盖
+//测试数据覆盖
+//    Move(arrByte, arrV, SizeOf(arrByte));
+//        眼别  0 L,1 R
+//    checkdata.pm.Eye:=1;
+//    checkdata.pm.Age:=62;
+//    reverseArr(@arrV,1,4);
+//    reverseArr(@arrV,1,4);reverseArr(@arrV,5,10);reverseArr(@arrV,11,18);
+//    reverseArr(@arrV,19,28);reverseArr(@arrV,29,38);reverseArr(@arrV,39,48);reverseArr(@arrV,49,58);
+//    reverseArr(@arrV,59,66);reverseArr(@arrV,67,72);reverseArr(@arrV,73,76);
+//    for vi:=1 to checkdata.pm.Dot_Number do begin
 //      checkdata.v[vi]:=arrV[vi];
 //    end;
-//    checkdata.pm.Eye:=1;
-//    checkdata.pm.Age:=8;
 
+    for vi:=1 to checkdata.pm.Dot_Number do begin       //数据放大
+      checkdata.v[vi]:= Trunc(checkdata.v[vi]* dotValueMagnification);
+    end;
 
     if XwData.YkFilter then checkdata:=YkFilter(checkdata);
     if i=1 then strategy:=checkdata.pm.Strategy
@@ -1109,3 +1124,6 @@ begin
 end;
 
 end.
+
+
+

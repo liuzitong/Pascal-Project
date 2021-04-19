@@ -178,6 +178,7 @@ procedure MyMove(src:PByte; obj:PByte; count:integer);
 procedure JwdtoXy(jd,wd:double; var x,y:double);
 procedure XytoJwd(x,y:double; var jd,wd:double);
 function dataToStr(const data:Pointer;Size:Integer):string;
+procedure reverseArr(arr:PShortInt;startIndex,endIndex:Integer);
 
 implementation
 
@@ -1582,6 +1583,32 @@ begin
     str := str + Format('%.2x ', [Cardinal(PChar(data)[i])]);
   end;
   Result:=str;
+end;
+
+//procedure reverseArr(arr:array of ShortInt;startIndex,endIndex:Integer);
+procedure reverseArr(arr:PShortInt;startIndex,endIndex:Integer);
+var
+  temp:ShortInt ;
+  addr1:PShortInt;
+  addr2:PShortInt;
+begin
+     while startIndex<endIndex do
+     begin
+//        temp:=arr[startIndex];
+//        arr[startIndex]:=arr[endIndex];
+//        arr[endIndex]:=temp;
+        addr1 := arr;
+        addr2 := arr;
+        Inc(addr1,startIndex-1);
+        Inc(addr2,endIndex-1);
+        temp:=addr1^;
+        addr1^:=addr2^;
+        addr2^:=temp;
+        startIndex:=startIndex+1;
+        endIndex:=endIndex-1;
+//          temp:=arr^;
+//          arr^:=100;
+     end;
 end;
 
 var
