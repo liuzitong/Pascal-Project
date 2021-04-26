@@ -717,6 +717,7 @@ object FHome: TFHome
             Top = 5
             Width = 276
             Height = 21
+            ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
             TabOrder = 0
             OnChange = EtQueryChange
           end
@@ -1511,6 +1512,7 @@ object FHome: TFHome
             Top = 20
             Width = 121
             Height = 246
+            ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
             ItemHeight = 13
             TabOrder = 6
             Visible = False
@@ -11221,6 +11223,7 @@ object FHome: TFHome
       Top = 5
       DataBinding.DataField = 'Sex'
       DataBinding.DataSource = DsSelect
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -11250,6 +11253,7 @@ object FHome: TFHome
       Top = 5
       DataBinding.DataField = 'Age'
       DataBinding.DataSource = DsSelect
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -11279,6 +11283,7 @@ object FHome: TFHome
       Top = 5
       DataBinding.DataField = 'Program'
       DataBinding.DataSource = DsSelect
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -11308,6 +11313,7 @@ object FHome: TFHome
       Top = 5
       DataBinding.DataField = 'Strategy'
       DataBinding.DataSource = DsSelect
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -11337,6 +11343,7 @@ object FHome: TFHome
       Top = 5
       DataBinding.DataField = 'Stimulus'
       DataBinding.DataSource = DsSelect
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter

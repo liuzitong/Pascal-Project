@@ -2507,7 +2507,9 @@ var
   s1,s2:string;
   v,sfv,vcount:integer;
   range:integer;
+  dotValueMagnification:Double;
 begin
+  dotValueMagnification:=TMyIniFiles.GetIniFile.ReadFloat('report','dotValue magnification',1);
   range:=checkdata.pm.Range;
   if range=0 then Exit;
   canvas.Font.Color:=clBlue;
@@ -2590,7 +2592,7 @@ begin
       v:=GetCheckV(checkdata.v[i]);
       if v<>-1 then
       begin
-        s1:=Format('%d', [v]);
+        s1:=Format('%d', [Trunc(v * dotValueMagnification)]);
       end;
 
       sfv:=GetCheckV(checkdata.sfv[i]);
