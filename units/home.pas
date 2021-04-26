@@ -12,7 +12,7 @@ uses
   wwDBNavigator, wwclearpanel, RpRave, RpBase, RpSystem, RpDefine, RpCon,
   RpConDS, RpConBDE, xwxh, cxListBox, cxTextEdit, cxMemo, cxDBLabel,
   cxDBEdit, jpeg, RpRender, RpRenderCanvas, RpRenderPreview, RpFiler,pubpas,
-  cxButtonEdit,Myutils,myIniFiles;
+  cxButtonEdit,Myutils,myIniFiles,uProgLog;
 
 type
   TFHome = class(TFrame)
@@ -425,6 +425,7 @@ var
   eye:integer;
   prtmpform:Tform;
 begin
+  TLogFile.GetInstance.Trace(LogLevel,'TFHome','BtStartClick called');
 //  application.OnMessage := nil;
   //prtmpform:=mymessagebox('','正在初始化硬件,请稍侯...');
   prtmpform:=mymessagebox('','Please waiting......');

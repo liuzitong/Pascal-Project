@@ -734,7 +734,7 @@ object FHome: TFHome
             LookAndFeel.NativeStyle = False
           end
           object BtLast10: TcxButton
-            Left = 7294
+            Left = 7311
             Top = 2
             Width = 148
             Height = 48
@@ -748,7 +748,7 @@ object FHome: TFHome
             LookAndFeel.Kind = lfUltraFlat
           end
           object BtAll: TcxButton
-            Left = 7154
+            Left = 7171
             Top = 2
             Width = 148
             Height = 48
@@ -761,7 +761,7 @@ object FHome: TFHome
             LookAndFeel.Kind = lfUltraFlat
           end
           object BtGpa: TcxButton
-            Left = 7409
+            Left = 7426
             Top = 2
             Width = 148
             Height = 48
@@ -771,7 +771,7 @@ object FHome: TFHome
             OnClick = BtGpaClick
           end
           object Bttridimension: TcxButton
-            Left = 7566
+            Left = 7583
             Top = 2
             Width = 148
             Height = 48
@@ -10828,7 +10828,7 @@ object FHome: TFHome
             Height = 163
           end
           object ImageEyeMove: TImage
-            Left = 6468
+            Left = 6485
             Top = 0
             Width = 761
             Height = 40
@@ -10983,7 +10983,7 @@ object FHome: TFHome
           OnClick = BtGpaSingleClick
         end
         object BtDiagnosis: TcxButton
-          Left = 7105
+          Left = 7122
           Top = 7
           Width = 108
           Height = 36

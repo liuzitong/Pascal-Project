@@ -1,6 +1,6 @@
 object FMain: TFMain
-  Left = 86
-  Top = 119
+  Left = 359
+  Top = 111
   Width = 1406
   Height = 836
   Caption = 'Visual View V1.0'
@@ -149,15 +149,16 @@ object FMain: TFMain
             inherited Pages: TPageControl
               Width = 1394
               Height = 135
+              ActivePage = FHome1.TabSheet7
               inherited TabSheet2: TTabSheet
                 inherited ImageEmpty: TImage
-                  Width = 1305
+                  Width = 1386
                   Height = 107
                 end
               end
               inherited TabSheet5: TTabSheet
                 inherited ImageEyeMove: TImage
-                  Left = 1268
+                  Left = 2223
                 end
               end
             end
@@ -274,21 +275,15 @@ object FMain: TFMain
             end
             inherited Panel2: TPanel
               Height = 23
-              inherited SpinEdit3: TSpinEdit
-                Height = 22
-              end
               inherited Panel6: TPanel [9]
               end
               inherited Button1: TButton [10]
               end
               inherited SpinEdit5: TSpinEdit [11]
-                Height = 22
               end
               inherited SpinEdit1: TSpinEdit [12]
-                Height = 22
               end
               inherited SpinEdit2: TSpinEdit [13]
-                Height = 22
               end
               inherited SpinEdit4: TSpinEdit [14]
               end
@@ -423,7 +418,7 @@ object FMain: TFMain
               TitleFont.Name = 'MS Sans Serif'
             end
             inherited Panel6: TPanel
-              Top = -216
+              Top = -92
               inherited PcReport: TcxPageControl
                 ClientRectTop = 28
               end
@@ -464,6 +459,7 @@ object FMain: TFMain
             Width = 698
             Height = 189
             inherited EtXYP: TPanel
+              Width = 696
               inherited EtGrid: TcxSpinEdit
                 Style.IsFontAssigned = True
               end
@@ -475,9 +471,11 @@ object FMain: TFMain
               end
             end
             inherited Panel8: TPanel
-              Height = 18
+              Width = 696
+              Height = 142
               inherited ImagePt: TImage
-                Height = 16
+                Width = 694
+                Height = 140
               end
             end
           end
@@ -25198,10 +25196,6 @@ object FMain: TFMain
     ParentBackground = True
     ParentFont = False
     TabOrder = 1
-    Visible = False
-    DesignSize = (
-      1398
-      80)
     object Label1: TLabel
       Left = 88
       Top = 56
@@ -25528,7 +25522,6 @@ object FMain: TFMain
       Font.Name = #24494#36719#38597#40657
       Font.Style = []
       ParentFont = False
-      Visible = False
     end
     object LabelXtmc: TLabel
       Left = 176
@@ -25772,14 +25765,15 @@ object FMain: TFMain
         Width = 83
         Height = 17
         Caption = #35843#35797#36755#20986
+        Checked = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindow
         Font.Height = -11
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
+        State = cbChecked
         TabOrder = 2
-        Visible = False
       end
     end
     object TabControl: TcxTabControl
@@ -25798,7 +25792,6 @@ object FMain: TFMain
         'Check'
         'Program Setting')
       TabWidth = 92
-      Visible = False
       OnChange = TabControlChange
       OnMouseMove = TabControlMouseMove
       ClientRectBottom = 63
@@ -25812,7 +25805,6 @@ object FMain: TFMain
       Height = 42
       Caption = 'System Maintain'
       TabOrder = 3
-      Visible = False
       OnClick = BtSystemClick
       Glyph.Data = {
         AE0F0000424DAE0F000000000000360000002800000028000000210000000100
@@ -25949,7 +25941,6 @@ object FMain: TFMain
       Height = 42
       Caption = 'About'
       TabOrder = 4
-      Visible = False
       OnClick = BtAboutClick
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
@@ -26069,14 +26060,12 @@ object FMain: TFMain
       OnClick = SnapshotClick
     end
     object DevListBox: TListBox
-      Left = 920
-      Top = 1
-      Width = 305
-      Height = 42
-      Anchors = [akLeft, akTop, akRight]
+      Left = 1000
+      Top = -7
+      Width = 161
+      Height = 88
       ItemHeight = 24
       TabOrder = 7
-      Visible = False
     end
     object ButtonReadDev: TButton
       Left = 400
@@ -26107,7 +26096,6 @@ object FMain: TFMain
       Font.Style = []
       ParentFont = False
       TabOrder = 9
-      Visible = False
       OnClick = ButtonReadHeadClick
     end
     object ButtonInit: TButton
@@ -26123,23 +26111,27 @@ object FMain: TFMain
       Font.Style = []
       ParentFont = False
       TabOrder = 10
-      Visible = False
       OnClick = ButtonInitClick
     end
     object Memo2: TMemo
-      Left = 688
-      Top = -8
-      Width = 161
-      Height = 73
+      Left = 720
+      Top = 0
+      Width = 281
+      Height = 81
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -17
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
       ScrollBars = ssVertical
       TabOrder = 11
-      Visible = False
     end
     object Memo1: TMemo
       Left = 496
       Top = 0
-      Width = 185
-      Height = 65
+      Width = 225
+      Height = 81
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -26150,7 +26142,6 @@ object FMain: TFMain
       ParentFont = False
       ScrollBars = ssVertical
       TabOrder = 5
-      Visible = False
       WordWrap = False
     end
     object Panel4: TPanel

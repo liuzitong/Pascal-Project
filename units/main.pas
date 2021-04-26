@@ -221,7 +221,6 @@ type
 
     procedure SetTestStyle;
   end;
-
 var
   FMain: TFMain;
 implementation

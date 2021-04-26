@@ -242,7 +242,7 @@ object Flanguage: TFlanguage
         Left = 28
         Top = 47
         Width = 113
-        Height = 28
+        Height = 21
         DataField = 'USERNAME'
         DataSource = userlogoS
         TabOrder = 1
@@ -251,7 +251,7 @@ object Flanguage: TFlanguage
         Left = 28
         Top = 87
         Width = 113
-        Height = 28
+        Height = 21
         DataField = 'PASSW'
         DataSource = userlogoS
         PasswordChar = '*'
