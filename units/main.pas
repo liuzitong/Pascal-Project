@@ -58,13 +58,6 @@ type
     cxLabelTesting: TcxLabel;
     ImageHome: TImage;
     ImageLogo: TImage;
-    PanelBottomWaitRoom: TPanel;
-    BitBtnArchives: TBitBtn;
-    BtDelete: TBitBtn;
-    BtStart: TBitBtn;
-    BitBtnReturn1: TBitBtn;
-    BtNew: TBitBtn;
-    BtEdit: TBitBtn;
     PanelBottomQuery: TPanel;
     BitBtnWaitRoom: TBitBtn;
     BtEdit2: TBitBtn;
@@ -2497,7 +2490,6 @@ begin
     LabelPatient.Visible:=false;
     LabelXtmc.Visible:=true;
     PanelBottomMain.Visible:=true;
-    PanelBottomWaitRoom.Visible:=false;
     PanelBottomQuery.Visible:=false;
     PanelBottomProgram.Visible:=false;
     PanelBottomRunpic.Visible:=false;
@@ -2536,7 +2528,6 @@ begin
    LabelXtmc.Visible:=false;
    PanelBottomRunpic.Visible:=true;
    PanelBottomMain.Visible:=false;
-   PanelBottomWaitRoom.Visible:=false;
    PanelBottomQuery.Visible:=false;
    PanelBottomProgram.Visible:=false;
 end;
@@ -2547,7 +2538,6 @@ begin
    LabelPatient.Visible:=false;
    PanelBottomProgram.Visible:=true;
    PanelBottomMain.Visible:=false;
-   PanelBottomWaitRoom.Visible:=false;
    PanelBottomQuery.Visible:=false;
    PanelBottomRunpic.Visible:=false;
 end;
@@ -2556,14 +2546,13 @@ end;
 procedure TFMain.BitBtnArchivesClick(Sender: TObject);
 begin
      PcMain.ActivePageIndex:=0;
-     LabelPatient.Visible:=false;
+     LabelPatient.Visible:=true;
      PanelBottomQuery.Visible:=true;
      PanelBottomMain.Visible:=false;
-     PanelBottomWaitRoom.Visible:=false;
      PanelBottomProgram.Visible:=false;
      PanelBottomRunpic.Visible:=false;
-     showWaitRoom:=false;
-     FHome1.PanelNewList.Visible:=false;
+     showWaitRoom:=true;
+     FHome1.PanelNewList.Visible:=true;
      FHome1.PanelDocList.Visible:=true;
 end;
 
@@ -2571,7 +2560,6 @@ procedure TFMain.BitBtnWaitRoomClick(Sender: TObject);
 begin
      PcMain.ActivePageIndex:=0;
      LabelPatient.Visible:=false;
-     PanelBottomWaitRoom.Visible:=true;
      PanelBottomMain.Visible:=false;
      PanelBottomQuery.Visible:=false;
      PanelBottomProgram.Visible:=false;
@@ -2675,7 +2663,6 @@ begin
         LabelPatient.Visible:=false;
         LabelXtmc.Visible:=true;
         PanelBottomMain.Visible:=true;
-        PanelBottomWaitRoom.Visible:=false;
         PanelBottomQuery.Visible:=false;
         PanelBottomProgram.Visible:=false;
         PanelBottomRunpic.Visible:=false;
