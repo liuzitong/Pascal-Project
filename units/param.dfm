@@ -1,6 +1,6 @@
 object FParam: TFParam
-  Left = 1273
-  Top = 132
+  Left = 735
+  Top = 332
   BorderStyle = bsNone
   Caption = 'Param Setting'
   ClientHeight = 415

@@ -721,7 +721,7 @@ begin
   pubMoveTestSend := false;
 end;
 
-procedure TFMain.LightOther(fixmode:byte; backmode:byte); //包括固视，背景0等,backmode=2 关闭背景灯
+procedure TFMain.LightOther(fixmode:byte; backmode:byte); //点亮辅助灯.包括固视，背景0等,backmode=2 关闭背景灯
 var
   i: integer;
 begin

@@ -101,6 +101,7 @@ implementation
 procedure TFParam.BtOkClick(Sender: TObject);
 begin
   if EtStrategy.ItemIndex<>-1 then CheckData.pm.Strategy:=StrtoInt(LbStrategy.Items[EtStrategy.ItemIndex]);
+  TLogFile.GetInstance.Trace(LogLevel,'CheckData.pm.Strategy value is',IntToStr(CheckData.pm.Strategy));
   CheckData.pm.Stimulus_Color:=EtStimulus_Color.ItemIndex;
 
   //È¥µôÁË¿Õ°×Ïî

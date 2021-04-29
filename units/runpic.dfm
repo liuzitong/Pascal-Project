@@ -65,6 +65,7 @@ object FRunpic: TFRunpic
       Top = 5
       DataBinding.DataField = 'Number'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -78,6 +79,7 @@ object FRunpic: TFRunpic
       Top = 5
       DataBinding.DataField = 'Name'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -91,6 +93,7 @@ object FRunpic: TFRunpic
       Top = 5
       DataBinding.DataField = 'Sex'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -120,6 +123,7 @@ object FRunpic: TFRunpic
       Top = 5
       DataBinding.DataField = 'Age'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -149,6 +153,7 @@ object FRunpic: TFRunpic
       Top = 5
       DataBinding.DataField = 'Eye'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
@@ -4314,9 +4319,9 @@ object FRunpic: TFRunpic
     end
   end
   object Panel4: TPanel
-    Left = 1162
+    Left = 1032
     Top = 0
-    Width = 5
+    Width = 135
     Height = 645
     Align = alRight
     Color = 2368548
@@ -4329,8 +4334,8 @@ object FRunpic: TFRunpic
     TabOrder = 2
     Visible = False
     object BtStart: TcxButton
-      Left = 90
-      Top = 573
+      Left = 2
+      Top = 413
       Width = 126
       Height = 36
       Caption = 'Start'
@@ -4438,8 +4443,8 @@ object FRunpic: TFRunpic
       LookAndFeel.Kind = lfUltraFlat
     end
     object BtStop: TcxButton
-      Left = 66
-      Top = 599
+      Left = -6
+      Top = 551
       Width = 126
       Height = 40
       Caption = 'Stop'
@@ -4549,8 +4554,8 @@ object FRunpic: TFRunpic
       LookAndFeel.Kind = lfUltraFlat
     end
     object BtSave: TcxButton
-      Left = 2
-      Top = 633
+      Left = 10
+      Top = 369
       Width = 126
       Height = 40
       Caption = 'Save Report'
@@ -4769,8 +4774,8 @@ object FRunpic: TFRunpic
       LookAndFeel.Kind = lfUltraFlat
     end
     object BtSelect: TcxButton
-      Left = 10
-      Top = 538
+      Left = 2
+      Top = 458
       Width = 126
       Height = 40
       Caption = 'Program Select'
@@ -5100,7 +5105,7 @@ object FRunpic: TFRunpic
     end
     object BtPause: TcxButton
       Left = 2
-      Top = 573
+      Top = 501
       Width = 126
       Height = 40
       BiDiMode = bdLeftToRight
@@ -5262,18 +5267,18 @@ object FRunpic: TFRunpic
   object Panel5: TPanel
     Left = 275
     Top = 0
-    Width = 887
+    Width = 757
     Height = 645
     Align = alClient
     Color = 10526880
     TabOrder = 5
     DesignSize = (
-      887
+      757
       645)
     object ImageRun: TImage
       Left = 1
       Top = 1
-      Width = 885
+      Width = 755
       Height = 643
       Align = alClient
     end
@@ -5292,7 +5297,7 @@ object FRunpic: TFRunpic
       Height = 48
     end
     object EtEyeMoveAlarm: TShape
-      Left = 635
+      Left = 505
       Top = 570
       Width = 16
       Height = 11
@@ -5323,6 +5328,7 @@ object FRunpic: TFRunpic
       AutoSize = True
       DataBinding.DataField = 'Strategy'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -5341,6 +5347,7 @@ object FRunpic: TFRunpic
       AutoSize = True
       DataBinding.DataField = 'Program'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -5354,12 +5361,13 @@ object FRunpic: TFRunpic
       Transparent = True
     end
     object cxDBLabel8: TcxDBLabel
-      Left = 775
+      Left = 645
       Top = 16
       Anchors = [akTop, akRight]
       AutoSize = True
       DataBinding.DataField = 'Eye'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -5394,7 +5402,7 @@ object FRunpic: TFRunpic
       Visible = False
     end
     object EtCount: TcxLabel
-      Left = 816
+      Left = 686
       Top = 477
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5439,7 +5447,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtTime: TcxLabel
-      Left = 816
+      Left = 686
       Top = 519
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5484,7 +5492,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtPupilDiameter: TcxLabel
-      Left = 816
+      Left = 686
       Top = 561
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5536,6 +5544,7 @@ object FRunpic: TFRunpic
     Width = 33
     Height = 41
     Ctl3D = False
+    ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
     Lines.Strings = (
       'Memo'
       '1')
@@ -5598,8 +5607,8 @@ object FRunpic: TFRunpic
     DefaultExt = 'TXT'
     FileName = '*.txt'
     Filter = #27979#35797#25968#25454#25991#20214'|*.TXT'
-    Left = 975
-    Top = 540
+    Left = 1007
+    Top = 564
   end
   object TimerTestTime: TTimer
     Enabled = False

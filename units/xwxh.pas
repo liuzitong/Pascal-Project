@@ -180,7 +180,7 @@ type
 
   TCHECKDATA=record                                      //检查数据
     //refresh
-    runstate:integer;			   //0-959                     //运行状态
+    runstate:integer;			   //0-959                     //运行状态  0代表未运行
     runstate30:integer;                                  //30度内状态
     count:integer;                                       //完成检测点数
     alarm:integer;                                       //报警状态

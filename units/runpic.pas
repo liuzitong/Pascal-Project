@@ -913,7 +913,7 @@ var
   aaa,bbb,ccc,i: integer;
 begin
 //  priJczt: byte; //0－原始状态，1－已新开始， 2－已暂停，3－复查
-  case priJczt of
+  case priJczt of     //检查状态.
     0:  //点START
       begin
         if pubtestover then
@@ -933,15 +933,16 @@ begin
           end;
         until (not pubMotoBuzy);
 
+        TLogFile.GetInstance.Trace(LogLevel,'DemoCheckData.pm.Strategy value is',IntToStr(DemoCheckData.pm.Strategy));
         if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
-          FMain.LightOther(1,0) // 大菱形固视
+          FMain.LightOther(1,0) // 大菱形固视 ,ligthother 应该是开启背景灯.
         else
           FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);
 
-        if SaveDataHead.DEVTYPE = $8800 then
+        if SaveDataHead.DEVTYPE = $8800 then   //布点
         begin
           pubgets := true;
-          FMain.SnapshotClick(nil); //先取状态
+          FMain.SnapshotClick(nil); //获取硬件状态
 
           repeat
             begin
@@ -962,7 +963,7 @@ begin
 
         TlogFile.GetInstance.Trace(LogLevel,'BtStartClick pubhjgda',IntToStr(pubhjgda));
         TlogFile.GetInstance.Trace(LogLevel,'BtStartClick DemoCheckData.pm.EB_Light_sv',IntToStr(DemoCheckData.pm.EB_Light_sv));
-        if pubhjgda>DemoCheckData.pm.EB_Light_sv then
+        if pubhjgda>DemoCheckData.pm.EB_Light_sv then         //pubhjgda由TFmain::ShowRead赋值
 ///        if DemoCheckData.ambient_light>=1 then
         begin
           if Xwxx2('Ambient Light too Strong')<>IDYES then exit;
@@ -973,8 +974,8 @@ begin
         ChinDown:=True;
         ChinUp:=True;
 
-    Pupilwx0:=(Pupilx+Pupilx+Pupildx)/2-Pupilwx;
-    Pupilwy0:=(Pupily+Pupily+Pupildy)/2-Pupilwy;
+        Pupilwx0:=(Pupilx+Pupilx+Pupildx)/2-Pupilwx;   //Pupil*由this::SampleGrabberBuffer的GetPupil赋值
+        Pupilwy0:=(Pupily+Pupily+Pupildy)/2-Pupilwy;
 
         if DemoCheckData.runstate=0 then
         begin
@@ -2929,7 +2930,7 @@ begin
       Application.ProcessMessages;
       pubkey := false;
       prihadnum := prihadnum+1;
-      case prijclx of
+      case prijclx of     //prijclx 检查点类型，由delydqk调用的skippoint 赋值.
         0: ///正常跳转
         begin
 //          if pubPrefer.testStrategy='筛选检查' then

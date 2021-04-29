@@ -43,7 +43,6 @@ uses
 {$R *.res}
 
 var
-  FMain: TFMain;
   Mutex:THandle;
   year,month,day,dow:Word;
 begin

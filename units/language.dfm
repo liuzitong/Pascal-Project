@@ -1,6 +1,6 @@
 object Flanguage: TFlanguage
-  Left = 657
-  Top = 236
+  Left = 658
+  Top = 237
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'System Maintain'

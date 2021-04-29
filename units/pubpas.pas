@@ -399,7 +399,7 @@ type
     pubentertestmode: byte;   //进入检查方式 0 main  1 new 2 doc
     pubcurid: string;
 
-    prikey,pritesting,pubgets:boolean;
+    prikey,pritesting,pubgets:boolean; //pubgets获取硬件状态,showread置false.
 
     pubhjgda: integer;
 
