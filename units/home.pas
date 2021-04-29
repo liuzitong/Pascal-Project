@@ -157,6 +157,8 @@ type
     ImageDepthNasal: TImage;
     cxLabel11: TcxLabel;
     cxLabel12: TcxLabel;
+    switcPage: TButton;
+    pnl1: TPanel;
     procedure BtNewClick(Sender: TObject);
     procedure BtEditClick(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -190,6 +192,7 @@ type
     procedure BtGpaBaselineClick(Sender: TObject);
     procedure BtGpaFollowClick(Sender: TObject);
     procedure BtGpaSingleClick(Sender: TObject);
+    procedure switcPageClick(Sender: TObject);
   private
     { Private declarations }
     TbSelected:integer;
@@ -221,8 +224,6 @@ begin
     bShow:=true;
     if FileExists(ExeFilePath+'empty.jpg') then ImageEmpty.Picture.LoadFromFile(ExeFilePath+'empty.jpg');
     MainActivePageIndex:=-1;
-    for i:=0 to Pages.PageCount-1 do Pages.Pages[i].TabVisible:=False;
-    Pages.ActivePageIndex:=0;
     PrepareReport('ID='+IntToStr(IdOfLastChecked));
   end;
   if MainActivePageIndex<>FMain.PcMain.ActivePageIndex then begin
@@ -246,7 +247,6 @@ begin
   BtStart.Enabled:=BtEdit.Enabled and (DemoCheckData.runstate=0);
   BtDiagnosis.Enabled:=BtRecheck.Enabled;
 
-  if TbCheck2.Eof then Pages.ActivePageIndex:=3;
 end;
 
 procedure TFHome.BtNewClick(Sender: TObject);
@@ -349,7 +349,7 @@ begin
   TbCheck.Refresh;
   //TbCheck.Last;
 
-  TbCheck.Filter:='ID='+inttostr(MaxIDofCheck);
+  TbCheck.Filter:='ID='+inttostr(MaxIDofCheck);  //这个地方找到最近期的病人
   TbCheck.Refresh;
   BtStartClick(BtStart);
 
@@ -441,7 +441,7 @@ begin
   //////
 
 //  s:=GetPtData(0, checkdata, pt);   //取出的右眼坐标1 左眼？
-  s:=GetPtData(XwData.CurPtId, checkdata, pt);   //取出的右眼坐标1 左眼？
+  s:=GetPtData(XwData.CurPtId, checkdata, pt);   //根据CurPtId 取出checkdata,pt,checkdata是由数据库取出
   OldPId := XwData.CurPtId;
   changeparm := false;
 
@@ -457,17 +457,17 @@ begin
    }
   FMain.TabControl.Enabled := true;
 
-  DemoCheckData:=checkdata;
-  if not WriteXwCheckData then ;
-
-  if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
-    FMain.LightOther(1,0) // 大菱形固视
-  else
-    FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);
+  DemoCheckData:=checkdata;               //初始化DemoCheckData
+//  if not WriteXwCheckData then ;
+//
+//  if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
+//    FMain.LightOther(1,0) // 大菱形固视
+//  else
+//    FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);  //一般情况
 
   //走颜色及光斑大小
   //sleep(3000);
-  if (SaveDataHead.DEVTYPE = $0088) then
+  if (SaveDataHead.DEVTYPE = $0088) then  //投射
   begin
     repeat
       begin
@@ -487,7 +487,7 @@ begin
 
   ClearCheckState1;
 
-  FMain.SetTestStyle;
+  FMain.SetTestStyle;  //改变界面
 
   TbCheck.Edit;
   TbCheck.FieldByName('Program').AsString:=s;
@@ -856,20 +856,20 @@ begin
                       TbCheckResult.FieldByName('PSD').AsString;
     TbCheck3.Next;
 
-    if (checkdata.pm.Strategy>=30) then begin
-      Pages.ActivePageIndex:=2;
-    end
-    else if (checkdata.pm.Strategy=10) or (checkdata.pm.Strategy=11) or (checkdata.pm.Strategy=12) then
-    begin
-      Pages.ActivePageIndex:=1;
-    end
-    else if (TbCheck3.FieldByName('Pt').AsString='Nasal-step') then
-    begin
-      Pages.ActivePageIndex:=6;
-    end
-    else begin
-      Pages.ActivePageIndex:=0;
-    end;
+//    if (checkdata.pm.Strategy>=30) then begin
+//      Pages.ActivePageIndex:=2;
+//    end
+//    else if (checkdata.pm.Strategy=10) or (checkdata.pm.Strategy=11) or (checkdata.pm.Strategy=12) then
+//    begin
+//      Pages.ActivePageIndex:=1;
+//    end
+//    else if (TbCheck3.FieldByName('Pt').AsString='Nasal-step') then
+//    begin
+//      Pages.ActivePageIndex:=6;
+//    end
+//    else begin
+//      Pages.ActivePageIndex:=0;
+//    end;
   end;
 end;
 
@@ -1118,6 +1118,11 @@ begin
   FGpa.ShowModal;
   FGpa.Free;
   BtLast10Click(Self);
+end;
+
+procedure TFHome.switcPageClick(Sender: TObject);
+begin
+  Pages.ActivePageIndex:=  Pages.ActivePageIndex+1;
 end;
 
 end.

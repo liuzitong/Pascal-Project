@@ -1,17 +1,16 @@
 object FRunpic: TFRunpic
   Left = 0
   Top = 0
-  Width = 1168
-  Height = 676
+  Width = 1359
+  Height = 919
   TabOrder = 0
   object Panel1: TPanel
     Left = 0
-    Top = 645
-    Width = 1168
+    Top = 888
+    Width = 1359
     Height = 31
     Align = alBottom
     TabOrder = 0
-    Visible = False
     object cxLabel1: TcxLabel
       Left = 275
       Top = 5
@@ -171,10 +170,10 @@ object FRunpic: TFRunpic
     end
   end
   object Panel3: TPanel
-    Left = 1
+    Left = 0
     Top = 0
     Width = 274
-    Height = 645
+    Height = 888
     Align = alLeft
     Color = 15790320
     Font.Charset = DEFAULT_CHARSET
@@ -219,27 +218,17 @@ object FRunpic: TFRunpic
       Visible = False
       Width = 113
     end
-    object Panel11: TPanel
+    object Panel10: TPanel
       Left = 1
       Top = 1
       Width = 272
-      Height = 1
-      Align = alTop
-      BevelOuter = bvNone
-      Color = 16749107
-      TabOrder = 2
-    end
-    object Panel10: TPanel
-      Left = 1
-      Top = 2
-      Width = 272
-      Height = 642
+      Height = 886
       Align = alClient
       BevelOuter = bvNone
-      TabOrder = 3
+      TabOrder = 2
       object pVideo: TPanel
         Left = 0
-        Top = 0
+        Top = 92
         Width = 272
         Height = 206
         Align = alTop
@@ -349,15 +338,16 @@ object FRunpic: TFRunpic
       end
       object PaChin: TPanel
         Left = 0
-        Top = 206
+        Top = 298
         Width = 272
-        Height = 436
+        Height = 588
         Align = alClient
         Color = 10526880
         TabOrder = 1
         object EtAutoPupil: TcxCheckBox
-          Left = 69
-          Top = 1
+          Left = 1
+          Top = 401
+          Align = alBottom
           Caption = 'AutoPupil'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
@@ -367,9 +357,8 @@ object FRunpic: TFRunpic
           Style.Font.Style = []
           Style.IsFontAssigned = True
           TabOrder = 0
-          Visible = False
           OnClick = EtAutoPupilClick
-          Width = 188
+          Width = 270
         end
         object cxButtonLeft: TcxButton
           Left = 30
@@ -2470,7 +2459,7 @@ object FRunpic: TFRunpic
         end
         object Panel9: TPanel
           Left = 1
-          Top = 290
+          Top = 442
           Width = 270
           Height = 145
           Align = alBottom
@@ -2561,26 +2550,18 @@ object FRunpic: TFRunpic
         end
         object Panel12: TPanel
           Left = 1
-          Top = 287
+          Top = 399
           Width = 270
-          Height = 3
+          Height = 2
           Align = alBottom
           TabOrder = 7
-        end
-        object Panel13: TPanel
-          Left = 1
-          Top = 1
-          Width = 270
-          Height = 3
-          Align = alTop
-          TabOrder = 8
         end
         object BtCamere: TcxButton
           Left = 2
           Top = 4
           Width = 49
           Height = 49
-          TabOrder = 9
+          TabOrder = 8
           OnClick = BtCamereClick
           Glyph.Data = {
             36400000424D3640000000000000360000002800000040000000400000000100
@@ -3103,7 +3084,7 @@ object FRunpic: TFRunpic
           Top = 94
           Width = 64
           Height = 64
-          TabOrder = 10
+          TabOrder = 9
           OnClick = cxButtonMaualPupilClick
           Glyph.Data = {
             36400000424D3640000000000000360000002800000040000000400000000100
@@ -4146,10 +4127,12 @@ object FRunpic: TFRunpic
         end
       end
       object Panel2: TPanel
-        Left = 8
-        Top = 664
+        Left = 0
+        Top = 0
         Width = 272
-        Height = 41
+        Height = 92
+        Align = alTop
+        AutoSize = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -4157,69 +4140,61 @@ object FRunpic: TFRunpic
         Font.Style = []
         ParentFont = False
         TabOrder = 2
-        Visible = False
         object Label2: TLabel
           Left = 0
-          Top = 256
+          Top = 25
           Width = 60
           Height = 16
           Caption = #21487#24212#31572#26102#38388
-          Visible = False
         end
         object Label15: TLabel
-          Left = 68
-          Top = 301
+          Left = 108
+          Top = 49
           Width = 36
           Height = 16
           Caption = #32418#22806#65306
-          Visible = False
         end
         object Label41: TLabel
-          Left = 84
-          Top = 199
+          Left = 52
+          Top = 49
           Width = 36
           Height = 16
           Caption = #23567#32418#65306
-          Visible = False
         end
         object Label3: TLabel
-          Left = 20
-          Top = 192
+          Left = 4
+          Top = 49
           Width = 24
           Height = 16
           Caption = #28784#24230
-          Visible = False
         end
         object Label4: TLabel
-          Left = 32
-          Top = 240
+          Left = 8
+          Top = 73
           Width = 62
           Height = 16
           Caption = 'Mouse Up'
-          Visible = False
         end
         object Label1: TLabel
-          Left = 48
-          Top = 28
+          Left = 88
+          Top = 3
           Width = 24
           Height = 16
           Caption = #38388#38548
-          Visible = False
         end
         object CheckBoxYdzt: TCheckBox
-          Left = 96
-          Top = 232
+          Left = 80
+          Top = 25
           Width = 97
           Height = 17
           Caption = 'ydzt'
           Checked = True
           State = cbChecked
           TabOrder = 0
-          Visible = False
         end
         object SpinEdit3: TSpinEdit
-          Left = 64
-          Top = 256
+          Left = 192
+          Top = 65
           Width = 81
           Height = 26
           Ctl3D = False
@@ -4229,32 +4204,29 @@ object FRunpic: TFRunpic
           ParentCtl3D = False
           TabOrder = 1
           Value = 1200
-          Visible = False
         end
         object CheckBox1: TCheckBox
-          Left = 8
-          Top = 216
+          Left = 88
+          Top = 73
           Width = 97
           Height = 17
           Caption = #36319#36394#30643#23380#25968#25454
           Ctl3D = False
           ParentCtl3D = False
           TabOrder = 2
-          Visible = False
         end
         object Button1: TButton
-          Left = 40
-          Top = 280
+          Left = 0
+          Top = 1
           Width = 63
           Height = 16
           Caption = #21021#22987
           TabOrder = 3
-          Visible = False
           OnClick = Button1Click
         end
         object SpinEdit5: TSpinEdit
-          Left = 104
-          Top = 288
+          Left = 160
+          Top = 1
           Width = 44
           Height = 26
           Ctl3D = False
@@ -4263,12 +4235,11 @@ object FRunpic: TFRunpic
           ParentCtl3D = False
           TabOrder = 4
           Value = 0
-          Visible = False
           OnChange = SpinEdit5Change
         end
         object SpinEdit1: TSpinEdit
-          Left = 96
-          Top = 283
+          Left = 224
+          Top = 33
           Width = 45
           Height = 26
           Ctl3D = False
@@ -4277,12 +4248,11 @@ object FRunpic: TFRunpic
           ParentCtl3D = False
           TabOrder = 5
           Value = 56
-          Visible = False
           OnChange = SpinEdit1Change
         end
         object SpinEdit2: TSpinEdit
-          Left = 200
-          Top = 200
+          Left = 216
+          Top = 1
           Width = 57
           Height = 26
           Ctl3D = False
@@ -4292,37 +4262,26 @@ object FRunpic: TFRunpic
           ParentCtl3D = False
           TabOrder = 6
           Value = 500
-          Visible = False
         end
         object SpinEdit4: TSpinEdit
-          Left = 120
-          Top = 200
+          Left = 160
+          Top = 33
           Width = 44
           Height = 26
           MaxValue = 0
           MinValue = 0
           TabOrder = 7
           Value = 0
-          Visible = False
           OnChange = SpinEdit4Change
-        end
-        object Panel6: TPanel
-          Left = 197
-          Top = -16
-          Width = 83
-          Height = 41
-          BevelOuter = bvNone
-          TabOrder = 8
-          Visible = False
         end
       end
     end
   end
   object Panel4: TPanel
-    Left = 1032
+    Left = 1224
     Top = 0
     Width = 135
-    Height = 645
+    Height = 888
     Align = alRight
     Color = 2368548
     Font.Charset = DEFAULT_CHARSET
@@ -4332,11 +4291,10 @@ object FRunpic: TFRunpic
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    Visible = False
     object BtStart: TcxButton
       Left = 2
-      Top = 413
-      Width = 126
+      Top = 0
+      Width = 135
       Height = 36
       Caption = 'Start'
       TabOrder = 0
@@ -4443,14 +4401,12 @@ object FRunpic: TFRunpic
       LookAndFeel.Kind = lfUltraFlat
     end
     object BtStop: TcxButton
-      Left = -6
-      Top = 551
-      Width = 126
+      Left = 2
+      Top = 31
+      Width = 135
       Height = 40
       Caption = 'Stop'
-      Enabled = False
       TabOrder = 1
-      Visible = False
       OnClick = BtStopClick
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
@@ -4554,13 +4510,12 @@ object FRunpic: TFRunpic
       LookAndFeel.Kind = lfUltraFlat
     end
     object BtSave: TcxButton
-      Left = 10
-      Top = 369
-      Width = 126
+      Left = 2
+      Top = 256
+      Width = 135
       Height = 40
       Caption = 'Save Report'
       TabOrder = 2
-      Visible = False
       OnClick = BtSaveClick
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
@@ -4664,13 +4619,12 @@ object FRunpic: TFRunpic
       LookAndFeel.Kind = lfUltraFlat
     end
     object BtParam: TcxButton
-      Left = 98
-      Top = 648
-      Width = 126
+      Left = 2
+      Top = 104
+      Width = 135
       Height = 40
       Caption = 'Parameter'
       TabOrder = 3
-      Visible = False
       OnClick = BtParamClick
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
@@ -4774,13 +4728,12 @@ object FRunpic: TFRunpic
       LookAndFeel.Kind = lfUltraFlat
     end
     object BtSelect: TcxButton
-      Left = 2
-      Top = 458
-      Width = 126
+      Left = 1
+      Top = 297
+      Width = 135
       Height = 40
       Caption = 'Program Select'
       TabOrder = 4
-      Visible = False
       OnClick = BtSelectClick
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
@@ -4884,13 +4837,12 @@ object FRunpic: TFRunpic
       LookAndFeel.Kind = lfUltraFlat
     end
     object BtOther: TcxButton
-      Left = 50
-      Top = 668
-      Width = 126
+      Left = 2
+      Top = 68
+      Width = 135
       Height = 40
       Caption = 'Other Eye'
       TabOrder = 5
-      Visible = False
       OnClick = BtOtherClick
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
@@ -4995,12 +4947,11 @@ object FRunpic: TFRunpic
     end
     object BtDiagnosis: TcxButton
       Left = 2
-      Top = 718
-      Width = 126
+      Top = 142
+      Width = 135
       Height = 40
       Caption = 'Diagnosis'
       TabOrder = 6
-      Visible = False
       OnClick = BtDiagnosisClick
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
@@ -5103,183 +5054,59 @@ object FRunpic: TFRunpic
         CEA4E5CEA4E5CEA4E4CDA2F6EFE2FFFFFFFFFFFFFFFFFFFFFFFF}
       LookAndFeel.Kind = lfUltraFlat
     end
-    object BtPause: TcxButton
-      Left = 2
-      Top = 501
-      Width = 126
-      Height = 40
-      BiDiMode = bdLeftToRight
-      Caption = 'Pause'
-      ParentBiDiMode = False
-      TabOrder = 7
-      Visible = False
-      OnClick = BtPauseClick
-      Glyph.Data = {
-        360C0000424D360C000000000000360000002800000020000000200000000100
-        180000000000000C0000C40E0000C40E00000000000000000000FFFFFFFFFFFF
-        FFFFFFFEFEFEFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFEFEFEFFFFFFFFFF
-        FFFFFFFFFDFDFDFAFAFAF9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9FAFAFAFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF2F1F0D2D2D2D5D5D5D5D5D5D5D5D5D5D5D5D4D4D4E6E6E6FFFFFFFFFF
-        FFFFFFFFE3E3E3CFCFCFD0D0D0D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D3D3D3F7
-        F7F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF3F2F1A49985987B49967A4A967A4A967A4A967A49997F4FB5945BB798
-        63F5F4F1DDDDDDCCCCCCC7C6C6987B4991733D92733E92733E92733E91733E9E
-        7E46AE8A4BC6AC7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF6F5F4906F339963039761019761029761029761029761029560019760
-        03DED6C6DFDFDFCECECEB6B4B19D650397610197610297610297610297610296
-        60029560019B6D19FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF6F6F48F6E339761019861009861009861009861009861009861009661
-        03E1D8C8DFDFDFCDCDCDB6B4B19B640498610098610098610098610098610098
-        61009761009D6E1CFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4906F359A63039962019963049862029963049862029A63039762
-        04E1D8C9DFDFDFCECECEB6B4B19D65049962019963049862029963049862029A
-        63049862019E701DFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4906E349A64049B62039B62039B62039B62019B62039B63019863
-        05E1D9C9DFDFDFCDCDCDB6B4B19D66059B63039B62019B62039B62039B62039B
-        62039A63029F701DFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F49171369B65049C65029C66049B65029C66059B65029D66049964
-        05E2D9C9DFDFDFCECECEB6B4B19F67059C65029C66059B65029C66049B65029D
-        66049B6304A1711EFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F49170359D66059E66039E66049E66049E66049E66049E66039B65
-        06E2D9C9DFDFDFCDCDCDB6B4B1A068069E66039E66049E66049E66049E66049E
-        66049D6603A2721DFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4937237A068069F66049F67079E66059F67079E6605A068069C66
-        07E2D9C9DFDFDFCECECEB6B4B1A269079F67049F67079E66059F67079E6605A0
-        67069E6706A4731FFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4947236A06907A16905A16906A16906A16906A16906A169059F68
-        07E2D9C9DFDFDFCDCDCDB6B4B1A36C08A16905A16906A16906A16906A16906A1
-        6906A06905A4731FFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4957439A36A08A36A06A46A09A36907A46A09A36907A46B089F69
-        08E3DAC9DFDFDFCECECEB6B4B1A56D08A36A06A46A09A36907A46A09A36907A4
-        6A08A26A08A6761FFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4957337A56C09A56C07A56C08A56C08A56C08A56C08A56C07A16B
-        09E3DAC9DFDFDFCDCDCDB7B4B1A66E09A56C07A56C08A56C08A56C08A56C08A5
-        6C07A46C09A77620FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4977539A76E08A76E08A86F0AA76E08A86F0AA76E08A86F0AA36C
-        0AE3DACADFDFDFCECECEB6B4B1A8700AA76E08A86F0AA76E08A86F0AA76E08A8
-        6F0AA66D08A97922FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4987537A96F0BA9700BA9700BA9700BA9700BA9700BA9700BA66E
-        0BE3DACADFDFDFCDCDCDB6B5B1AB710BA9700BA9700BA9700BA9700BA9700BA9
-        700BA86F0BAB7922FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F499773AAA710CAB720CAC730EAB720CAC730EAB720CAC730EA66F
-        0CE4DBCADFDFDFCECECEB7B5B1AD730CAB720CAC730EAB720CAC730EAB720CAC
-        730EAA710CAD7B22FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4997637AC730DAD730DAD720DAD720DAD720DAD720DAD730DA971
-        0CE4DBCADFDFDFCDCDCDB7B5B1AE740CAD730DAD720DAD720DAD720DAD720DAD
-        730DAC720DAD7C22FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F49B793BAE740EAF750EB07610AF750EB07610AF750EB07610A972
-        0DE4DBCADFDFDFCECECEB7B4B1B0760DAF750EB07610AF750EB07610AF750EB0
-        7610AD740EB07D24FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F49C793AB0760FB1770FB1770FB1770FB1770FB1770FB1770FAB74
-        0EE5DBCADFDFDFCDCDCDB7B5B1B2770EB1770FB1770FB1770FB1770FB1770FB1
-        770FAF760FB07E24FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F49D7B3BB27810B3790FB47A11B3790FB47A11B3790FB47A12AD75
-        0FE5DBCADFDFDFCECECEB7B5B1B3790FB37910B47A11B3790FB47A11B3790FB4
-        7A11B17810B28026FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F49F7B3BB47911B57B12B57B12B57B12B57B12B57B12B57B12B077
-        10E5DCCBDFDFDFCDCDCDB7B5B1B57A10B57B12B57B12B57B12B57B12B57B12B5
-        7B12B47911B48126FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4A07D3DB67B12B77C13B87C15B77B13B87C15B77B13B87D15B278
-        11E6DCCBDFDFDFCECECEB7B5B1B77B11B77C13B87C15B77B13B87C15B77B13B8
-        7D15B57B12B68327FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4A07C3BB77D13B97E14B97E14B97E14B97E14B97E14B97E14B279
-        11E6DCCBDFDFDFCDCDCDB7B5B1B97E11B97E14B97E14B97E14B97E14B97E14B9
-        7E14B77D13B78426FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4A17E3EB97E13BA8015BA8117B98015BA8117B98015BB8117B57B
-        12E6DCCBDFDFDFCECECEB7B5B1BA7E12BA8015BA8117B98015BA8117B98015BB
-        8117B97E14B98528FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4A17E3CBB7F14BC8116BC8116BC8116BC8116BC8116BC8116B57C
-        13E6DDCBDFDFDFCDCDCDB7B5B2BB8013BC8116BC8116BC8116BC8116BC8116BC
-        8116BA8015B98628FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4A5803FBC8115BE8217BF8219BE8117BF8219BE8117BF8319B87D
-        13E7DDCBDFDFDFCECECEB7B5B1BE8113BE8217BF8219BE8117BF8219BE8117BF
-        8319BC8116BB8729FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4A47F3CBE8216BF8418BE8418BE8418BE8418BE8418BF8418B97E
-        14E7DDCBDFDFDFCDCDCDB7B5B1BF8314BF8418BE8418BE8418BE8418BE8418BF
-        8418BD8217BC8729FEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4A68140BF8317C18519C18619C18519C18619C18519C1861ABB7F
-        15E7DDCBDFDFDFCECECEB7B5B1C18414C18519C18619C18519C18619C18519C1
-        8619BF8318BD892AFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF7F6F4A5803DC08417C28619C28619C28618C28619C28618C28619BA80
-        15E8DECBDFDFDFCCCCCCB7B5B1C08515C28619C28619C28618C28619C28618C2
-        8619C08518BE892AFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFF9F8F6A68141C18518C3871AC3881BC3871AC3881BC3871AC3881BBC81
-        16E9DECBEDEDECDADADABFBEBBC38615C4871AC3881BC3871AC3881BC3871AC3
-        881BC18619BF8A2AFEFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFCCA258BB8016BA8015BA8015BA8015BA8015BA8015BA8015BB81
-        16EBE1D0FFFFFFFFFFFFF0ECE6C08416BB8015BA7F15BA7F15BA7F15BA7F15BA
-        7F15BA7F15C39136FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFAF8F2F1E7D3F2E8D4F3E8D4F3E8D4F3E8D4F3E8D4F2E8D4F3EA
-        D8FFFEFEFFFFFFFFFFFFFFFFFFF4F0E7F5EEE0F6EFE1F6EFE1F6EFE1F6EFE1F6
-        EFE1F6EFE1FBF8F1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-      LookAndFeel.Kind = lfUltraFlat
-    end
     object BtReport: TcxButton
       Left = 2
-      Top = 742
-      Width = 126
+      Top = 182
+      Width = 135
       Height = 40
       Caption = 'BtReport'
-      TabOrder = 8
-      Visible = False
+      TabOrder = 7
       OnClick = BtReportClick
     end
     object BtSame: TcxButton
-      Left = 138
-      Top = 738
-      Width = 126
+      Left = 2
+      Top = 218
+      Width = 135
       Height = 40
       Caption = 'BtSame'
-      TabOrder = 9
-      Visible = False
+      TabOrder = 8
       OnClick = BtSameClick
     end
-    object BtDemoData: TcxButton
-      Left = 82
-      Top = 706
-      Width = 126
-      Height = 40
-      Caption = 'DemoData'
+    object btPause: TButton
+      Left = 0
+      Top = 336
+      Width = 137
+      Height = 33
+      Caption = 'btPause'
+      TabOrder = 9
+      OnClick = BtPauseClick
+    end
+    object btDemoData: TButton
+      Left = 0
+      Top = 368
+      Width = 137
+      Height = 25
+      Caption = 'btDemoData'
       TabOrder = 10
-      Visible = False
       OnClick = BtDemoDataClick
     end
   end
-  object Panel7: TPanel
-    Left = 0
-    Top = 0
-    Width = 1
-    Height = 645
-    Align = alLeft
-    Color = 16749107
-    TabOrder = 3
-  end
-  object Panel8: TPanel
-    Left = 1167
-    Top = 0
-    Width = 1
-    Height = 645
-    Align = alRight
-    Color = 16749107
-    TabOrder = 4
-  end
   object Panel5: TPanel
-    Left = 275
+    Left = 274
     Top = 0
-    Width = 757
-    Height = 645
+    Width = 950
+    Height = 888
     Align = alClient
     Color = 10526880
-    TabOrder = 5
+    TabOrder = 3
     DesignSize = (
-      757
-      645)
+      950
+      888)
     object ImageRun: TImage
       Left = 1
       Top = 1
-      Width = 755
-      Height = 643
+      Width = 948
+      Height = 886
       Align = alClient
     end
     object LaCamere: TLabel
@@ -5297,7 +5124,7 @@ object FRunpic: TFRunpic
       Height = 48
     end
     object EtEyeMoveAlarm: TShape
-      Left = 505
+      Left = 698
       Top = 570
       Width = 16
       Height = 11
@@ -5361,7 +5188,7 @@ object FRunpic: TFRunpic
       Transparent = True
     end
     object cxDBLabel8: TcxDBLabel
-      Left = 645
+      Left = 838
       Top = 16
       Anchors = [akTop, akRight]
       AutoSize = True
@@ -5402,7 +5229,7 @@ object FRunpic: TFRunpic
       Visible = False
     end
     object EtCount: TcxLabel
-      Left = 686
+      Left = -536
       Top = 477
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5428,8 +5255,8 @@ object FRunpic: TFRunpic
       Width = 60
     end
     object cxLabel19: TcxLabel
-      Left = 841
-      Top = 519
+      Left = 16
+      Top = 511
       AutoSize = False
       Caption = 'Check Time:'
       ParentFont = False
@@ -5447,7 +5274,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtTime: TcxLabel
-      Left = 686
+      Left = 879
       Top = 519
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5473,8 +5300,8 @@ object FRunpic: TFRunpic
       Width = 60
     end
     object cxLabel7: TcxLabel
-      Left = 841
-      Top = 561
+      Left = 16
+      Top = 553
       AutoSize = False
       Caption = 'Pupil Diameter:'
       ParentFont = False
@@ -5492,7 +5319,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtPupilDiameter: TcxLabel
-      Left = 686
+      Left = 879
       Top = 561
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5518,8 +5345,8 @@ object FRunpic: TFRunpic
       Width = 60
     end
     object cxLabel13: TcxLabel
-      Left = 841
-      Top = 477
+      Left = 8
+      Top = 104
       AutoSize = False
       Caption = 'Completed Count:'
       ParentFont = False
@@ -5537,20 +5364,19 @@ object FRunpic: TFRunpic
       Height = 25
       Width = 144
     end
-  end
-  object Memo1: TMemo
-    Left = 232
-    Top = 672
-    Width = 33
-    Height = 41
-    Ctl3D = False
-    ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
-    Lines.Strings = (
-      'Memo'
-      '1')
-    ParentCtl3D = False
-    TabOrder = 6
-    Visible = False
+    object Memo1: TMemo
+      Left = 16
+      Top = 424
+      Width = 145
+      Height = 41
+      Ctl3D = False
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
+      Lines.Strings = (
+        'Memo'
+        '1')
+      ParentCtl3D = False
+      TabOrder = 11
+    end
   end
   object Timer: TTimer
     OnTimer = TimerTimer

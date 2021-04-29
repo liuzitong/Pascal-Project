@@ -12,7 +12,7 @@
   9、DemoCheckData按程序30-2，左眼，48岁建立，如想修改可参考其定义
 }
 
-unit xwxh;
+unit xwxh;  //下位？？
 
 interface
 
@@ -302,7 +302,7 @@ type
     ID:integer;                                              //10072
     Password:integer;                                        //10076
   end;                                    									 //10080
-
+//在开始程序的时候TFXwxh初始化的时候读取文件初始化
 var
   XwData:TXwData=
   (
@@ -316,7 +316,7 @@ var
       (1,1,1),
       (1,1,1)
     );
-        //新加，当前程序ID
+    //新加，当前程序ID  由programselect界面控制程序ID
     CurPtId:0;
   );
 

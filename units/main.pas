@@ -731,7 +731,7 @@ begin
   TlogFile.GetInstance.Trace(LogLevel,'TFMain.LightOther SaveDataHead.DEVTYPE',IntToStr(SaveDataHead.DEVTYPE));
   if SaveDataHead.DEVTYPE = $8800 then
   begin
-    // 赋值
+    // 赋值    SaveDataBd由TFMain.ReadDevData赋值
     DemoCheckData.pm.EB_Light_sv := SaveDataBd.HJG_DA;
     //小红外，常亮, 改为红外三
     //Server2Lower.fixlamp[9] := SaveDataBd.FOUCUS_DA[8];
@@ -1864,7 +1864,7 @@ begin
     end;
 }
 
-    pubgets := false;
+    pubgets := true;
     pubhjgda := Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2];
     TlogFile.GetInstance.Trace(LogLevel,'ShowRead pubhjgda',IntToStr(pubhjgda));
 //    if Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2]>DemoCheckData.pm.EB_Light_sv then
@@ -2044,6 +2044,7 @@ var
   s:string;
   myCount,StartTime,LI:TLARGEINTEGER;
 begin
+  TLogFile.GetInstance.Trace(LogLevel,'TFMain','ReadDevData');
   Fillchar(USBDataBufXj, sizeof(USBDataBufXj), 0);
   j := 0;
 
@@ -2338,7 +2339,8 @@ var
   f:integer;
   s:string;
 begin
-  ButtonReadHeadClick(nil);
+  TLogFile.GetInstance.Trace(LogLevel,'TFmain','ButtonInitClick');
+  ButtonReadHeadClick(nil);     //读取SaveDataHead
   //读取本地硬件数据文件
   SetCurrentDirectory(PChar(ExeFilePath));
   s:=ExeFilePath+'DevData.dat';
@@ -2551,9 +2553,6 @@ begin
      PanelBottomMain.Visible:=false;
      PanelBottomProgram.Visible:=false;
      PanelBottomRunpic.Visible:=false;
-     showWaitRoom:=true;
-     FHome1.PanelNewList.Visible:=true;
-     FHome1.PanelDocList.Visible:=true;
 end;
 
 procedure TFMain.BitBtnWaitRoomClick(Sender: TObject);

@@ -314,9 +314,9 @@ type
 
 
     Lower2Server:TLower2Server;
-    SaveDataBd:TSAVEDATABD;         //布点
+    SaveDataBd:TSAVEDATABD;         //布点 由TFMain.TimerInitTimer->ButtonInitClick-> ReadDevData 初始化。
     SaveDataTs:TSAVEDATATS;       //投射
-    SaveDataHead:TSAVEDATAHead;   //硬件
+    SaveDataHead:TSAVEDATAHead;   //硬件   由TFMain.TimerInitTimer->ButtonInitClick->ButtonReadHeadClick 初始化。
     SaveDataHeadLocal:TSAVEDATAHead; //本机
     OldPoint: TPoint;
     OldDB,OldGB,OldColor: byte;

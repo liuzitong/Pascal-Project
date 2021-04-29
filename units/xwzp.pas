@@ -127,6 +127,7 @@ const
 
 
 
+
 procedure AutoPupil;
 var
   svx,enx,unx:double;

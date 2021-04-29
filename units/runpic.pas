@@ -23,9 +23,6 @@ type
     cxLabel14: TcxLabel;
     cxComboBox1: TcxComboBox;
     Panel4: TPanel;
-    Panel7: TPanel;
-    Panel8: TPanel;
-    Panel11: TPanel;
     Panel10: TPanel;
     Timer: TTimer;
     Panel5: TPanel;
@@ -52,7 +49,6 @@ type
     BtSelect: TcxButton;
     BtOther: TcxButton;
     BtDiagnosis: TcxButton;
-    BtPause: TcxButton;
     BtReport: TcxButton;
     BtSame: TcxButton;
     FilterGraph: TFilterGraph;
@@ -62,7 +58,6 @@ type
     LaCamere: TLabel;
     VideoWindow: TVideoWindow;
     EtAutoPupil: TcxCheckBox;
-    BtDemoData: TcxButton;
     OpenDialog: TOpenDialog;
     PCenW: TPanel;
     PCenH: TPanel;
@@ -80,7 +75,6 @@ type
     Label2: TLabel;
     SpinEdit3: TSpinEdit;
     Memo1: TMemo;
-    Panel6: TPanel;
     Label3: TLabel;
     SpinEdit1: TSpinEdit;
     Label41: TLabel;
@@ -101,7 +95,6 @@ type
     cxLabel15: TcxLabel;
     EtFixation: TcxLabel;
     Panel12: TPanel;
-    Panel13: TPanel;
     EtCount: TcxLabel;
     cxLabel19: TcxLabel;
     EtTime: TcxLabel;
@@ -113,6 +106,8 @@ type
     cxDBLabel8: TcxDBLabel;
     cxButtonAutoPupil: TcxButton;
     cxButtonMaualPupil: TcxButton;
+    btPause: TButton;
+    btDemoData: TButton;
 
     procedure TimerTimer(Sender: TObject);
     procedure BtParamClick(Sender: TObject);
@@ -223,7 +218,7 @@ type
 
     afarray,fcqpoint: TIntArray;  //乱续labelarray
 
-    ftpoint: newtdatarray;  //array of control point
+    ftpoint: newtdatarray;  //array of control point   在BtStartClick初始化
 
     procedure DelYdqk;
     procedure TWTimerProc;
@@ -941,7 +936,7 @@ begin
 
         if SaveDataHead.DEVTYPE = $8800 then   //布点
         begin
-          pubgets := true;
+          pubgets := false;
           FMain.SnapshotClick(nil); //获取硬件状态
 
           repeat
@@ -954,7 +949,7 @@ begin
         ////原有
         if DemoCheckData.Ready=0 then exit;
 
-        DemoCheckData.fixationcount := 0;
+        DemoCheckData.fixationcount := 0;       //初始化一部分检测信息
         DemoCheckData.fixationlength := 0;
         DemoCheckData.poscount := 0;
         DemoCheckData.poslength := 0;
@@ -963,11 +958,12 @@ begin
 
         TlogFile.GetInstance.Trace(LogLevel,'BtStartClick pubhjgda',IntToStr(pubhjgda));
         TlogFile.GetInstance.Trace(LogLevel,'BtStartClick DemoCheckData.pm.EB_Light_sv',IntToStr(DemoCheckData.pm.EB_Light_sv));
-        if pubhjgda>DemoCheckData.pm.EB_Light_sv then         //pubhjgda由TFmain::ShowRead赋值
+        if pubhjgda>DemoCheckData.pm.EB_Light_sv then         //pubhjgda由TFmain::ShowRead赋值,DemoCheckData.pm.EB_Light_sv在Fmain::lightother中赋值
 ///        if DemoCheckData.ambient_light>=1 then
         begin
           if Xwxx2('Ambient Light too Strong')<>IDYES then exit;
         end;
+
 
         BtStop.Enabled := true;
 
@@ -2917,15 +2913,13 @@ var
   mycurdb: integer;
   prtmpform:Tform;
 begin
-  pubkey := false;
-
   pritesting:=True;
   pubmoveline := false;
   TimerTestTime.Enabled := true;
   pristepdb := 4;
-  while pritesting do
+  while pritesting do                           //检查停止通过pritesting控制
   begin
-    if (not pristop) and (not priHjStop) then
+    if (not pristop) and (not priHjStop) then    //好像这两个变量总为false 
     begin
       Application.ProcessMessages;
       pubkey := false;
@@ -3412,6 +3406,8 @@ begin
   cxButtonMaualPupil.Visible := false;
   EtAutoPupilClick(nil);
 end;
+
+
 
 end.
 
