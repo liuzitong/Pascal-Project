@@ -151,21 +151,21 @@ procedure TFParam.FormShow(Sender: TObject);
 var
   i:integer;
 begin
-  EtStrategy.Properties.Items.Clear;
-  LbStrategy.Items.Clear;
-  if TbPt.FieldByName('Strategy0').AsInteger<>0 then begin
+  EtStrategy.Properties.Items.Clear;                             //对应的是pt.db 表中的数据
+  LbStrategy.Items.Clear;                                        //由Tr.txt找到对应的名字
+  if TbPt.FieldByName('Strategy0').AsInteger<>0 then begin      //Full Threshold  全阈值
     EtStrategy.Properties.Items.Add(Tr('Strategy0'));
     LbStrategy.Items.Add('0');
   end;
-  if TbPt.FieldByName('Strategy1').AsInteger<>0 then begin
+  if TbPt.FieldByName('Strategy1').AsInteger<>0 then begin      //AutoThreshold 智能交互式
     EtStrategy.Properties.Items.Add(Tr('Strategy1'));
     LbStrategy.Items.Add('1');
   end;
-  if TbPt.FieldByName('Strategy2').AsInteger<>0 then begin
+  if TbPt.FieldByName('Strategy2').AsInteger<>0 then begin      //Fast Threshold 快速智能交互式
     EtStrategy.Properties.Items.Add(Tr('Strategy2'));
     LbStrategy.Items.Add('2');
   end;
-  if TbPt.FieldByName('Strategy3').AsInteger<>0 then begin
+  if TbPt.FieldByName('Strategy3').AsInteger<>0 then begin      //Top Threshold   插值
     EtStrategy.Properties.Items.Add(Tr('Strategy3'));
     LbStrategy.Items.Add('3');
   end;

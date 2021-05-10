@@ -1,7 +1,7 @@
 object FHome: TFHome
   Left = 0
   Top = 0
-  Width = 443
+  Width = 1284
   Height = 883
   Align = alTop
   Font.Charset = DEFAULT_CHARSET
@@ -16,7 +16,7 @@ object FHome: TFHome
   object Panel8: TPanel
     Left = 0
     Top = 852
-    Width = 443
+    Width = 1284
     Height = 31
     Align = alBottom
     TabOrder = 0
@@ -174,7 +174,7 @@ object FHome: TFHome
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 443
+    Width = 1284
     Height = 852
     Align = alClient
     Caption = 'Panel1'
@@ -189,7 +189,7 @@ object FHome: TFHome
     object Panel2: TPanel
       Left = 969
       Top = 1
-      Width = 225
+      Width = 314
       Height = 850
       Align = alClient
       Caption = 'Panel2'
@@ -198,12 +198,12 @@ object FHome: TFHome
       object Panel6: TPanel
         Left = 1
         Top = 817
-        Width = 223
+        Width = 312
         Height = 32
         Align = alBottom
         TabOrder = 0
         DesignSize = (
-          223
+          312
           32)
         object BtSingle: TcxButton
           Left = 285
@@ -306,7 +306,7 @@ object FHome: TFHome
           OnClick = BtGpaSingleClick
         end
         object BtDiagnosis: TcxButton
-          Left = 7869
+          Left = 7958
           Top = 7
           Width = 108
           Height = 36
@@ -517,7 +517,7 @@ object FHome: TFHome
       object Pages: TPageControl
         Left = 1
         Top = 1
-        Width = 223
+        Width = 312
         Height = 816
         ActivePage = TabSheet7
         Align = alClient
@@ -9911,7 +9911,7 @@ object FHome: TFHome
           Caption = '2'
           ImageIndex = 5
           DesignSize = (
-            215
+            304
             786)
           object ImageGray2: TImage
             Left = 25
@@ -9950,7 +9950,7 @@ object FHome: TFHome
             Height = 163
           end
           object ImageEyeMove: TImage
-            Left = 7232
+            Left = 7321
             Top = 0
             Width = 761
             Height = 40

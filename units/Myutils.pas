@@ -1087,7 +1087,7 @@ begin
   Result:=s2;
 end;
 
-function Tr(s:string; prefix:string=''):string;
+function Tr(s:string; prefix:string=''):string;      //根据tr.txt做名字转换
 var
   s2:string;
 begin

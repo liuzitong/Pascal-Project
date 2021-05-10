@@ -1,8 +1,8 @@
 object FMain: TFMain
-  Left = 514
-  Top = 78
-  Width = 1409
-  Height = 984
+  Left = -4
+  Top = -4
+  Width = 1928
+  Height = 1058
   Caption = 'Visual View V1.0'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -26,16 +26,16 @@ object FMain: TFMain
   object PcMain: TcxPageControl
     Left = 0
     Top = 156
-    Width = 1401
-    Height = 479
-    ActivePage = cxTabSheet4
+    Width = 1920
+    Height = 553
+    ActivePage = cxTabSheet1
     Align = alClient
     Style = 8
     TabOrder = 0
     TabSlants.Kind = skCutCorner
     OnChange = PcMainChange
-    ClientRectBottom = 479
-    ClientRectRight = 1401
+    ClientRectBottom = 553
+    ClientRectRight = 1920
     ClientRectTop = 24
     object cxTabSheet1: TcxTabSheet
       Caption = 'new'
@@ -49,8 +49,8 @@ object FMain: TFMain
       inline FHome1: TFHome
         Left = 0
         Top = 0
-        Width = 1401
-        Height = 455
+        Width = 1920
+        Height = 529
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -62,8 +62,8 @@ object FMain: TFMain
         ShowHint = True
         TabOrder = 0
         inherited Panel8: TPanel
-          Top = 424
-          Width = 1401
+          Top = 498
+          Width = 1920
           inherited cxLabel8: TcxLabel
             Style.IsFontAssigned = True
           end
@@ -81,25 +81,34 @@ object FMain: TFMain
           end
         end
         inherited Panel1: TPanel
-          Width = 1401
-          Height = 424
+          Width = 1920
+          Height = 498
           inherited Panel2: TPanel
-            Width = 431
-            Height = 422
+            Width = 950
+            Height = 496
             inherited Panel6: TPanel
-              Top = 389
-              Width = 429
+              Top = 463
+              Width = 948
               DesignSize = (
-                429
+                948
                 32)
+              inherited BtDiagnosis: TcxButton
+                Left = 8388
+              end
             end
             inherited Pages: TPageControl
-              Width = 429
-              Height = 388
+              Width = 948
+              Height = 462
             end
           end
           inherited pnl1: TPanel
-            Height = 422
+            Height = 496
+            inherited PanelNewList: TPanel
+              Height = 30
+              inherited GroupBox1: TGroupBox
+                Height = 28
+              end
+            end
           end
         end
         inherited TbCheck2: TwwTable
@@ -123,8 +132,8 @@ object FMain: TFMain
       inline FRunpic1: TFRunpic
         Left = 0
         Top = 0
-        Width = 1401
-        Height = 455
+        Width = 1920
+        Height = 529
         Align = alClient
         Color = 10526880
         Font.Charset = DEFAULT_CHARSET
@@ -136,8 +145,8 @@ object FMain: TFMain
         ParentFont = False
         TabOrder = 0
         inherited Panel1: TPanel
-          Top = 424
-          Width = 1401
+          Top = 498
+          Width = 1920
           inherited cxLabel1: TcxLabel
             Style.IsFontAssigned = True
           end
@@ -158,7 +167,7 @@ object FMain: TFMain
           end
         end
         inherited Panel3: TPanel
-          Height = 424
+          Height = 498
           inherited cxLabel14: TcxLabel
             Style.IsFontAssigned = True
           end
@@ -166,71 +175,59 @@ object FMain: TFMain
             Style.IsFontAssigned = True
           end
           inherited Panel10: TPanel
-            Height = 422
+            Height = 496
             inherited pVideo: TPanel
-              Top = 23
+              Top = 91
               Color = clBtnHighlight
             end
             inherited PaChin: TPanel
-              Top = 229
-              Height = 193
+              Top = 297
+              Height = 199
               inherited EtAutoPupil: TcxCheckBox
-                Top = 45
+                Top = 12
                 Style.IsFontAssigned = True
               end
               inherited Panel9: TPanel
-                Top = 47
+                Top = 53
               end
               inherited Panel12: TPanel
-                Top = 45
+                Top = 10
               end
             end
             inherited Panel2: TPanel
-              Height = 23
-              inherited SpinEdit3: TSpinEdit
-                Height = 22
-              end
-              inherited SpinEdit5: TSpinEdit
-                Height = 22
-              end
-              inherited SpinEdit1: TSpinEdit
-                Height = 22
-              end
-              inherited SpinEdit2: TSpinEdit
-                Height = 22
-              end
+              Height = 91
             end
           end
         end
         inherited Panel4: TPanel
-          Left = 1266
-          Height = 424
+          Left = 1785
+          Height = 498
           DesignSize = (
             135
-            424)
+            498)
           inherited btPause: TButton
             Top = 13
           end
           inherited btDemoData: TButton
-            Top = 346
+            Top = 420
             Anchors = [akBottom]
           end
         end
         inherited Panel5: TPanel
-          Width = 992
-          Height = 424
+          Width = 1511
+          Height = 498
           DesignSize = (
-            992
-            424)
+            1511
+            498)
           inherited ImageRun: TImage
-            Width = 990
-            Height = 422
+            Width = 1509
+            Height = 496
           end
           inherited LaCamere: TLabel
             Width = 56
           end
           inherited EtEyeMoveAlarm: TShape
-            Left = 734
+            Left = 1253
           end
           inherited EtCursor: TcxLabel
             Style.IsFontAssigned = True
@@ -242,25 +239,25 @@ object FMain: TFMain
             Style.IsFontAssigned = True
           end
           inherited cxDBLabel8: TcxDBLabel
-            Left = 874
+            Left = 1393
             Style.IsFontAssigned = True
           end
           inherited EtCount: TcxLabel
-            Left = 915
+            Left = 1434
             Style.IsFontAssigned = True
           end
           inherited cxLabel19: TcxLabel
             Style.IsFontAssigned = True
           end
           inherited EtTime: TcxLabel
-            Left = 915
+            Left = 1434
             Style.IsFontAssigned = True
           end
           inherited cxLabel7: TcxLabel
             Style.IsFontAssigned = True
           end
           inherited EtPupilDiameter: TcxLabel
-            Left = 915
+            Left = 1434
             Style.IsFontAssigned = True
           end
           inherited cxLabel13: TcxLabel
@@ -281,8 +278,8 @@ object FMain: TFMain
       inline FProgram1: TFProgram
         Left = 0
         Top = 0
-        Width = 1401
-        Height = 455
+        Width = 1920
+        Height = 529
         Align = alClient
         Color = 2368548
         Font.Charset = DEFAULT_CHARSET
@@ -294,20 +291,20 @@ object FMain: TFMain
         ParentFont = False
         TabOrder = 0
         inherited Panel2: TPanel
-          Top = 407
-          Width = 1401
+          Top = 481
+          Width = 1920
         end
         inherited Panel3: TPanel
-          Width = 1401
-          Height = 407
+          Width = 1920
+          Height = 481
           Font.Color = clWindowText
           Font.Height = -16
           Font.Name = 'MS Sans Serif'
           ParentFont = False
           inherited Panel4: TPanel
-            Height = 407
+            Height = 481
             inherited EtPtName: TwwDBGrid
-              Height = 27
+              Height = 97
               Font.Color = clWindowText
               Font.Height = -16
               Font.Name = 'MS Sans Serif'
@@ -317,7 +314,7 @@ object FMain: TFMain
               TitleFont.Name = 'MS Sans Serif'
             end
             inherited Panel6: TPanel
-              Top = -98
+              Top = 200
               inherited PcReport: TcxPageControl
                 ClientRectTop = 28
               end
@@ -328,10 +325,10 @@ object FMain: TFMain
             end
           end
           inherited Panel5: TPanel
-            Left = 1176
-            Height = 407
+            Left = 1695
+            Height = 481
             inherited PaPt: TPanel
-              Top = 351
+              Top = 425
               Font.Color = clWindowText
               Font.Height = -16
               Font.Name = 'MS Sans Serif'
@@ -351,14 +348,14 @@ object FMain: TFMain
               ParentFont = False
             end
             inherited GridXY: TwwDBGrid
-              Height = 325
+              Height = 399
             end
           end
           inherited Panel7: TPanel
-            Width = 701
-            Height = 407
+            Width = 1220
+            Height = 481
             inherited EtXYP: TPanel
-              Width = 699
+              Width = 1218
               inherited EtGrid: TcxSpinEdit
                 Style.IsFontAssigned = True
               end
@@ -370,17 +367,17 @@ object FMain: TFMain
               end
             end
             inherited Panel8: TPanel
-              Width = 699
-              Height = 136
+              Width = 1218
+              Height = 434
               inherited ImagePt: TImage
-                Width = 697
-                Height = 134
+                Width = 1216
+                Height = 432
               end
             end
           end
           inherited Panel1: TPanel
-            Left = 991
-            Height = 407
+            Left = 1510
+            Height = 481
           end
         end
       end
@@ -25082,7 +25079,7 @@ object FMain: TFMain
   object Panel3: TPanel
     Left = 0
     Top = 73
-    Width = 1401
+    Width = 1920
     Height = 80
     Align = alTop
     BevelOuter = bvNone
@@ -25438,7 +25435,7 @@ object FMain: TFMain
       ParentFont = False
     end
     object Panel5: TPanel
-      Left = 1315
+      Left = 1834
       Top = 0
       Width = 86
       Height = 80
@@ -25632,7 +25629,7 @@ object FMain: TFMain
       end
     end
     object Panel2: TPanel
-      Left = 1115
+      Left = 1634
       Top = 0
       Width = 200
       Height = 80
@@ -26076,7 +26073,7 @@ object FMain: TFMain
   object PanelTitle: TPanel
     Left = 0
     Top = 153
-    Width = 1401
+    Width = 1920
     Height = 3
     Align = alTop
     BevelOuter = bvNone
@@ -26091,8 +26088,8 @@ object FMain: TFMain
   end
   object StatusBar: TdxStatusBar
     Left = 0
-    Top = 915
-    Width = 1401
+    Top = 989
+    Width = 1920
     Height = 35
     Panels = <
       item
@@ -26120,8 +26117,8 @@ object FMain: TFMain
   end
   object PanelBottomQuery: TPanel
     Left = 0
-    Top = 635
-    Width = 1401
+    Top = 709
+    Width = 1920
     Height = 70
     Align = alBottom
     Color = 2368548
@@ -26226,8 +26223,8 @@ object FMain: TFMain
   end
   object PanelBottomProgram: TPanel
     Left = 0
-    Top = 705
-    Width = 1401
+    Top = 779
+    Width = 1920
     Height = 70
     Align = alBottom
     Color = 2368548
@@ -26266,8 +26263,8 @@ object FMain: TFMain
   end
   object PanelBottomMain: TPanel
     Left = 0
-    Top = 775
-    Width = 1401
+    Top = 849
+    Width = 1920
     Height = 70
     Align = alBottom
     Color = 2368548
@@ -26335,8 +26332,8 @@ object FMain: TFMain
   end
   object PanelBottomRunpic: TPanel
     Left = 0
-    Top = 845
-    Width = 1401
+    Top = 919
+    Width = 1920
     Height = 70
     Align = alBottom
     Color = 2368548
@@ -26472,7 +26469,7 @@ object FMain: TFMain
   object LogInfo: TMemo
     Left = 0
     Top = 0
-    Width = 1401
+    Width = 1920
     Height = 73
     Align = alTop
     Font.Charset = GB2312_CHARSET

@@ -1,6 +1,6 @@
 object FMoveXY: TFMoveXY
-  Left = 389
-  Top = 269
+  Left = 516
+  Top = 357
   BorderStyle = bsDialog
   Caption = 'Move Param Settings'
   ClientHeight = 101

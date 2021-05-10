@@ -1,6 +1,6 @@
 object FXwxh: TFXwxh
-  Left = 758
-  Top = 406
+  Left = 759
+  Top = 408
   Width = 760
   Height = 410
   Caption = 'Client'

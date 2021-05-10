@@ -165,7 +165,6 @@ end;
 
 procedure TFEdit.TbCheckAfterInsert(DataSet: TDataSet);
 begin
-  TLogFile.GetInstance.Trace(LogLevel,'before TbCheckAfterInsert',EtNumber.Text);
   DataSet.FieldByName('Id').AsInteger:=MaxIDofCheck+1;
   DataSet.FieldByName('Number').AsString:=NumberOfCheck;
   DataSet.FieldByName('State').AsString:='0';
@@ -176,7 +175,6 @@ begin
   DataSet.FieldByName('Stimulus_Size').AsString:='2';
   DataSet.FieldByName('Stimulus').AsString:=Tr('StimulusSize2')+','+Tr('StimulusColor0');
   EtBirthday.Date:=EnCodeDate(1971, 1, 1);
-  TLogFile.GetInstance.Trace(LogLevel,'after TbCheckAfterInsert number',EtNumber.Text);
 end;
 
 procedure TFEdit.TbCheckAfterPost(DataSet: TDataSet);

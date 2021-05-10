@@ -54,6 +54,7 @@ object FProgram: TFProgram
         Align = alClient
         Ctl3D = False
         DataSource = DsPt
+        ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
         Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
         ParentColor = True
         ParentCtl3D = False
@@ -419,6 +420,7 @@ object FProgram: TFProgram
         Font.Height = -15
         Font.Name = 'MS Sans Serif'
         Font.Style = []
+        ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
         KeyOptions = [dgEnterToTab]
         ParentCtl3D = False
         ParentFont = False

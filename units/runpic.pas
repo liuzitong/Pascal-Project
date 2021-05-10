@@ -814,7 +814,7 @@ begin
     eye:=GetEyeValue(TbCheck.FieldByName('Eye').AsString);
     PrepareCheckData(age, eye, false, checkdata);
     DemoCheckData:=checkdata;
-    TbCheck.Edit;
+    TbCheck.Edit;                                     //将信息写入病人表
     TbCheck.FieldByName('State').AsInteger:=1;
     TbCheck.FieldByName('Program').AsString:=s;
     TbCheck.FieldByName('Pt').AsString:=pt;
@@ -1032,6 +1032,8 @@ begin
 
         pripnum := DemoCheckData.pm.Dot_Number;
     //////init afarray
+
+
         setlength(afarray,pripnum);
         for i:=0 to pripnum-1 do
         begin

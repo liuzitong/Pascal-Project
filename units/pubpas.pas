@@ -216,7 +216,7 @@ type
 
 ////////新建
 type
-  TDEVTESTDATA=record
+  TDEVTESTDATA=record         //Fmain.FormCreate中读取DevTestSet.dat得到
     TIMESPACE: BYTE;
     CtbcTs: WORD;
     XtbcTs: WORD;
