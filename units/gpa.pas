@@ -193,6 +193,7 @@ procedure TFGpa.GpaFollowUp;
 var
   i,len:integer;
   s,d1,d2,id:string;
+
 begin
   TbCheck.Prior;
   d2:=TbCheck.FieldByName('Date').AsString;

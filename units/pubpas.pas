@@ -271,14 +271,14 @@ end;
 
 type
   tdata=record
-    x:integer;
+    x:integer;              //亮点的x,y坐标值,被democheckdata.pt赋值
     y:integer;
-    db:integer;
-    arr:boolean;
-    oren:byte;
-    isxy4:boolean;
-    arrtime:integer;
-    DBlow,DBmid,DBhigh:byte;   //预测DB的范围 DBmid
+    db:integer;              //好像是第一次亮灯的数值,初始值好像为0,被democheckdata赋值,且4个点会减少一定数值
+    arr:boolean;             //初始值为true应该表示指没测试的点 false应该是已经测试了的点
+    oren:byte;                //初始值为0 在DelYDQK中被赋值
+    isxy4:boolean;             //初始值为false,getXy4设置4个点为true
+    arrtime:integer;           //步距?    初始值为4
+    DBlow,DBmid,DBhigh:byte;   //预测DB的范围 DBmid 初始值为0
 end;
 
 type
@@ -332,7 +332,7 @@ type
     pubanswerxy,pubanswerxystep:TPoint;
 
     pubMotoBuzy: boolean; //电机状态 忙不？
-    pubblindon: boolean;
+    pubblindon: boolean;  //盲测
     pubtestover: boolean;
     pubKmOpen: boolean; //开快门
     pubCurZbx: byte;  //1,2坐标系统
@@ -377,7 +377,7 @@ type
 
     pubProjId: integer;
     pubxx1,pubxx2,pubxx3,pubxx4: boolean;  //象限选择
-    pubhastest: integer;
+    pubhastest: integer;                    //已经测试了的点
     pubbackon: boolean;
 
     My_top_db:integer;

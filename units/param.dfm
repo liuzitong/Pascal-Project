@@ -1,6 +1,6 @@
 object FParam: TFParam
-  Left = 585
-  Top = 338
+  Left = 486
+  Top = 227
   BorderStyle = bsNone
   Caption = 'Param Setting'
   ClientHeight = 415
@@ -74,7 +74,7 @@ object FParam: TFParam
     Top = 40
     Width = 752
     Height = 321
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 2
     object TabSheet1: TTabSheet
@@ -99,7 +99,9 @@ object FParam: TFParam
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
           'Stimulation Color0'
-          'Stimulation Color1')
+          'Stimulation Color1'
+          'Stimulation Color2'
+          '')
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -379,6 +381,7 @@ object FParam: TFParam
         Top = 193
         Width = 92
         Height = 33
+        ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
         ItemHeight = 16
         TabOrder = 22
         Visible = False

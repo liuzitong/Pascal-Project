@@ -5404,8 +5404,8 @@ object FRunpic: TFRunpic
   object FilterGraph: TFilterGraph
     Mode = gmCapture
     GraphEdit = True
-    Left = 103
-    Top = 10
+    Left = 127
+    Top = 2
   end
   object SampleGrabber: TSampleGrabber
     OnBuffer = SampleGrabberBuffer

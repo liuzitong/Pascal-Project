@@ -1,6 +1,6 @@
 object FGpa: TFGpa
-  Left = 206
-  Top = 151
+  Left = 207
+  Top = 153
   BorderStyle = bsNone
   Caption = 'GPA Analysis'
   ClientHeight = 470
@@ -47,6 +47,7 @@ object FGpa: TFGpa
       AutoSize = True
       DataBinding.DataField = 'Name'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
     end
     object cxDBLabel2: TcxDBLabel
       Left = 461
@@ -54,6 +55,7 @@ object FGpa: TFGpa
       AutoSize = True
       DataBinding.DataField = 'Eye'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
     end
     object cxDBLabel3: TcxDBLabel
       Left = 710
@@ -61,6 +63,7 @@ object FGpa: TFGpa
       AutoSize = True
       DataBinding.DataField = 'Birthday'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
     end
     object cxDBLabel6: TcxDBLabel
       Left = 250
@@ -68,6 +71,7 @@ object FGpa: TFGpa
       AutoSize = True
       DataBinding.DataField = 'Sex'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
     end
     object cxLabel6: TcxLabel
       Left = 215

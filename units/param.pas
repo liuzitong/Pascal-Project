@@ -83,11 +83,12 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure EtDelay_ModePropertiesChange(Sender: TObject);
+
   private
     { Private declarations }
   public
     { Public declarations }
-    CheckData:TCheckData;
+    CheckData:TCheckData;  //类在被创建的时候被Frunpic赋值.
   end;
 
 var
@@ -100,7 +101,7 @@ implementation
 
 procedure TFParam.BtOkClick(Sender: TObject);
 begin
-  if EtStrategy.ItemIndex<>-1 then CheckData.pm.Strategy:=StrtoInt(LbStrategy.Items[EtStrategy.ItemIndex]);
+  if EtStrategy.ItemIndex<>-1 then CheckData.pm.Strategy:=StrtoInt(LbStrategy.Items[EtStrategy.ItemIndex]); //将Strategy编号 赋值给pm.Strategy
   TLogFile.GetInstance.Trace(LogLevel,'CheckData.pm.Strategy value is',IntToStr(CheckData.pm.Strategy));
   CheckData.pm.Stimulus_Color:=EtStimulus_Color.ItemIndex;
 
@@ -152,7 +153,7 @@ var
   i:integer;
 begin
   EtStrategy.Properties.Items.Clear;                             //对应的是pt.db 表中的数据
-  LbStrategy.Items.Clear;                                        //由Tr.txt找到对应的名字
+  LbStrategy.Items.Clear;                                        //Tr()作用是由Tr.txt找到对应的名字
   if TbPt.FieldByName('Strategy0').AsInteger<>0 then begin      //Full Threshold  全阈值
     EtStrategy.Properties.Items.Add(Tr('Strategy0'));
     LbStrategy.Items.Add('0');
@@ -186,7 +187,7 @@ begin
     LbStrategy.Items.Add('13');
   end;
 
-  for i:=0 to LbStrategy.Items.Count-1 do begin
+  for i:=0 to LbStrategy.Items.Count-1 do begin          //回填数据,一般为2 Fast Threshold.
     if IntToStr(CheckData.pm.Strategy)=LbStrategy.Items[i] then begin
       EtStrategy.ItemIndex:=i;
       break;
@@ -209,14 +210,14 @@ begin
   EtSF.ItemIndex:=CheckData.pm.SF;
   EtDelay_Mode.ItemIndex:=CheckData.pm.Delay_Mode;
 
-  if EtDelay_Mode.ItemIndex=1 then
+  if EtDelay_Mode.ItemIndex=1 then    //非自动
   begin
     EtJgSpinEdit.Visible := True;
     EtLightSpinEdit.Visible := false;
   end
   else
   begin
-    EtJgSpinEdit.Visible := false;
+    EtJgSpinEdit.Visible := false;    //自动
     EtLightSpinEdit.Visible := True;
   end;
   EtJgSpinEdit.Value := CheckData.pm.Delay_Time;
@@ -264,5 +265,6 @@ begin
     EtLightSpinEdit.Visible := True;
   end;
 end;
+
 
 end.

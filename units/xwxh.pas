@@ -12,7 +12,7 @@
   9、DemoCheckData按程序30-2，左眼，48岁建立，如想修改可参考其定义
 }
 
-unit xwxh;  //下位？？
+unit xwxh;
 
 interface
 
@@ -131,51 +131,65 @@ type
   end;
   PTCHECKPOINT=^TCHECKPOINT;
 
-  TCHECKSET=record                                       //设置参数
+//checkdata.pm初始化,在param界面修改然后再赋值到checkdata.pm
+  TCHECKSET=record                                       //设置参数 一般在param
     Device_Type:integer;                                 //设备类型
     Range:integer;                                       //角度范围
-    Strategy:integer;                                    //策略
-    Init_Strategy:integer;                               //初值策略
-    Init_Value:integer;                                  //初值策略初值
-    Hold_Time:integer;                                   //保持时间
-    Delay_Time:integer;                                  //延时时间
-    Blue_Yellow:integer;                                 //蓝黄模式
-    Background_Color:integer;                            //背景颜色
-    Stimulus_Color:integer;                              //刺激颜色
-    Stimulus_Size:integer;                               //光标尺寸
-    Fixation_Monitor:integer;                            //固视检测
-    Fovea:integer;                                       //中心检测  center point detection?
-    Peripheral:integer;                                  //外围检测
-    SF:integer;                                          //短期波动检测 short wate dectect
-    SF_Number:integer;                                   //短期波动检测次数
-    Dynamic_Value:integer;                               //动态刺激初值
-    Alarm_Mode:integer;                                  //报警方式
-    Blind_Value:integer;                                 //盲点刺激值
-    Rx:integer;                                          //镜片
-    Rx1:integer;                                         //镜片参数1
-    Rx2:integer;                                         //镜片参数2
-    Rx3:integer;                                         //镜片参数3
-    False_POS_Cycle:integer;                             //假阳性检测周期
-    False_NEG_Cycle:integer;                             //假阴性检测周期
-    Fixation_Cycle:integer;                              //固视检测周期
-    Fixation_Value:integer;                              //固视刺激值
-    Eye:integer;                                         //眼别  0 L,1 R
-    Age:integer;                                         //年龄
-    Dot_Number:integer;                                  //程序点数
-    Chin_Dir:integer;                                    //腮托控制字
-    B_Light_sv:integer;                                  //背景光强度
-    EB_Light_sv:integer;                                 //环境光差报警值
-    Fixation_Mode:integer;                               //固视方式
-    MoveSpeed:integer;                                   //动态移动速度
-    MoveMode:integer;                                    //动态方式
-    MoveX0:integer;                                      //动态X0
-    MoveY0:integer;                                      //动态Y0
-    MoveX1:integer;                                      //动态X1
-    MoveY1:integer;                                      //动态Y1
-    MoveDistance:integer;                                //动态距离
-    MoveTime:integer;                                    //动态时间
-    Delay_Mode:integer;                                  //延时方式
-    temp:array[1..17] of integer;                        //留用
+    Strategy:integer;                                    //策略        
+    //0:全阈值              Full Threshold   
+    //1:智能交互式           Auto Threshold    
+    //2:快速智能交互式       Fast Threshold          
+    //3:插值                Top Threshold  停用
+    //10:二区法             One Stage Screen    
+    //11:三区发             Two Stages Screen
+    //12:量化缺损            quantify defects
+    //13:单DB变化            Single DB changes    停用         
+    //30:标准  应该不用管 数据库是0-15    仅投射可用       
+    //31:盲区  应该不用管 数据库是0-15    仅投射可用             
+    //32:暗区  应该不用管 数据库是0-15    仅投射可用
+    //33:静点  应该不用管 数据库是0-15    仅投射可用                
+    //34:直线  应该不用管 数据库是0-15    仅投射可用
+    Init_Strategy:integer;                //初值策略        0.Age Related. 1.Automatic Threshold 2.Single Stimulus
+    Init_Value:integer;                  //初值策略初值     亮度DB大小 好像默认值都是10
+    Hold_Time:integer;                   //保持时间       默认180
+    Delay_Time:integer;                  //延时时间       自动情况下会被覆盖为1200,非自动好像是1000
+    Blue_Yellow:integer;                 //蓝黄模式
+    Background_Color:integer;            //背景颜色
+    Stimulus_Color:integer;              //刺激颜色       0.Stimuation Color0 1.Stimulation Color1  tr.txt 替换为white red
+    Stimulus_Size:integer;               //光标尺寸
+    Fixation_Monitor:integer;            //固视检测
+    Fovea:integer;                       //中心检测       0.Off 1.On
+    Peripheral:integer;                  //外围检测
+    SF:integer;                          //短期波动检测    0.Off 1.On
+    SF_Number:integer;                   //短期波动检测次数
+    Dynamic_Value:integer;               //动态刺激初值
+    Alarm_Mode:integer;                  //报警方式        0.Alarm Only 1.Alarm and Pause
+    Blind_Value:integer;                 //盲点刺激值
+    Rx:integer;                          //镜片
+    Rx1:integer;                         //镜片参数1
+    Rx2:integer;                         //镜片参数2
+    Rx3:integer;                         //镜片参数3
+    False_POS_Cycle:integer;             //假阳性检测周期
+    False_NEG_Cycle:integer;             //假阴性检测周期
+    Fixation_Cycle:integer;              //固视检测周期
+    Fixation_Value:integer;              //固视刺激值
+    Eye:integer;                         //眼别           0 L,1 R
+    Age:integer;                         //年龄
+    Dot_Number:integer;                  //程序点数
+    Chin_Dir:integer;                    //腮托控制字
+    B_Light_sv:integer;                  //背景光强度
+    EB_Light_sv:integer;                 //环境光差报警值
+    Fixation_Mode:integer;               //固视方式       0:中心点 1:小菱形
+    MoveSpeed:integer;                   //动态移动速度
+    MoveMode:integer;                    //动态方式
+    MoveX0:integer;                      //动态X0
+    MoveY0:integer;                      //动态Y0
+    MoveX1:integer;                      //动态X1
+    MoveY1:integer;                      //动态Y1
+    MoveDistance:integer;                //动态距离
+    MoveTime:integer;                    //动态时间
+    Delay_Mode:integer;                  //延时方式   0:自动默认是500 1:非自动默认是1000
+    temp:array[1..17] of integer;        //留用
   end;
 
   TCHECKDATA=record                                      //检查数据
@@ -202,11 +216,11 @@ type
     T_Light_pv:integer;                                  //投射光
     Ready:integer;                                       //就绪
     Rol:integer;                                         //循环
-    waitcount:integer;                                   //等待次数
+    waitcount:integer;                                   //等待次数   在btStartClick中赋值为0
     temp:array[1..19] of integer;                        //留用
 
     //set from server
-    pm:TCHECKSET;			   //960-1199
+    pm:TCHECKSET;			   //960-1199   就是param的缩写
 
     pt:array[1..MAXCHECK] of TCHECKPOINT;  //1200-2399   //程序点
     sv:array[1..MAXCHECK] of Shortint;                   //年龄段正常值
@@ -302,9 +316,9 @@ type
     ID:integer;                                              //10072
     Password:integer;                                        //10076
   end;                                    									 //10080
-//在开始程序的时候TFXwxh初始化的时候读取文件初始化
+
 var
-  XwData:TXwData=
+  XwData:TXwData=          //读取xwdata.dat初始化 __ ReadXwData()
   (
     oprank1pass:1111;
     oprank2pass:2222;
@@ -1477,7 +1491,7 @@ begin
   checkresult.VFI := round(vfi*100)/100;
 end;
 
-function GetQZ(x,y: integer):integer;
+function GetQZ(x,y: integer):integer;    //圈子数?
 var
   r2: single;
   r: integer;

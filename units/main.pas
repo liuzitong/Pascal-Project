@@ -54,7 +54,6 @@ type
     Memo2: TMemo;
     Label1: TLabel;
     Label2: TLabel;
-    Panel4: TPanel;
     cxLabelTesting: TcxLabel;
     ImageHome: TImage;
     ImageLogo: TImage;
@@ -93,6 +92,7 @@ type
     LabelXtmc: TLabel;
     CheckBoxDebug: TCheckBox;
     LogInfo: TMemo;
+    pnl1: TPanel;
 
     procedure BtQueryClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1496,16 +1496,18 @@ var
   mymotor: array[1..5,1..3] of integer;
   mydot815: TPoint;
 begin
+  //db:=10;
+  //mydot.X:=9;
+  //mydot.Y:=9;
+  //holdtime:=5000;
+  //onoff:=1;
   pubmoveline := false;
-
-//  T100msCount := 0;
+  //T100msCount := 0;
   DemoCheckData.waitcount := DemoCheckData.waitcount+1;
   prieyemoveo := false;
-
   mydot815.X := mydot.x;
   mydot815.Y := mydot.Y;
-
-  if SaveDataHead.DEVTYPE = $8800 then
+  if SaveDataHead.DEVTYPE = $8800 then  //布点
   begin
     T100msCount := 0;
     //只是布点给
@@ -1513,10 +1515,10 @@ begin
     Server2Lower.dotcon:=$c1;
 
     //通过X，Y找到最接近的X,R布点位置
-//    mynearp := FindXRbyXY(mydot);
+    //mynearp := FindXRbyXY(mydot);
     mynearp := FindXRbyXY(mydot815);
 
-//    LabelHjgJcz.Caption := inttostr(round((Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2])/2))+' | '+ inttostr(Lower2Server.envlight2[1]*256+Lower2Server.envlight2[2]);
+    //LabelHjgJcz.Caption := inttostr(round((Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2])/2))+' | '+ inttostr(Lower2Server.envlight2[1]*256+Lower2Server.envlight2[2]);
 
     //在此按照偏心度调整DA值
     myda := SaveDataBd.DOT_DA[1,mynearp.X,mynearp.Y,db];
@@ -1544,11 +1546,11 @@ begin
 
     Server2Lower.xcoord:=mynearp.X;
     Server2Lower.rcoord:=mynearp.Y;
-    memo2.Lines.Add('dotx='+inttostr(mydot.X)+'doty='+inttostr(mydot.Y)+' x='+inttostr(mynearp.X)+' r='+inttostr(mynearp.Y)+' db='+inttostr(db)+' da='+inttostr(myda));
+    memo2.Lines.Add('dotx='+inttostr(mydot.X)+'  doty='+inttostr(mydot.Y)+' x='+inttostr(mynearp.X)+' r='+inttostr(mynearp.Y)+' db='+inttostr(db)+' da='+inttostr(myda));
     Server2Lower.gcoord:=0;
 
-//    Server2Lower.stimtime[1]:=0;
-//    Server2Lower.stimtime[2]:=180; //200;
+    //Server2Lower.stimtime[1]:=0;
+    //Server2Lower.stimtime[2]:=180; //200;
     Server2Lower.stimtime[1]:=holdtime div 256;
     Server2Lower.stimtime[2]:=holdtime mod 256;
 
@@ -1558,18 +1560,18 @@ begin
     Server2Lower.answer:=$ff;
     Server2Lower.glasspos:=$ff;
 
-{  //不发，自动返回应答器和镜架状态
-    Server2Lower.lowerstatus:=$c5
-    Server2Lower.answer:=$ff;
-    Server2Lower.lowerbuzy:=$ff;
-    Server2Lower.lowerserial:=$ff;
-    Server2Lower.glasspos:=$ff;
-    Server2Lower.envlight1:=$ff;
-    Server2Lower.envlight2:=$ff;
-    Server2Lower.envtemper:=$ff;
-    Server2Lower.eyeleft:=$ff;
-    Server2Lower.eyeright:=$ff;
-}
+    {  //不发，自动返回应答器和镜架状态
+        Server2Lower.lowerstatus:=$c5
+        Server2Lower.answer:=$ff;
+        Server2Lower.lowerbuzy:=$ff;
+        Server2Lower.lowerserial:=$ff;
+        Server2Lower.glasspos:=$ff;
+        Server2Lower.envlight1:=$ff;
+        Server2Lower.envlight2:=$ff;
+        Server2Lower.envtemper:=$ff;
+        Server2Lower.eyeleft:=$ff;
+        Server2Lower.eyeright:=$ff;
+    }
 
     Server2Lower.head[1]:=$bb;
     Server2Lower.head[2]:=$0c;
@@ -1623,45 +1625,45 @@ begin
       mymotor[i,3] := abs(my5Step[i]) mod 256;
     end;
 
-  //三电机联动数据
-  //x=4
+    //三电机联动数据
+    //x=4
     Server2LowerTs.motor4[1] := mymotor[4,1];
     Server2LowerTs.motor4[2] := mymotor[4,2];
     Server2LowerTs.motor4[3] := mymotor[4,3];
-  //y=5
+    //y=5
     Server2LowerTs.motor5[1] := mymotor[5,1];
     Server2LowerTs.motor5[2] := mymotor[5,2];
     Server2LowerTs.motor5[3] := mymotor[5,3];
-  //f=1
+    //f=1
     Server2LowerTs.motor1[1] := mymotor[1,1];
     Server2LowerTs.motor1[2] := mymotor[1,2];
     Server2LowerTs.motor1[3] := mymotor[1,3];
 
-  ////以下两个DB
-  //c=2
+    ////以下两个DB
+    //c=2
     Server2LowerTs.motor2[1] := mymotor[2,1];
     Server2LowerTs.motor2[2] := mymotor[2,2];
     Server2LowerTs.motor2[3] := mymotor[2,3];
 
-  //s=3
+    //s=3
     Server2LowerTs.motor3[1] := mymotor[3,1];
     Server2LowerTs.motor3[2] := mymotor[3,2];
     Server2LowerTs.motor3[3] := mymotor[3,3];
-  {
-  //快门开
-    Server2LowerTs.motor6[1]:=$22;
-    Server2LowerTs.motor6[2] := SpinEditStep.Value div 256;
-    Server2LowerTs.motor6[3] := SpinEditStep.Value mod 256;
-   }
-  //  if CheckBoxKm200.Checked then
+    {
+      //快门开
+      Server2LowerTs.motor6[1]:=$22;
+      Server2LowerTs.motor6[2] := SpinEditStep.Value div 256;
+      Server2LowerTs.motor6[3] := SpinEditStep.Value mod 256;
+    }
+    //if CheckBoxKm200.Checked then
     if onoff=1 then
     begin
       Server2LowerTs.stimmode := $88;
       Server2LowerTs.stimtime[1]:=holdtime div 256;
       Server2LowerTs.stimtime[2]:=holdtime mod 256;
 
-//      Server2LowerTs.stimtime[1] := $00;
-//      Server2LowerTs.stimtime[2] := 100; //200;
+    //Server2LowerTs.stimtime[1] := $00;
+    //Server2LowerTs.stimtime[2] := 100; //200;
     end;
 
     Server2LowerTs.head[1]:=$bb;
@@ -1671,14 +1673,14 @@ begin
     Server2LowerTs.ending[1]:=$0e;
     Server2LowerTs.ending[2]:=$0f;
     Write2DeviceTs;
-    memo2.Lines.Add('dotx='+inttostr(mydot.X)+'doty='+inttostr(mydot.Y)+' db='+inttostr(db)+' C='+inttostr(my5Step[2])+' S='+inttostr(my5Step[3]));
-    memo2.Lines.Add('初位x:'+inttostr(my5Step[4])+'初位y:'+inttostr(my5Step[5]));
-    memo2.Lines.Add('初位0x:'+inttostr(Old5MotorStep[4])+'初位0y:'+inttostr(Old5MotorStep[5]));
-{
-    memo2.Lines.Add('初位x:'+inttostr(my5Step[4])+'初位y:'+inttostr(my5Step[5]));
-    memo2.Lines.Add('初位0x:'+inttostr(Old5MotorStep[4])+'初位0y:'+inttostr(Old5MotorStep[5]));
-    memo2.Lines.Add('坐标x:'+inttostr(mydot.X)+'坐标y:'+inttostr(mydot.Y));
-    memo2.Lines.Add('坐标系:'+inttostr(pubCurZbx));
+    memo2.Lines.Add('dotx='+inttostr(mydot.X)+'   doty='+inttostr(mydot.Y)+' db='+inttostr(db)+' C='+inttostr(my5Step[2])+' S='+inttostr(my5Step[3]));
+    memo2.Lines.Add('初位x:'+inttostr(my5Step[4])+'  初位y:'+inttostr(my5Step[5]));
+    memo2.Lines.Add('初位0x:'+inttostr(Old5MotorStep[4])+'  初位0y:'+inttostr(Old5MotorStep[5]));
+    {
+      memo2.Lines.Add('初位x:'+inttostr(my5Step[4])+'初位y:'+inttostr(my5Step[5]));
+      memo2.Lines.Add('初位0x:'+inttostr(Old5MotorStep[4])+'初位0y:'+inttostr(Old5MotorStep[5]));
+      memo2.Lines.Add('坐标x:'+inttostr(mydot.X)+'坐标y:'+inttostr(mydot.Y));
+      memo2.Lines.Add('坐标系:'+inttostr(pubCurZbx));
     }
   end;
 end;
@@ -1760,7 +1762,7 @@ begin
       if not pubKmOpen then
         T100msCount := 1;
       pubKmOpen := true;
-//      memo2.Lines.Add('开快门');
+      memo1.Lines.Add('开快门');
     end;
     {
     else if Lower2Server.motorlimit[10]=$FF then
@@ -1771,7 +1773,7 @@ begin
     }
     if (Lower2Server.answer=$33) then
     begin
-//      memo2.Lines.Add('应答器按下');
+      memo1.Lines.Add('应答器按下');
       pubkey := true;
       pubkey1 := true;
 {
@@ -1789,7 +1791,7 @@ begin
 
         Old5MotorStep[4] := pubanswerxystep.X;
         Old5MotorStep[5] := pubanswerxystep.Y;
-////        memo2.Lines.Add('应答x:'+inttostr(Old5MotorStep[4])+'应答y:'+inttostr(Old5MotorStep[5]));
+        memo2.Lines.Add('应答x:'+inttostr(Old5MotorStep[4])+'应答y:'+inttostr(Old5MotorStep[5]));
 
         pubmoveanswer := true;
         pubmoveend := true;  //应答了，表示扫描结束了
@@ -1797,7 +1799,7 @@ begin
     end
     else if (Lower2Server.answer=$ff) then
     begin
-////      memo2.Lines.Add('应答器按下');
+      memo1.Lines.Add('应答器按下');
       if not pubkey then
       begin
         Label1.Caption := '应答时：'+inttostr(T100msCount*100);
@@ -1814,7 +1816,7 @@ begin
     else
     begin
       pubkey1 := false;
-////      memo2.Lines.Add('应答器松开');
+      memo1.Lines.Add('应答器松开');    //应答器松开的情况下会不断的接收松开的信息
     end;
 
     //改为取状态忙位，判断下位机忙不忙,2016.2.21

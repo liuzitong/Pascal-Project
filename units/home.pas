@@ -441,7 +441,7 @@ begin
   //////
 
 //  s:=GetPtData(0, checkdata, pt);   //取出的右眼坐标1 左眼？
-  s:=GetPtData(XwData.CurPtId, checkdata, pt);   //根据CurPtId 取出checkdata,pt,checkdata是由数据库取出
+  s:=GetPtData(XwData.CurPtId, checkdata, pt);   //根据CurPtId 取出checkdata,pt,checkdata是由pt.db取出
   OldPId := XwData.CurPtId;
   changeparm := false;
 
