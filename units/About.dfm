@@ -1916,7 +1916,7 @@ object FAbout: TFAbout
     Left = 0
     Top = 65
     Width = 778
-    Height = 57
+    Height = 43
     Align = alTop
     Caption = 'Automatic Perimeter System'
     Font.Charset = GB2312_CHARSET
@@ -1933,12 +1933,12 @@ object FAbout: TFAbout
     Left = 32
     Top = 183
     Width = 713
-    Height = 161
+    Height = 98
     BevelOuter = bvNone
     TabOrder = 0
     object Label2: TLabel
       Left = 0
-      Top = 54
+      Top = 109
       Width = 713
       Height = 55
       Align = alTop
@@ -1952,6 +1952,7 @@ object FAbout: TFAbout
       Font.Style = []
       ParentColor = False
       ParentFont = False
+      Visible = False
     end
     object Label4: TLabel
       Left = 0
@@ -1972,7 +1973,7 @@ object FAbout: TFAbout
     end
     object Label5: TLabel
       Left = 0
-      Top = 109
+      Top = 54
       Width = 713
       Height = 55
       Align = alTop
