@@ -26046,8 +26046,10 @@ object FMain: TFMain
       Width = 257
       Height = 42
       Anchors = [akLeft, akTop, akRight]
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ItemHeight = 24
       TabOrder = 7
+      Visible = False
     end
     object ButtonReadDev: TButton
       Left = 400
@@ -26102,6 +26104,7 @@ object FMain: TFMain
       Top = -8
       Width = 161
       Height = 73
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ScrollBars = ssVertical
       TabOrder = 11
       Visible = False
@@ -26116,6 +26119,7 @@ object FMain: TFMain
       Font.Height = -11
       Font.Name = #23435#20307
       Font.Style = []
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       Lines.Strings = (
         'Memo1')
       ParentFont = False
@@ -26658,6 +26662,7 @@ object FMain: TFMain
     Font.Height = -11
     Font.Name = #23435#20307
     Font.Style = []
+    ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
     MaxLength = 1000000000
     ParentFont = False
     ReadOnly = True
