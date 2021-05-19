@@ -1928,6 +1928,7 @@ object FAbout: TFAbout
     TextOptions.Alignment = taCenter
     TextOptions.VAlignment = vaTop
     Transparent = True
+    Visible = False
   end
   object Panel1: TPanel
     Left = 32
