@@ -74,7 +74,7 @@ object FParam: TFParam
     Top = 40
     Width = 752
     Height = 321
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 2
     object TabSheet1: TTabSheet

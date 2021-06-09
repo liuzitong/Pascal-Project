@@ -657,13 +657,13 @@ begin
       TLogFile.GetInstance.Trace(ErrorLevel,'','WRITE ERROR: %s (%x)', [SysErrorMessage(Err), Err]);
       //AddToHistory(Format('WRITE ERROR: %s (%x)', [SysErrorMessage(Err), Err]));
     end
-    else
+    else                                                //16进制信息显示.
     begin
       Str := Format('W %.2x  ', [Buf[0]]);
       for I := 1 to Written-1 do
         Str := Str + Format('%.2x ', [Buf[I]]);
-      TLogFile.GetInstance.Trace(LogLevel,'',Str);
-      //AddToHistory(Str);
+      //TLogFile.GetInstance.Trace(LogLevel,'',Str);
+      AddToHistory(Str);
     end;
   end;
   pubMoveTestSend := false;
@@ -1521,12 +1521,12 @@ begin
     //LabelHjgJcz.Caption := inttostr(round((Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2])/2))+' | '+ inttostr(Lower2Server.envlight2[1]*256+Lower2Server.envlight2[2]);
 
     //在此按照偏心度调整DA值
-    myda := SaveDataBd.DOT_DA[1,mynearp.X,mynearp.Y,db];
+    myda := SaveDataBd.DOT_DA[1,mynearp.X,mynearp.Y,db];         //db->da
 
     //mydb90 := SaveDataBd.DB90[round(sqrt((sqr(mynearp.X)+sqr(mynearp.Y))/2))]/50;
-    mydb90 := SaveDataBd.DB90[round(sqrt(sqr(mydot.X)+sqr(mydot.Y))/2)]/50;
+    mydb90 := SaveDataBd.DB90[round(sqrt(sqr(mydot.X)+sqr(mydot.Y))/2)]/50;      //用于myda修正
 
-    if mydb90>0 then
+    if mydb90>0 then           //myda修正
     begin
       my90t := db+Trunc(mydb90);
       if my90t>maxdb then
@@ -1546,7 +1546,8 @@ begin
 
     Server2Lower.xcoord:=mynearp.X;
     Server2Lower.rcoord:=mynearp.Y;
-    memo2.Lines.Add('dotx='+inttostr(mydot.X)+'  doty='+inttostr(mydot.Y)+' x='+inttostr(mynearp.X)+' r='+inttostr(mynearp.Y)+' db='+inttostr(db)+' da='+inttostr(myda));
+
+    memo2.Lines.Add('dotx='+inttostr(mydot.X)+'  doty='+inttostr(mydot.Y)+' db='+inttostr(db)+' da='+inttostr(myda));
     Server2Lower.gcoord:=0;
 
     //Server2Lower.stimtime[1]:=0;
@@ -1581,7 +1582,7 @@ begin
     Server2Lower.ending[2]:=$0f;
     Write2Device;
   end
-  else if SaveDataHead.DEVTYPE = $0088 then
+  else if SaveDataHead.DEVTYPE = $0088 then       //投射
   begin
     repeat
       begin
@@ -1691,8 +1692,8 @@ var
   f:integer;
   s:string;
 begin
-  {Memo1.Lines.Add(Str);
-  if CheckBoxDebug.Checked then
+  //Memo1.Lines.Add(Str);
+  //if CheckBoxDebug.Checked then
   begin
     s:=ExeFilePath+'DEBUG.txt';
     if not FileExists(s) then begin
@@ -1705,7 +1706,7 @@ begin
     s:=Str+#13#10;
     FileWrite(f, s[1], Length(s));
     FileClose(f);
-  end; }
+  end; 
 end;
 
 function TFMain.DeviceName(HidDev: TJvHidDevice): string;
@@ -1733,19 +1734,19 @@ begin
     Str := Str + Format('%.2x ', [Cardinal(PChar(Data)[i])]);
   end;
   AddToHistory(Str);
-  TLogFile.GetInstance.Trace(LogLevel,'',Str);
+  //TLogFile.GetInstance.Trace(LogLevel,'',Str);
   if (lbuf[60]=0) and (lbuf[61]=0) then
   begin
     prihardok := true;
     Move(lbuf[0],Lower2Server,Size); // USBDATALEN
 
-{
-    StatusBar.Panels[1].Text:=Tr('envlight')+':'+inttostr(round((Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2])/2))+' | '+ inttostr(Lower2Server.envlight2[1]*256+Lower2Server.envlight2[2]);
-    StatusBar.Panels[1].Text:=StatusBar.Panels[1].Text+'  '+Tr('glasspos')+':'+inttohex(Lower2Server.glasspos,2);
-    StatusBar.Panels[1].Text:=StatusBar.Panels[1].Text+'  '+Tr('answer')+':'+inttohex(Lower2Server.answer,2);
-    StatusBar.Panels[1].Text:=StatusBar.Panels[1].Text+'  '+inttohex(Lower2Server.eyeleft,2)+' | '+ inttohex(Lower2Server.eyeright,2);
-    StatusBar.Panels[1].Text:=StatusBar.Panels[1].Text+'  '+Tr('envtemper')+':'+inttostr(Lower2Server.envtemper[1]*256+Lower2Server.envtemper[2]);
- }
+    {
+        StatusBar.Panels[1].Text:=Tr('envlight')+':'+inttostr(round((Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2])/2))+' | '+ inttostr(Lower2Server.envlight2[1]*256+Lower2Server.envlight2[2]);
+        StatusBar.Panels[1].Text:=StatusBar.Panels[1].Text+'  '+Tr('glasspos')+':'+inttohex(Lower2Server.glasspos,2);
+        StatusBar.Panels[1].Text:=StatusBar.Panels[1].Text+'  '+Tr('answer')+':'+inttohex(Lower2Server.answer,2);
+        StatusBar.Panels[1].Text:=StatusBar.Panels[1].Text+'  '+inttohex(Lower2Server.eyeleft,2)+' | '+ inttohex(Lower2Server.eyeright,2);
+        StatusBar.Panels[1].Text:=StatusBar.Panels[1].Text+'  '+Tr('envtemper')+':'+inttostr(Lower2Server.envtemper[1]*256+Lower2Server.envtemper[2]);
+    }
     if oldglass<>Lower2Server.glasspos then
     begin
       if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then

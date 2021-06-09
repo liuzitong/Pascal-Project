@@ -15,7 +15,7 @@ type
     head:array[1..3] of Byte;  //0,1,2 0xaa 0x0f 0xee  1至3是usb通信识别帧头
     dotcon:byte;  //3    0xc1（0x00） 刺激点命令
     da:array[1..2] of Byte;  //4,5   亮度DB值对应的AD值,高字节在前
-    xcoord:byte;  //6   X坐标1-24
+    xcoord:byte;  //6   X坐标1-24    
     rcoord:byte;  //7  R坐标1-20
     gcoord:byte;  //8  G坐标1-20
     stimtime:array[1..2] of Byte;  //word;  //9,10 10-11位是要求刺激点亮的时间，单位为毫秒  高字节在前，范围0-2000毫秒 如果为0xff  0xff 代表常亮，调试用
@@ -250,8 +250,8 @@ type
     testdot:string;
     TestResult:string;
     LorR: string[5];
-    BAnswer: integer;
-    BTest: integer;
+    BAnswer: integer;    //盲点应答
+    BTest: integer;        //盲点测试数
     Dqbd: single;  //短期波动  sc=相对缺损
     Pjqs: single; //平均缺损  SC=绝对缺损
     TestPjz: single;  //平均光敏度
@@ -276,7 +276,7 @@ type
     db:integer;              //好像是第一次亮灯的数值,初始值好像为0,被democheckdata赋值,且4个点会减少一定数值
     arr:boolean;             //初始值为true应该表示指没测试的点 false应该是已经测试了的点
     oren:byte;                //初始值为0 在DelYDQK中被赋值
-    isxy4:boolean;             //初始值为false,getXy4设置4个点为true
+    isxy4:boolean;             //初始值为false,开始在getXy4设置4个点为true,之后在hasEnded中设置其它点的此字段为true
     arrtime:integer;           //步距?    初始值为4
     DBlow,DBmid,DBhigh:byte;   //预测DB的范围 DBmid 初始值为0
 end;
@@ -305,105 +305,105 @@ type
   TMDArray = array[0..56,0..1] of byte;
   TYCArray = array[0..23,0..1] of single;
 
-  var
-    Server2Lower:TServer2Lower;
-    Server2LowerTs:TServer2LowerTs;
-    Server2LowerTsMove:TServer2LowerTsMove;
-    Server2LowerTsMove10H:TServer2LowerTsMove10H;
-    Server2LowerTsMove10N:TServer2LowerTsMove10N;
+var
+  Server2Lower:TServer2Lower;
+  Server2LowerTs:TServer2LowerTs;
+  Server2LowerTsMove:TServer2LowerTsMove;
+  Server2LowerTsMove10H:TServer2LowerTsMove10H;
+  Server2LowerTsMove10N:TServer2LowerTsMove10N;
 
 
-    Lower2Server:TLower2Server;
-    SaveDataBd:TSAVEDATABD;         //布点 由TFMain.TimerInitTimer->ButtonInitClick-> ReadDevData 初始化。
-    SaveDataTs:TSAVEDATATS;       //投射
-    SaveDataHead:TSAVEDATAHead;   //硬件   由TFMain.TimerInitTimer->ButtonInitClick->ButtonReadHeadClick 初始化。
-    SaveDataHeadLocal:TSAVEDATAHead; //本机
-    OldPoint: TPoint;
-    OldDB,OldGB,OldColor: byte;
-    Old5MotorStep: T5MotorArr;  //存储上一次投射时5电机查表位置
-    OldPId: integer;
-    changeparm: boolean;
+  Lower2Server:TLower2Server;
+  SaveDataBd:TSAVEDATABD;         //布点 由TFMain.TimerInitTimer->ButtonInitClick-> ReadDevData 初始化。
+  SaveDataTs:TSAVEDATATS;       //投射
+  SaveDataHead:TSAVEDATAHead;   //硬件   由TFMain.TimerInitTimer->ButtonInitClick->ButtonReadHeadClick 初始化。
+  SaveDataHeadLocal:TSAVEDATAHead; //本机
+  OldPoint: TPoint;
+  OldDB,OldGB,OldColor: byte;
+  Old5MotorStep: T5MotorArr;  //存储上一次投射时5电机查表位置
+  OldPId: integer;
+  changeparm: boolean;
 
-    Old4XY: boolean;
-    priXYFW,priXYFWF: boolean;
-    T100msCount:integer;
+  Old4XY: boolean;                  //btStartClick之后设定为true,在hasEnded中xy4end为true时设定为false,false之后才会对非定位点之后的其它点测试             
+  priXYFW,priXYFWF: boolean;
+  T100msCount:integer;
 
-    pubmovearr: T10MotorArr;
-    pubanswerxy,pubanswerxystep:TPoint;
+  pubmovearr: T10MotorArr;
+  pubanswerxy,pubanswerxystep:TPoint;
 
-    pubMotoBuzy: boolean; //电机状态 忙不？
-    pubblindon: boolean;  //盲测
-    pubtestover: boolean;
-    pubKmOpen: boolean; //开快门
-    pubCurZbx: byte;  //1,2坐标系统
+  pubMotoBuzy: boolean; //电机状态 忙不？
+  pubblindon: boolean;  //盲测
+  pubtestover: boolean;
+  pubKmOpen: boolean; //开快门
+  pubCurZbx: byte;  //1,2坐标系统
 
-    pubmoveline: boolean; //扫描
-    pubmoveend: boolean;  //线扫描结束
-    pubmoveanswer: boolean; //扫描应答
-    pubmovebackx,pubmovebacky,pubmovebackjj,pubmovexfx,pubmoveyfx: integer;
-    pubmovexstep,pubmoveystep,pubmovejjstep: integer;
+  pubmoveline: boolean; //扫描
+  pubmoveend: boolean;  //线扫描结束
+  pubmoveanswer: boolean; //扫描应答
+  pubmovebackx,pubmovebacky,pubmovebackjj,pubmovexfx,pubmoveyfx: integer;
+  pubmovexstep,pubmoveystep,pubmovejjstep: integer;
 
-    DevTestData:TDEVTESTDATA;
-    ExeFilePath:string;
+  DevTestData:TDEVTESTDATA;
+  ExeFilePath:string;
 
-    USBReadbuf:array[0..10240] of byte;
+  USBReadbuf:array[0..10240] of byte;
 
-    USBDataBuf:array[0..102400] of byte;
+  USBDataBuf:array[0..102400] of byte;
 
-    USBDataBufXj:array[0..102400] of byte;
+  USBDataBufXj:array[0..102400] of byte;
 
-    ////////
-    A: TDataArray;
-    pubqdcx: string;
-    pubgbqd: boolean;
-    pubYhdw,pubKorFstr: string;
-    pubKorF: integer;
-    pubPatient: TPatient;
-    pubPrefer: TPrefer;
-    pubMaintag: integer;
-    pubblindx,pubblindy,pubblinddb: Byte;
+  ////////
+  A: TDataArray;
+  pubqdcx: string;
+  pubgbqd: boolean;
+  pubYhdw,pubKorFstr: string;
+  pubKorF: integer;
+  pubPatient: TPatient;
+  pubPrefer: TPrefer;
+  pubMaintag: integer;
+  pubblindx,pubblindy,pubblinddb: Byte;
 
-    pubkey: boolean;
-    pubkey1: boolean;
-    publevel: Byte;       // =0 新测试 ＝1 VIEW  ＝2 选点重测
-    pubQdms: Byte;      //=0 自动取点 ＝1 从库取点 ＝2 自由取点
-    pubDub: boolean;  //是否已测双眼
-    pubSave: boolean;
-    pubResW: byte;  //1－测另一眼，2－复查
-    pubLoad,pubLoadDb: boolean;
-    pubZrfs: byte;  //1-测试载入, 2-FMAN 载入
-    pubZdpz,pubResultDb: string;
-    pubDbTime: TDateTime;
+  pubkey: boolean;
+  pubkey1: boolean;
+  publevel: Byte;       // =0 新测试 ＝1 VIEW  ＝2 选点重测
+  pubQdms: Byte;      //=0 自动取点 ＝1 从库取点 ＝2 自由取点
+  pubDub: boolean;  //是否已测双眼
+  pubSave: boolean;
+  pubResW: byte;  //1－测另一眼，2－复查
+  pubLoad,pubLoadDb: boolean;
+  pubZrfs: byte;  //1-测试载入, 2-FMAN 载入
+  pubZdpz,pubResultDb: string;
+  pubDbTime: TDateTime;
 
-    pubProjId: integer;
-    pubxx1,pubxx2,pubxx3,pubxx4: boolean;  //象限选择
-    pubhastest: integer;                    //已经测试了的点
-    pubbackon: boolean;
+  pubProjId: integer;
+  pubxx1,pubxx2,pubxx3,pubxx4: boolean;  //象限选择
+  pubhastest: integer;                    //已经测试了的点
+  pubbackon: boolean;
 
-    My_top_db:integer;
-    beep:boolean;  //07.9.16修改，主页加载时默认设置为false，即默认不出声
+  My_top_db:integer;
+  beep:boolean;  //07.9.16修改，主页加载时默认设置为false，即默认不出声
 
-    publight,pubAnswer,pubAnswStop,pubHjg:boolean;  //true 强光 FALSE 暗室
-    pubmovspid: byte; //1--9    移动速度
-    pubshowgray: boolean;  //灰度显示
-    pubEyeMoveYN: boolean;
+  publight,pubAnswer,pubAnswStop,pubHjg:boolean;  //true 强光 FALSE 暗室
+  pubmovspid: byte; //1--9    移动速度
+  pubshowgray: boolean;  //灰度显示
+  pubEyeMoveYN: boolean;
 
-    oldglass: byte;
+  oldglass: byte;
 
 
-    pmoverstrstep,pmovelstrstep: string;
+  pmoverstrstep,pmovelstrstep: string;
 
-    pmaxdb: integer;
-    //////
-    pubentertest: boolean;
-    pubentertestmode: byte;   //进入检查方式 0 main  1 new 2 doc
-    pubcurid: string;
+  pmaxdb: integer;
+  //////
+  pubentertest: boolean;
+  pubentertestmode: byte;   //进入检查方式 0 main  1 new 2 doc
+  pubcurid: string;
 
-    prikey,pritesting,pubgets:boolean; //pubgets获取硬件状态,showread置false.
+  prikey,pritesting,pubgets:boolean; //pubgets获取硬件状态,showread置false.  pritesting hasEnded在测量的达到数目之后置为false.
 
-    pubhjgda: integer;
+  pubhjgda: integer;
 
-    pubMoveTestSend: boolean; //
+  pubMoveTestSend: boolean; //
 
 implementation
 

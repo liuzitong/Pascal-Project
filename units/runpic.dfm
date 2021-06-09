@@ -1,13 +1,13 @@
 object FRunpic: TFRunpic
   Left = 0
   Top = 0
-  Width = 1142
-  Height = 754
+  Width = 646
+  Height = 375
   TabOrder = 0
   object Panel1: TPanel
     Left = 0
-    Top = 723
-    Width = 1142
+    Top = 344
+    Width = 646
     Height = 31
     Align = alBottom
     TabOrder = 0
@@ -173,7 +173,7 @@ object FRunpic: TFRunpic
     Left = 0
     Top = 0
     Width = 274
-    Height = 723
+    Height = 344
     Align = alLeft
     Color = 15790320
     Font.Charset = DEFAULT_CHARSET
@@ -222,7 +222,7 @@ object FRunpic: TFRunpic
       Left = 1
       Top = 1
       Width = 272
-      Height = 721
+      Height = 342
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
@@ -340,13 +340,13 @@ object FRunpic: TFRunpic
         Left = 0
         Top = 298
         Width = 272
-        Height = 423
+        Height = 44
         Align = alClient
         Color = 10526880
         TabOrder = 1
         object EtAutoPupil: TcxCheckBox
           Left = 1
-          Top = 236
+          Top = -143
           Align = alBottom
           Caption = 'AutoPupil'
           ParentFont = False
@@ -2459,7 +2459,7 @@ object FRunpic: TFRunpic
         end
         object Panel9: TPanel
           Left = 1
-          Top = 277
+          Top = -102
           Width = 270
           Height = 145
           Align = alBottom
@@ -2550,7 +2550,7 @@ object FRunpic: TFRunpic
         end
         object Panel12: TPanel
           Left = 1
-          Top = 234
+          Top = -145
           Width = 270
           Height = 2
           Align = alBottom
@@ -4278,10 +4278,10 @@ object FRunpic: TFRunpic
     end
   end
   object Panel4: TPanel
-    Left = 1007
+    Left = 511
     Top = 0
     Width = 135
-    Height = 723
+    Height = 344
     Align = alRight
     Color = 2368548
     Font.Charset = DEFAULT_CHARSET
@@ -5094,19 +5094,19 @@ object FRunpic: TFRunpic
   object Panel5: TPanel
     Left = 274
     Top = 0
-    Width = 733
-    Height = 723
+    Width = 237
+    Height = 344
     Align = alClient
     Color = 10526880
     TabOrder = 3
     DesignSize = (
-      733
-      723)
+      237
+      344)
     object ImageRun: TImage
       Left = 1
       Top = 1
-      Width = 731
-      Height = 721
+      Width = 235
+      Height = 342
       Align = alClient
     end
     object LaCamere: TLabel
@@ -5124,7 +5124,7 @@ object FRunpic: TFRunpic
       Height = 48
     end
     object EtEyeMoveAlarm: TShape
-      Left = 481
+      Left = -15
       Top = 570
       Width = 16
       Height = 11
@@ -5188,7 +5188,7 @@ object FRunpic: TFRunpic
       Transparent = True
     end
     object cxDBLabel8: TcxDBLabel
-      Left = 621
+      Left = 125
       Top = 16
       Anchors = [akTop, akRight]
       AutoSize = True
@@ -5229,7 +5229,7 @@ object FRunpic: TFRunpic
       Visible = False
     end
     object EtCount: TcxLabel
-      Left = -753
+      Left = -1249
       Top = 477
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5274,7 +5274,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtTime: TcxLabel
-      Left = 662
+      Left = 166
       Top = 519
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5319,7 +5319,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtPupilDiameter: TcxLabel
-      Left = 662
+      Left = 166
       Top = 561
       Anchors = [akTop, akRight]
       AutoSize = False

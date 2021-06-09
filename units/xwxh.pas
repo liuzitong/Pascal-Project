@@ -136,20 +136,23 @@ type
     Device_Type:integer;                                 //设备类型
     Range:integer;                                       //角度范围
     Strategy:integer;                                    //策略        
-    //0:全阈值              Full Threshold   
-    //1:智能交互式           Auto Threshold    
-    //2:快速智能交互式       Fast Threshold          
+    //0:全阈值              Full Threshold          从暗到亮 4-2-1.(不清楚,看源码)  
+    //1:智能交互式           Auto Threshold         特定4个点开始,然后用4-2的方式得出四个点的值.其它相邻点以此为参考,设定初始亮度
+    //2:快速智能交互式       Fast Threshold         特定4个点开始,然后用4-2的方式得出四个点的值.其它相邻点以此为参考,设定初始亮度,与智能交互式就只有外圈区别(最外圈在正常值直接结束).
     //3:插值                Top Threshold  停用
-    //10:二区法             One Stage Screen    
-    //11:三区发             Two Stages Screen
-    //12:量化缺损            quantify defects
+    //10:二区法             One Stage Screen     只是测试看不看得见,比正常值亮4个DB,区分正常和异常
+    //11:三区发             Two Stages Screen     看不见(异常)就增加亮度试试看不看得见(绝对相对缺损),区分为正常,绝对缺损和相对缺损
+    //12:量化缺损            quantify defects     先用二区法测如果没响应就用全阈值的方式测出具体数值:正常就不管,异常就量化又多异常
     //13:单DB变化            Single DB changes    停用         
-    //30:标准  应该不用管 数据库是0-15    仅投射可用       
-    //31:盲区  应该不用管 数据库是0-15    仅投射可用             
-    //32:暗区  应该不用管 数据库是0-15    仅投射可用
-    //33:静点  应该不用管 数据库是0-15    仅投射可用                
-    //34:直线  应该不用管 数据库是0-15    仅投射可用
-    Init_Strategy:integer;                //初值策略        0.Age Related. 1.Automatic Threshold 2.Single Stimulus
+    //30:标准  应该不用管 数据库是0-15  动态仅投射可用  测某个DB的等视线       
+    //31:盲区  应该不用管 数据库是0-15  动态仅投射可用  从盲区中间往外走,圈出盲区范围(DB 自定)            
+    //32:暗区  应该不用管 数据库是0-15  动态仅投射可用  选定某个位置圈出暗区位置(DB 自定).
+    //33:静点  应该不用管 数据库是0-15  动态仅投射可用                
+    //34:直线  应该不用管 数据库是0-15  动态仅投射可用   设定一条直线 ,移动按下应答器停止(DB自定)
+    Init_Strategy:integer;                //初值策略    
+    //0.Age Related.                      //按年龄预设值作为初始,只有起始点有作用(比如智能交互式是起始四点)
+    //1.Automatic Threshold               //
+    //2.Single Stimulus                  //
     Init_Value:integer;                  //初值策略初值     亮度DB大小 好像默认值都是10
     Hold_Time:integer;                   //保持时间       默认180
     Delay_Time:integer;                  //延时时间       自动情况下会被覆盖为1200,非自动好像是1000
@@ -194,7 +197,7 @@ type
 
   TCHECKDATA=record                                      //检查数据
     //refresh
-    runstate:integer;			   //0-959                     //运行状态  0代表未运行
+    runstate:integer;			   //0-959                     //运行状态  0代表未运行 1:已经开始
     runstate30:integer;                                  //30度内状态
     count:integer;                                       //完成检测点数
     alarm:integer;                                       //报警状态
@@ -485,7 +488,7 @@ var
   xwDeviceError:boolean;                                 //设备错误
   xwDownload:boolean;                                    //是否已经下载程序
 
-  DemoCheckData:TCHECKDATA=
+  DemoCheckData:TCHECKDATA=                              //写入数据库的检查数据,在TFHome的BtStartClick初始化,通过读取Dat文件
   (
     devicetype:1;
     Ready:1;
@@ -1491,7 +1494,7 @@ begin
   checkresult.VFI := round(vfi*100)/100;
 end;
 
-function GetQZ(x,y: integer):integer;    //圈子数?
+function GetQZ(x,y: integer):integer;    //获取圈子数.
 var
   r2: single;
   r: integer;
@@ -3169,7 +3172,7 @@ begin
   begin
     for j:=1 to 20 do
     begin
-      mydis := abs(DOT_XY[i,j,1]-mydot.x)+abs(DOT_XY[i,j,2]-mydot.y);
+      mydis := abs(DOT_XY[i,j,1]-mydot.x)+abs(DOT_XY[i,j,2]-mydot.y); //寻找最近点
 			if mymindis>mydis then
       begin
         mymindis := mydis;

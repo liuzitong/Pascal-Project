@@ -1,7 +1,7 @@
 object FXwxh: TFXwxh
-  Left = 759
-  Top = 408
-  Width = 760
+  Left = 0
+  Top = 2
+  Width = 656
   Height = 410
   Caption = 'Client'
   Color = clBtnFace

@@ -1,10 +1,10 @@
 object FProgramSelect: TFProgramSelect
-  Left = 776
-  Top = 205
+  Left = 419
+  Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Select Program'
-  ClientHeight = 534
+  ClientHeight = 377
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -28,7 +28,7 @@ object FProgramSelect: TFProgramSelect
   end
   object Panel4: TPanel
     Left = 0
-    Top = 469
+    Top = 312
     Width = 505
     Height = 1
     Align = alBottom
@@ -40,7 +40,7 @@ object FProgramSelect: TFProgramSelect
     Left = 0
     Top = 1
     Width = 1
-    Height = 468
+    Height = 311
     Align = alLeft
     BevelOuter = bvNone
     Color = 16749107
@@ -48,7 +48,7 @@ object FProgramSelect: TFProgramSelect
   end
   object Panel1: TPanel
     Left = 0
-    Top = 470
+    Top = 313
     Width = 505
     Height = 64
     Align = alBottom
@@ -83,7 +83,7 @@ object FProgramSelect: TFProgramSelect
     Left = 1
     Top = 1
     Width = 504
-    Height = 468
+    Height = 311
     Align = alClient
     Caption = 'Panel4'
     TabOrder = 4
@@ -102,7 +102,7 @@ object FProgramSelect: TFProgramSelect
       LookAndFeel.Kind = lfOffice11
       ParentColor = False
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 0
       Tabs.Strings = (
         'Threshold'
@@ -118,7 +118,7 @@ object FProgramSelect: TFProgramSelect
       Left = 1
       Top = 96
       Width = 502
-      Height = 371
+      Height = 214
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText

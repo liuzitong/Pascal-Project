@@ -180,9 +180,9 @@ type
     priCloseBj: boolean;
     priCloseCount: integer;
     priCenterDot: boolean;         //中心点检测  paramsetting中设置会影响此字段
-    priFxy4: boolean;
-    priCenEnd: boolean;       //btStartclick中置为true
-    priZcyd: boolean;
+    priFxy4: boolean;          ////btStart置为false,之后没有置为FALSE的时候,
+    priCenEnd: boolean;       //btStartclick中置为true,如果中心点检查是false
+    priZcyd: boolean;          //正常应答
     priYdcs: integer;        //应答次数 等于三的时候给prijclx赋值1
 
 
@@ -191,13 +191,13 @@ type
     prijcsj: Cardinal;
     priStop,priHjStop: boolean;
     priIni: boolean;
-    priJczt: byte; //1－已新开始， 2－已暂停，3－已继续，4－复查
+    priJczt: byte; //1－已新开始， 2－已暂停，3－已继续，4－复查          没找到初始化位置.不知道哪里会初始化为0
 ////    priBMdxy: TMDArray;
 ////    priBdotArray: TDataArray;
 
     priy, priquan, pripnum: integer;      //prinum 点的个数:= DemoCheckData.pm.Dot_Number
-    pricurp: integer; //当前点
-    prijclx: byte; //检查点类型         0:正常跳转  1:盲点测试   2:假阳   3:假阴 
+    pricurp: integer; //当前点          strategy mod 30<10 是在btStartClick初始化为4个基准点,其他情况初始化为0
+    prijclx: byte; //检查点类型         0:正常跳转  1:盲点测试   2:假阳  没有亮灯,但是点了  3:假阴 暗的灯点了,但是亮的却没有点
     prihadnum: integer; //已测次
     prifcnum: integer;  //复查点数
     priPush,priYdjs: byte;
@@ -206,9 +206,9 @@ type
     priox,prioy: integer;  //box 选取
     priboxs: boolean;
     prihadblind,prihavingblind: boolean;
-    priblindpoint:TPoint;
-    pricurbp: integer;                      
-    prisftestdot: integer;
+    priblindpoint:TPoint;        
+    pricurbp: integer;         //啥用? 盲点?             
+    prisftestdot: integer;     //短期测试点 
 
     priqdms: integer;//直接从项目中取出的QDMS
 
@@ -320,13 +320,12 @@ begin
   result := myresult;
 end;
 
-function TFRunpic.Hasended(mytdata: newtdatarray): boolean;
+function TFRunpic.Hasended(mytdata: newtdatarray): boolean;  //被DelYdkq调用
 var
   i,j,dis,num: integer;
   myresult: boolean;
   xy4end,hasdot: boolean;
 begin
-  TLogFile.GetInstance.Trace(LogLevel,'TFRunpic','Hasended');
   myresult := True;
   xy4end := True;
   num := 0;
@@ -335,7 +334,7 @@ begin
     if mytdata[i].arr=False then     //点已经被测试
     begin
       num := num+1;                  //统计测试的点数      
-      priCenEnd := true;             //首先在btstartclick那里就被置为true,只有有任意一点被测试即为true
+      priCenEnd := true;             //只有有任意一点被测试即为true
     end;
     if ((mytdata[i].arr=True) and (mytdata[i].isxy4=True)) then     //4个特殊点,只要有任一没有检查完就为TRUE
     begin
@@ -357,21 +356,23 @@ begin
     //新初始点为isxy4,四点检查完毕
     if xy4end then
     begin
-      //若中心点参与了检查，在此值最初四点
-      if not priFxy4 then
+      {
+        //若中心点参与了检查，在此值最初四点
+        // if not priFxy4 then     //btStart置为false,之后没有置为FALSE的时候,                感觉这部分没什么卵用
+        // begin
+        //   Getxy4;                   //获得新的四点
+        //   priFxy4 := true;
+        //   priCenterDot := false;
+        //   //if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
+        //   //FMain.LightOther(1,0); // 大菱形固视
+        //   sleep(1000);
+        //   FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);//正常固视
+        //   priZcyd := true;
+        // end
+        // else
+      }
       begin
-        Getxy4;
-        priFxy4 := true;
-        priCenterDot := false;
-        //if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
-        //FMain.LightOther(1,0); // 大菱形固视
-        sleep(1000);
-        FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);//正常固视
-        priZcyd := true;
-      end
-      else
-      begin
-        Old4XY := false;  //最初4点完成后
+        Old4XY := false;  //最初4点完成后将其他点isxy4设定为true
         for i:=low(mytdata) to high(mytdata) do
         begin
           if (mytdata[i].isxy4=True) and (mytdata[i].arr=false) then
@@ -392,7 +393,7 @@ begin
                       mytdata[j].db := mytdata[i].db;
                       if abs(mytdata[j].x)+abs(mytdata[j].y)<abs(mytdata[i].x)+abs(mytdata[i].y) then
                       mytdata[j].db := mytdata[i].db+2;
-                     }
+                    }
                     //改为视野角小于加2DB,否则，原DB
                     mytdata[j].db := mytdata[i].db-1;
                     if abs(mytdata[j].x)+abs(mytdata[j].y)>abs(mytdata[i].x)+abs(mytdata[i].y) then
@@ -433,6 +434,8 @@ begin
     end;
   end;
 
+
+  //检测是否已经测试完的逻辑
   for i:=low(mytdata) to high(mytdata) do
     if mytdata[i].arr=True then      //任意一点没检查
     begin
@@ -657,7 +660,7 @@ begin
 
 end;
 
-procedure TFRunpic.BtParamClick(Sender: TObject);
+procedure TFRunpic.BtParamClick(Sender: TObject);                         //参数选择
 var
   prtmpform:Tform;
 begin
@@ -792,7 +795,7 @@ begin
   priJczt:=0;
 end;
 
-procedure TFRunpic.BtSelectClick(Sender: TObject);
+procedure TFRunpic.BtSelectClick(Sender: TObject);           //程序选择
 var
   i,id:integer;
   s,pt:string;
@@ -852,7 +855,7 @@ begin
   priJczt:=0;
 end;
 
-procedure TFRunpic.ClearTest;
+procedure TFRunpic.ClearTest;                  //停止按钮调用
 var
   i,id:integer;
   s,pt:string;
@@ -903,12 +906,12 @@ begin
   }
 end;
 
-procedure TFRunpic.BtStartClick(Sender: TObject);
+procedure TFRunpic.BtStartClick(Sender: TObject);    //主要是初始化一部分DemoCheckData数据,另外初始化ftpoint
 var
   checkdata:TCheckData;
   aaa,bbb,ccc,i: integer;
 begin
-  //  priJczt: byte; //0－原始状态，1－已新开始， 2－已暂停，3－复查
+  //  priJczt: byte; //0－原始状态，1－已新开始， 2－已暂停，3－复查 应该不会用
   case priJczt of     //检查状态.
     0:  //点START
       begin
@@ -931,7 +934,7 @@ begin
 
         TLogFile.GetInstance.Trace(LogLevel,'DemoCheckData.pm.Strategy value is',IntToStr(DemoCheckData.pm.Strategy));
         if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
-          FMain.LightOther(1,0) // 大菱形固视 ,ligthother 应该是开启背景灯.
+          FMain.LightOther(1,0) // 小菱形固视 ,ligthother 应该是开启背景灯.
         else
           FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);
 
@@ -976,7 +979,7 @@ begin
         Pupilwx0:=(Pupilx+Pupilx+Pupildx)/2-Pupilwx;   //Pupil*由this::SampleGrabberBuffer的GetPupil赋值  SampleGrabberBuffer 是控件SampleGrabber的OnBuffer绑定的回调函数,如果没有消息初始值为0
         Pupilwy0:=(Pupily+Pupily+Pupildy)/2-Pupilwy;
 
-        if DemoCheckData.runstate=0 then
+        if DemoCheckData.runstate=0 then    //未运行
         begin
           WaitCount:=0;
           DemoCheckData.waitcount := 0;
@@ -1022,7 +1025,7 @@ begin
         prisftestdot := 0;
         priCenterDot:=false;
         priFxy4 := false;
-        priZcyd := true;
+        priZcyd := true;   //正常应答
         priYdcs := 0;      //应答次数
         //中心点检查Param Setting中打开 Fovea的值就为1
         if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
@@ -1061,7 +1064,7 @@ begin
           ftpoint[i-1].y := DemoCheckData.pt[i].y;
           ftpoint[i-1].arrtime := 4;
 
-          if (DemoCheckData.pm.Init_Strategy=2) then     //单点刺激所有的都有一个初始值
+          if (DemoCheckData.pm.Init_Strategy=2) then     //单点刺激所有的都有一个初始值,默认为1
           begin
             //ftpoint[i-1].db := DemoCheckData.sv[DemoCheckData.pm.Init_Value]; //单DB刺激
             ftpoint[i-1].db := DemoCheckData.pm.Init_Value; //单DB扫描
@@ -1070,10 +1073,10 @@ begin
           begin
             if DemoCheckData.pm.Strategy mod 30 <10  then     //逻辑上看是除开10-13这三个方法 
             begin
-              ftpoint[i-1].db := DemoCheckData.sv[i];          //标准DB赋值给它
+              ftpoint[i-1].db := DemoCheckData.sv[i];         //标准DB赋值给它
             end
             else
-            begin                                 //阈上值
+            begin                                             //阈上值
               ftpoint[i-1].db := DemoCheckData.sv[i]-6;
               if ftpoint[i-1].db<0 then
                 ftpoint[i-1].db := 0;
@@ -1098,7 +1101,7 @@ begin
 
         priCenEnd := true;
         //中心点检查
-        if priCenterDot then    //priCenterDot 在1020行被赋值false 判定必失败
+        if priCenterDot then    //priCenterDot 在1026行被赋值false 判定必失败
         begin
           //若其它固视则不用下偏8度2019.9.9改
           if DemoCheckData.pm.Fixation_Mode=0 then  //中心固视
@@ -1118,7 +1121,7 @@ begin
         begin
           if DemoCheckData.pm.Strategy mod 30<10  then  //'筛选检查' 10，11，12
           begin
-            Getxy4;                           //标记ftpoint (9,3)等对称的4个点,设置其是XY4,并设置其DB 复制pricurp
+            Getxy4;                         //获取标定点,并且使pricurp为第一个标定点                         
             priFxy4 := true;
           end;
         end;
@@ -1166,7 +1169,7 @@ begin
           TWTimerProc;
         end;
       end;
-    1:  //点PAUSE
+    1:  //点PAUSE   开始之后prJczt就被赋值为1
       begin
         if DemoCheckData.Ready=0 then exit;
         ChinDown:=True;
@@ -1208,7 +1211,7 @@ begin
   end;
 end;
 
-procedure TFRunpic.Getxy4;
+procedure TFRunpic.Getxy4;   //在BtStartClick是被调用一次,DelYdqk->hasEnded在xy4end为真的时候调用一次  从运行结果看Getxy4一共调用了两次      标记ftpoint (9,3)等对称的4个点,设置其是XY4,并设置其DB 复制pricurp
 var
 	i,x,y,numberxy4: integer;
   xy4: array[0..3] of integer;
@@ -1220,46 +1223,49 @@ begin
 
 	numberxy4 := 0;
 
-  for i:=0 to DemoCheckData.pm.Dot_Number-1 do
+
+  TLogFile.GetInstance.Trace(LogLevel,'Runpic','GetXY4 -9,9');
+  for i:=0 to DemoCheckData.pm.Dot_Number-1 do           
   begin
 		x := ftpoint[i].x;
 		y := ftpoint[i].y;
 		if (isNearbyXY(x, y, -9, 9, 0)) then
-    begin
-      xy4[0] := i;
-//      ftpoint[i].isxy4 := true;
-      numberxy4 := numberxy4+1;
-    end
-		else if (isNearbyXY(x, y, 9, 9, 0)) then
-    begin
-      xy4[1] := i;
-//      ftpoint[i].isxy4 := true;
-      numberxy4 := numberxy4+1;
-    end
-		else if (isNearbyXY(x, y, -9, -9, 0)) then
-    begin
-      xy4[2] := i;
-//      ftpoint[i].isxy4 := true;
-      numberxy4 := numberxy4+1;
-    end
-		else if (isNearbyXY(x, y, 9, -9, 0)) then
-    begin
-//      ftpoint[i].isxy4 := true;
-      xy4[3] := i;
-      numberxy4 := numberxy4+1;
+      begin
+        xy4[0] := i;           //XY4点的位置
+        //      ftpoint[i].isxy4 := true;
+        numberxy4 := numberxy4+1;
+      end
+      else if (isNearbyXY(x, y, 9, 9, 0)) then
+      begin
+        xy4[1] := i;
+        //      ftpoint[i].isxy4 := true;
+        numberxy4 := numberxy4+1;
+      end
+      else if (isNearbyXY(x, y, -9, -9, 0)) then
+      begin
+        xy4[2] := i;
+        //      ftpoint[i].isxy4 := true;
+        numberxy4 := numberxy4+1;
+      end
+      else if (isNearbyXY(x, y, 9, -9, 0)) then
+      begin
+        //      ftpoint[i].isxy4 := true;
+        xy4[3] := i;
+        numberxy4 := numberxy4+1;
+      end;
     end;
-  end;
 	if (numberxy4=4) then
   begin
     for i:=0 to 3 do
-    begin
-      ftpoint[xy4[i]].isxy4 := true;
-      ftpoint[xy4[i]].db := DemoCheckData.sv[xy4[i]+1]-4;
-    end;
-    pricurp := xy4[0];
+      begin
+        ftpoint[xy4[i]].isxy4 := true;
+        ftpoint[xy4[i]].db := DemoCheckData.sv[xy4[i]+1]-4;
+      end;
+      pricurp := xy4[0];
   	exit;
   end;
 
+  TLogFile.GetInstance.Trace(LogLevel,'Runpic','GetXY4 -3,3');
 	numberxy4 := 0;
   for i:=0 to DemoCheckData.pm.Dot_Number-1 do
   begin
@@ -1268,25 +1274,25 @@ begin
 		if (isNearbyXY(x, y, -3, 3, 0)) then
     begin
       xy4[0] := i;
-//      ftpoint[i].isxy4 := true;
+      //      ftpoint[i].isxy4 := true;
       numberxy4 := numberxy4+1;
     end
 		else if (isNearbyXY(x, y, 3, 3, 0)) then
     begin
       xy4[1] := i;
-//      ftpoint[i].isxy4 := true;
+      //      ftpoint[i].isxy4 := true;
       numberxy4 := numberxy4+1;
     end
 		else if (isNearbyXY(x, y, -3, -3, 0)) then
     begin
       xy4[2] := i;
-//      ftpoint[i].isxy4 := true;
+      //      ftpoint[i].isxy4 := true;
       numberxy4 := numberxy4+1;
     end
 		else if (isNearbyXY(x, y, 3, -3, 0)) then
     begin
       xy4[3] := i;
-//      ftpoint[i].isxy4 := true;
+      //      ftpoint[i].isxy4 := true;
       numberxy4 := numberxy4+1;
     end;
   end;
@@ -1301,6 +1307,7 @@ begin
   	exit;
   end;
 
+  TLogFile.GetInstance.Trace(LogLevel,'Runpic','GetXY4 -30,30');
 	numberxy4 := 0;
   for i:=0 to DemoCheckData.pm.Dot_Number-1 do
   begin
@@ -1309,25 +1316,25 @@ begin
 		if (isNearbyXY(x, y, -30, 30, 0)) then
     begin
       xy4[0] := i;
-//      ftpoint[i].isxy4 := true;
+      //      ftpoint[i].isxy4 := true;
       numberxy4 := numberxy4+1;
     end
 		else if (isNearbyXY(x, y, 30, 30, 0)) then
     begin
       xy4[1] := i;
-//      ftpoint[i].isxy4 := true;
+      //      ftpoint[i].isxy4 := true;
       numberxy4 := numberxy4+1;
     end
 		else if (isNearbyXY(x, y, -30, -30, 0)) then
     begin
       xy4[2] := i;
-//      ftpoint[i].isxy4 := true;
+      //      ftpoint[i].isxy4 := true;
       numberxy4 := numberxy4+1;
     end
 		else if (isNearbyXY(x, y, 30, -30, 0)) then
     begin
       xy4[3] := i;
-//      ftpoint[i].isxy4 := true;
+      //      ftpoint[i].isxy4 := true;
       numberxy4 := numberxy4+1;
     end;
   end;
@@ -1342,6 +1349,7 @@ begin
   	exit;
   end;
 
+  TLogFile.GetInstance.Trace(LogLevel,'Runpic','GetXY4 9,9,8*8');
 	numberxy4 := 0;
   i := NearestXY(-9, 9, 8*8);
   if (i<>-1) then
@@ -1447,28 +1455,28 @@ procedure TFRunpic.BtPauseClick(Sender: TObject);
 var
   checkdata:TCheckData;
 begin
-      begin
-        if DemoCheckData.Ready=0 then exit;
-        ChinDown:=True;
-        ChinUp:=True;
-        DemoCheckData.runstate:=2;
-        DemoCheckData.runstate30:=0;
-////        if not WriteXwRunstate(checkdata) then;
-        FMain.ActiveControl:=nil;
+  begin
+    if DemoCheckData.Ready=0 then exit;
+    ChinDown:=True;
+    ChinUp:=True;
+    DemoCheckData.runstate:=2;
+    DemoCheckData.runstate30:=0;
+    ////        if not WriteXwRunstate(checkdata) then;
+    FMain.ActiveControl:=nil;
 
-        pritesting:=false;
-        TimerTestTime.Enabled := false;
-        BtStart.Caption := Tr('Resume');
-        priJczt := 2;
-      end;
-      {
-  if DemoCheckData.Ready=0 then exit;
-  ChinDown:=True;
-  ChinUp:=True;
-  checkdata.runstate:=2;
-  checkdata.runstate30:=0;
-////  if not WriteXwRunstate(checkdata) then;
-  FMain.ActiveControl:=nil;
+    pritesting:=false;
+    TimerTestTime.Enabled := false;
+    BtStart.Caption := Tr('Resume');
+    priJczt := 2;
+  end;
+  {
+    if DemoCheckData.Ready=0 then exit;
+    ChinDown:=True;
+    ChinUp:=True;
+    checkdata.runstate:=2;
+    checkdata.runstate30:=0;
+      ////  if not WriteXwRunstate(checkdata) then;
+    FMain.ActiveControl:=nil;
   }
 end;
 
@@ -1521,8 +1529,8 @@ begin
   begin
     priJczt := 0;
     BtStart.Caption := Tr('Start');
-    FMain.ActiveControl:=nil;
   end
+    FMain.ActiveControl:=nil;
   else
   }
   begin
@@ -2406,7 +2414,7 @@ begin
             begin
               ftpoint[afarray[pricurp]].oren := 2;
               ///都用全域值测试
-              if not Old4XY then        //一般为false
+              if not Old4XY then       
               begin
                 {
                   if DemoCheckData.pm.Strategy mod 30=2  then  //快速智能
@@ -2422,14 +2430,14 @@ begin
                 }
                 //若在5圈，应答并在正常内，结束
                 if DemoCheckData.pm.Strategy mod 30=2  then  //快速智能
-                if GetQZ(ftpoint[afarray[pricurp]].x,ftpoint[afarray[pricurp]].y)>=5 then //第五圈
+                if GetQZ(ftpoint[afarray[pricurp]].x,ftpoint[afarray[pricurp]].y)>=5 then //第五圈直接赋值
                 begin
                   if ftpoint[afarray[pricurp]].db>DemoCheckData.sv[pricurp+1]-4 then
                   begin
                     ftpoint[afarray[pricurp]].arr := False;
-                    DemoCheckData.v[pricurp+1] := ftpoint[afarray[pricurp]].db+1;// pricurdb;
+                    DemoCheckData.v[pricurp+1] := ftpoint[afarray[pricurp]].db+1;     // 对点DB赋值
                     if GetNearDB(pricurp,ftpoint)>ftpoint[afarray[pricurp]].db then
-                      DemoCheckData.v[pricurp+1] := ftpoint[afarray[pricurp]].db+2;// pricurdb;
+                    DemoCheckData.v[pricurp+1] := ftpoint[afarray[pricurp]].db+2;     // 对点DB赋值
                   end;
                 end;
               end;
@@ -2437,11 +2445,11 @@ begin
             2:
             begin
               ftpoint[afarray[pricurp]].oren := 2;
-
-              if not Old4XY then
+              if not Old4XY then  
               begin
                 {
-                  if DemoCheckData.pm.Strategy mod 30=2  then  //快速智能
+                  if DemoCheckData.pm.Strategy mod 
+                  30=2  then  //快速智能
                   begin
                     if ftpoint[afarray[pricurp]].db>DemoCheckData.sv[pricurp+1]-1 then
                     begin
@@ -2460,7 +2468,7 @@ begin
                     ftpoint[afarray[pricurp]].arr := False;
                     DemoCheckData.v[pricurp+1] := ftpoint[afarray[pricurp]].db+1;// pricurdb;
                     if GetNearDB(pricurp,ftpoint)>ftpoint[afarray[pricurp]].db then
-                      DemoCheckData.v[pricurp+1] := ftpoint[afarray[pricurp]].db+2;// pricurdb;
+                    DemoCheckData.v[pricurp+1] := ftpoint[afarray[pricurp]].db+2;// pricurdb;
                   end;
                 end;
               end;
@@ -2524,7 +2532,7 @@ begin
       else  //未应答
       begin
         //        if pubPrefer.testStrategy = '筛选检查' then
-        if DemoCheckData.pm.Strategy mod 30 >=10 then  //'筛选检查'
+        if DemoCheckData.pm.Strategy mod 30 >=10 then  //'筛选检查'   对DemoCheckData中的db数组赋值
         begin
           if DemoCheckData.pm.Strategy mod 30 =10  then  //一级筛选
           begin
@@ -2724,7 +2732,7 @@ begin
       end;
     end;
 
-    3: ///假阴   暗的灯点了,但是亮的缺没有点
+    3: ///假阴   暗的灯点了,但是亮的却没有点
     begin
       if not pubkey then
       begin
@@ -2764,9 +2772,9 @@ begin
     FlashWindow(Application.Handle, True);
     FMain.cxLabelTesting.Visible := false;
     cxDBLabel8.Style.Font.Color:=clMoneyGreen;
-    BtSaveClick(BtSave);
+    BtSaveClick(BtSave);                                   //此处就是将数据结果写入数据库
     ////    BtStopClick(nil);
-    FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);
+    FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);    //开灯?
     Panel4.Enabled := true;
 
     //    FMain.ResetMotor; //复位
@@ -2810,23 +2818,22 @@ var
   myhaskj: boolean;
 begin
   prijclx := 0;  ///正常
-  myresult := mypoint;     //外部传来的pricurp
+  myresult := mypoint;     //mypoint:外部传来的pricurp 当前点
 
   k := random(10);
   for i:=0 to high(afarray) do
   begin
-    curpoint := i+mypoint+1+k;
-
+    curpoint := i+mypoint+1+k;                       
     if curpoint>high(afarray) then
       curpoint := curpoint mod (high(afarray)+1);
 
-    if mytdata[afarray[curpoint]].arr=True then
+    if mytdata[afarray[curpoint]].arr=True then      //随机算法,此点在附近且未被应答过
     begin
       //全域值中心点检查
       if ((DemoCheckData.pm.Strategy mod 30>=1) and (DemoCheckData.pm.Strategy mod 30<=2)) or (priCenterDot and (priCenEnd=false)) then
       begin
         //必须跳动的是isxy4点
-        if mytdata[afarray[curpoint]].isxy4 then
+        if mytdata[afarray[curpoint]].isxy4 then  //isxy4在hasEnded中被赋值
         begin
           myresult := curpoint;
           break;
@@ -2838,28 +2845,28 @@ begin
         break;
       end;
     end
-    else  //已经测试完成的点
+    else  //已经测试完成的点 处理短期波动
     begin
       //处理短期波动
       if (DemoCheckData.pm.SF=1) then
-      if (DemoCheckData.pm.Strategy mod 30>=0) and (DemoCheckData.pm.Strategy mod 30<=2) then
-      begin
-        if (prisftestdot<DemoCheckData.pm.SF_Number) then
-        if (DemoCheckdata.count mod DemoCheckData.pm.SF_Number=0) then
-        if not ((DemoCheckData.pt[curpoint+1].x=0) and (DemoCheckData.pt[curpoint+1].y=0)) then
-        if (DemoCheckData.sfv[curpoint+1]=-1) then
+        if (DemoCheckData.pm.Strategy mod 30>=0) and (DemoCheckData.pm.Strategy mod 30<=2) then
         begin
-          prisftestdot := prisftestdot+1;
-          DemoCheckData.sfv[curpoint+1] := DemoCheckData.v[curpoint+1];
-          ftpoint[afarray[curpoint]].oren := 0;
-          ftpoint[afarray[curpoint]].arr := true;
-          break;
+          if (prisftestdot<DemoCheckData.pm.SF_Number) then
+          if (DemoCheckdata.count mod DemoCheckData.pm.SF_Number=0) then
+          if not ((DemoCheckData.pt[curpoint+1].x=0) and (DemoCheckData.pt[curpoint+1].y=0)) then
+          if (DemoCheckData.sfv[curpoint+1]=-1) then
+          begin
+            prisftestdot := prisftestdot+1;
+            DemoCheckData.sfv[curpoint+1] := DemoCheckData.v[curpoint+1];
+            ftpoint[afarray[curpoint]].oren := 0;
+            ftpoint[afarray[curpoint]].arr := true;
+            break;
         end;
       end;
     end;
   end;
 
-//  if prihavingblind  then
+  //  if prihavingblind  then   盲点测试相关 暂时不管
   if prihavingblind and (DemoCheckData.pm.Fixation_Mode<>4) then
   begin
     pricurbp := pricurbp+1;
@@ -2873,7 +2880,7 @@ begin
   end
   else
   begin
-  //  if prihadnum mod 29 =0 then
+    //  if prihadnum mod 29 =0 then  盲点测试才会转入此分支
     if ((priYdcs=3) and pubblindon and (not priCenterDot) and (DemoCheckData.pm.Fixation_Mode<>4) and (DemoCheckData.pm.Eye<2)) then
     begin
       prijclx := 1;      ////当正常应答两次后查询盲点
@@ -2883,7 +2890,7 @@ begin
     begin
       if (prihadnum mod DemoCheckData.pm.Fixation_Cycle=0) and pubblindon and (not priCenterDot) and (DemoCheckData.pm.Fixation_Mode<>4) and (DemoCheckData.pm.Eye<2) then
         prijclx := 1      ////盲点
-         //  else if prihadnum mod 35 = 0 then
+        //  else if prihadnum mod 35 = 0 then
       else if prihadnum mod DemoCheckData.pm.False_POS_Cycle = 13 then
         prijclx := 2      ////假阳
         //  else if prihadnum mod 35 = 17 then
@@ -2925,25 +2932,25 @@ begin
   pubmoveline := false;    //好像是投射才需要?
   TimerTestTime.Enabled := true;
   pristepdb := 4;
-  while pritesting do                           //检查停止通过pritesting控制
+  while pritesting do                           //检查停止通过pritesting控制,hasEnded 在检查数目达到之后置为false
   begin
-    if (not pristop) and (not priHjStop) then    //好像这两个变量总为false 
+    if (not pristop) and (not priHjStop) then    //好像这两个变量总为false ,没什么用
     begin
       Application.ProcessMessages;
       pubkey := false;
       prihadnum := prihadnum+1;
       case prijclx of                             //prijclx 检查点类型，由delydqk调用的skippoint 赋值.
-        0: //正常跳转
+        0: //正常跳转                               //计算出大概的DB值,然后调用lightDot亮灯,赋值是在DelYdqk中进行
         begin
           //if pubPrefer.testStrategy='筛选检查' then
-          if DemoCheckData.pm.Strategy mod 30>=10  then  //'筛选检查' 10，11，12
+          if DemoCheckData.pm.Strategy mod 30>=10  then  //'筛选检查' 10 二区法，11 三区法，12量化缺损
           begin
             pritrioren := ftpoint[afarray[pricurp]].oren;   //pricurp在getXY4中被赋值过
             pricury := ftpoint[afarray[pricurp]].y;
             if pritrioren=3 then
             begin
               pricurdb := 0;
-              if DemoCheckData.pm.Strategy mod 30=12  then
+              if DemoCheckData.pm.Strategy mod 30=12  then   //量化缺损
               begin
                  pricurdb := ftpoint[afarray[pricurp]].db-pristepdb; //此函数赋值为4;
               end;
@@ -3014,11 +3021,12 @@ begin
           end;
         end;
 
-        1: ///盲点
+        1: ///盲点                 然后调用lightDot亮灯,可能亮灯在奇怪的地方
         begin
           ////加入盲点查询程序
           ////prihadblind := false;
           ////prihavingblind := false;
+          FMain.Memo2.Lines.Add('blind spot test');
           if prihadblind then
           begin
             pubPrefer.BTest := pubPrefer.BTest+1;
@@ -3046,7 +3054,7 @@ begin
           //          shape5.Update;
           pubPrefer.JyjcNum := pubPrefer.JyjcNum+1;
           DemoCheckData.poslength := DemoCheckData.poslength+1;
-
+          FMain.Memo2.Lines.Add('false positive test');
           FMain.LightDot(40,point(0,0),0,DemoCheckData.pm.Hold_Time);
           //EtPosCount.Caption:= inttostr(pubPrefer.JyydNum)+'/'+inttostr(pubPrefer.JyjcNum);
 
@@ -3057,6 +3065,7 @@ begin
         begin
           //          shape5.Brush.Color:=clblue;
           //          shape5.Update;
+          FMain.Memo2.Lines.Add('false negative test');
           pubPrefer.JsjcNum := pubPrefer.JsjcNum+1;
           DemoCheckData.neglength := DemoCheckData.neglength+1;
           //EtNegCount.Caption:=inttostr(pubPrefer.JsydNum)+'/'+inttostr(pubPrefer.JsjcNum);
@@ -3151,7 +3160,7 @@ begin
         pubkey := false;
       end;
 
-      /////等待间隔可应答时间
+      //计算等待时间
       QueryPerformanceFrequency(li);
       //myCount:=round((li/1000)*(SpinEdit3.Value));
       //myCount:=round((li/1000)*(pubPrefer.breaktime+200));
@@ -3163,15 +3172,18 @@ begin
         end
       else
         myCount:=round((li/1000)*(pubPrefer.breaktime+pubPrefer.flashtime));
-
       QueryPerformanceCounter(StartTime);
+
+
+
+      //亮灯等待,按下应答器之后就进入后续
       repeat
         Application.ProcessMessages;
         if not pritesting then
           break;
-        if pubkey then
+        if pubkey then           //按下应答器会在main.showRead中被赋值为true
         begin
-         //投射应答即完成
+         //投射应答即完成 myCount:=0后会跳出循环
           if ((SaveDataHead.DEVTYPE = $0088) and (DemoCheckData.pm.Delay_Mode=0)) then
           begin
             myCount := 0;
