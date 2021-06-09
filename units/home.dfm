@@ -29,9 +29,9 @@ object FHome: TFHome
     TabOrder = 0
     object PanelNewList: TPanel
       Left = 1
-      Top = 1
+      Top = 41
       Width = 1354
-      Height = 655
+      Height = 615
       Align = alClient
       Caption = 'PanelNewList'
       ParentColor = True
@@ -40,7 +40,7 @@ object FHome: TFHome
         Left = 1
         Top = 21
         Width = 1352
-        Height = 633
+        Height = 593
         Align = alClient
         Caption = 'Wait to See The Doctor'
         Font.Charset = DEFAULT_CHARSET
@@ -501,7 +501,7 @@ object FHome: TFHome
           Left = 2
           Top = 135
           Width = 1348
-          Height = 496
+          Height = 456
           Align = alClient
           TabOrder = 1
           OnEnter = GridTbCheckEnter
@@ -598,6 +598,7 @@ object FHome: TFHome
             Spacing = 4
             Transparent = False
             Caption = 'TbCheckDelete'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -684,9 +685,9 @@ object FHome: TFHome
     end
     object PanelDocList: TPanel
       Left = 1
-      Top = 1
+      Top = 41
       Width = 1354
-      Height = 655
+      Height = 615
       Align = alClient
       Caption = 'PanelDocList'
       ParentColor = True
@@ -695,7 +696,7 @@ object FHome: TFHome
         Left = 1
         Top = 21
         Width = 1352
-        Height = 633
+        Height = 593
         Align = alClient
         Caption = 'Patient Checked'
         Color = clBtnFace
@@ -786,7 +787,7 @@ object FHome: TFHome
           Left = 2
           Top = 149
           Width = 1348
-          Height = 482
+          Height = 442
           Align = alClient
           TabOrder = 1
           OnEnter = GridTbCheck2Enter
@@ -909,7 +910,7 @@ object FHome: TFHome
               HeaderAlignmentHorz = taCenter
               HeaderAlignmentVert = vaCenter
               Styles.Header = cxStyle1
-              Width = 92
+              Width = 172
             end
             object GridTbCheck2DBTableView1Date: TcxGridDBColumn
               DataBinding.FieldName = 'Date'
@@ -1391,8 +1392,8 @@ object FHome: TFHome
       Left = 1
       Top = 1
       Width = 1354
-      Height = 655
-      Align = alClient
+      Height = 40
+      Align = alTop
       Caption = 'Panel2'
       TabOrder = 2
       Visible = False
@@ -1400,7 +1401,7 @@ object FHome: TFHome
         Left = 1
         Top = 1
         Width = 1352
-        Height = 606
+        Height = 71
         ActivePage = TabSheet1
         Align = alClient
         TabOrder = 0
@@ -1544,8 +1545,8 @@ object FHome: TFHome
           object ImageEmpty: TImage
             Left = 0
             Top = 0
-            Width = 1006
-            Height = 607
+            Width = 1344
+            Height = 43
             Align = alClient
             Center = True
             Picture.Data = {
@@ -10791,7 +10792,7 @@ object FHome: TFHome
           ImageIndex = 5
           DesignSize = (
             1344
-            578)
+            43)
           object ImageGray2: TImage
             Left = 25
             Top = 20
@@ -10875,7 +10876,7 @@ object FHome: TFHome
       end
       object Panel6: TPanel
         Left = 1
-        Top = 607
+        Top = -8
         Width = 1352
         Height = 47
         Align = alBottom
@@ -11526,11 +11527,6 @@ object FHome: TFHome
         DataType = ftInteger
       end
       item
-        Name = 'IDNo'
-        DataType = ftString
-        Size = 10
-      end
-      item
         Name = 'Pt'
         DataType = ftString
         Size = 40
@@ -11636,6 +11632,11 @@ object FHome: TFHome
       item
         Name = 'State'
         DataType = ftInteger
+      end
+      item
+        Name = 'IDNo'
+        DataType = ftString
+        Size = 20
       end>
     IndexDefs = <
       item
