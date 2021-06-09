@@ -167,19 +167,19 @@ begin
     EtStrategy.Properties.Items.Add(Tr('Strategy3'));
     LbStrategy.Items.Add('3');
   end;
-  if TbPt.FieldByName('Strategy10').AsInteger<>0 then begin
+  if TbPt.FieldByName('Strategy10').AsInteger<>0 then begin     //One Stage Screen
     EtStrategy.Properties.Items.Add(Tr('Strategy10'));
     LbStrategy.Items.Add('10');
   end;
-  if TbPt.FieldByName('Strategy11').AsInteger<>0 then begin
+  if TbPt.FieldByName('Strategy11').AsInteger<>0 then begin     //Two Stages Screen
     EtStrategy.Properties.Items.Add(Tr('Strategy11'));
     LbStrategy.Items.Add('11');
   end;
-  if TbPt.FieldByName('Strategy12').AsInteger<>0 then begin
+  if TbPt.FieldByName('Strategy12').AsInteger<>0 then begin    //quantify defects
     EtStrategy.Properties.Items.Add(Tr('Strategy12'));
     LbStrategy.Items.Add('12');
   end;
-  if TbPt.FieldByName('Strategy13').AsInteger<>0 then begin
+  if TbPt.FieldByName('Strategy13').AsInteger<>0 then begin    //Single DB changes
     EtStrategy.Properties.Items.Add(Tr('Strategy13'));
     LbStrategy.Items.Add('13');
   end;

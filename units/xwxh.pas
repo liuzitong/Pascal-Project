@@ -131,56 +131,73 @@ type
   end;
   PTCHECKPOINT=^TCHECKPOINT;
 
-  TCHECKSET=record                                       //设置参数
+//checkdata.pm初始化,在param界面修改然后再赋值到checkdata.pm
+  TCHECKSET=record                                       //设置参数 一般在param
     Device_Type:integer;                                 //设备类型
     Range:integer;                                       //角度范围
-    Strategy:integer;                                    //策略
-    Init_Strategy:integer;                               //初值策略
-    Init_Value:integer;                                  //初值策略初值
-    Hold_Time:integer;                                   //保持时间
-    Delay_Time:integer;                                  //延时时间
-    Blue_Yellow:integer;                                 //蓝黄模式
-    Background_Color:integer;                            //背景颜色
-    Stimulus_Color:integer;                              //刺激颜色
-    Stimulus_Size:integer;                               //光标尺寸
-    Fixation_Monitor:integer;                            //固视检测
-    Fovea:integer;                                       //中心检测
-    Peripheral:integer;                                  //外围检测
-    SF:integer;                                          //短期波动检测
-    SF_Number:integer;                                   //短期波动检测次数
-    Dynamic_Value:integer;                               //动态刺激初值
-    Alarm_Mode:integer;                                  //报警方式
-    Blind_Value:integer;                                 //盲点刺激值
-    Rx:integer;                                          //镜片
-    Rx1:integer;                                         //镜片参数1
-    Rx2:integer;                                         //镜片参数2
-    Rx3:integer;                                         //镜片参数3
-    False_POS_Cycle:integer;                             //假阳性检测周期
-    False_NEG_Cycle:integer;                             //假阴性检测周期
-    Fixation_Cycle:integer;                              //固视检测周期
-    Fixation_Value:integer;                              //固视刺激值
-    Eye:integer;                                         //眼别  0 L,1 R
-    Age:integer;                                         //年龄
-    Dot_Number:integer;                                  //程序点数
-    Chin_Dir:integer;                                    //腮托控制字
-    B_Light_sv:integer;                                  //背景光强度
-    EB_Light_sv:integer;                                 //环境光差报警值
-    Fixation_Mode:integer;                               //固视方式
-    MoveSpeed:integer;                                   //动态移动速度
-    MoveMode:integer;                                    //动态方式
-    MoveX0:integer;                                      //动态X0
-    MoveY0:integer;                                      //动态Y0
-    MoveX1:integer;                                      //动态X1
-    MoveY1:integer;                                      //动态Y1
-    MoveDistance:integer;                                //动态距离
-    MoveTime:integer;                                    //动态时间
-    Delay_Mode:integer;                                  //延时方式
-    temp:array[1..17] of integer;                        //留用
+    Strategy:integer;                                    //策略        
+    //0:全阈值              Full Threshold          从暗到亮 4-2-1.(不清楚,看源码)  
+    //1:智能交互式           Auto Threshold         特定4个点开始,然后用4-2的方式得出四个点的值.其它相邻点以此为参考,设定初始亮度
+    //2:快速智能交互式       Fast Threshold         特定4个点开始,然后用4-2的方式得出四个点的值.其它相邻点以此为参考,设定初始亮度,与智能交互式就只有外圈区别(最外圈在正常值直接结束).
+    //3:插值                Top Threshold  停用
+    //10:二区法             One Stage Screen     只是测试看不看得见,比正常值亮4个DB,区分正常和异常
+    //11:三区发             Two Stages Screen     看不见(异常)就增加亮度试试看不看得见(绝对相对缺损),区分为正常,绝对缺损和相对缺损
+    //12:量化缺损            quantify defects     先用二区法测如果没响应就用全阈值的方式测出具体数值:正常就不管,异常就量化又多异常
+    //13:单DB变化            Single DB changes    停用         
+    //30:标准  应该不用管 数据库是0-15  动态仅投射可用  测某个DB的等视线       
+    //31:盲区  应该不用管 数据库是0-15  动态仅投射可用  从盲区中间往外走,圈出盲区范围(DB 自定)            
+    //32:暗区  应该不用管 数据库是0-15  动态仅投射可用  选定某个位置圈出暗区位置(DB 自定).
+    //33:静点  应该不用管 数据库是0-15  动态仅投射可用                
+    //34:直线  应该不用管 数据库是0-15  动态仅投射可用   设定一条直线 ,移动按下应答器停止(DB自定)
+    Init_Strategy:integer;                //初值策略    
+    //0.Age Related.                      //按年龄预设值作为初始,只有起始点有作用(比如智能交互式是起始四点)
+    //1.Automatic Threshold               //
+    //2.Single Stimulus                  //
+    Init_Value:integer;                  //初值策略初值     亮度DB大小 好像默认值都是10
+    Hold_Time:integer;                   //保持时间       默认180
+    Delay_Time:integer;                  //延时时间       自动情况下会被覆盖为1200,非自动好像是1000
+    Blue_Yellow:integer;                 //蓝黄模式
+    Background_Color:integer;            //背景颜色
+    Stimulus_Color:integer;              //刺激颜色       0.Stimuation Color0 1.Stimulation Color1  tr.txt 替换为white red
+    Stimulus_Size:integer;               //光标尺寸
+    Fixation_Monitor:integer;            //固视检测
+    Fovea:integer;                       //中心检测       0.Off 1.On
+    Peripheral:integer;                  //外围检测
+    SF:integer;                          //短期波动检测    0.Off 1.On
+    SF_Number:integer;                   //短期波动检测次数
+    Dynamic_Value:integer;               //动态刺激初值
+    Alarm_Mode:integer;                  //报警方式        0.Alarm Only 1.Alarm and Pause
+    Blind_Value:integer;                 //盲点刺激值
+    Rx:integer;                          //镜片
+    Rx1:integer;                         //镜片参数1
+    Rx2:integer;                         //镜片参数2
+    Rx3:integer;                         //镜片参数3
+    False_POS_Cycle:integer;             //假阳性检测周期
+    False_NEG_Cycle:integer;             //假阴性检测周期
+    Fixation_Cycle:integer;              //固视检测周期
+    Fixation_Value:integer;              //固视刺激值
+    Eye:integer;                         //眼别           0 L,1 R
+    Age:integer;                         //年龄
+    Dot_Number:integer;                  //程序点数
+    Chin_Dir:integer;                    //腮托控制字
+    B_Light_sv:integer;                  //背景光强度
+    EB_Light_sv:integer;                 //环境光差报警值
+    Fixation_Mode:integer;               //固视方式       0:中心点 1:小菱形
+    MoveSpeed:integer;                   //动态移动速度
+    MoveMode:integer;                    //动态方式
+    MoveX0:integer;                      //动态X0
+    MoveY0:integer;                      //动态Y0
+    MoveX1:integer;                      //动态X1
+    MoveY1:integer;                      //动态Y1
+    MoveDistance:integer;                //动态距离
+    MoveTime:integer;                    //动态时间
+    Delay_Mode:integer;                  //延时方式   0:自动默认是500 1:非自动默认是1000
+    temp:array[1..17] of integer;        //留用
   end;
 
   TCHECKDATA=record                                      //检查数据
     //refresh
-    runstate:integer;			   //0-959                     //运行状态
+    runstate:integer;			   //0-959                     //运行状态  0代表未运行 1:已经开始
     runstate30:integer;                                  //30度内状态
     count:integer;                                       //完成检测点数
     alarm:integer;                                       //报警状态
@@ -195,18 +212,18 @@ type
     stimuluscount:integer;                               //总刺激计数
     thresholdcount:integer;                              //完成计数
     devicetype:integer;                                  //设备类型
- 	  isblind2:integer;
+ 	  isblind2:integer;                                    //
 	  testms:integer;                                      //测试时间
     ambient_light:integer;                               //环境光报警
     E_Light_pv:integer;                                  //环境光
     T_Light_pv:integer;                                  //投射光
     Ready:integer;                                       //就绪
     Rol:integer;                                         //循环
-    waitcount:integer;                                   //等待次数
+    waitcount:integer;                                   //等待次数   在btStartClick中赋值为0
     temp:array[1..19] of integer;                        //留用
 
     //set from server
-    pm:TCHECKSET;			   //960-1199
+    pm:TCHECKSET;			   //960-1199   就是param的缩写
 
     pt:array[1..MAXCHECK] of TCHECKPOINT;  //1200-2399   //程序点
     sv:array[1..MAXCHECK] of Shortint;                   //年龄段正常值
@@ -304,7 +321,7 @@ type
   end;                                    									 //10080
 
 var
-  XwData:TXwData=
+  XwData:TXwData=          //读取xwdata.dat初始化 __ ReadXwData()
   (
     oprank1pass:1111;
     oprank2pass:2222;
@@ -316,7 +333,7 @@ var
       (1,1,1),
       (1,1,1)
     );
-        //新加，当前程序ID
+    //新加，当前程序ID  由programselect界面控制程序ID
     CurPtId:0;
   );
 
@@ -410,8 +427,6 @@ function YkFilter(checkdata:TCHECKDATA):TCHECKDATA;
 var
   GpaCheckData:TCheckData;
   GpaCheckResult:TCheckResult;
-  GpaLastCheckResult:TCHECKRESULT;
-  IsFirstGpaComparison:Boolean;
   GpaRate:string;
   GpaSlope:string;
   GpaMD:string;
@@ -473,7 +488,7 @@ var
   xwDeviceError:boolean;                                 //设备错误
   xwDownload:boolean;                                    //是否已经下载程序
 
-  DemoCheckData:TCHECKDATA=
+  DemoCheckData:TCHECKDATA=                              //写入数据库的检查数据,在TFHome的BtStartClick初始化,通过读取Dat文件
   (
     devicetype:1;
     Ready:1;
@@ -619,7 +634,7 @@ XY_NORMAL_VALUE:XY_NORMAL_VALUETAB=
             (-21,-15),(-15,-15),(-9,-15),(-3,-15),(3,-15),(9,-15),(15,-15),(21,-15),
                       (-15,-21),(-9,-21),(-3,-21),(3,-21),(9,-21),(15,-21),
                                 (-9,-27),(-3,-27),(3,-27),(9,-27)
-);
+); 
 
 XY_NORMAL_VALUE_60d:XY_NORMAL_VALUETAB=
 (
@@ -750,16 +765,16 @@ PE_VALUE05_Blue_Yellow_B5:NORMAL_VALUETAB=
 
 NORMAL_VALUE15_35:NORMAL_VALUETAB=
 (
-	               260, 270, 270, 270,
-	          290, 290, 290, 290, 290, 300,
-	     300, 300, 310, 310, 310, 310, 300, 300,
-	310, 310, 310, 320, 340, 340, 330, 320, 310, 290,
-	310, 310,-330, 340, 350, 350, 340, 330, 310, 290,
-	310, 320,-330, 340, 350, 350, 340, 330, 310, 290,
-	310, 320, 320, 330, 340, 340, 330, 320, 310, 300,
-	     310, 320, 320, 320, 330, 320, 320, 300,
-	          310, 310, 310, 310, 300, 300,
-	               310, 300, 290, 290
+	               260, 270, 270, 270,                            //4
+	          290, 290, 290, 290, 290, 300,                       //5~10
+	     300, 300, 310, 310, 310, 310, 300, 300,                  //11~18
+	310, 310, 310, 320, 340, 340, 330, 320, 310, 290,             //19~28
+	310, 310,-330, 340, 350, 350, 340, 330, 310, 290,             //29~38
+	310, 320,-330, 340, 350, 350, 340, 330, 310, 290,             //39~48
+	310, 320, 320, 330, 340, 340, 330, 320, 310, 300,             //49~58
+	     310, 320, 320, 320, 330, 320, 320, 300,                  //59~66
+	          310, 310, 310, 310, 300, 300,                       //67~72
+	               310, 300, 290, 290                             //73~76
 );
 
 NORMAL_VALUE36_45:NORMAL_VALUETAB=
@@ -1369,7 +1384,7 @@ begin
   if (checkdata.pm.Stimulus_Color=0) and (checkdata.pm.Stimulus_Size=2) then
   begin
     r2:=x*x+y*y;
-    if r2<=30*30 then
+    if r2<=30*30 then                              //半径小于30
       Result:=GetNORMAL_VALUE30d(x, y, age)
     else if r2<=60*60 then
       Result:=GetNORMAL_VALUE60d(x, y, age);
@@ -1440,11 +1455,12 @@ begin
   fillchar(vfisc,5*sizeof(single),0);
   fillchar(vfibz,5*sizeof(single),0);
   Result:=true;
+
   for i:=1 to checkdata.pm.Dot_Number do begin
     x:=checkdata.pt[i].x;
     y:=checkdata.pt[i].y;
     if checkdata.pm.Eye<>0 then x:=-x;
-    sv:=GetNORMAL_VALUE(x, y, checkdata.pm.Age, 0, checkdata);
+    sv:=GetNORMAL_VALUE(x, y, checkdata.pm.Age, 0, checkdata);  //正常值
     v:=99;
     pe:=99;
     if sv>0 then
@@ -1478,7 +1494,7 @@ begin
   checkresult.VFI := round(vfi*100)/100;
 end;
 
-function GetQZ(x,y: integer):integer;
+function GetQZ(x,y: integer):integer;    //获取圈子数.
 var
   r2: single;
   r: integer;
@@ -1597,18 +1613,13 @@ begin
     if n=0 then continue;
     checkresult.GpaDev[i]:=99;
     checkresult.GpaDevPE[i]:=99;
-
     if checkresult.MDev[i]<>99 then begin
+      v:=checkresult.MDev[i]-GpaCheckResult.MDev[n];
+      checkresult.GpaDev[i]:=v;
+      v:=GetPE_VALUE(x, y, -v, checkdata);
+      if GpaCheckResult.MDevPE[n]=0 then v:=4;
       checkresult.GpaDevPE[i]:=4;
-      checkresult.GpaDev[i]:=checkresult.MDev[i]-GpaCheckResult.MDev[n];      //此值显示第三列图,杨凯怀疑是自己的值不与基线比较
-      if IsFirstGpaComparison=True
-      then  begin
-        v:=checkresult.MDev[i]-GpaCheckResult.MDev[n];
-        if GpaCheckResult.MDevPE[n]=0 then v:=4;
-        v:=GetPE_VALUE(x, y, -v, checkdata);
-      end
-      else v:=checkresult.MDev[i]-GpaLastCheckResult.MDev[n];
-      if ((v<4) and IsFirstGpaComparison) or ((v<-2) and not IsFirstGpaComparison) then begin
+      if (v<4) then begin
         checkresult.GpaDevPE[i]:=GpaDevPE[n];
         GpaDevPE[n]:=GpaDevPE[n]+1;
         if GpaDevPE[n]=2 then inc(k2);
@@ -1620,7 +1631,6 @@ begin
       end;
     end;
   end;
-  GpaLastCheckResult:=checkresult;
   GpaProgression:=Tr('no Progression');
   if k3>=3 then GpaProgression:=Tr('Likely Progression')
   else if k2>=3 then GpaProgression:=Tr('Possible Progression');
@@ -3162,7 +3172,7 @@ begin
   begin
     for j:=1 to 20 do
     begin
-      mydis := abs(DOT_XY[i,j,1]-mydot.x)+abs(DOT_XY[i,j,2]-mydot.y);
+      mydis := abs(DOT_XY[i,j,1]-mydot.x)+abs(DOT_XY[i,j,2]-mydot.y); //寻找最近点
 			if mymindis>mydis then
       begin
         mymindis := mydis;
@@ -3794,6 +3804,8 @@ begin
   FXwxh.Query.Active:=False;
   if s='' then s:=DateToGzr(Date)+'000';
   Result:=IncStringCount(s);
+
+
 end;
 
 function IdOfLastChecked:integer;
