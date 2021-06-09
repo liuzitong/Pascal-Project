@@ -2285,7 +2285,7 @@ object FEdit: TFEdit
     Top = 375
     DataBinding.DataField = 'IDNo'
     DataBinding.DataSource = DsCheck
-    Properties.MaxLength = 30
+    Properties.MaxLength = 20
     Style.LookAndFeel.Kind = lfOffice11
     StyleDisabled.LookAndFeel.Kind = lfOffice11
     StyleFocused.LookAndFeel.Kind = lfOffice11

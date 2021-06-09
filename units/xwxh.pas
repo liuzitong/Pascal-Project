@@ -160,10 +160,10 @@ type
     Background_Color:integer;            //背景颜色
     Stimulus_Color:integer;              //刺激颜色       0.Stimuation Color0 1.Stimulation Color1  tr.txt 替换为white red
     Stimulus_Size:integer;               //光标尺寸
-    Fixation_Monitor:integer;            //固视检测
-    Fovea:integer;                       //中心检测       0.Off 1.On
+    Fixation_Monitor:integer;            //固视监测(眼动报警)            
+    Fovea:integer;                       //中心点检测   0.Off 1.On 中心点检查都是先检查中心点,如果选择的是中心点为固视点,则最开始以小菱形的中心点为中心点.
     Peripheral:integer;                  //外围检测
-    SF:integer;                          //短期波动检测    0.Off 1.On
+    SF:integer;                          //短期波动检测    0.Off 1.On ????
     SF_Number:integer;                   //短期波动检测次数
     Dynamic_Value:integer;               //动态刺激初值
     Alarm_Mode:integer;                  //报警方式        0.Alarm Only 1.Alarm and Pause
@@ -182,7 +182,11 @@ type
     Chin_Dir:integer;                    //腮托控制字
     B_Light_sv:integer;                  //背景光强度
     EB_Light_sv:integer;                 //环境光差报警值
-    Fixation_Mode:integer;               //固视方式       0:中心点 1:小菱形
+    Fixation_Mode:integer;               //固视方式(选择)   固视方式改变中心点坐标,同时影响周围点的计算
+    // 0:中心点
+    // 1:小菱形
+    // 2:大菱形
+    // 3:D点
     MoveSpeed:integer;                   //动态移动速度
     MoveMode:integer;                    //动态方式
     MoveX0:integer;                      //动态X0
@@ -202,14 +206,14 @@ type
     count:integer;                                       //完成检测点数
     alarm:integer;                                       //报警状态
     v:array[1..MAXCHECK] of Shortint;                    //检测值   -1代表未完成 -99代表绝对缺损 0代表相对缺损
-    sfv:array[1..MAXCHECK] of Shortint;                  //短期波动 -1代表未完成 -99代表绝对缺损 0代表相对缺损
+    sfv:array[1..MAXCHECK] of Shortint;                  //????短期波动 -1代表未完成 -99代表绝对缺损 0代表相对缺损
     poscount:integer;                                    //假阳性计数
     poslength:integer;                                   //假阳性次数
     negcount:integer;                                    //假阴性计数
     neglength:integer;                                   //假阴性次数
-    fixationcount:integer;                               //固视丢失计数
+    fixationcount:integer;                               //固视丢失计数          ????   
     fixationlength:integer;                              //固视丢失次数
-    stimuluscount:integer;                               //总刺激计数
+    stimuluscount:integer;                               //总刺激计数           ????
     thresholdcount:integer;                              //完成计数
     devicetype:integer;                                  //设备类型
  	  isblind2:integer;                                    //
@@ -233,7 +237,7 @@ type
     temp2:array[1..30] of integer;         //2880        //留用
 
     //上位机自用数据
-    EyeMoveData:array[1..600] of Shortint  //3000        //眼动曲线
+    EyeMoveData:array[1..600] of Shortint  //3000        //眼动曲线?????
   end;                                     //3600
 
   TCHECKRESULT=record                                    //检查结果
