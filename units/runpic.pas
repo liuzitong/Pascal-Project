@@ -108,6 +108,7 @@ type
     cxButtonMaualPupil: TcxButton;
     btPause: TButton;
     btDemoData: TButton;
+    BMPPlayerWindow: TVideoWindow;
 
     procedure TimerTimer(Sender: TObject);
     procedure BtParamClick(Sender: TObject);
@@ -153,7 +154,7 @@ type
     procedure cxButtonMaualPupilClick(Sender: TObject);
   private
     { Private declarations }
-
+    bmpplayer:Integer;
     patientNumber: string;
     patientName: string;
     patientSex: string;
@@ -288,6 +289,13 @@ const
       (-13,-3),(-17,-3),(-13,1),(-17,1),
       (-11,-1),(-17,-1),(-11,-3),(-17,-3),(-11,1),(-17,1)
     );
+
+
+function BmpPlay_Create(num:ShortInt;handle:HWnd;width:Integer;height:Integer;nRate:Integer):Integer; stdcall;External 'bmpplay.dll';
+function BmpPlay_Begin(obj:Integer):Byte ;stdcall;External 'bmpplay.dll';
+function BmpPlay_Draw(obj:Integer;const dat_ptr;width:Integer;height:Integer):Byte;stdcall;External 'bmpplay.dll';
+procedure BmpPlay_Delete(obj:Integer);stdcall;External 'bmpplay.dll';
+
 
 function TFRunpic.Hasendedmove(mytdata: newtdatarray): boolean;
 var
@@ -1909,6 +1917,9 @@ begin
 
     (FilterGraph as ICaptureGraphBuilder2).RenderStream(@PIN_CATEGORY_PREVIEW, nil, Filter as IBaseFilter, SampleGrabber as IBaseFilter, VideoWindow as IbaseFilter);
     FilterGraph.Play;
+
+    bmpplayer:= BmpPlay_Create(0,BMPPlayerWindow.Handle,320,240,24);
+    BmpPlay_Begin(bmpplayer);
   end;
   SysDev.Free;
   VideoMediaTypes.Free;
@@ -2044,8 +2055,11 @@ begin
   MyMove(pBuffer, PByte(@Bmpbuf[1]), Bmpsize);
   MyMove(pBuffer, PByte(@Bmpdata[1]), Bmpsize);
   GetPupil;
+  BmpPlay_Draw(bmpplayer,pBuffer^,320,240);
 
 ////  Label3.Caption := inttostr(GetoldId(PCenH.Left,PCenW.Top,5));
+
+
 
 {
   if CheckBox1.Checked then

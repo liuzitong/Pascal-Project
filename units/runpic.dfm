@@ -1,13 +1,13 @@
 object FRunpic: TFRunpic
   Left = 0
   Top = 0
-  Width = 646
-  Height = 375
+  Width = 1327
+  Height = 810
   TabOrder = 0
   object Panel1: TPanel
     Left = 0
-    Top = 344
-    Width = 646
+    Top = 779
+    Width = 1327
     Height = 31
     Align = alBottom
     TabOrder = 0
@@ -172,8 +172,8 @@ object FRunpic: TFRunpic
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 274
-    Height = 344
+    Width = 322
+    Height = 779
     Align = alLeft
     Color = 15790320
     Font.Charset = DEFAULT_CHARSET
@@ -221,8 +221,8 @@ object FRunpic: TFRunpic
     object Panel10: TPanel
       Left = 1
       Top = 1
-      Width = 272
-      Height = 342
+      Width = 320
+      Height = 777
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
@@ -231,7 +231,6 @@ object FRunpic: TFRunpic
         Top = 92
         Width = 272
         Height = 206
-        Align = alTop
         BevelOuter = bvNone
         Color = clTeal
         TabOrder = 0
@@ -338,15 +337,15 @@ object FRunpic: TFRunpic
       end
       object PaChin: TPanel
         Left = 0
-        Top = 298
-        Width = 272
-        Height = 44
+        Top = 332
+        Width = 320
+        Height = 445
         Align = alClient
         Color = 10526880
         TabOrder = 1
         object EtAutoPupil: TcxCheckBox
           Left = 1
-          Top = -143
+          Top = 258
           Align = alBottom
           Caption = 'AutoPupil'
           ParentFont = False
@@ -358,10 +357,10 @@ object FRunpic: TFRunpic
           Style.IsFontAssigned = True
           TabOrder = 0
           OnClick = EtAutoPupilClick
-          Width = 270
+          Width = 318
         end
         object cxButtonLeft: TcxButton
-          Left = 30
+          Left = 62
           Top = 94
           Width = 64
           Height = 64
@@ -885,7 +884,7 @@ object FRunpic: TFRunpic
             1F00414348008A8C8F00F0F1F100FFFFFF00FFFFFF00FFFFFF00}
         end
         object cxButtonUp: TcxButton
-          Left = 102
+          Left = 134
           Top = 25
           Width = 64
           Height = 64
@@ -1410,7 +1409,7 @@ object FRunpic: TFRunpic
           LookAndFeel.Kind = lfUltraFlat
         end
         object cxButtonRight: TcxButton
-          Left = 174
+          Left = 206
           Top = 94
           Width = 64
           Height = 64
@@ -1934,7 +1933,7 @@ object FRunpic: TFRunpic
             1F00414348008A8C8F00F0F1F100FFFFFF00FFFFFF00FFFFFF00}
         end
         object cxButtonDn: TcxButton
-          Left = 102
+          Left = 134
           Top = 162
           Width = 64
           Height = 64
@@ -2459,8 +2458,8 @@ object FRunpic: TFRunpic
         end
         object Panel9: TPanel
           Left = 1
-          Top = -102
-          Width = 270
+          Top = 299
+          Width = 318
           Height = 145
           Align = alBottom
           BevelOuter = bvNone
@@ -2550,8 +2549,8 @@ object FRunpic: TFRunpic
         end
         object Panel12: TPanel
           Left = 1
-          Top = -145
-          Width = 270
+          Top = 256
+          Width = 318
           Height = 2
           Align = alBottom
           TabOrder = 7
@@ -3080,7 +3079,7 @@ object FRunpic: TFRunpic
             510071717100A8A8A800F4F4F400FFFFFF00FFFFFF00FFFFFF00}
         end
         object cxButtonMaualPupil: TcxButton
-          Left = 102
+          Left = 134
           Top = 94
           Width = 64
           Height = 64
@@ -3603,7 +3602,7 @@ object FRunpic: TFRunpic
             1F00414348008A8C8F00F0F1F100FFFFFF00FFFFFF00FFFFFF00}
         end
         object cxButtonAutoPupil: TcxButton
-          Left = 102
+          Left = 134
           Top = 94
           Width = 64
           Height = 64
@@ -4129,7 +4128,7 @@ object FRunpic: TFRunpic
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 272
+        Width = 320
         Height = 92
         Align = alTop
         AutoSize = True
@@ -4275,13 +4274,22 @@ object FRunpic: TFRunpic
           OnChange = SpinEdit4Change
         end
       end
+      object BMPPlayerWindow: TVideoWindow
+        Left = 0
+        Top = 92
+        Width = 320
+        Height = 240
+        VMROptions.Mode = vmrWindowed
+        Color = clBlack
+        Align = alTop
+      end
     end
   end
   object Panel4: TPanel
-    Left = 511
+    Left = 1192
     Top = 0
     Width = 135
-    Height = 344
+    Height = 779
     Align = alRight
     Color = 2368548
     Font.Charset = DEFAULT_CHARSET
@@ -5092,21 +5100,21 @@ object FRunpic: TFRunpic
     end
   end
   object Panel5: TPanel
-    Left = 274
+    Left = 322
     Top = 0
-    Width = 237
-    Height = 344
+    Width = 870
+    Height = 779
     Align = alClient
     Color = 10526880
     TabOrder = 3
     DesignSize = (
-      237
-      344)
+      870
+      779)
     object ImageRun: TImage
       Left = 1
       Top = 1
-      Width = 235
-      Height = 342
+      Width = 868
+      Height = 777
       Align = alClient
     end
     object LaCamere: TLabel
@@ -5124,7 +5132,7 @@ object FRunpic: TFRunpic
       Height = 48
     end
     object EtEyeMoveAlarm: TShape
-      Left = -15
+      Left = 618
       Top = 570
       Width = 16
       Height = 11
@@ -5188,7 +5196,7 @@ object FRunpic: TFRunpic
       Transparent = True
     end
     object cxDBLabel8: TcxDBLabel
-      Left = 125
+      Left = 758
       Top = 16
       Anchors = [akTop, akRight]
       AutoSize = True
@@ -5229,7 +5237,7 @@ object FRunpic: TFRunpic
       Visible = False
     end
     object EtCount: TcxLabel
-      Left = -1249
+      Left = -616
       Top = 477
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5274,7 +5282,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtTime: TcxLabel
-      Left = 166
+      Left = 799
       Top = 519
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5319,7 +5327,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtPupilDiameter: TcxLabel
-      Left = 166
+      Left = 799
       Top = 561
       Anchors = [akTop, akRight]
       AutoSize = False
