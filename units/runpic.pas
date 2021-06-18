@@ -113,6 +113,7 @@ type
     cxDBLabel8: TcxDBLabel;
     cxButtonAutoPupil: TcxButton;
     cxButtonMaualPupil: TcxButton;
+    BMPPlayer: TVideoWindow;
 
     procedure TimerTimer(Sender: TObject);
     procedure BtParamClick(Sender: TObject);

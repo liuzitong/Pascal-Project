@@ -1,13 +1,13 @@
 object FRunpic: TFRunpic
   Left = 0
   Top = 0
-  Width = 1350
-  Height = 688
+  Width = 1920
+  Height = 1024
   TabOrder = 0
   object Panel1: TPanel
     Left = 0
-    Top = 657
-    Width = 1350
+    Top = 993
+    Width = 1920
     Height = 31
     Align = alBottom
     TabOrder = 0
@@ -65,6 +65,7 @@ object FRunpic: TFRunpic
       Top = 5
       DataBinding.DataField = 'Number'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -78,6 +79,7 @@ object FRunpic: TFRunpic
       Top = 5
       DataBinding.DataField = 'Name'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -91,6 +93,7 @@ object FRunpic: TFRunpic
       Top = 5
       DataBinding.DataField = 'Sex'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -120,6 +123,7 @@ object FRunpic: TFRunpic
       Top = 5
       DataBinding.DataField = 'Age'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -149,6 +153,7 @@ object FRunpic: TFRunpic
       Top = 5
       DataBinding.DataField = 'Eye'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentColor = False
       ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
@@ -168,8 +173,8 @@ object FRunpic: TFRunpic
   object Panel3: TPanel
     Left = 1
     Top = 0
-    Width = 274
-    Height = 657
+    Width = 322
+    Height = 993
     Align = alLeft
     Color = 15790320
     Font.Charset = DEFAULT_CHARSET
@@ -217,7 +222,7 @@ object FRunpic: TFRunpic
     object Panel11: TPanel
       Left = 1
       Top = 1
-      Width = 272
+      Width = 320
       Height = 1
       Align = alTop
       BevelOuter = bvNone
@@ -227,8 +232,8 @@ object FRunpic: TFRunpic
     object Panel10: TPanel
       Left = 1
       Top = 2
-      Width = 272
-      Height = 654
+      Width = 320
+      Height = 990
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 3
@@ -237,7 +242,6 @@ object FRunpic: TFRunpic
         Top = 0
         Width = 272
         Height = 206
-        Align = alTop
         BevelOuter = bvNone
         Color = clTeal
         TabOrder = 0
@@ -344,9 +348,9 @@ object FRunpic: TFRunpic
       end
       object PaChin: TPanel
         Left = 0
-        Top = 206
-        Width = 272
-        Height = 448
+        Top = 240
+        Width = 320
+        Height = 750
         Align = alClient
         Color = 10526880
         TabOrder = 1
@@ -367,7 +371,7 @@ object FRunpic: TFRunpic
           Width = 188
         end
         object cxButtonLeft: TcxButton
-          Left = 30
+          Left = 54
           Top = 94
           Width = 64
           Height = 64
@@ -891,7 +895,7 @@ object FRunpic: TFRunpic
             1F00414348008A8C8F00F0F1F100FFFFFF00FFFFFF00FFFFFF00}
         end
         object cxButtonUp: TcxButton
-          Left = 102
+          Left = 126
           Top = 25
           Width = 64
           Height = 64
@@ -1416,7 +1420,7 @@ object FRunpic: TFRunpic
           LookAndFeel.Kind = lfUltraFlat
         end
         object cxButtonRight: TcxButton
-          Left = 174
+          Left = 198
           Top = 94
           Width = 64
           Height = 64
@@ -1940,7 +1944,7 @@ object FRunpic: TFRunpic
             1F00414348008A8C8F00F0F1F100FFFFFF00FFFFFF00FFFFFF00}
         end
         object cxButtonDn: TcxButton
-          Left = 102
+          Left = 126
           Top = 162
           Width = 64
           Height = 64
@@ -2465,8 +2469,8 @@ object FRunpic: TFRunpic
         end
         object Panel9: TPanel
           Left = 1
-          Top = 302
-          Width = 270
+          Top = 604
+          Width = 318
           Height = 145
           Align = alBottom
           BevelOuter = bvNone
@@ -2556,8 +2560,8 @@ object FRunpic: TFRunpic
         end
         object Panel12: TPanel
           Left = 1
-          Top = 299
-          Width = 270
+          Top = 601
+          Width = 318
           Height = 3
           Align = alBottom
           TabOrder = 7
@@ -2565,7 +2569,7 @@ object FRunpic: TFRunpic
         object Panel13: TPanel
           Left = 1
           Top = 1
-          Width = 270
+          Width = 318
           Height = 3
           Align = alTop
           TabOrder = 8
@@ -3094,7 +3098,7 @@ object FRunpic: TFRunpic
             510071717100A8A8A800F4F4F400FFFFFF00FFFFFF00FFFFFF00}
         end
         object cxButtonMaualPupil: TcxButton
-          Left = 102
+          Left = 126
           Top = 94
           Width = 64
           Height = 64
@@ -3617,7 +3621,7 @@ object FRunpic: TFRunpic
             1F00414348008A8C8F00F0F1F100FFFFFF00FFFFFF00FFFFFF00}
         end
         object cxButtonAutoPupil: TcxButton
-          Left = 102
+          Left = 126
           Top = 94
           Width = 64
           Height = 64
@@ -4311,13 +4315,22 @@ object FRunpic: TFRunpic
           Visible = False
         end
       end
+      object BMPPlayer: TVideoWindow
+        Left = 0
+        Top = 0
+        Width = 320
+        Height = 240
+        VMROptions.Mode = vmrWindowed
+        Color = clBlack
+        Align = alTop
+      end
     end
   end
   object Panel4: TPanel
-    Left = 1344
+    Left = 1914
     Top = 0
     Width = 5
-    Height = 657
+    Height = 993
     Align = alRight
     Color = 2368548
     Font.Charset = DEFAULT_CHARSET
@@ -5245,36 +5258,36 @@ object FRunpic: TFRunpic
     Left = 0
     Top = 0
     Width = 1
-    Height = 657
+    Height = 993
     Align = alLeft
     Color = 16749107
     TabOrder = 3
   end
   object Panel8: TPanel
-    Left = 1349
+    Left = 1919
     Top = 0
     Width = 1
-    Height = 657
+    Height = 993
     Align = alRight
     Color = 16749107
     TabOrder = 4
   end
   object Panel5: TPanel
-    Left = 275
+    Left = 323
     Top = 0
-    Width = 1069
-    Height = 657
+    Width = 1591
+    Height = 993
     Align = alClient
     Color = 10526880
     TabOrder = 5
     DesignSize = (
-      1069
-      657)
+      1591
+      993)
     object ImageRun: TImage
       Left = 1
       Top = 1
-      Width = 1067
-      Height = 655
+      Width = 1589
+      Height = 991
       Align = alClient
     end
     object LaCamere: TLabel
@@ -5292,7 +5305,7 @@ object FRunpic: TFRunpic
       Height = 48
     end
     object EtEyeMoveAlarm: TShape
-      Left = 817
+      Left = 1339
       Top = 570
       Width = 16
       Height = 11
@@ -5323,6 +5336,7 @@ object FRunpic: TFRunpic
       AutoSize = True
       DataBinding.DataField = 'Strategy'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -5341,6 +5355,7 @@ object FRunpic: TFRunpic
       AutoSize = True
       DataBinding.DataField = 'Program'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -5354,12 +5369,13 @@ object FRunpic: TFRunpic
       Transparent = True
     end
     object cxDBLabel8: TcxDBLabel
-      Left = 957
+      Left = 1479
       Top = 16
       Anchors = [akTop, akRight]
       AutoSize = True
       DataBinding.DataField = 'Eye'
       DataBinding.DataSource = DsCheck
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
@@ -5394,7 +5410,7 @@ object FRunpic: TFRunpic
       Visible = False
     end
     object EtCount: TcxLabel
-      Left = 998
+      Left = 1520
       Top = 477
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5439,7 +5455,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtTime: TcxLabel
-      Left = 998
+      Left = 1520
       Top = 519
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5484,7 +5500,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtPupilDiameter: TcxLabel
-      Left = 998
+      Left = 1520
       Top = 561
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5536,6 +5552,7 @@ object FRunpic: TFRunpic
     Width = 33
     Height = 41
     Ctl3D = False
+    ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
     Lines.Strings = (
       'Memo'
       '1')
