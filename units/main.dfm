@@ -1,6 +1,6 @@
 object FMain: TFMain
-  Left = 94
-  Top = 58
+  Left = 232
+  Top = 84
   BorderStyle = bsNone
   Caption = 'Visual View V1.0'
   ClientHeight = 805
@@ -67,8 +67,9 @@ object FMain: TFMain
           Width = 1407
           Height = 186
           inherited PanelNewList: TPanel
+            Top = 185
             Width = 1405
-            Height = 184
+            Height = 0
             inherited GroupBox1: TGroupBox
               Width = 1403
               Height = 162
@@ -88,8 +89,9 @@ object FMain: TFMain
             end
           end
           inherited PanelDocList: TPanel
+            Top = 185
             Width = 1405
-            Height = 184
+            Height = 0
             inherited GroupBox2: TGroupBox
               Width = 1403
               Height = 162
@@ -26055,6 +26057,7 @@ object FMain: TFMain
       Width = 354
       Height = 42
       Anchors = [akLeft, akTop, akRight]
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ItemHeight = 24
       TabOrder = 7
       Visible = False
@@ -26112,6 +26115,7 @@ object FMain: TFMain
       Top = 0
       Width = 233
       Height = 81
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       ScrollBars = ssVertical
       TabOrder = 11
       Visible = False
@@ -26126,6 +26130,7 @@ object FMain: TFMain
       Font.Height = -11
       Font.Name = #23435#20307
       Font.Style = []
+      ImeName = #20013#25991' - QQ'#25340#38899#36755#20837#27861
       Lines.Strings = (
         'Memo1')
       ParentFont = False
@@ -26506,11 +26511,11 @@ object FMain: TFMain
       OnClick = BtAboutClick
     end
     object BitBtnProgram: TBitBtn
-      Left = 939
+      Left = 928
       Top = 12
-      Width = 120
+      Width = 137
       Height = 70
-      Caption = 'Program'
+      Caption = 'CustProgram'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -21

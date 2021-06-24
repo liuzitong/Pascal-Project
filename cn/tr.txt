@@ -360,3 +360,5 @@ Param=参数
 Param Setting=参数设置
 Cast Param Setting=参数设置
 Move Param Setting=参数设置
+Calculation=计算
+CustProgram=自定义程序
