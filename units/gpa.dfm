@@ -1,10 +1,10 @@
 object FGpa: TFGpa
-  Left = 207
-  Top = 153
+  Left = 4
+  Top = 5
   BorderStyle = bsNone
   Caption = 'GPA Analysis'
-  ClientHeight = 470
-  ClientWidth = 876
+  ClientHeight = 375
+  ClientWidth = 882
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object FGpa: TFGpa
   object Panel1: TPanel
     Left = 0
     Top = 44
-    Width = 876
+    Width = 882
     Height = 39
     Align = alTop
     TabOrder = 0
@@ -83,15 +83,15 @@ object FGpa: TFGpa
   object Panel2: TPanel
     Left = 0
     Top = 83
-    Width = 876
-    Height = 339
+    Width = 882
+    Height = 244
     Align = alClient
     TabOrder = 1
     object GridTbCheck: TcxGrid
       Left = 1
       Top = 1
-      Width = 874
-      Height = 337
+      Width = 880
+      Height = 242
       Align = alClient
       TabOrder = 0
       LookAndFeel.Kind = lfUltraFlat
@@ -236,17 +236,17 @@ object FGpa: TFGpa
   end
   object Panel3: TPanel
     Left = 0
-    Top = 422
-    Width = 876
+    Top = 327
+    Width = 882
     Height = 48
     Align = alBottom
     Color = 2368548
     TabOrder = 2
     DesignSize = (
-      876
+      882
       48)
     object BtRemove: TcxButton
-      Left = 619
+      Left = 625
       Top = 8
       Width = 91
       Height = 33
@@ -262,7 +262,7 @@ object FGpa: TFGpa
       OnClick = BtRemoveClick
     end
     object BtRestore: TcxButton
-      Left = 715
+      Left = 721
       Top = 8
       Width = 73
       Height = 33
@@ -325,7 +325,7 @@ object FGpa: TFGpa
       OnClick = BtGpaSingleClick
     end
     object cxButtonReturn: TcxButton
-      Left = 795
+      Left = 801
       Top = 8
       Width = 75
       Height = 33
@@ -345,7 +345,7 @@ object FGpa: TFGpa
   object Panel4: TPanel
     Left = 0
     Top = 0
-    Width = 876
+    Width = 882
     Height = 44
     Align = alTop
     Color = 2368548

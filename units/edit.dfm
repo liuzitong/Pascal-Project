@@ -1,6 +1,6 @@
 object FEdit: TFEdit
-  Left = 559
-  Top = 327
+  Left = 509
+  Top = 177
   Width = 1025
   Height = 555
   Caption = 'Patient Infomation'

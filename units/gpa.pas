@@ -278,8 +278,8 @@ begin
     GpaCheckData:=c2;
   end;
 
-  GetCheckResult(c1, r1);
-  GetCheckResult(c2, r2);
+//  GetCheckResult(c1, r1);
+//  GetCheckResult(c2, r2);
 
   for i:=1 to GpaDot_Number do begin
     x:=GpaCheckData.pt[i].x;
@@ -289,6 +289,7 @@ begin
     GpaCheckResult.Dev[i]:=(r1.Dev[i1]+r2.Dev[i2]) div 2;
     GpaCheckResult.MDev[i]:=(r1.MDev[i1]+r2.MDev[i2]) div 2;
     md:=GpaCheckResult.Dev[i]-GpaCheckResult.MDev[i];
+
     v1:=GetCheckV(c1.v[i1]);
     v2:=GetCheckV(c2.v[i2]);
     GpaCheckResult.MDevPE[i]:=GetPE_VALUE(x, y, ((v1+v2) div 2)-md, c1);

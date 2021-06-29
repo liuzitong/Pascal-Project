@@ -1,5 +1,5 @@
 object FXwxh: TFXwxh
-  Left = 0
+  Left = 301
   Top = 2
   Width = 656
   Height = 410

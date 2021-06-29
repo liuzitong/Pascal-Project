@@ -546,8 +546,8 @@ begin
   TbCheckResult.Filter:='ID>0';
   TbCheckMove.Active:=False;
   TbCheckMove.Active:=True;
-
-  TbCheck3.First;
+  //读取检查结果
+  TbCheck3.First;  
   strategy:=0;
   dotValueMagnification:=TMyIniFiles.GetIniFile.ReadFloat('report','dotValue magnification',1);
   for i:=1 to 20 do begin
@@ -555,25 +555,26 @@ begin
     s:=TbCheck3.FieldByName('checkdata').AsString;
     MoveCheckData(s, checkdata);
 
-//测试数据覆盖
-//    Move(arrByte, arrV, SizeOf(arrByte));
-//        眼别  0 L,1 R
-//    checkdata.pm.Eye:=1;
-//    checkdata.pm.Age:=62;
-//    reverseArr(@arrV,1,4);
-//    reverseArr(@arrV,1,4);reverseArr(@arrV,5,10);reverseArr(@arrV,11,18);
-//    reverseArr(@arrV,19,28);reverseArr(@arrV,29,38);reverseArr(@arrV,39,48);reverseArr(@arrV,49,58);
-//    reverseArr(@arrV,59,66);reverseArr(@arrV,67,72);reverseArr(@arrV,73,76);
-//    for vi:=1 to checkdata.pm.Dot_Number do begin
-//      checkdata.v[vi]:=arrV[vi];
-//    end;
+    //测试数据覆盖
+    //    Move(arrByte, arrV, SizeOf(arrByte));
+    //        眼别  0 L,1 R
+    //    checkdata.pm.Eye:=1;
+    //    checkdata.pm.Age:=62;
+    //    reverseArr(@arrV,1,4);reverseArr(@arrV,5,10);reverseArr(@arrV,11,18);
+    //    reverseArr(@arrV,19,28);reverseArr(@arrV,29,38);reverseArr(@arrV,39,48);reverseArr(@arrV,49,58);
+    //    reverseArr(@arrV,59,66);reverseArr(@arrV,67,72);reverseArr(@arrV,73,76);
+    //    for vi:=1 to checkdata.pm.Dot_Number do begin
+    //      checkdata.v[vi]:=arrV[vi];
+    //    end;
 
     for vi:=1 to checkdata.pm.Dot_Number do begin       //数据放大
       checkdata.v[vi]:= Trunc(checkdata.v[vi]* dotValueMagnification);
     end;
 
     if XwData.YkFilter then checkdata:=YkFilter(checkdata);
+    //确定当前选择的策略
     if i=1 then strategy:=checkdata.pm.Strategy
+    //如果不是当前选择,那么之后的策略必须和当前策略为同一类型,0~9 为一类,10~19为一类,31~34为一类.
     else begin
       if (checkdata.pm.Strategy div 10)<>(strategy div 10) then begin
         TbCheck3.Next;
@@ -581,6 +582,7 @@ begin
       end;
     end;
 
+    //准备检测数据
     GetCheckResult(checkdata, checkresult);
     GetCheckReport2(checkdata, checkresult, tbcheck3, checkreport);
     xby:=PtParamOfName(TbCheck3.FieldByName('Pt').AsString, 'Xby');
@@ -624,7 +626,7 @@ begin
       DrawValue2(ImageMDevPE2.Canvas, 0, 0, ImageMDevPE2.Width, ImageMDevPE2.Height, checkData, checkResult, -2, xy, dev);
     end;
 
-//    DrawValue2(ImageScreen.Canvas, 0, 0, ImageScreen.Width, ImageScreen.Height, checkData, checkResult, 5, xy, true);
+    //    DrawValue2(ImageScreen.Canvas, 0, 0, ImageScreen.Width, ImageScreen.Height, checkData, checkResult, 5, xy, true);
     DrawValue4(ImageScreen.Canvas, 0, 0, ImageScreen.Width, ImageScreen.Height, checkData, checkResult, 5, xy, true);
     DrawValue2(ImageDepth.Canvas, 0, 0, ImageDepth.Width, ImageDepth.Height, checkData, checkResult, 6, xy, true);
     DrawValue2(ImageDepthNasal.Canvas, 0, 0, ImageDepthNasal.Width, ImageDepthNasal.Height, checkData, checkResult, 6, xy, true);
@@ -652,6 +654,8 @@ begin
     if FileExists(ExeFilePath+'babie.bmp') then FXwxh.ImageBabie.Picture.LoadFromFile(ExeFilePath+'babie.bmp');
     DrawBabie(ImageBabie.Canvas, 0, 0, ImageBabie.Width, ImageBabie.Height, checkData, checkResult);
 
+
+    //TbCheckResult赋值过程
     TbCheckResult.Insert;
     TbCheckResult.FieldByName('Id').AsString:=TbCheck3.FieldByName('Id').AsString;
     TbCheckResult.FieldByName('Doctor').AsString:=Tr('Doctor')+':'+TbCheck3.FieldByName('Doctor').AsString;
@@ -856,20 +860,20 @@ begin
                       TbCheckResult.FieldByName('PSD').AsString;
     TbCheck3.Next;
 
-//    if (checkdata.pm.Strategy>=30) then begin
-//      Pages.ActivePageIndex:=2;
-//    end
-//    else if (checkdata.pm.Strategy=10) or (checkdata.pm.Strategy=11) or (checkdata.pm.Strategy=12) then
-//    begin
-//      Pages.ActivePageIndex:=1;
-//    end
-//    else if (TbCheck3.FieldByName('Pt').AsString='Nasal-step') then
-//    begin
-//      Pages.ActivePageIndex:=6;
-//    end
-//    else begin
-//      Pages.ActivePageIndex:=0;
-//    end;
+    //    if (checkdata.pm.Strategy>=30) then begin
+    //      Pages.ActivePageIndex:=2;
+    //    end
+    //    else if (checkdata.pm.Strategy=10) or (checkdata.pm.Strategy=11) or (checkdata.pm.Strategy=12) then
+    //    begin
+    //      Pages.ActivePageIndex:=1;
+    //    end
+    //    else if (TbCheck3.FieldByName('Pt').AsString='Nasal-step') then
+    //    begin
+    //      Pages.ActivePageIndex:=6;
+    //    end
+    //    else begin
+    //      Pages.ActivePageIndex:=0;
+    //    end;
   end;
 end;
 

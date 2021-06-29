@@ -1,13 +1,13 @@
 object FRunpic: TFRunpic
   Left = 0
   Top = 0
-  Width = 646
+  Width = 882
   Height = 375
   TabOrder = 0
   object Panel1: TPanel
     Left = 0
     Top = 344
-    Width = 646
+    Width = 882
     Height = 31
     Align = alBottom
     TabOrder = 0
@@ -4278,7 +4278,7 @@ object FRunpic: TFRunpic
     end
   end
   object Panel4: TPanel
-    Left = 511
+    Left = 747
     Top = 0
     Width = 135
     Height = 344
@@ -5094,18 +5094,18 @@ object FRunpic: TFRunpic
   object Panel5: TPanel
     Left = 274
     Top = 0
-    Width = 237
+    Width = 473
     Height = 344
     Align = alClient
     Color = 10526880
     TabOrder = 3
     DesignSize = (
-      237
+      473
       344)
     object ImageRun: TImage
       Left = 1
       Top = 1
-      Width = 235
+      Width = 471
       Height = 342
       Align = alClient
     end
@@ -5124,7 +5124,7 @@ object FRunpic: TFRunpic
       Height = 48
     end
     object EtEyeMoveAlarm: TShape
-      Left = -15
+      Left = 221
       Top = 570
       Width = 16
       Height = 11
@@ -5188,7 +5188,7 @@ object FRunpic: TFRunpic
       Transparent = True
     end
     object cxDBLabel8: TcxDBLabel
-      Left = 125
+      Left = 361
       Top = 16
       Anchors = [akTop, akRight]
       AutoSize = True
@@ -5229,7 +5229,7 @@ object FRunpic: TFRunpic
       Visible = False
     end
     object EtCount: TcxLabel
-      Left = -1249
+      Left = -1013
       Top = 477
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5274,7 +5274,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtTime: TcxLabel
-      Left = 166
+      Left = 402
       Top = 519
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5319,7 +5319,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtPupilDiameter: TcxLabel
-      Left = 166
+      Left = 402
       Top = 561
       Anchors = [akTop, akRight]
       AutoSize = False

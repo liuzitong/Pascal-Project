@@ -185,8 +185,8 @@ type
     Fixation_Mode:integer;               //固视方式(选择)   固视方式改变中心点坐标,同时影响周围点的计算
     // 0:中心点
     // 1:小菱形
-    // 2:大菱形
-    // 3:D点
+    // 2:大菱形     仅投射
+    // 3:D点       仅投射
     MoveSpeed:integer;                   //动态移动速度
     MoveMode:integer;                    //动态方式
     MoveX0:integer;                      //动态X0
@@ -241,21 +241,22 @@ type
   end;                                     //3600
 
   TCHECKRESULT=record                                    //检查结果
-    MD:double;                                           //MD
-    PSD:double;                                          //PSD
+    MD:double;                                           //MD                    平均缺损           
+    PSD:double;                                          //PSD                   局部特高特别低会影响此值
     MDP:integer;                                         //MD概率                <10 <5 <2 < 1 <0.5 >=10
     PSDP:integer;                                        //PSD概率               <10 <5 <2 < 1 <0.5 >=10
     SF:double;                                           //短期波动
     VFI:double;                                          //VFI
     GHT:integer;                                         //GHT                   正常界限外 普遍敏感度下降 P值有意义为边界 正常
+                                                         //半视野分析 测量对称好不好
     GrayXCount:integer;                                  //灰度图X坐标点数
     GrayYCount:integer;                                  //灰度图y坐标点数
     Gray:array[1..MAXGRAY, 1..MAXGRAY] of Shortint;      //灰度图坐标值
     Gray2:array[1..MAXGRAY, 1..MAXGRAY] of Shortint;     //灰度图坐标值2
-    Dev:array[1..MAXCHECK] of integer;                   //总体偏差      (99盲点)
-    DevPE:array[1..MAXCHECK] of integer;                 //总体偏差概率  (99盲点) <5 <2 <1 <0.5 >=5
-    MDev:array[1..MAXCHECK] of integer;                  //模式偏差      (99盲点)
-    MDevPE:array[1..MAXCHECK] of integer;                //模式偏差概率  (99盲点) <5 <2 <1 <0.5 >=5
+    Dev:array[1..MAXCHECK] of integer;                   //总体偏差      (99盲点) 每个点实测值和标准值的差距
+    DevPE:array[1..MAXCHECK] of integer;                 //总体偏差概率  (99盲点) <5 <2 <1 <0.5 >=5    由内置正常数据与整体偏差值比较得出此异常值的概率 
+    MDev:array[1..MAXCHECK] of integer;                  //模式偏差      (99盲点)   MDev=Dev-(MD+PSD)
+    MDevPE:array[1..MAXCHECK] of integer;                //模式偏差概率  (99盲点) <5 <2 <1 <0.5 >=5 由内置正常数据与模式偏差值比较得出此异常值的概率 
     Babie:array[1..MAXCHECK] of integer;                 //总体偏差x10从小到大排序并平滑
     GpaDev:array[1..MAXCHECK] of integer;                //Gpa 总体偏差      (99盲点)
     GpaDevPE:array[1..MAXCHECK] of integer;              //Gpa 模式偏差概率  (99盲点) <5 <2 <1 <0.5 >=5
@@ -1550,6 +1551,7 @@ begin
   checkresult.MDP:=Get_PE10(md);
 end;
 
+
 function GetSF(checkdata:TCHECKDATA; var checkresult:TCHECKRESULT):boolean;
 var
   i,n:integer;
@@ -1560,7 +1562,7 @@ begin
   sf:=0;
   for i:=1 to checkdata.pm.Dot_Number do begin
     if checkdata.sfv[i]<>-1 then begin
-      sf:=sf+GetCheckV(checkdata.v[i])-GetCheckV(checkdata.sfv[i]);
+      sf:=sf+GetCheckV(checkdata.v[i])-GetCheckV(checkdata.sfv[i]);  //貌似此处应该按绝对值计算.
       inc(n);
     end;
   end;
@@ -1631,9 +1633,10 @@ begin
         if GpaDevPE[n]>3 then GpaDevPE[n]:=3;
       end
       else begin
-        GpaDevPE[n]:=0;
+       GpaDevPE[n]:=0;
       end;
     end;
+//    checkresult.GpaDevPE[i]:=2;
   end;
   GpaProgression:=Tr('no Progression');
   if k3>=3 then GpaProgression:=Tr('Likely Progression')
@@ -1978,12 +1981,12 @@ begin
   if checkdata.pm.Dot_Number=0 then exit;
   if checkdata.pm.Range=0 then exit;
 
-  GetSF(checkdata, checkresult);
+  GetSF(checkdata, checkresult);    //间隔几次测试后重复测试已经得到值的点,比较值的差异,大概10~20次
   GetGray(checkdata, checkresult, 3, False);
   GetDev(checkdata, checkresult);
   GetPSD(checkdata, checkresult);
   GetMDev(checkdata, checkresult);
-  GetGpaDev(checkdata, checkresult);
+  GetGpaDev(checkdata, checkresult);      //GPA进展分析
   GetBabie(checkdata, checkresult);
   GetGHT(checkdata, checkresult);
 end;
@@ -2712,7 +2715,7 @@ begin
         else if s1<>'' then CanvasTextOut(canvas, x, y, s1)
         else CanvasTextOut(canvas, x, y, s2);
       end
-      else if (select=2) or (select=4) then begin
+      else if (select=2) or (select=4) then begin                    
         if dev then begin
           dec(x, FXwxh.PE0.Width div 2);
           dec(y, FXwxh.PE0.Height div 2);
@@ -2747,11 +2750,11 @@ begin
       else if (select=8) then begin
         dec(x, FXwxh.GpaPE0.Width div 2);
         dec(y, FXwxh.GpaPE0.Height div 2);
-        if v=0 then canvas.Draw(x, y, FXwxh.GpaPE0.Picture.Graphic)
-        else if v=1 then canvas.Draw(x, y, FXwxh.GpaPE1.Picture.Graphic)
-        else if v=2 then canvas.Draw(x, y, FXwxh.GpaPE2.Picture.Graphic)
-        else if v=3 then canvas.Draw(x, y, FXwxh.GpaPE3.Picture.Graphic)
-        else if v=4 then canvas.Draw(x, y, FXwxh.GpaPE4.Picture.Graphic);
+        if v=0 then canvas.Draw(x, y, FXwxh.GpaPE0.Picture.Graphic)    //画预期的图像
+        else if v=1 then canvas.Draw(x, y, FXwxh.GpaPE1.Picture.Graphic)  //半实心三角
+        else if v=2 then canvas.Draw(x, y, FXwxh.GpaPE2.Picture.Graphic)  //全实心三角
+        else if v=3 then canvas.Draw(x, y, FXwxh.GpaPE3.Picture.Graphic)  //叉叉
+        else if v=4 then canvas.Draw(x, y, FXwxh.GpaPE4.Picture.Graphic); //空白
       end
       else begin
         if dev then begin

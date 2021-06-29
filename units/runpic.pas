@@ -1520,6 +1520,23 @@ end;
 procedure TFRunpic.BtSaveClick(Sender: TObject);
 var
   s:string;
+//  vi:Integer;
+//  arrV:array[1..76] of Shortint ;
+
+  //测试数据
+//  const arrByte: Array[1..76] of Shortint =
+//  (
+//                26, 27, 27, 27,                            //4
+//            29, 29, 29, 29, 29, 30,                       //5~10
+//        30, 30, 31, 31, 31, 31, 30, 30,                  //11~18
+//    31, 31, 31, 32, 34, 34, 33, 32, 31, 29,             //19~28
+//    31, 31,0, 34, 35, 35, 34, 33, 31, 29,             //29~38
+//    31, 32,0, 34, 35, 35, 34, 33, 31, 29,             //39~48
+//    31, 29, 29, 30, 34, 34, 33, 32, 31, 30,             //49~58
+//        31, 29, 29, 32, 33, 32, 32, 30,                  //59~66
+//            31, 31, 31, 31, 30, 30,                       //67~72
+//                31, 30, 29, 29
+//  );
 begin
 //  if Sender<>nil then if Xwxx2('Save')<>IDYES then exit;
   BtStop.Enabled := false;
@@ -1541,6 +1558,17 @@ begin
 
     TbCheck.Edit;
     TbCheck.FieldByName('State').AsInteger:=2;
+
+
+
+//    测试数据覆盖
+//    Move(arrByte, arrV, SizeOf(arrByte));
+//    reverseArr(@arrV,1,4);reverseArr(@arrV,5,10);reverseArr(@arrV,11,18);
+//    reverseArr(@arrV,19,28);reverseArr(@arrV,29,38);reverseArr(@arrV,39,48);reverseArr(@arrV,49,58);
+//    reverseArr(@arrV,59,66);reverseArr(@arrV,67,72);reverseArr(@arrV,73,76);
+//    for vi:=1 to DemoCheckData.pm.Dot_Number do begin
+//      DemoCheckData.v[vi]:=arrV[vi];
+//    end;
     SetLength(s, sizeof(DemoCheckData));
     Move(DemoCheckData, s[1], Length(s));
     TbCheck.FieldByName('Checkdata').AsString:=s;
