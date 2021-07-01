@@ -1,6 +1,6 @@
 object FGpa: TFGpa
-  Left = 4
-  Top = 5
+  Left = 781
+  Top = 327
   BorderStyle = bsNone
   Caption = 'GPA Analysis'
   ClientHeight = 375

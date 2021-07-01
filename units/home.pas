@@ -581,7 +581,7 @@ begin
         Continue;
       end;
     end;
-
+    if i=1 then IsFirstGpaComparison:=True else IsFirstGpaComparison:=False;
     //准备检测数据
     GetCheckResult(checkdata, checkresult);
     GetCheckReport2(checkdata, checkresult, tbcheck3, checkreport);
