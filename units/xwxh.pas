@@ -410,6 +410,8 @@ function YkFilter(checkdata:TCHECKDATA):TCHECKDATA;
 var
   GpaCheckData:TCheckData;
   GpaCheckResult:TCheckResult;
+  GpaLastCheckResult:TCHECKRESULT;
+  IsFirstGpaComparison:Boolean;
   GpaRate:string;
   GpaSlope:string;
   GpaMD:string;
@@ -1595,13 +1597,18 @@ begin
     if n=0 then continue;
     checkresult.GpaDev[i]:=99;
     checkresult.GpaDevPE[i]:=99;
+
     if checkresult.MDev[i]<>99 then begin
-      v:=checkresult.MDev[i]-GpaCheckResult.MDev[n];
-      checkresult.GpaDev[i]:=v;
-      v:=GetPE_VALUE(x, y, -v, checkdata);
-      if GpaCheckResult.MDevPE[n]=0 then v:=4;
       checkresult.GpaDevPE[i]:=4;
-      if (v<4) then begin
+      checkresult.GpaDev[i]:=checkresult.MDev[i]-GpaCheckResult.MDev[n];
+      if IsFirstGpaComparison=True
+      then  begin
+        v:=checkresult.MDev[i]-GpaCheckResult.MDev[n];
+        if GpaCheckResult.MDevPE[n]=0 then v:=4;
+        v:=GetPE_VALUE(x, y, -v, checkdata);
+      end
+      else v:=checkresult.MDev[i]-GpaLastCheckResult.MDev[n];
+      if ((v<4) and IsFirstGpaComparison) or ((v<-2) and not IsFirstGpaComparison) then begin
         checkresult.GpaDevPE[i]:=GpaDevPE[n];
         GpaDevPE[n]:=GpaDevPE[n]+1;
         if GpaDevPE[n]=2 then inc(k2);
@@ -1613,6 +1620,7 @@ begin
       end;
     end;
   end;
+  GpaLastCheckResult:=checkresult;
   GpaProgression:=Tr('no Progression');
   if k3>=3 then GpaProgression:=Tr('Likely Progression')
   else if k2>=3 then GpaProgression:=Tr('Possible Progression');
