@@ -177,6 +177,7 @@ select program=程序
 pause=暂停测试
 resume=恢复测试
 Ambient light too strong=环境光线太强，是否继续？
+Data stored in local machine is inconsistent with hardware,will read data from hardware!=本机与硬件存储数据不一致,将从硬件读取数据!
 save report=保存报告
 camere=打开视屏
 program select=选择程序

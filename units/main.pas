@@ -2347,7 +2347,7 @@ begin
   FileClose(f);
   if (SaveDataHead.DEVTYPE<>SaveDataHeadLocal.DEVTYPE) or (SaveDataHead.SerialNo<>SaveDataHeadLocal.SerialNo) or (SaveDataHead.DEVID<>SaveDataHeadLocal.DEVID) then  //读取硬件全部数据
   begin
-    ShowMessage('本机与硬件存储数据不一致，将从硬件读取数据！');
+    Xwxx('Data stored in local machine is inconsistent with hardware,will read data from hardware!');
     repeat
       begin
         Application.ProcessMessages;
