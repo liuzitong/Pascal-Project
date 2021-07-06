@@ -598,7 +598,6 @@ object FHome: TFHome
             Spacing = 4
             Transparent = False
             Caption = 'TbCheckDelete'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -11527,6 +11526,11 @@ object FHome: TFHome
         DataType = ftInteger
       end
       item
+        Name = 'IDNo'
+        DataType = ftString
+        Size = 10
+      end
+      item
         Name = 'Pt'
         DataType = ftString
         Size = 40
@@ -11632,11 +11636,6 @@ object FHome: TFHome
       item
         Name = 'State'
         DataType = ftInteger
-      end
-      item
-        Name = 'IDNo'
-        DataType = ftString
-        Size = 20
       end>
     IndexDefs = <
       item

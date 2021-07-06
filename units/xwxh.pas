@@ -1600,7 +1600,7 @@ begin
 
     if checkresult.MDev[i]<>99 then begin
       checkresult.GpaDevPE[i]:=4;
-      checkresult.GpaDev[i]:=checkresult.MDev[i]-GpaCheckResult.MDev[n];
+      checkresult.GpaDev[i]:=checkresult.MDev[i]-GpaCheckResult.MDev[n];      //此值显示第三列图,杨凯怀疑是自己的值不与基线比较
       if IsFirstGpaComparison=True
       then  begin
         v:=checkresult.MDev[i]-GpaCheckResult.MDev[n];

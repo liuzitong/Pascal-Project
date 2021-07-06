@@ -646,8 +646,8 @@ begin
     TbCheckResult.FieldByName('Fixation_Monitor').AsString:=Tr('Fixation Monitor')+':'+checkreport.Fixation_Monitor;
     TbCheckResult.FieldByName('Fixation_Target').AsString:=Tr('Fixation Target')+':'+checkreport.Fixation_Target;
     TbCheckResult.FieldByName('Fixation_Loss').AsString:=Tr('Fixation Losses')+':'+checkreport.Fixation_Losses;
-    TbCheckResult.FieldByName('False_POS').AsString:=Tr('False POS Errors')+':'+checkreport.False_POS_Errors;
-    TbCheckResult.FieldByName('False_NEG').AsString:=Tr('False NEG Errors')+':'+checkreport.False_NEG_Errors;
+    TbCheckResult.FieldByName('False_POS').AsString:=Tr('False POS')+':'+checkreport.False_POS_Errors;
+    TbCheckResult.FieldByName('False_NEG').AsString:=Tr('False NEG')+':'+checkreport.False_NEG_Errors;
     TbCheckResult.FieldByName('Test_Duration').AsString:=Tr('Test_Duration')+':'+checkreport.Test_Duration;
 
     TbCheckResult.FieldByName('Fovea').AsString:=Tr('Fovea')+':'+checkreport.FoveaDB;
