@@ -1501,28 +1501,28 @@ function StrToAge(s:string; var age, birthday:string):boolean;
 var
   year,month,day:string;
   y,m,d,yy:Word;
-  s2:string;
+  s2,separator:string;
   i:integer;
 begin
   Result:=true;
   DecodeDate(now, yy, m, d);
-
   if Length(s)<=3 then begin
     y:=StrToInt(s);
     d:=1;
     m:=1;
     y:=yy-y;
   end
-  else if (Length(s)=4) and (Pos('-', s)=0) then begin
+  else if (Length(s)=4) and (Pos(separator, s)=0) then begin
     y:=StrToInt(s);
     d:=1;
     m:=1;
   end
   else begin
     s2:='';
-    for i:=1 to Length(s) do if ((s[i]>='0') and (s[i]<='9')) or (s[i]='-') then s2:=s2+s[i];
-    year:=CopySubStr(s2, '-');
-    month:=CopySubStr(s2, '-');
+    separator:=s[5];
+    for i:=1 to Length(s) do if ((s[i]>='0') and (s[i]<='9')) or (s[i]=separator) then s2:=s2+s[i];
+    year:=CopySubStr(s2, separator);
+    month:=CopySubStr(s2, separator);
     day:=s2;
     if day='' then day:='1';
     if (year='') or (month='') or (day='') then begin

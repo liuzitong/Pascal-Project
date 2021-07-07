@@ -31,7 +31,7 @@ object FRx: TFRx
     Style.Font.Style = []
     Style.IsFontAssigned = True
     Transparent = True
-    Height = 25
+    Height = 37
     Width = 65
   end
   object BtAuto: TcxButton
@@ -65,7 +65,7 @@ object FRx: TFRx
     Style.Font.Style = []
     Style.IsFontAssigned = True
     Transparent = True
-    Height = 25
+    Height = 37
     Width = 68
   end
   object cxLabel2: TcxLabel
@@ -84,7 +84,7 @@ object FRx: TFRx
     Style.Font.Style = []
     Style.IsFontAssigned = True
     Transparent = True
-    Height = 25
+    Height = 37
     Width = 89
   end
   object cxLabel12: TcxLabel
