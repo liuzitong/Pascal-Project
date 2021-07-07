@@ -26515,7 +26515,7 @@ object FMain: TFMain
       Top = 12
       Width = 137
       Height = 70
-      Caption = 'CustProgram'
+      Caption = 'CusProgram'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -21

@@ -633,7 +633,8 @@ begin
     TbCheckResult.FieldByName('Diagnosis').AsString:=Tr('Diagnosis')+':'+TbCheck3.FieldByName('Describe').AsString;
     TbCheckResult.FieldByName('Hospital').AsString:=XwData.Hospital;
     TbCheckResult.FieldByName('Name').AsString:=Tr('Name')+':'+TbCheck3.FieldByName('Name').AsString;
-    TbCheckResult.FieldByName('Number').AsString:=Tr('ID')+':'+TbCheck3.FieldByName('IDNo').AsString;
+    TbCheckResult.FieldByName('Number').AsString:=Tr('ID')+':'
+    +TbCheck3.FieldByName('IDNo').AsString;
     TbCheckResult.FieldByName('Sex').AsString:=Tr('Sex')+':'+TbCheck3.FieldByName('Sex').AsString;
     ////将杯盘比改为视力放在这
     TbCheckResult.FieldByName('Res1').AsString:=Tr('CDR')+':'+

@@ -3,8 +3,8 @@ object FEdit: TFEdit
   Top = 214
   BorderStyle = bsNone
   Caption = 'Patient Infomation'
-  ClientHeight = 521
-  ClientWidth = 1017
+  ClientHeight = 697
+  ClientWidth = 1331
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -2126,14 +2126,14 @@ object FEdit: TFEdit
     Caption = '*'
   end
   object cxLabel1: TcxLabel
-    Left = 111
+    Left = 88
     Top = 107
     AutoSize = False
     Caption = 'Serial number:'
     Properties.Alignment.Horz = taRightJustify
     Transparent = True
     Height = 30
-    Width = 150
+    Width = 173
   end
   object cxLabel2: TcxLabel
     Left = 111
@@ -2344,34 +2344,34 @@ object FEdit: TFEdit
     Width = 60
   end
   object cxLabel7: TcxLabel
-    Left = 587
+    Left = 568
     Top = 287
     AutoSize = False
     Caption = 'Rx1:'
     Properties.Alignment.Horz = taRightJustify
     Transparent = True
     Height = 29
-    Width = 90
+    Width = 109
   end
   object cxLabel8: TcxLabel
-    Left = 587
+    Left = 560
     Top = 332
     AutoSize = False
     Caption = 'Rx2:'
     Properties.Alignment.Horz = taRightJustify
     Transparent = True
     Height = 29
-    Width = 90
+    Width = 117
   end
   object cxLabel9: TcxLabel
-    Left = 587
+    Left = 568
     Top = 377
     AutoSize = False
     Caption = 'Rx3:'
     Properties.Alignment.Horz = taRightJustify
     Transparent = True
     Height = 29
-    Width = 90
+    Width = 109
   end
   object EtRx1_1: TcxDBTextEdit
     Left = 694
@@ -2548,8 +2548,8 @@ object FEdit: TFEdit
   end
   object Panel1: TPanel
     Left = 0
-    Top = 455
-    Width = 1017
+    Top = 631
+    Width = 1331
     Height = 66
     Align = alBottom
     Color = 2368548
@@ -2620,7 +2620,7 @@ object FEdit: TFEdit
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 1017
+    Width = 1331
     Height = 49
     Align = alTop
     Color = 2368548
