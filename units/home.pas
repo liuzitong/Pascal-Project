@@ -633,7 +633,8 @@ begin
     TbCheckResult.FieldByName('Diagnosis').AsString:=Tr('Diagnosis')+':'+TbCheck3.FieldByName('Describe').AsString;
     TbCheckResult.FieldByName('Hospital').AsString:=XwData.Hospital;
     TbCheckResult.FieldByName('Name').AsString:=Tr('Name')+':'+TbCheck3.FieldByName('Name').AsString;
-    TbCheckResult.FieldByName('Number').AsString:=Tr('ID')+':'+TbCheck3.FieldByName('IDNo').AsString;
+    TbCheckResult.FieldByName('Number').AsString:=Tr('ID')+':'
+    +TbCheck3.FieldByName('IDNo').AsString;
     TbCheckResult.FieldByName('Sex').AsString:=Tr('Sex')+':'+TbCheck3.FieldByName('Sex').AsString;
     ////将杯盘比改为视力放在这
     TbCheckResult.FieldByName('Res1').AsString:=Tr('CDR')+':'+
@@ -646,8 +647,8 @@ begin
     TbCheckResult.FieldByName('Fixation_Monitor').AsString:=Tr('Fixation Monitor')+':'+checkreport.Fixation_Monitor;
     TbCheckResult.FieldByName('Fixation_Target').AsString:=Tr('Fixation Target')+':'+checkreport.Fixation_Target;
     TbCheckResult.FieldByName('Fixation_Loss').AsString:=Tr('Fixation Losses')+':'+checkreport.Fixation_Losses;
-    TbCheckResult.FieldByName('False_POS').AsString:=Tr('False POS Errors')+':'+checkreport.False_POS_Errors;
-    TbCheckResult.FieldByName('False_NEG').AsString:=Tr('False NEG Errors')+':'+checkreport.False_NEG_Errors;
+    TbCheckResult.FieldByName('False_POS').AsString:=Tr('False POS')+':'+checkreport.False_POS_Errors;
+    TbCheckResult.FieldByName('False_NEG').AsString:=Tr('False NEG')+':'+checkreport.False_NEG_Errors;
     TbCheckResult.FieldByName('Test_Duration').AsString:=Tr('Test_Duration')+':'+checkreport.Test_Duration;
 
     TbCheckResult.FieldByName('Fovea').AsString:=Tr('Fovea')+':'+checkreport.FoveaDB;

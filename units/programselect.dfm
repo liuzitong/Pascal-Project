@@ -110,9 +110,9 @@ object FProgramSelect: TFProgramSelect
         'Special'
         'Custom')
       OnChange = TabTypeChange
-      ClientRectBottom = 32
+      ClientRectBottom = 30
       ClientRectRight = 502
-      ClientRectTop = 32
+      ClientRectTop = 30
     end
     object EtPtName: TcxGrid
       Left = 1
@@ -364,8 +364,8 @@ object FProgramSelect: TFProgramSelect
       object Label1: TLabel
         Left = 40
         Top = 1
-        Width = 350
-        Height = 62
+        Width = 336
+        Height = 48
         Caption = 'Select Program'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindow
