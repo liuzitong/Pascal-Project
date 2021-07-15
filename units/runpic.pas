@@ -491,7 +491,7 @@ begin
   FUsbr.ReadCmdData.Chin_Dir:=FUsbr.ReadCmdData.Chin_Dir and not $0f;
   Result:=Xwxx(s);
 end;
-
+//此处刷新界面和参数
 procedure TFRunpic.TimerTimer(Sender: TObject);
 var
   checkdata:TCheckData;
@@ -1523,6 +1523,7 @@ begin
   }
   begin
     priJczt := 0;
+    
     BtStart.Caption := Tr('Start');
 
     pubtestover := true;
