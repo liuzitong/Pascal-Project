@@ -1,8 +1,8 @@
 object FXwxh: TFXwxh
-  Left = 301
-  Top = 2
+  Left = 161
+  Top = 0
   Width = 656
-  Height = 410
+  Height = 366
   Caption = 'Client'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

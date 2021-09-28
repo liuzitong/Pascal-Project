@@ -125,7 +125,7 @@ begin
 
   CheckData.pm.MoveSpeed:=EtMoveSpeed.ItemIndex;
   CheckData.pm.Dynamic_Value:=StrtoInt(EtDynamic_Value.Text);
-  CheckData.pm.MoveMode:=EtMoveMode.ItemIndex;
+  CheckData.pm.MoveMode:=EtMoveMode.ItemIndex;   //items 预留4,6,8分别为index 0,1,2
   CheckData.pm.MoveDistance:=EtMoveDistance.ItemIndex;
   CheckData.pm.Fovea:=0;
 end;

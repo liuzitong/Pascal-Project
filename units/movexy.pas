@@ -46,7 +46,7 @@ begin
   jd0:=StrToFloat(EtY0.Text);
   wd1:=StrToFloat(EtX1.Text);
   jd1:=StrToFloat(EtY1.Text);
-  JwdToXy(jd0,wd0,x0,y0);
+  JwdToXy(jd0,wd0,x0,y0);       //jd=角度,wd=相当于半径的角度
   JwdToXy(jd1,wd1,x1,y1);
 
   CheckData.pm.MoveX0:=round(x0);

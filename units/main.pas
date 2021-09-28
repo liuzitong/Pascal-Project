@@ -662,7 +662,7 @@ begin
       Str := Format('W %.2x  ', [Buf[0]]);
       for I := 1 to Written-1 do
         Str := Str + Format('%.2x ', [Buf[I]]);
-      //TLogFile.GetInstance.Trace(LogLevel,'',Str);
+      TLogFile.GetInstance.Trace(LogLevel,'',Str);
       AddToHistory(Str);
     end;
   end;
@@ -1041,6 +1041,7 @@ var
   Str: string;
   Err: DWORD;
 begin
+  TLogFile.GetInstance().Trace(LogLevel,'Write2DeviceTsMove10H','called');
   repeat
     begin
       Application.ProcessMessages;
@@ -1606,7 +1607,7 @@ begin
         mydot815.Y := mydot.Y-8;
     end;
 
-    my5Step := Find5MbyXYDB(db,mydot815,oldgb+1,pubCurZbx);
+    my5Step := Find5MbyXYDB(db,mydot815,oldgb+1,pubCurZbx);   //DB转DA
 
     for i:=1 to 5 do
     begin
@@ -2034,7 +2035,7 @@ begin
     result := false;
 end;
 
-function TFMain.ReadDevData: boolean;  //加上校验
+function TFMain.ReadDevData: boolean;  //加上校验  读取之后保存文件
 var
   i,j,k,m:integer;
   Buf: array [0..64] of Byte;
@@ -2051,12 +2052,12 @@ begin
   Fillchar(USBDataBufXj, sizeof(USBDataBufXj), 0);
   j := 0;
 
-  if SaveDataHead.DEVTYPE = $8800 then
+  if SaveDataHead.DEVTYPE = $8800 then //布点
     j := sizeof(SaveDataBd) div 56
   else if SaveDataHead.DEVTYPE = $0088 then
     j := sizeof(SaveDataTs) div 56;
 
-  priRead := true;
+  priRead := true;  //设置为true 之后会在Application.ProcessMessages 中调用showRead初始化USBDataBufXj
   priReturnId := 0;
   if Assigned(CurrentDevice) then
   begin
@@ -2126,7 +2127,7 @@ begin
     exit;
   end;
 
-  if SaveDataHead.DEVTYPE = $8800 then
+  if SaveDataHead.DEVTYPE = $8800 then  //布点
   begin
     Move(USBDataBufXj[0],SaveDataBd, sizeof(SaveDataBd));
     FileWrite(f, SaveDataBd, sizeof(SaveDataBd));

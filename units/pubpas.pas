@@ -11,7 +11,7 @@ type
   end;
 
 type
-  TServer2Lower=record
+  TServer2Lower=record        //投射布点都要用
     head:array[1..3] of Byte;  //0,1,2 0xaa 0x0f 0xee  1至3是usb通信识别帧头
     dotcon:byte;  //3    0xc1（0x00） 刺激点命令
     da:array[1..2] of Byte;  //4,5   亮度DB值对应的AD值,高字节在前
@@ -38,7 +38,7 @@ type
     envlight1:byte;  // 40  环境光1   需返回0xff  不需返回0x00
     envlight2:byte;  // 41  环境光2   需返回0xff  不需返回0x00
     envtemper:byte;  //42  环境温度   需返回0xff  不需返回0x00
-    eyeleft:byte;  //43  左眼位       需返回0xff  不需返回0x00
+    eyeleft:byte;     //43  左眼位       需返回0xff  不需返回0x00
     eyeright:byte;  //44  右眼位      需返回0xff  不需返回0x00
     motorlimit:byte; //45  电机限位状态   需返回0xff  不需返回0x00
     savedata:byte;  // 46 存储数据        需返回0xff  不需返回0x00
@@ -78,8 +78,8 @@ type            //投射加
     color:byte;  //34  协议35位为 颜色 ：数值范围十进制1至5
     size:byte;   //35  协议36位为 光斑 ：数值范围十进制1至6
     stimmode:byte; //36 协议37位为 快门方式：88表示会用后面两位控制时间
-    stimtime:array[1..2] of byte; //37 协议38-39位为 快门时间
-    backup:array[1..23] of Byte;  //38-61  40至62字节  为备用数据全为0x00
+    stimtime:array[1..2] of byte; //37,38 协议38-39位为 快门时间
+    backup:array[1..23] of Byte;  //39-61  40至62字节  为备用数据全为0x00
     ending:array[1..2] of Byte;  //62,63   0x4e   0x4f  63至64是结束帧码
   end;
 
@@ -141,14 +141,14 @@ type
 
   end;
 
-////////修改
+////////修改,主机储存数据与从机数据
 type
-  TSAVEDATABD=record
+  TSAVEDATABD=record   //78735Byte 读取DevData
     DEVTYPE:word; //0-1  0 布点0x8800  1投射 0x0088
     SerialNo:word;  //2-3  串号，计算而来
     DEVID: Cardinal;  //4-7  球体编号
     VERSION: word;  //8-9 版本号
-    DOT_DA:array[1..2, 1..24, 1..20, 0..40] of word;  			 //0-78719                        //颜色 行 列 (0db, 40db)
+    DOT_DA:array[1..2, 1..24, 1..20, 0..40] of word;//0-78719 颜色 行 列 (0db, 40db)
     FOUCUS_DA:array[0..8] of word;
     BACK_DA:array[0..1,0..2] of word;
     HW_DA:array[0..3] of word;
@@ -165,49 +165,49 @@ type
     HJG_DAH: word;  //黄背景光环境光报警值    
   end;
 
-////////新建
+////////新建,主机储存数据与从机数据投射,数据上位机需要,有些数据下位机自己用的没有放在里面
 type
-  TSAVEDATATS=record        //3306byte
-    DEVTYPE:word; //0-1  0 布点0x8800  1投射 0x0088
+  TSAVEDATATS=record        //3306byte  读取 DevData
+    DEVTYPE:word; //0-1   布点0x8800  1投射 0x0088
     SerialNo:word;  //2-3  串号，计算而来
-    DEVID: Cardinal;  //4-7  设备编号
+    DEVID: Cardinal;  //4-7  球体编号
     VERSION: word;  //8-9 版本号
-    FOUCUS_DA:array[0..8] of word;  //10-27 固视
-    BACK_DA:array[0..1,0..2] of word; //28-39 背景
-    HW_DA:array[0..3] of word; //40-47 红外
-    HJG_DA:word;  //48,49 环境光报警值
-    TSG_DA:word;  //50,51  投射光强的最亮值预设
-    KM2C:word; //52,53 快门待命步数
-    YS_STEP:array[0..5] of word;  //54-65 0,完全通过 1-5五种颜色中的各个颜色所需对应的电机转动步数
-    GB_STEP:array[0..7] of word;  //66-81 0,完全通过 1-7六种光斑中的各个光斑所需对用的电机转动步数
-    JJ2LD:word;  //82,83 焦距电机到联动位置所需要移动的步数
-  //以下的 smallint 改为 integer 长度加一倍
-    X2C:integer;   //84-87 X电机在计算的中心点时所走动的步数,以复位点计数
-    Y2C:integer;   //88,91 Y电机在计算的中心点时所走动的步数
-    X2JZ:integer;  //92,95 光强校正时 X电机所需走动的步数,以复位点计数
-    Y2JZ:integer;  //96,99 光强校正时 Y电机所需走动的步数
-    JZJJ:word;  //100,101 光强校正时 焦距电机所需走动的步数
-    X2LX:integer;   //102-105 进行菱形中心点测试时X电机所需走动的步数
-    Y2LX:integer;  //106-109  进行菱形中心点测试时Y电机所需走动的步数
-    LXJJ:word;  // 110-111菱形中心点时 焦距电机所需走动的步数
-    JJ_FW:array[0..1] of word; //112-115 焦距电机的调焦工作范围,从复位位置开始计数
-    JJ_STEP:array[1..7,1..25] of word;  //焦距电机（光斑，距离）对应步数，从复位位置开始计数
-    DB_STEP:array[0..1,0..51] of word; // dB对应的颜色电机和大小电机各自转动的步数
-    EYEGRAY: word;
-    EvTemp: word;
-    X2CF:integer;   //正中心到副中心X电机步数
-    Y2CF:integer;   //正中心到副中心Y电机步数
-    SBID: Cardinal;  //4-7  设备编号
-    DJ_CS:array[1..8,1..17] of word; // 各个电机参数
-    EYEGRAYH: word; //黄背景光阈值
-    HJG_DAH: word;  //黄背景光环境光报警值
-    DB90:array[0..45] of word; //90度衰减，以中心0度为基础，DB数*50存储，间隔2度，0-45
-    DBTemp:array[0..45] of word; //温度衰减，以中心0度为基础，DB数*50存储，间隔1度，0-45
+    FOUCUS_DA:array[0..8] of word;  //10-27 a~1b 9个固视灯强度大小  固视点调试
+    BACK_DA:array[0..1,0..2] of word; //28-39 [backmode 白光,黄光?] [0:r,1:g,2:b] 背景灯调试
+    HW_DA:array[0..3] of word; //40-47 28~2f  0 黄背景光,1投射光?,  2小红外,2大红外
+    HJG_DA:word;  //48,49  30~31 环境光报警值 环境光报警阈值 DA
+    TSG_DA:word;  //50,51  32~33 投射光强的最亮值预设  代码没用  投射光DA
+    KM2C:word; //52,53 快门开位  
+    YS_STEP:array[0..5] of word;  //54-65 0,完全通过 1-5五种颜色中的各个颜色所需对应的电机转动步数  颜色
+    GB_STEP:array[0..7] of word;  //66-81 0,完全通过 1-7六种光斑中的各个光斑所需对用的电机转动步数  光斑尺寸
+    JJ2LD:word;  //82,83  52~53 焦距电机到联动位置所需要移动的步数   焦距联动
+    //以下的 smallint 改为 integer 长度加一倍
+    X2C:integer;   //84-87 54~57 X电机在计算的中心点时所走动的步数,以复位点计数  到中心点
+    Y2C:integer;   //88,91 58~5b  Y电机在计算的中心点时所走动的步数
+    X2JZ:integer;  //92,95 5c~5f 光强校正时 X电机所需走动的步数,以复位点计数  代码好像没用  光强校正
+    Y2JZ:integer;  //96,99 60~63 光强校正时 Y电机所需走动的步数
+    JZJJ:word;  //调试软件integer位置数据全按软件调试计算 100,103  64~67 光强校正时 焦距电机所需走动的步数   光强校正_焦距
+    X2LX:integer;   //104-107 68~6b 进行菱形中心点测试时X电机所需走动的步数   菱形中心
+    Y2LX:integer;  //108-111  6c~6f 进行菱形中心点测试时Y电机所需走动的步数
+    LXJJ:word;  // 112-113  0x70~0x71菱形中心点测试时 焦距电机所需走动的步数 菱形中心点_焦距
+    JJ_FW:array[0..1] of word; //114-117 72~73 小 74~75 大  焦距电机的调焦工作范围,从复位位置开始计数  调焦范围
+    JJ_STEP:array[1..7,1..25] of word;  //118-467 0x76~0x1d3  焦距电机（光斑，距离）对应步数，从复位位置开始计数  焦距参数表右边
+    DB_STEP:array[0..1,0..51] of word; //468-675 0x1d4~0x2a3  dB对应的颜色电机和光斑电机各自转动的步数  DB参数表
+    EYEGRAY: word;     //676-677 0x2a4~ 0x2a5   瞳孔灰度值 识别瞳孔用   瞳孔灰度阈值?
+    EvTemp: word;     //678-679   0x2a6~0x2a7  代码没用  调试温度
+    X2CF:integer;   //680-683 0x2a8~0x2ab    正中心到副中心X电机步数  正副中心差
+    Y2CF:integer;   //684-687 0x2ac~0x2af    正中心到副中心Y电机步数
+    SBID: Cardinal;  //688-691 0x2b0~ 0x2b3   设备编号
+    DJ_CS:array[1..8,1..17] of word; //692-963 0x2b3~0x3c3   各个电机参数   电机参数表  新版不需要
+    EYEGRAYH: word; //964-965 0x3c4~0x3c5  黄背景光阈值
+    HJG_DAH: word;  //964-965 0x3c6~0x3c7 黄背景光环境光报警值
+    DB90:array[0..45] of word; //966-1057  90度衰减，以中心0度为基础，DB数*50存储，间隔2度，0-45   0-90度衰减
+    DBTemp:array[0..45] of word; //1058-1149 温度衰减，以中心0度为基础，DB数*50存储，间隔1度，0-45    温度曲线
   end;
 
 ////////新建
 type
-  TSAVEDATAHead=record        //数据头
+  TSAVEDATAHead=record        //数据头 就是投射数据的前面一截
     DEVTYPE:word; //0-1  0 布点0x8800  1投射 0x0088
     SerialNo:word;  //2-3  串号，计算而来
     DEVID: Cardinal;  //4-7  设备编号
@@ -216,16 +216,16 @@ type
 
 ////////新建
 type
-  TDEVTESTDATA=record         //Fmain.FormCreate中读取DevTestSet.dat得到
+  TDEVTESTDATA=record         //Fmain.FormCreate中读取DevTestSet.dat得到,其实DevData.dat也有存储,但是很奇怪,另外搞了个文件
     TIMESPACE: BYTE;
     CtbcTs: WORD;
     XtbcTs: WORD;
     Cz0Ts: WORD;
     Cz40Ts: WORD;
-    //投射加，存储于本地的
-    XY2STEP: array[-15..15,-15..15] of array[1..3] of Longint; //-2147483648..2147483647 	x,y 对应的X电机步，Y电机步，距离长度
-    XY2STEP2: array[-15..15,-15..15] of array[1..3] of Longint; //-2147483648..2147483647 	x,y 对应的X电机步，Y电机步，距离长度
-    JJ_STEPT:array[1..2,1..25] of smallint;  //调焦时x,y位置
+    //投射加，存储于本地的  需要改成存储到下位机
+    XY2STEP: array[-15..15,-15..15] of array[1..3] of Longint; //-2147483648..2147483647 	x,y 对应的X电机步，Y电机步，距离长度      电机位置表
+    XY2STEP2: array[-15..15,-15..15] of array[1..3] of Longint; //-2147483648..2147483647 	x,y 对应的X电机步，Y电机步，距离长度    电机位置副表
+    JJ_STEPT:array[1..2,1..25] of smallint;  //调焦时x,y位置   焦距参数表左边   感觉没用
     DoubleRate:byte;
     VERSION: word;  //版本号
     SAVEPATH: ShortString;  //存储路径

@@ -1,6 +1,6 @@
 object FProgramSelect: TFProgramSelect
-  Left = 419
-  Top = 0
+  Left = 548
+  Top = 359
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Select Program'

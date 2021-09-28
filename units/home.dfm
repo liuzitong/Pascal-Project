@@ -2,7 +2,7 @@ object FHome: TFHome
   Left = 0
   Top = 0
   Width = 443
-  Height = 377
+  Height = 332
   Align = alTop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,7 +15,7 @@ object FHome: TFHome
   TabOrder = 0
   object Panel8: TPanel
     Left = 0
-    Top = 346
+    Top = 301
     Width = 443
     Height = 31
     Align = alBottom
@@ -175,7 +175,7 @@ object FHome: TFHome
     Left = 0
     Top = 0
     Width = 443
-    Height = 346
+    Height = 301
     Align = alClient
     Caption = 'Panel1'
     Color = clBlack
@@ -190,14 +190,14 @@ object FHome: TFHome
       Left = 857
       Top = 1
       Width = 566
-      Height = 344
+      Height = 299
       Align = alClient
       Caption = 'Panel2'
       Enabled = False
       TabOrder = 0
       object Panel6: TPanel
         Left = 1
-        Top = 311
+        Top = 266
         Width = 564
         Height = 32
         Align = alBottom
@@ -518,7 +518,7 @@ object FHome: TFHome
         Left = 1
         Top = 1
         Width = 564
-        Height = 310
+        Height = 265
         ActivePage = TabSheet4
         Align = alClient
         Style = tsButtons
@@ -9912,7 +9912,7 @@ object FHome: TFHome
           ImageIndex = 5
           DesignSize = (
             556
-            280)
+            235)
           object ImageGray2: TImage
             Left = 25
             Top = 20
@@ -9999,7 +9999,7 @@ object FHome: TFHome
       Left = 1
       Top = 1
       Width = 856
-      Height = 344
+      Height = 299
       Align = alLeft
       Caption = 'pnl1'
       TabOrder = 1

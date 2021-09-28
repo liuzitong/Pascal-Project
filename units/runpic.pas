@@ -906,14 +906,14 @@ begin
   }
 end;
 
-procedure TFRunpic.BtStartClick(Sender: TObject);    //主要是初始化一部分DemoCheckData数据,另外初始化ftpoint
+procedure TFRunpic.BtStartClick(Sender: TObject);    //主要是根据策略初始化一部分DemoCheckData数据,另外初始化ftpoint ,再根据策略调用TwTimerProc或TwTimerProcTs
 var
   checkdata:TCheckData;
   aaa,bbb,ccc,i: integer;
 begin
   //  priJczt: byte; //0－原始状态，1－已新开始， 2－已暂停，3－复查 应该不会用
   case priJczt of     //检查状态.
-    0:  //点START
+    0:  //点START 开始之后prJczt就被赋值为1
       begin
         if pubtestover then           //在DelYdqk中测试完之后就赋值true
         begin
@@ -976,7 +976,7 @@ begin
         ChinDown:=True;
         ChinUp:=True;
 
-        Pupilwx0:=(Pupilx+Pupilx+Pupildx)/2-Pupilwx;   //Pupil*由this::SampleGrabberBuffer的GetPupil赋值  SampleGrabberBuffer 是控件SampleGrabber的OnBuffer绑定的回调函数,如果没有消息初始值为0
+        Pupilwx0:=(Pupilx+Pupilx+Pupildx)/2-Pupilwx;   //Pupil*由this::SampleGrabberBuffer的GetPupil赋值  SampleGrabberBuffer 是控件SampleGrabber的OnBuffer绑定的回调函数,如果没有消息初始值为0 ,感觉没有dll。
         Pupilwy0:=(Pupily+Pupily+Pupildy)/2-Pupilwy;
 
         if DemoCheckData.runstate=0 then    //未运行
@@ -992,15 +992,17 @@ begin
         DemoCheckData.runstate:=1;
         //30,周边到中心扫描，31,盲区扫描
         //0.Full Threshold 1.AutoThreshold 2.Fast Threshold 3.Top Threshold
-        if DemoCheckData.pm.Strategy>=32 then   //暗区,静点,直线  投射才有需要
+        if DemoCheckData.pm.Strategy>=32 then   //投射中的暗区,静点,直线  才有需要
         begin
           FMoveXY:=TFMoveXY.Create(Self);
           FMoveXY.CheckData:=DemoCheckData;
           FMoveXY.EtX1.Enabled:=DemoCheckData.pm.Strategy=34;
           FMoveXY.EtY1.Enabled:=FMoveXY.EtX1.Enabled;
+
+
           if FMoveXY.ShowModal=mrOK then
           begin
-            DemoCheckData.pm:=FMoveXY.CheckData.pm;
+            DemoCheckData.pm:=FMoveXY.CheckData.pm;   //选定暗区,静点测量点,或是直线测量直线
             if not WriteXwCheckData then ;
 
             FMoveXY.Free;
@@ -1014,20 +1016,21 @@ begin
 
         if DemoCheckData.pm.Strategy>=31 then   //盲区,暗区,静点,直线,  投射才有需要
         begin
-          CheckMove;
+          CheckMove;                      //主要对checkData.pt赋值
         end;
 
         DemoCheckData.runstate:=1;            //正在运行
         DemoCheckData.runstate30:=0;          //应该是投射才需要
+
         ////        if not WriteXwRunstate(checkdata) then ;
         FMain.ActiveControl:=nil;
         ////
-        prisftestdot := 0;
+        prisftestdot := 0;     //短周期检查点？
         priCenterDot:=false;
-        priFxy4 := false;
+        priFxy4 := false;   //4个基本点 
         priZcyd := true;   //正常应答
         priYdcs := 0;      //应答次数
-        //中心点检查Param Setting中打开 Fovea的值就为1
+        //中心点检查Param Setting中打开 Fovea的值就为1      非投射策略
         if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
         begin
           priCenterDot:=true;
@@ -1169,7 +1172,7 @@ begin
           TWTimerProc;
         end;
       end;
-    1:  //点PAUSE   开始之后prJczt就被赋值为1
+    1:  //点PAUSE   
       begin
         if DemoCheckData.Ready=0 then exit;
         ChinDown:=True;
@@ -1198,7 +1201,7 @@ begin
         else
           TWTimerProc;
       end;
-    3:
+    3:  
       begin
         BtStart.Caption := Tr('Pause');
         priJczt := 1;
@@ -3266,7 +3269,7 @@ var
   x,y,i,n: integer;
   d: single;
 begin
-  if (DemoCheckData.pm.Strategy=31) then //blind
+  if (DemoCheckData.pm.Strategy=31) then //盲区
   begin
     n:=0;
     x:=-14;
@@ -3286,7 +3289,7 @@ begin
 	  y:=DemoCheckData.pm.MoveY0;
   end;
 
-  if (DemoCheckData.pm.Strategy=33) then     //暗点检查
+  if (DemoCheckData.pm.Strategy=33) then     //静点检查
   begin
   	x:=DemoCheckData.pm.MoveX0;
 	  y:=DemoCheckData.pm.MoveY0;
@@ -3302,7 +3305,7 @@ begin
     DemoCheckData.pt[2].x := DemoCheckData.pm.MoveX1;
     DemoCheckData.pt[2].y := DemoCheckData.pm.MoveY1;
   end
-  else
+  else        //盲区，暗点检查，静点检查
   begin
     DemoCheckData.pm.Dot_Number:=4;
     d:=90;
@@ -3409,6 +3412,7 @@ begin
   begin
     SaveDataBd.HW_DA[2]:=SpinEdit4.Value;
   end
+  
   else
   begin
     SaveDataTs.HW_DA[2]:=SpinEdit4.Value;
