@@ -811,6 +811,7 @@ begin
     id:=FProgramSelect.TbPt.FieldByName('Id').AsInteger;
     isEyeMove:=FProgramSelect.TbPt.FieldByName('EyeMove').AsString<>'0';
     s:=GetPtData(id, checkdata, pt);
+    checkdata.count:=0;
     OldPId := id;
     XwData.CurPtId := id;
 
@@ -953,7 +954,7 @@ begin
 
         ////原有
         if DemoCheckData.Ready=0 then exit;      //没什么用,应该
-
+        DemoCheckData.count:=0;
         DemoCheckData.fixationcount := 0;       //初始化一部分检测信息
         DemoCheckData.fixationlength := 0;
         DemoCheckData.poscount := 0;
