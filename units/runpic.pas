@@ -23,6 +23,9 @@ type
     cxLabel14: TcxLabel;
     cxComboBox1: TcxComboBox;
     Panel4: TPanel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    Panel11: TPanel;
     Panel10: TPanel;
     Timer: TTimer;
     Panel5: TPanel;
@@ -75,6 +78,7 @@ type
     Label2: TLabel;
     SpinEdit3: TSpinEdit;
     Memo1: TMemo;
+    Panel6: TPanel;
     Label3: TLabel;
     SpinEdit1: TSpinEdit;
     Label41: TLabel;
@@ -95,6 +99,7 @@ type
     cxLabel15: TcxLabel;
     EtFixation: TcxLabel;
     Panel12: TPanel;
+    Panel13: TPanel;
     EtCount: TcxLabel;
     cxLabel19: TcxLabel;
     EtTime: TcxLabel;
@@ -275,7 +280,7 @@ const
  }
     BLIND_DOT_RIGHTP: array[1..15,1..2] of integer=
     (
-      (16,-1),
+      (15,-1),
       (17,-1),(15,-3),(15,1),(13,-1),
       (13,-3),(17,-3),(13,1),(17,1),
       (11,-1),(17,-1),(11,-3),(17,-3),(11,1),(17,1)
@@ -283,7 +288,7 @@ const
 
     BLIND_DOT_LEFTP: array[1..15,1..2] of integer=
     (
-      (-16,-1),
+      (-15,-1),
       (-17,-1),(-15,-3),(-15,1), (-13,-1),
       (-13,-3),(-17,-3),(-13,1),(-17,1),
       (-11,-1),(-17,-1),(-11,-3),(-17,-3),(-11,1),(-17,1)
@@ -676,7 +681,7 @@ begin
 
     FParam.EtStimulus_Color.Enabled:=False;
     FParam.EtDot_Number.Enabled:=False;
-    //FParam.Page.Pages[1].TabVisible:=False;
+    FParam.Page.Pages[1].TabVisible:=False;       //没用
     FParam.TbPt.Filter:='Name='''+TbCheck.FieldByName('Pt').AsString+'''';//设置pt.db的筛选为Name='30-2'之类的
     if FParam.ShowModal=mrOK then
     begin
@@ -685,7 +690,7 @@ begin
       TbCheck.FieldByName('State').AsInteger:=1;
       TbCheck.FieldByName('Strategy').AsString:=Tr('Strategy'+IntToStr(DemoCheckData.pm.Strategy));
       TbCheck.Post;
-      //if not WriteXwCheckData then ;     没用了
+      if not WriteXwCheckData then ;     //没用了
       if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
         FMain.LightOther(1,0) // 大菱形固视
       else
@@ -938,19 +943,19 @@ begin
         else
           FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);
 
-        {
-          //       if SaveDataHead.DEVTYPE = $8800 then   //布点    没啥用
-          //        begin
-          //          pubgets := false;
-          //          FMain.SnapshotClick(nil); //获取硬件状态
-          //
-          //          repeat
-          //            begin
-          //              Application.ProcessMessages;
-          //            end;
-          //          until (not pubgets);
-          //        end;
-        }
+        
+        if SaveDataHead.DEVTYPE = $8800 then   //布点    没啥用
+         begin
+           pubgets := false;
+           FMain.SnapshotClick(nil); //获取硬件状态
+
+           repeat
+             begin
+               Application.ProcessMessages;
+             end;
+           until (not pubgets);
+         end;
+
 
         ////原有
         if DemoCheckData.Ready=0 then exit;      //没什么用,应该
@@ -1524,8 +1529,8 @@ begin
   begin
     priJczt := 0;
     BtStart.Caption := Tr('Start');
-  end
     FMain.ActiveControl:=nil;
+  end
   else
   }
   begin
@@ -2283,14 +2288,11 @@ end;
 procedure TFRunpic.DelYdqk;
 var
   i,aj: integer;
-  curPoint:tdata;
 begin
   if pubkey then
     fmain.memo2.Lines.Add('X='+inttostr(ftpoint[afarray[pricurp]].x)+' Y='+inttostr(ftpoint[afarray[pricurp]].Y)+'  应答了')
   else
     fmain.memo2.Lines.Add('X='+inttostr(ftpoint[afarray[pricurp]].x)+' Y='+inttostr(ftpoint[afarray[pricurp]].Y)+'  未应答');
-
-  curPoint:= ftpoint[afarray[pricurp]];
 
   case prijclx of
     0: ///正常跳转
