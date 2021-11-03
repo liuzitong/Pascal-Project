@@ -10,7 +10,7 @@ uses
   cxContainer, cxEdit, cxLabel, DateUtils, dxBar,
   dxBarExtItems, cxClasses, cxProgressBar, DB, DBTables, Wwtable, Wwdatsrc,
   cxDBLabel, Buttons, DSPack, cxMCListBox, DSUtil, DirectShow9, Math, ComObj, ShellApi,
-  cxCheckBox, pubpas, JvHidControllerClass,xwxh, MPlayer, Spin;
+  cxCheckBox, pubpas, JvHidControllerClass,xwxh, MPlayer, Spin,myIniFiles;
 
 type
 
@@ -2913,13 +2913,14 @@ end;
 procedure TFRunpic.TWTimerProc;
 var
   myCount,StartTime,LI:TLARGEINTEGER;
-  mycurdb,waitTime: integer;
+  mycurdb,waitTime,blindotDBAdd: integer;
   prtmpform:Tform;
 begin
   pritesting:=True;
   pubmoveline := false;    //好像是投射才需要?
   TimerTestTime.Enabled := true;
   pristepdb := 4;
+  blindotDBAdd:=TMyIniFiles.GetIniFile.ReadInteger('blindot','dbValue addtion',0);
   while pritesting do                           //检查停止通过pritesting控制,hasEnded 在检查数目达到之后置为false
   begin
     if (not pristop) and (not priHjStop) then    //好像这两个变量总为false ,没什么用
@@ -3015,7 +3016,7 @@ begin
           ////prihadblind := false;
           ////prihavingblind := false;
           FMain.Memo2.Lines.Add('blind spot test');
-          if prihadblind then
+          if prihadblind then        //找到盲点
           begin
             pubPrefer.BTest := pubPrefer.BTest+1;
             DemoCheckData.fixationlength := DemoCheckData.fixationlength+1;
@@ -3023,7 +3024,7 @@ begin
             //FMain.LightDot(pubblinddb,point(pubblindx,pubblindy),1);
             //DB在设置中，位置四点后，找3X5的盲点位置    接线坐标BLIND_DOT_RIGHT BLIND_DOT_LEFT
             //priblindpoint
-            FMain.LightDot(DemoCheckData.pm.Blind_Value,priblindpoint,1,DemoCheckData.pm.Hold_Time);
+            FMain.LightDot(DemoCheckData.pm.Blind_Value+blindotDBAdd,priblindpoint,1,DemoCheckData.pm.Hold_Time);
           end
           else
           begin
