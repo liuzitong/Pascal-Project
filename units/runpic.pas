@@ -2260,7 +2260,6 @@ begin
     pritesting:=false;
     TimerTestTime.Enabled := false;
     DemoCheckData.runstate:=0;
-
     Panel4.Enabled := false;
     sleep(1000);
     FMain.LightOther(DemoCheckData.pm.Fixation_Mode,2); //¹Ø±Õ±³¾°µÆ 5s   2Îª¹Ø±Õ±³¾°¹â
