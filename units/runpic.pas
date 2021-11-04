@@ -361,23 +361,21 @@ begin
     //新初始点为isxy4,四点检查完毕
     if xy4end then
     begin
-      {
-        //若中心点参与了检查，在此值最初四点
-        // if not priFxy4 then     //btStart置为false,之后没有置为FALSE的时候,                感觉这部分没什么卵用
-        // begin
-        //   Getxy4;                   //获得新的四点
-        //   priFxy4 := true;
-        //   priCenterDot := false;
-        //   //if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
-        //   //FMain.LightOther(1,0); // 大菱形固视
-        //   sleep(1000);
-        //   FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);//正常固视
-        //   priZcyd := true;
-        // end
-        // else
-      }
+    //若中心点参与了检查，在此值最初四点
+      if not priFxy4 then
       begin
-        Old4XY := false;  //最初4点完成后将其他点isxy4设定为true
+        Getxy4;
+        priFxy4 := true;
+        priCenterDot := false;
+//        if ((DemoCheckData.pm.Fovea=1) and (DemoCheckData.pm.Strategy<30)) then
+//        FMain.LightOther(1,0); // 大菱形固视
+        sleep(1000);
+        FMain.LightOther(DemoCheckData.pm.Fixation_Mode,0);//正常固视
+        priZcyd := true;
+      end
+      else
+      begin
+        Old4XY := false;  //最初4点完成后
         for i:=low(mytdata) to high(mytdata) do
         begin
           if (mytdata[i].isxy4=True) and (mytdata[i].arr=false) then
