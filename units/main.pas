@@ -93,6 +93,7 @@ type
     CheckBoxDebug: TCheckBox;
     LogInfo: TMemo;
     pnl1: TPanel;
+    blackValue: TEdit;
 
     procedure BtQueryClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -254,6 +255,7 @@ begin
   Statusbar.Panels[2].Text:=Tr('Logo')+' ';
   TlogFile.GetInstance.Memo:=LogInfo;
   TlogFile.GetInstance.Trace(WarningLevel,'**********************session begins***********************','');
+
 {
  //还不知到是啥类型
   s:=ExeFilePath+'harddata.dat';
@@ -359,6 +361,8 @@ begin
   FMain.BitBtnReturn4.Enabled := BtParam.Enabled;
   FMain.ImageHome.Enabled := BitBtnReturn4.Enabled;
 
+
+  TryStrToInt(blackValue.Text,PupilBlackValue);
     {
   FMain.BtStop.Enabled := false;
   FMain.BtStartCheck.Enabled := false;

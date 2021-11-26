@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Comobj, pubpas;
+  Dialogs, Comobj, pubpas,uProgLog;
 
 type
   DoubleArray=array[0..1000] of double;
@@ -36,6 +36,7 @@ var
   PupilD:double=0;
   Pupilok:integer=0;
   PupilScore:integer=0;
+  Count:Integer=0;
   BmpBrightness:integer;
   Bmpbuf:WideString;
   BmpData:string;
@@ -56,6 +57,7 @@ var
   Graybuf:DoubleArray;
 
   Histogram:DoubleArray;
+
 
 function GetEyeMove(x,y,dx,dy,wx,wy:integer):double;
 function GetPupil:string;
@@ -614,7 +616,13 @@ begin
   wy:=0;
   i:=FindPupil(BmpData, x, y, dx, dy, wx, wy);
   d:=GetEyeMove(x, y, dx, dy, wx, wy);
-  Result:=Format('%d, (%d, %d), %d, (%d, %d), %0.1f', [i, x, y, dx, wx, wy, d]);
+  Count:=Count+1;
+  if Count mod 100=0 then
+  begin
+    Result:=Format('i:%d, (x:%d, y:%d), (dx:%d, dy:%d), (wx:%d, wy:%d),blackval:%d, %0.1f', [i, x, y, dx,dy, wx, wy,PupilBlackValue ,d]);
+    TLogFile.GetInstance.Trace(LogLevel,'pupilInfo',Result);
+  end;
+
   vok:=0.0;
 //  if (i<>0) and (dx>=10) and (dx<=51) then
   if (i<>0) and (dx>=10) and (dx<=71) then
