@@ -1865,11 +1865,11 @@ begin
     for i := 0 to SysDev.CountFilters - 1 do
     begin
       s:=SysDev.Filters[i].FriendlyName;
-      if (Pos('2820', s)>0) or (Pos('2860', s)>0) then
-      begin
+//      if (Pos('2820', s)>0) or (Pos('2860', s)>0) then
+//      begin
         si:=i;
         sj:=0;
-      end;
+//      end;
 //      LbCamere.Items.Add(s);
       SysDev.SelectGUIDCategory(CLSID_VideoInputDeviceCategory);
       FilterGraph.ClearGraph;
