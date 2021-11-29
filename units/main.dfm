@@ -1,6 +1,6 @@
 object FMain: TFMain
-  Left = 232
-  Top = 84
+  Left = 294
+  Top = 78
   BorderStyle = bsNone
   Caption = 'Visual View V1.0'
   ClientHeight = 805
@@ -404,7 +404,7 @@ object FMain: TFMain
               TitleFont.Name = 'MS Sans Serif'
             end
             inherited Panel6: TPanel
-              Top = -136
+              Top = -112
               inherited PcReport: TcxPageControl
                 ClientRectTop = 28
               end
@@ -26164,6 +26164,14 @@ object FMain: TFMain
         Style.IsFontAssigned = True
         Visible = False
       end
+    end
+    object edit_blackValue: TEdit
+      Left = 960
+      Top = 16
+      Width = 121
+      Height = 32
+      TabOrder = 13
+      Text = '56'
     end
   end
   object PanelTitle: TPanel

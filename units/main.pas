@@ -99,6 +99,7 @@ type
     BtPrint: TcxButton;
     LabelXtmc: TLabel;
     CheckBoxDebug: TCheckBox;
+    edit_blackValue: TEdit;
     procedure BtQueryClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -364,6 +365,8 @@ begin
   FMain.BtParam.Enabled := FRunpic1.BtParam.Enabled;
   FMain.BitBtnReturn4.Enabled := BtParam.Enabled;
   FMain.ImageHome.Enabled := BitBtnReturn4.Enabled;
+
+  TryStrToInt(edit_blackValue.Text,PupilBlackValue);
 
     {
   FMain.BtStop.Enabled := false;
@@ -2687,3 +2690,5 @@ begin
 end;
 
 end.
+
+
