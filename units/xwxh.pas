@@ -1443,7 +1443,7 @@ var
   vfiqz: array[1..5] of single; //ШЈжи
   r2: single;
   r: integer;
-  vfih,vfi,temp: single;
+  vfih,vfi,vfid,temp: single;
   vfiMagnification:Double;
 begin
   vfiMagnification:=TMyIniFiles.GetIniFile.ReadFloat('report','vfi magnification',1.02);
@@ -1481,14 +1481,19 @@ begin
     checkresult.DevPE[i]:=pe;
   end;
   vfih := 0;
+  vfid:=0;
   for i:=1 to 5 do
   begin
-    temp := (vfisc[i]/(vfibz[i]+0.0001));
-    if temp>1 then
-      temp := 1;
-    vfih := vfih+vfiqz[i]*temp;
+    if(vfibz[i]<>0) then
+    begin
+      temp := (vfisc[i]/(vfibz[i]+0.0001));
+      if temp>1 then
+        temp := 1;
+      vfih := vfih+vfiqz[i]*temp;
+      vfid:=vfid+vfiqz[i];
+    end;
   end;
-  vfi := vfih/6.36*vfiMagnification;
+  vfi := vfih/vfid*vfiMagnification;
   if vfi>1 then
     vfi := 1;
   checkresult.VFI := round(vfi*100)/100;
