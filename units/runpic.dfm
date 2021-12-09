@@ -5423,7 +5423,7 @@ object FRunpic: TFRunpic
       Left = 841
       Top = 519
       AutoSize = False
-      Caption = 'Check Time:'
+      Caption = 'Check Time(s):'
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Style.BorderColor = clBtnFace
@@ -5468,7 +5468,7 @@ object FRunpic: TFRunpic
       Left = 841
       Top = 561
       AutoSize = False
-      Caption = 'Pupil Diameter:'
+      Caption = 'Pupil Diameter(mm):'
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Style.BorderColor = clBtnFace
