@@ -1,10 +1,10 @@
 object FParamCast: TFParamCast
-  Left = 93
-  Top = 122
+  Left = 176
+  Top = 283
   BorderStyle = bsNone
   Caption = 'Cast Param Setting'
-  ClientHeight = 575
-  ClientWidth = 910
+  ClientHeight = 482
+  ClientWidth = 786
   Color = 15790320
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,28 +16,28 @@ object FParamCast: TFParamCast
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 21
+  TextHeight = 16
   object Panel1: TPanel
     Left = 0
-    Top = 505
-    Width = 910
-    Height = 70
+    Top = 429
+    Width = 786
+    Height = 53
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
     DesignSize = (
-      910
-      70)
+      786
+      53)
     object BtOk: TcxButton
-      Left = 604
-      Top = 9
-      Width = 124
-      Height = 53
+      Left = 553
+      Top = 7
+      Width = 95
+      Height = 40
       Anchors = [akTop, akRight]
       Caption = 'OK'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -21
+      Font.Height = -16
       Font.Name = #24494#36719#38597#40657
       Font.Style = []
       ModalResult = 1
@@ -48,15 +48,15 @@ object FParamCast: TFParamCast
       LookAndFeel.NativeStyle = True
     end
     object BtCancel: TcxButton
-      Left = 769
-      Top = 9
-      Width = 124
-      Height = 53
+      Left = 679
+      Top = 7
+      Width = 94
+      Height = 40
       Anchors = [akTop, akRight]
       Caption = 'Cancel'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -21
+      Font.Height = -16
       Font.Name = #24494#36719#38597#40657
       Font.Style = []
       ModalResult = 2
@@ -68,8 +68,8 @@ object FParamCast: TFParamCast
   end
   object Panel2: TPanel
     Left = 0
-    Top = 504
-    Width = 910
+    Top = 428
+    Width = 786
     Height = 1
     Align = alBottom
     Color = 16749107
@@ -77,32 +77,32 @@ object FParamCast: TFParamCast
   end
   object Page: TPageControl
     Left = 0
-    Top = 65
-    Width = 910
-    Height = 439
+    Top = 50
+    Width = 786
+    Height = 378
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 2
     object TabSheet1: TTabSheet
       Caption = 'Common'
       DesignSize = (
-        902
-        403)
+        778
+        347)
       object cxLabel4: TcxLabel
-        Left = 21
-        Top = 10
-        Caption = 'Range'
+        Left = 8
+        Top = 8
+        Caption = 'Range(Deg)'
         Transparent = True
       end
       object cxLabel5: TcxLabel
-        Left = 21
-        Top = 183
+        Left = 8
+        Top = 139
         Caption = 'Stimulation Color'
         Transparent = True
       end
       object EtStimulus_Color: TcxComboBox
-        Left = 228
-        Top = 183
+        Left = 174
+        Top = 139
         AutoSize = False
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -119,18 +119,18 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 4
-        Height = 36
-        Width = 156
+        Height = 28
+        Width = 119
       end
       object cxLabel6: TcxLabel
-        Left = 21
-        Top = 96
+        Left = 8
+        Top = 73
         Caption = 'Strategy'
         Transparent = True
       end
       object EtStrategy: TcxComboBox
-        Left = 228
-        Top = 96
+        Left = 174
+        Top = 73
         AutoSize = False
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -150,18 +150,18 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 2
-        Height = 36
-        Width = 156
+        Height = 28
+        Width = 119
       end
       object cxLabel7: TcxLabel
-        Left = 472
-        Top = 183
+        Left = 360
+        Top = 139
         Caption = 'Fixation Mode'
         Transparent = True
       end
       object EtFixation_Mode: TcxComboBox
-        Left = 724
-        Top = 183
+        Left = 552
+        Top = 139
         AutoSize = False
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -179,12 +179,12 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 9
-        Height = 36
-        Width = 155
+        Height = 28
+        Width = 118
       end
       object EtAlarm_Mode: TcxComboBox
-        Left = 724
-        Top = 270
+        Left = 552
+        Top = 206
         AutoSize = False
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -200,24 +200,24 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 11
-        Height = 36
-        Width = 155
+        Height = 27
+        Width = 118
       end
       object cxLabel8: TcxLabel
-        Left = 472
-        Top = 270
+        Left = 360
+        Top = 206
         Caption = 'Eye Move Alarm Mode'
         Transparent = True
       end
       object cxLabel9: TcxLabel
-        Left = 472
-        Top = 139
+        Left = 360
+        Top = 106
         Caption = 'Short Wave Detect'
         Transparent = True
       end
       object EtSF: TcxComboBox
-        Left = 724
-        Top = 139
+        Left = 552
+        Top = 106
         AutoSize = False
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -233,18 +233,18 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 8
-        Height = 36
-        Width = 155
+        Height = 27
+        Width = 118
       end
       object cxLabel3: TcxLabel
-        Left = 21
-        Top = 226
+        Left = 8
+        Top = 172
         Caption = 'Stimulation Size'
         Transparent = True
       end
       object EtStimulus_Size: TcxComboBox
-        Left = 228
-        Top = 226
+        Left = 174
+        Top = 172
         AutoSize = False
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -263,18 +263,18 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 5
-        Height = 36
-        Width = 156
+        Height = 28
+        Width = 119
       end
       object cxLabel17: TcxLabel
-        Left = 472
-        Top = 96
+        Left = 360
+        Top = 73
         Caption = 'Center point detection'
         Transparent = True
       end
       object EtFovea: TcxComboBox
-        Left = 724
-        Top = 96
+        Left = 552
+        Top = 73
         AutoSize = False
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -290,18 +290,18 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 7
-        Height = 36
-        Width = 155
+        Height = 28
+        Width = 118
       end
       object cxLabel14: TcxLabel
-        Left = 21
-        Top = 270
+        Left = 8
+        Top = 206
         Caption = 'Blackground Color'
         Transparent = True
       end
       object EtBackground_Color: TcxComboBox
-        Left = 228
-        Top = 270
+        Left = 174
+        Top = 206
         AutoSize = False
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -318,18 +318,18 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 6
         Text = 'White'
-        Height = 36
-        Width = 156
+        Height = 27
+        Width = 119
       end
       object cxLabel30: TcxLabel
-        Left = 21
-        Top = 53
+        Left = 8
+        Top = 40
         Caption = 'Dot Number'
         Transparent = True
       end
       object EtDot_Number: TcxTextEdit
-        Left = 228
-        Top = 53
+        Left = 174
+        Top = 40
         AutoSize = False
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
@@ -341,12 +341,12 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 1
-        Height = 36
-        Width = 156
+        Height = 28
+        Width = 119
       end
       object EtInit_Strategy: TcxComboBox
-        Left = 228
-        Top = 140
+        Left = 174
+        Top = 107
         AutoSize = False
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -363,24 +363,24 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 3
-        Height = 36
-        Width = 156
+        Height = 27
+        Width = 119
       end
       object cxLabel34: TcxLabel
-        Left = 21
-        Top = 140
+        Left = 8
+        Top = 107
         Caption = 'The initial strategy'
         Transparent = True
       end
       object cxLabel13: TcxLabel
-        Left = 472
-        Top = 226
+        Left = 360
+        Top = 172
         Caption = 'Fixation Loss Monitor'
         Transparent = True
       end
       object EtFixation_Monitor: TcxComboBox
-        Left = 724
-        Top = 226
+        Left = 552
+        Top = 172
         AutoSize = False
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -396,12 +396,12 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 10
-        Height = 36
-        Width = 155
+        Height = 28
+        Width = 118
       end
       object EtRange: TcxTextEdit
-        Left = 228
-        Top = 10
+        Left = 174
+        Top = 8
         AutoSize = False
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
@@ -413,29 +413,29 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 0
-        Height = 36
-        Width = 156
+        Height = 27
+        Width = 119
       end
       object LbStrategy: TListBox
-        Left = 394
-        Top = 10
-        Width = 121
-        Height = 87
+        Left = 300
+        Top = 8
+        Width = 92
+        Height = 66
         Ctl3D = False
-        ItemHeight = 21
+        ItemHeight = 16
         ParentCtl3D = False
         TabOrder = 24
         Visible = False
       end
       object cxLabel2: TcxLabel
-        Left = 21
-        Top = 313
+        Left = 8
+        Top = 238
         Caption = 'Auto Delay'
         Transparent = True
       end
       object EtDelay_Mode: TcxComboBox
-        Left = 228
-        Top = 313
+        Left = 174
+        Top = 238
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
           'On'
@@ -452,19 +452,19 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 26
         Text = 'On'
-        Width = 156
+        Width = 119
       end
       object cxLabel15: TcxLabel
-        Left = 21
-        Top = 357
-        Caption = 'Delay Time'
+        Left = 8
+        Top = 272
+        Caption = 'Delay Time(ms)'
         Transparent = True
       end
       object EtLightSpinEdit: TSpinEdit
-        Left = 228
-        Top = 357
-        Width = 85
-        Height = 31
+        Left = 174
+        Top = 272
+        Width = 64
+        Height = 26
         Hint = #38388#38548#26102#38388
         Increment = 50
         MaxValue = 40000
@@ -475,18 +475,18 @@ object FParamCast: TFParamCast
         Value = 500
       end
       object cxCheckBoxBlind: TcxCheckBox
-        Left = 726
-        Top = 359
+        Left = 553
+        Top = 274
         Caption = 'blind test'
         State = cbsChecked
         TabOrder = 29
-        Width = 157
+        Width = 120
       end
       object cxButtonBY: TcxButton
-        Left = 471
-        Top = 357
-        Width = 138
-        Height = 31
+        Left = 452
+        Top = 272
+        Width = 105
+        Height = 24
         Anchors = [akTop, akRight]
         Caption = 'Blue-Yellow'
         TabOrder = 30
@@ -495,10 +495,10 @@ object FParamCast: TFParamCast
         LookAndFeel.NativeStyle = True
       end
       object EtJgSpinEdit: TSpinEdit
-        Left = 228
-        Top = 357
-        Width = 83
-        Height = 31
+        Left = 174
+        Top = 272
+        Width = 63
+        Height = 26
         Hint = #38388#38548#26102#38388
         Increment = 50
         MaxValue = 4000
@@ -514,14 +514,14 @@ object FParamCast: TFParamCast
       Caption = 'Control'
       ImageIndex = 1
       object cxLabel11: TcxLabel
-        Left = 16
-        Top = 10
-        Caption = 'Hold Time'
+        Left = 4
+        Top = 8
+        Caption = 'Hold Time(ms)'
         Transparent = True
       end
       object EtHold_Time: TcxTextEdit
-        Left = 218
-        Top = 10
+        Left = 174
+        Top = 8
         AutoSize = False
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
@@ -533,18 +533,18 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 0
-        Height = 29
-        Width = 177
+        Height = 22
+        Width = 135
       end
       object cxLabel12: TcxLabel
-        Left = 16
-        Top = 54
-        Caption = 'Delay Time'
+        Left = 4
+        Top = 41
+        Caption = 'Delay Time(ms)'
         Transparent = True
       end
       object EtDelay_Time: TcxTextEdit
-        Left = 218
-        Top = 54
+        Left = 174
+        Top = 41
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -555,17 +555,17 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 1
-        Width = 177
+        Width = 135
       end
       object cxLabel21: TcxLabel
-        Left = 16
-        Top = 99
-        Caption = 'Blind Stimulation DB'
+        Left = 4
+        Top = 75
+        Caption = 'Blind Stimulation(DB)'
         Transparent = True
       end
       object EtFixation_Value: TcxTextEdit
-        Left = 218
-        Top = 99
+        Left = 174
+        Top = 75
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -576,29 +576,29 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 5
-        Width = 177
+        Width = 135
       end
       object cxLabel22: TcxLabel
-        Left = 451
-        Top = 189
+        Left = 312
+        Top = 144
         Caption = 'Rx1'
         Transparent = True
       end
       object cxLabel23: TcxLabel
-        Left = 451
-        Top = 233
+        Left = 312
+        Top = 178
         Caption = 'Rx2'
         Transparent = True
       end
       object cxLabel24: TcxLabel
-        Left = 451
-        Top = 277
+        Left = 312
+        Top = 211
         Caption = 'Rx3'
         Transparent = True
       end
       object EtRx: TcxComboBox
-        Left = 698
-        Top = 146
+        Left = 564
+        Top = 111
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
           'Off'
@@ -613,41 +613,41 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 21
-        Width = 176
+        Width = 134
       end
       object cxLabel26: TcxLabel
-        Left = 16
-        Top = 143
+        Left = 4
+        Top = 109
         Caption = 'False Pos Cycle'
         Transparent = True
       end
       object cxLabel27: TcxLabel
-        Left = 16
-        Top = 188
+        Left = 4
+        Top = 143
         Caption = 'False Neg Cycle'
         Transparent = True
       end
       object cxLabel28: TcxLabel
-        Left = 16
-        Top = 232
+        Left = 4
+        Top = 177
         Caption = 'Fixation Loss Cycle'
         Transparent = True
       end
       object cxLabel36: TcxLabel
-        Left = 451
-        Top = 102
+        Left = 312
+        Top = 78
         Caption = 'Environment Light Error'
         Transparent = True
       end
       object cxLabel37: TcxLabel
-        Left = 451
-        Top = 58
-        Caption = 'Background Light Intensity'
+        Left = 312
+        Top = 44
+        Caption = 'Background Light Intensity(ASB)'
         Transparent = True
       end
       object EtFalse_POS_Cycle: TcxTextEdit
-        Left = 218
-        Top = 143
+        Left = 174
+        Top = 109
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -658,11 +658,11 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 9
-        Width = 176
+        Width = 134
       end
       object EtFalse_NEG_Cycle: TcxTextEdit
-        Left = 218
-        Top = 188
+        Left = 174
+        Top = 143
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -673,11 +673,11 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 10
-        Width = 176
+        Width = 134
       end
       object EtFixation_Cycle: TcxTextEdit
-        Left = 218
-        Top = 232
+        Left = 174
+        Top = 177
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -688,11 +688,11 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 11
-        Width = 176
+        Width = 134
       end
       object EtEB_Light_sv: TcxTextEdit
-        Left = 698
-        Top = 102
+        Left = 564
+        Top = 78
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -703,11 +703,11 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 14
-        Width = 176
+        Width = 134
       end
       object EtB_Light_sv: TcxTextEdit
-        Left = 698
-        Top = 58
+        Left = 564
+        Top = 44
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -718,11 +718,11 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 13
-        Width = 176
+        Width = 134
       end
       object EtSF_Number: TcxTextEdit
-        Left = 218
-        Top = 277
+        Left = 174
+        Top = 211
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -733,17 +733,17 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 12
-        Width = 176
+        Width = 134
       end
       object cxLabel19: TcxLabel
-        Left = 16
-        Top = 277
+        Left = 4
+        Top = 211
         Caption = 'Short Wave Number'
         Transparent = True
       end
       object EtRx3: TcxTextEdit
-        Left = 698
-        Top = 277
+        Left = 564
+        Top = 211
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -754,17 +754,17 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 25
-        Width = 176
+        Width = 134
       end
       object cxLabel10: TcxLabel
-        Left = 451
-        Top = 146
+        Left = 312
+        Top = 111
         Caption = 'Rx'
         Transparent = True
       end
       object EtRx2: TcxTextEdit
-        Left = 698
-        Top = 233
+        Left = 564
+        Top = 178
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -775,11 +775,11 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 23
-        Width = 176
+        Width = 134
       end
       object EtRx1: TcxTextEdit
-        Left = 698
-        Top = 189
+        Left = 564
+        Top = 144
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -790,11 +790,11 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 22
-        Width = 176
+        Width = 134
       end
       object EtInit_Value: TcxTextEdit
-        Left = 698
-        Top = 15
+        Left = 564
+        Top = 11
         Style.BorderStyle = ebsUltraFlat
         Style.LookAndFeel.Kind = lfFlat
         Style.LookAndFeel.NativeStyle = True
@@ -805,12 +805,12 @@ object FParamCast: TFParamCast
         StyleHot.LookAndFeel.Kind = lfFlat
         StyleHot.LookAndFeel.NativeStyle = True
         TabOrder = 26
-        Width = 176
+        Width = 134
       end
       object cxLabel1: TcxLabel
-        Left = 451
-        Top = 15
-        Caption = 'Single St Init Value'
+        Left = 312
+        Top = 11
+        Caption = 'Single St Init Value(dB)'
         Transparent = True
       end
     end
@@ -818,29 +818,29 @@ object FParamCast: TFParamCast
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 910
-    Height = 65
+    Width = 786
+    Height = 50
     Align = alTop
     Color = 2368548
     TabOrder = 3
     object Label1: TLabel
-      Left = 40
-      Top = 9
-      Width = 315
-      Height = 46
+      Left = 30
+      Top = 7
+      Width = 252
+      Height = 27
       Caption = 'Cast Param Setting'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindow
-      Font.Height = -35
+      Font.Height = -27
       Font.Name = #24494#36719#38597#40657
       Font.Style = []
       ParentFont = False
     end
     object Panel4: TPanel
-      Left = 6
-      Top = 5
-      Width = 9
-      Height = 57
+      Left = 5
+      Top = 4
+      Width = 6
+      Height = 43
       BevelOuter = bvNone
       Color = 9748078
       TabOrder = 0

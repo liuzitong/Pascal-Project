@@ -5465,7 +5465,7 @@ object FRunpic: TFRunpic
       Width = 60
     end
     object cxLabel7: TcxLabel
-      Left = 841
+      Left = 816
       Top = 561
       AutoSize = False
       Caption = 'Pupil Diameter(mm):'
@@ -5481,7 +5481,7 @@ object FRunpic: TFRunpic
       Style.IsFontAssigned = True
       Transparent = True
       Height = 25
-      Width = 144
+      Width = 169
     end
     object EtPupilDiameter: TcxLabel
       Left = 1077

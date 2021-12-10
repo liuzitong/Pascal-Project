@@ -1,6 +1,6 @@
 object FParam: TFParam
-  Left = 404
-  Top = 295
+  Left = 1015
+  Top = 306
   BorderStyle = bsNone
   Caption = 'Param Setting'
   ClientHeight = 415
@@ -81,13 +81,13 @@ object FParam: TFParam
       BorderWidth = 1
       Caption = 'Common'
       object cxLabel4: TcxLabel
-        Left = 22
+        Left = 6
         Top = 8
         Caption = 'Range(Deg)'
         Transparent = True
       end
       object cxLabel5: TcxLabel
-        Left = 22
+        Left = 6
         Top = 143
         Caption = 'Stimulation Color'
         Transparent = True
@@ -114,7 +114,7 @@ object FParam: TFParam
         Width = 118
       end
       object cxLabel6: TcxLabel
-        Left = 22
+        Left = 6
         Top = 75
         Caption = 'Strategy'
         Transparent = True
@@ -253,7 +253,7 @@ object FParam: TFParam
         Width = 119
       end
       object cxLabel14: TcxLabel
-        Left = 22
+        Left = 6
         Top = 177
         Caption = 'Blackground Color'
         Transparent = True
@@ -280,7 +280,7 @@ object FParam: TFParam
         Width = 118
       end
       object cxLabel30: TcxLabel
-        Left = 22
+        Left = 6
         Top = 41
         Caption = 'Dot Number'
         Transparent = True
@@ -325,7 +325,7 @@ object FParam: TFParam
         Width = 118
       end
       object cxLabel34: TcxLabel
-        Left = 22
+        Left = 6
         Top = 109
         Caption = 'The initial strategy'
         Transparent = True
@@ -384,7 +384,7 @@ object FParam: TFParam
         Visible = False
       end
       object cxLabel2: TcxLabel
-        Left = 22
+        Left = 6
         Top = 211
         Caption = 'Auto Delay'
         Transparent = True
@@ -411,7 +411,7 @@ object FParam: TFParam
         Width = 118
       end
       object cxLabel15: TcxLabel
-        Left = 22
+        Left = 6
         Top = 245
         Caption = 'Delay Time(ms)'
         Transparent = True
@@ -458,7 +458,7 @@ object FParam: TFParam
       Caption = 'Control'
       ImageIndex = 1
       object cxLabel11: TcxLabel
-        Left = 18
+        Left = 2
         Top = 8
         Caption = 'Hold Time(ms)'
         Transparent = True
@@ -481,7 +481,7 @@ object FParam: TFParam
         Width = 135
       end
       object cxLabel12: TcxLabel
-        Left = 18
+        Left = 2
         Top = 41
         Caption = 'Delay Time(ms)'
         Transparent = True
@@ -502,7 +502,7 @@ object FParam: TFParam
         Width = 135
       end
       object cxLabel21: TcxLabel
-        Left = 18
+        Left = 2
         Top = 75
         Caption = 'Blind Stimulation(DB)'
         Transparent = True
@@ -560,19 +560,19 @@ object FParam: TFParam
         Width = 134
       end
       object cxLabel26: TcxLabel
-        Left = 18
+        Left = 2
         Top = 109
         Caption = 'False Pos Cycle'
         Transparent = True
       end
       object cxLabel27: TcxLabel
-        Left = 18
+        Left = 2
         Top = 143
         Caption = 'False Neg Cycle'
         Transparent = True
       end
       object cxLabel28: TcxLabel
-        Left = 18
+        Left = 2
         Top = 177
         Caption = 'Fixation Loss Cycle'
         Transparent = True
@@ -586,7 +586,7 @@ object FParam: TFParam
       object cxLabel37: TcxLabel
         Left = 331
         Top = 44
-        Caption = 'Background Light Intensity(cd/m2)'
+        Caption = 'Background Light Intensity(ASB)'
         Transparent = True
       end
       object EtFalse_POS_Cycle: TcxTextEdit
@@ -680,7 +680,7 @@ object FParam: TFParam
         Width = 134
       end
       object cxLabel19: TcxLabel
-        Left = 18
+        Left = 2
         Top = 211
         Caption = 'Short Wave Number'
         Transparent = True
