@@ -8,7 +8,7 @@ uses
   dxStatusBar, ExtCtrls, Menus, cxLookAndFeelPainters, StdCtrls, cxButtons,cxContainer, cxEdit,
   cxGroupBox, cxLabel, DB, runpic, new, DBTables, programset,
   Buttons, home, Wwtable, DSPack, DSUtil, DirectShow9, fcStatusBar, pubpas,
-  JvHidControllerClass,math, dxGDIPlusClasses;
+  JvHidControllerClass,math, dxGDIPlusClasses,myIniFiles;
 
 type
   TFMain = class(TForm)
@@ -1496,7 +1496,21 @@ var
   my5Step: T5MotorArr;
   mymotor: array[1..5,1..3] of integer;
   mydot815: TPoint;
+  progStr,eyeStr:string;
+  DBAdd:Integer;
 begin
+  progStr:=FRunpic1.EtProgram.Caption;
+  eyeStr:= FRunpic1.cxDBLabel8.Caption;
+  DBAdd:=TMyIniFiles.GetIniFile.ReadInteger('nearblindot','dbValue addtion',0);
+  if ((progStr='30-2') or (progStr='24-2')) then
+  begin
+    if (((eyeStr='Left') or (eyeStr='×óÑÛ')) and (mydot.X=-15) and (mydot.Y=-3)) or (((eyeStr='Right') or (eyeStr='ÓÒÑÛ')) and (mydot.X=15) and (mydot.Y=-3)) then
+    begin
+        db:=db+DBAdd;
+        if db>40 then db:=40;
+    end;
+  end;
+
   pubmoveline := false;
 
   //  T100msCount := 0;

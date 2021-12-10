@@ -404,7 +404,7 @@ object FMain: TFMain
               TitleFont.Name = 'MS Sans Serif'
             end
             inherited Panel6: TPanel
-              Top = -136
+              Top = -112
               inherited PcReport: TcxPageControl
                 ClientRectTop = 28
               end
