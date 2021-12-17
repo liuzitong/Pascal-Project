@@ -1729,9 +1729,10 @@ procedure TFMain.ShowRead(HidDev: TJvHidDevice; ReportID: Byte;
   const Data: Pointer; Size: Word);
 var
   i: Integer;
-  Str: string;
+  Str,Str1: string;
   lbuf: array[0..63] of byte;
 begin
+  TlogFile.GetInstance.Trace(LogLevel,'ShowRead','');
   Str := Format('R %.2x  ', [ReportID]);
   for i := 0 to Size - 1 do
   begin
@@ -1740,6 +1741,8 @@ begin
   end;
   AddToHistory(Str);
   //TLogFile.GetInstance.Trace(LogLevel,'',Str);
+  Str1:=Format('priHardOk data:%.2x  %.2x', [lbuf[60],lbuf[61]]);
+  TLogFile.GetInstance.Trace(LogLevel,Str1,'');
   if (lbuf[60]=0) and (lbuf[61]=0) then
   begin
     prihardok := true;
@@ -1874,7 +1877,6 @@ begin
 
     pubgets := true;
     pubhjgda := Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2];
-    TlogFile.GetInstance.Trace(LogLevel,'ShowRead pubhjgda',IntToStr(pubhjgda));
 //    if Lower2Server.envlight1[1]*256+Lower2Server.envlight1[2]>DemoCheckData.pm.EB_Light_sv then
     if pubhjgda>DemoCheckData.pm.EB_Light_sv then
       DemoCheckData.ambient_light := 1
@@ -2423,7 +2425,7 @@ begin
   GetHardStatus;
   if priHardOk then
   begin
-    TLogFile.GetInstance.Trace(LogLevel,'priHardOk','');
+    TLogFile.GetInstance.Trace(LogLevel,'priHardOk true','');
     TimerInit.Enabled := false;
     ButtonInitClick(nil);
     FMain.Enabled := true;

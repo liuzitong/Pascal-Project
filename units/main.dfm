@@ -1,6 +1,6 @@
 object FMain: TFMain
-  Left = 195
-  Top = 152
+  Left = 122
+  Top = 35
   Width = 1551
   Height = 932
   Caption = 'Visual View V1.0'
@@ -26107,7 +26107,6 @@ object FMain: TFMain
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = []
-    Visible = False
   end
   object PanelBottomQuery: TPanel
     Left = 0
