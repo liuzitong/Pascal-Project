@@ -563,7 +563,7 @@ object FHome: TFHome
         object wwDBNavigator1: TwwDBNavigator
           Left = 2
           Top = 110
-          Width = 146
+          Width = 1346
           Height = 25
           DataSource = DsCheck
           ShowHint = True
@@ -928,7 +928,7 @@ object FHome: TFHome
         object wwDBNavigator2: TwwDBNavigator
           Left = 2
           Top = 124
-          Width = 151
+          Width = 1346
           Height = 25
           DataSource = DsCheck2
           ShowHint = True

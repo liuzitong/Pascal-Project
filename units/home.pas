@@ -630,7 +630,6 @@ begin
     TbCheckResult.FieldByName('Id').AsString:=TbCheck3.FieldByName('Id').AsString;
     TbCheckResult.FieldByName('Doctor').AsString:=Tr('Doctor')+':'+TbCheck3.FieldByName('Doctor').AsString;
     TbCheckResult.FieldByName('Version').AsString:=Tr('AboutLine1');
-    TbCheckResult.FieldByName('Diagnosis').AsString:=Tr('Diagnosis')+':'+TbCheck3.FieldByName('Describe').AsString;
     TbCheckResult.FieldByName('Hospital').AsString:=XwData.Hospital;
     TbCheckResult.FieldByName('Name').AsString:=Tr('Name')+':'+TbCheck3.FieldByName('Name').AsString;
     TbCheckResult.FieldByName('Number').AsString:=Tr('ID')+':'
@@ -754,7 +753,14 @@ begin
     TbCheckResult.FieldByName('MPEL2').AsString:=tr('Shown for serverely');
     TbCheckResult.FieldByName('MPEL3').AsString:=tr('Depressed fields. Refer');
     TbCheckResult.FieldByName('MPEL4').AsString:=tr('to Total Deviation');
-
+    if (FMain.PcMain.ActivePageIndex=0) then
+    begin
+        TbCheckResult.FieldByName('Diagnosis').AsString:=TbCheck3.FieldByName('Describe').AsString;
+    end
+    else if (FMain.PcMain.ActivePageIndex=1) then
+    begin
+        TbCheckResult.FieldByName('Diagnosis').AsString:=FMain.FRunpic1.TbCheck.FieldByName('Describe').AsString;
+    end;
     TbCheckResult.Post;
 
     for j:=1 to 36 do

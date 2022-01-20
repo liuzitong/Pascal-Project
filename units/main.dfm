@@ -1,6 +1,6 @@
 object FMain: TFMain
-  Left = 232
-  Top = 84
+  Left = 323
+  Top = 75
   BorderStyle = bsNone
   Caption = 'Visual View V1.0'
   ClientHeight = 805
@@ -72,13 +72,13 @@ object FMain: TFMain
             Height = 0
             inherited GroupBox1: TGroupBox
               Width = 1403
-              Height = 162
+              Height = 197
               inherited Panel5A: TPanel
                 Width = 1399
               end
               inherited GridTbCheck: TcxGrid
                 Width = 1399
-                Height = 25
+                Height = 60
               end
               inherited wwDBNavigator1: TwwDBNavigator
                 Width = 1399
@@ -94,7 +94,7 @@ object FMain: TFMain
             Height = 0
             inherited GroupBox2: TGroupBox
               Width = 1403
-              Height = 162
+              Height = 197
               inherited Panel7: TPanel
                 Width = 1399
                 OnMouseDown = FHome1Panel7MouseDown
@@ -122,7 +122,7 @@ object FMain: TFMain
               end
               inherited GridTbCheck2: TcxGrid
                 Width = 1399
-                Height = 11
+                Height = 46
                 inherited GridTbCheck2DBTableView1: TcxGridDBTableView
                   inherited GridTbCheck2DBTableView1Number: TcxGridDBColumn
                     SortIndex = 0
@@ -152,7 +152,7 @@ object FMain: TFMain
               Top = 136
               Width = 1403
               inherited BtDiagnosis: TcxButton
-                Left = 912
+                Left = 1008
               end
             end
           end
@@ -245,15 +245,15 @@ object FMain: TFMain
               Color = clBtnHighlight
             end
             inherited PaChin: TPanel
-              Height = 17
+              Height = 196
               inherited EtAutoPupil: TcxCheckBox
                 Style.IsFontAssigned = True
               end
               inherited Panel9: TPanel
-                Top = -129
+                Top = 50
               end
               inherited Panel12: TPanel
-                Top = -132
+                Top = 47
               end
             end
             inherited Panel2: TPanel
@@ -280,10 +280,10 @@ object FMain: TFMain
           end
         end
         inherited Panel4: TPanel
-          Left = 1402
+          Left = 1202
           Height = 186
           DesignSize = (
-            5
+            205
             186)
           inherited BtPause: TcxButton
             Top = 13
@@ -297,21 +297,24 @@ object FMain: TFMain
           Height = 186
         end
         inherited Panel8: TPanel
-          Left = 1401
+          Left = 1201
           Height = 186
         end
         inherited Panel5: TPanel
-          Width = 1126
+          Width = 926
           Height = 186
+          DesignSize = (
+            926
+            186)
           inherited ImageRun: TImage
-            Width = 1124
+            Width = 924
             Height = 184
           end
           inherited LaCamere: TLabel
             Width = 56
           end
           inherited EtEyeMoveAlarm: TShape
-            Left = 868
+            Left = 668
           end
           inherited EtCursor: TcxLabel
             Style.IsFontAssigned = True
@@ -323,25 +326,25 @@ object FMain: TFMain
             Style.IsFontAssigned = True
           end
           inherited cxDBLabel8: TcxDBLabel
-            Left = 1008
+            Left = 808
             Style.IsFontAssigned = True
           end
           inherited EtCount: TcxLabel
-            Left = 1049
+            Left = 849
             Style.IsFontAssigned = True
           end
           inherited cxLabel19: TcxLabel
             Style.IsFontAssigned = True
           end
           inherited EtTime: TcxLabel
-            Left = 1049
+            Left = 849
             Style.IsFontAssigned = True
           end
           inherited cxLabel7: TcxLabel
             Style.IsFontAssigned = True
           end
           inherited EtPupilDiameter: TcxLabel
-            Left = 1049
+            Left = 849
             Style.IsFontAssigned = True
           end
           inherited cxLabel13: TcxLabel
@@ -394,7 +397,7 @@ object FMain: TFMain
           inherited Panel4: TPanel
             Height = 169
             inherited EtPtName: TwwDBGrid
-              Height = 109
+              Height = 4
               Font.Color = clWindowText
               Font.Height = -16
               Font.Name = 'MS Sans Serif'
@@ -458,10 +461,10 @@ object FMain: TFMain
             end
             inherited Panel8: TPanel
               Width = 705
-              Height = 98
+              Height = 122
               inherited ImagePt: TImage
                 Width = 703
-                Height = 96
+                Height = 120
               end
             end
           end
@@ -26416,6 +26419,21 @@ object FMain: TFMain
       TabOrder = 5
       OnClick = BtRecheckClick
     end
+    object btn_Diagnosis2: TBitBtn
+      Left = 860
+      Top = 12
+      Width = 133
+      Height = 70
+      Caption = 'Diagnosis'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = #24494#36719#38597#40657
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+      OnClick = btn_Diagnosis2Click
+    end
   end
   object PanelBottomProgram: TPanel
     Left = 0
@@ -26583,9 +26601,9 @@ object FMain: TFMain
       OnClick = BtPauseClick
     end
     object BtOtherEye: TBitBtn
-      Left = 724
+      Left = 928
       Top = 12
-      Width = 120
+      Width = 140
       Height = 70
       Caption = 'Eye'
       Font.Charset = DEFAULT_CHARSET
@@ -26660,6 +26678,21 @@ object FMain: TFMain
       DropDownMenu = PopupMenuPrint
       Kind = cxbkDropDownButton
       LookAndFeel.Kind = lfUltraFlat
+    end
+    object btn_Diagnosis: TBitBtn
+      Left = 716
+      Top = 12
+      Width = 133
+      Height = 70
+      Caption = 'Diagnosis'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = #24494#36719#38597#40657
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
+      OnClick = btn_DiagnosisClick
     end
   end
   object Timer: TTimer

@@ -99,6 +99,8 @@ type
     BtPrint: TcxButton;
     LabelXtmc: TLabel;
     CheckBoxDebug: TCheckBox;
+    btn_Diagnosis: TBitBtn;
+    btn_Diagnosis2: TBitBtn;
     procedure BtQueryClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -162,6 +164,8 @@ type
     procedure BtPauseClick(Sender: TObject);
     procedure BtUnlockClick(Sender: TObject);
     procedure BitBtnReturn4Click(Sender: TObject);
+    procedure btn_DiagnosisClick(Sender: TObject);
+    procedure btn_Diagnosis2Click(Sender: TObject);
   private
     { Private declarations }
     Button: TMouseButton;
@@ -226,7 +230,7 @@ var
 
 implementation
 
-uses Myutils, xwxh, language, About, usbr, vfw, edit;
+uses Myutils, xwxh, language, About, usbr, vfw, edit, diagnosis;
 
 {$R *.dfm}
 
@@ -2698,6 +2702,43 @@ begin
        BitBtnArchivesClick(nil);
      end;
    end;
+end;
+
+procedure TFMain.btn_DiagnosisClick(Sender: TObject);
+begin
+    if FRunpic1.TbCheck.FieldByName('State').AsInteger<=1 then exit;
+    FDiagnosis:=TFDiagnosis.Create(Self);
+//    FDiagnosis.Left:=Screen.Width-FDiagnosis.Width;
+//    FDiagnosis.Top:=Screen.Height-FDiagnosis.Height;
+//    FDiagnosis.EtDiagnosis.Text:=FRunpic1.TbCheck.FieldByName('Describe').AsString;
+    FDiagnosis.EtDiagnosis.Text:=FRunpic1.TbCheck.FieldByName('Describe').AsString;
+    if FDiagnosis.ShowModal=mrOk then
+    begin
+      FRunpic1.TbCheck.Edit;
+      FRunpic1.TbCheck.FieldByName('Describe').AsString:=FDiagnosis.EtDiagnosis.Text;
+      FRunpic1.TbCheck.Post;
+    end;
+    FDiagnosis.Free;
+    //  FMain.PcMain.ActivePageIndex:=1;
+    FMain.ActiveControl:=nil;
+end;
+
+procedure TFMain.btn_Diagnosis2Click(Sender: TObject);
+begin
+    FDiagnosis:=TFDiagnosis.Create(Self);
+//    FDiagnosis.Left:=Screen.Width-FDiagnosis.Width;
+//    FDiagnosis.Top:=Screen.Height-FDiagnosis.Height;
+    FDiagnosis.EtDiagnosis.Text:=FHome1.TbCheck3.FieldByName('Describe').AsString;
+    if FDiagnosis.ShowModal=mrOk then
+    begin
+      FHome1.TbCheck3.Edit;
+      FHome1.TbCheck3.FieldByName('Describe').AsString:=FDiagnosis.EtDiagnosis.Text;
+      FHome1.TbCheck3.Post;
+    end;
+    FDiagnosis.Free;
+    //  FMain.PcMain.ActivePageIndex:=1;
+    FHome1.GridTbCheck2DBTableView1SelectionChanged(nil);
+    FMain.ActiveControl:=nil;
 end;
 
 end.

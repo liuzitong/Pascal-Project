@@ -1542,6 +1542,7 @@ begin
     SetLength(s, sizeof(DemoCheckData));
     Move(DemoCheckData, s[1], Length(s));
     TbCheck.FieldByName('Checkdata').AsString:=s;
+    TbCheck.FieldByName('Describe').AsString:='';
     TbCheck.FieldByName('Date').AsString:=DateToStr(now);
     TbCheck.FieldByName('Time').AsString:=TimeToStr(now);
     TbCheck.FieldByName('Stimulus_Color').AsInteger:=DemoCheckData.pm.Stimulus_Color;

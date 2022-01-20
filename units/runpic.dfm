@@ -4314,9 +4314,9 @@ object FRunpic: TFRunpic
     end
   end
   object Panel4: TPanel
-    Left = 1423
+    Left = 1224
     Top = 0
-    Width = 5
+    Width = 205
     Height = 869
     Align = alRight
     Color = 2368548
@@ -4990,7 +4990,7 @@ object FRunpic: TFRunpic
     end
     object BtDiagnosis: TcxButton
       Left = 2
-      Top = 718
+      Top = 710
       Width = 126
       Height = 40
       Caption = 'Diagnosis'
@@ -5251,7 +5251,7 @@ object FRunpic: TFRunpic
     TabOrder = 3
   end
   object Panel8: TPanel
-    Left = 1428
+    Left = 1223
     Top = 0
     Width = 1
     Height = 869
@@ -5262,18 +5262,18 @@ object FRunpic: TFRunpic
   object Panel5: TPanel
     Left = 275
     Top = 0
-    Width = 1148
+    Width = 948
     Height = 869
     Align = alClient
     Color = 10526880
     TabOrder = 5
     DesignSize = (
-      1148
+      948
       869)
     object ImageRun: TImage
       Left = 1
       Top = 1
-      Width = 1146
+      Width = 946
       Height = 867
       Align = alClient
     end
@@ -5292,7 +5292,7 @@ object FRunpic: TFRunpic
       Height = 48
     end
     object EtEyeMoveAlarm: TShape
-      Left = 896
+      Left = 696
       Top = 570
       Width = 16
       Height = 11
@@ -5354,7 +5354,7 @@ object FRunpic: TFRunpic
       Transparent = True
     end
     object cxDBLabel8: TcxDBLabel
-      Left = 1036
+      Left = 836
       Top = 16
       Anchors = [akTop, akRight]
       AutoSize = True
@@ -5394,7 +5394,7 @@ object FRunpic: TFRunpic
       Visible = False
     end
     object EtCount: TcxLabel
-      Left = 1077
+      Left = 877
       Top = 477
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5439,7 +5439,7 @@ object FRunpic: TFRunpic
       Width = 144
     end
     object EtTime: TcxLabel
-      Left = 1077
+      Left = 877
       Top = 519
       Anchors = [akTop, akRight]
       AutoSize = False
@@ -5484,7 +5484,7 @@ object FRunpic: TFRunpic
       Width = 169
     end
     object EtPupilDiameter: TcxLabel
-      Left = 1077
+      Left = 877
       Top = 561
       Anchors = [akTop, akRight]
       AutoSize = False
